@@ -1,6 +1,6 @@
 {pkgs, config, ...}: {
   environment = {
     shells = with pkgs; [nushell zsh];
-    # variables.FLAKE = "${config.default.confDir}";
+    variables.FLAKE = "/etc/nixos";
   };
 }

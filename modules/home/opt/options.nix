@@ -22,6 +22,7 @@
       swayfx.enable = lib.mkEnableOption "Enable swayfx";
       swayidle.enable = lib.mkEnableOption "Enable swayidle";
       wezterm.enable = lib.mkEnableOption "Enable wezterm";
+      kitty.enable = lib.mkEnableOption "Enable kitty";
       zellij.enable = lib.mkEnableOption "Enable zellij";
       zsh.enable = lib.mkEnableOption "Enable zsh";
     };
@@ -44,7 +45,7 @@
         default = "firefox";
       };
       terminal = lib.mkOption {
-        type = lib.types.enum ["wezterm" "foot"];
+        type = lib.types.enum ["wezterm" "foot" "kitty"];
         default = "wezterm";
       };
       lock = lib.mkOption {

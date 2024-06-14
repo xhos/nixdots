@@ -8,16 +8,18 @@
   config = lib.mkIf config.modules.zsh.enable {
     programs.zsh = {
       enable = true;
-      dotDir = "./config";
+      dotDir = ".config/zsh";
       envExtra = ''
         export PATH=~/.local/bin:~/.local/share/nvim/mason/bin:$PATH
       '';
       initExtra = ''
-        source config/aliases.zsh
-        source config/options.zsh
-        source config/plugins.zsh
-        source config/utility.zsh
-        source config/keybinds.zsh
+        autoload -U +X bashcompinit && bashcompinit
+        autoload -U +X compinit && compinit
+        source ~/.config/zsh/aliases.zsh
+        source ~/.config/zsh/options.zsh
+        source ~/.config/zsh/plugins.zsh
+        source ~/.config/zsh/utility.zsh
+        source ~/.config/zsh/keybinds.zsh
       '';
     };
     home.file.kubie = {
