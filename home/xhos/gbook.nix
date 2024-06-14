@@ -31,10 +31,8 @@
     de = "hyprland";
     bar = "ags";
     lock = "hyprlock";
-    terminal = "kitty";
+    terminal = "foot";
   };
-
-
 
   home = {
     packages = with pkgs; [

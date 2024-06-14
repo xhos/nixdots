@@ -14,6 +14,7 @@
 
   # Get default application
   terminal = config.home.sessionVariables.TERMINAL;
+
 in {
   wayland.windowManager.hyprland = {
     settings = {
