@@ -1,25 +1,17 @@
+{ config, lib, ... }:
+
 {
-  config,
-  lib,
-  ...
-}: {
-  imports = [./run-as-service.nix];
+  imports = [
+    ./run-as-service.nix
+    ./aliases.nix
+  ];
 
   config = lib.mkIf config.modules.zsh.enable {
     programs.zsh = {
       enable = true;
-      dotDir = ".config/zsh";
-      envExtra = ''
-        export PATH=~/.local/bin:~/.local/share/nvim/mason/bin:$PATH
-      '';
       initExtra = ''
-        autoload -U +X bashcompinit && bashcompinit
+        autoload -U +X bashcompinit && bashcompinit 
         autoload -U +X compinit && compinit
-        source ~/.config/zsh/aliases.zsh
-        source ~/.config/zsh/options.zsh
-        source ~/.config/zsh/plugins.zsh
-        source ~/.config/zsh/utility.zsh
-        source ~/.config/zsh/keybinds.zsh
       '';
     };
     home.file.kubie = {
