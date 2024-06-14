@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./zellij
+    ./zsh
+  ];
+}
