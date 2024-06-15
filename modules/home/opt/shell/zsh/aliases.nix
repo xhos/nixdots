@@ -240,18 +240,5 @@
 
 		# Force a rolling update of a daemonset
 		alias krud='kubectl rollout restart daemonset'
-
-		# Portforward to one pod with label app=$1
-		unalias kpf 2>/dev/null
-		kpf() {
-		local APP
-		APP=$1
-		shift
-		local PORT
-		PORT=$1
-		shift
-		local POD_NAME
-		POD_NAME=$(kubectl "$@" get pod -l app="${APP}" -o jsonpath='{$.items[0].metadata.name}')
-		kubectl "$@" port-forward "${POD_NAME}" "${PORT}:${PORT}"
 		'';
 }
