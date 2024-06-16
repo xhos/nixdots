@@ -46,7 +46,7 @@
     bar_color_elapsed="distro"
     bar_color_total="distro"
     image_backend="iterm2"
-    image_source="${config.default.confDir}/home/shared/images/neofetch.png"
+    image_source="/etc/nixos/home/shared/images/neofetch.png"
     image_size="250px"
     image_loop="on"
     ascii_distro="nixos"

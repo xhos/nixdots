@@ -28,10 +28,6 @@
     };
 
     default = {
-      confDir = lib.mkOption {
-        type = lib.types.path;
-        default = "";
-      };
       de = lib.mkOption {
         type = lib.types.enum ["awesome" "hyprland"];
         default = "awesome";

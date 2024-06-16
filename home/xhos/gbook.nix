@@ -26,8 +26,6 @@
   };
 
   default = {
-    confDir = "/home/xhos/nixconf";
-
     de = "hyprland";
     bar = "ags";
     lock = "hyprlock";
