@@ -6,7 +6,6 @@
     ./lazygit
     ./rnnoise
     ./rofi
-    ./swaync
     ./picom
     ./neofetch
   ];

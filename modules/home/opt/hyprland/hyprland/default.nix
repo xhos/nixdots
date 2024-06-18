@@ -86,8 +86,8 @@
     '';
 in {
   imports = [
-    ../programs
-    ../services
+    ../hypridle
+    ../hyprlock
 
     ./config
   ];

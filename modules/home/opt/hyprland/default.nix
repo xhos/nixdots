@@ -1,7 +1,5 @@
 {
   imports = [
     ./hyprland
-    ./hypridle
-    ./hyprlock
   ];
 }
