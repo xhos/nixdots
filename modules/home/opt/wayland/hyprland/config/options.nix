@@ -78,13 +78,13 @@
       kb_layout = "us, ru";
       kb_options = "grp:alt_shift_toggle";
 
-      accel_profile = "flat";
+      # accel_profile = "flat";
       follow_mouse = 1;
 
       touchpad = {
         disable_while_typing = true;
         natural_scroll = true;
-        scroll_factor = 0.7;
+        scroll_factor = 0.5;
       };
     };
 
