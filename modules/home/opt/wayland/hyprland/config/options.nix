@@ -21,7 +21,7 @@
         "border, 1, 2, default"
         "fade, 1, 2, md3_decel"
         "windows, 1, 4, md3_decel, popin 60%"
-        "workspaces, 1, 4, md3_decel, slidevert"
+        # "workspaces, 1, 4, md3_decel, slidevert" # i rather have horizontal switch
       ];
     };
 
@@ -84,7 +84,7 @@
       touchpad = {
         disable_while_typing = true;
         natural_scroll = true;
-        scroll_factor = 0.8;
+        scroll_factor = 0.7;
       };
     };
 

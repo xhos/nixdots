@@ -80,7 +80,7 @@ in {
 
       bindr = [
         # Launchers
-        "SUPER, R, exec, pkill anyrun || run-as-service anyrun"
+        "ALT, SPACE, exec, pkill anyrun || run-as-service anyrun"
         "SUPERSHIFT, p, exec, rofi-rbw --no-help --clipboarder wl-copy"
         "SUPERSHIFT, e, exec, bemoji"
         "SUPERSHIFT, o, exec, wezterm start --class clipse clipse"
