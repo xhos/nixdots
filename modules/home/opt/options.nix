@@ -1,4 +1,4 @@
-{lib, ...}: {
+{lib, ...}: { # TODO: remove useless shit
   options = {
     modules = {
       anyrun.enable = lib.mkEnableOption "Enable anyrun";
