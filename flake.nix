@@ -63,6 +63,9 @@
 
     # My personal nixvim config
     nixvim.url = "github:elythh/nixvim";
+
+    matugen.url = "github:InioX/matugen?ref=v2.2.0";
+
   };
 
   outputs = {
