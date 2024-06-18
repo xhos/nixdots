@@ -2,6 +2,7 @@
   imports = [
     ./options.nix
 
+    ./ags
     ./bin
     ./browser
     ./misc
