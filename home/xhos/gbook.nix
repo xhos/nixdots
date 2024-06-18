@@ -8,20 +8,13 @@
   theme = "verdant";
 
   imports = [
-    inputs.anyrun.homeManagerModules.default
     ../../modules/home
   ];
 
   modules = {
-    anyrun.enable    = true;
     hyprland.enable  = true;
-    k9s.enable       = false;
-    lazygit.enable   = false;
     rofi.enable      = true;
-    rbw.enable       = false; # CLI Bitwarden client
     spicetify.enable = true;
-    sss.enable       = true;
-    zellij.enable    = false;
     zsh.enable       = true;
   };
 

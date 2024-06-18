@@ -5,7 +5,7 @@
     # Nixpkgs Stable
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Nixpkgs uunstable
+    # Nixpkgs unstable
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-23.11";
 
     # awesome-git
@@ -23,12 +23,6 @@
     # Stylix, nix-colors alertnative
     stylix.url = "github:danth/stylix";
 
-    # Zellij plugin for statusbar
-    zjstatus.url = "github:dj95/zjstatus";
-
-    # Anyrun, an app launcher
-    anyrun.url = "github:Kirottu/anyrun";
-
     # Ags, a customizable and extensible shell
     ags.url = "github:Aylur/ags";
 
@@ -38,9 +32,6 @@
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
 
-    # SuperScreenShot
-    sss.url = "github:/SergioRibera/sss";
-
     # Hyprland, the modern compositor for wayland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
@@ -48,24 +39,13 @@
     hyprspace.url = "github:KZDKM/Hyprspace";
     hyprspace.inputs.hyprland.follows = "hyprland";
 
-    # Hyprpaper, wallpaper manager for hyprland
-    hyprpaper.url = "github:hyprwm/hyprpaper";
-
     # hyprpicker, color picker for hyprland
     hyprpicker.url = "github:hyprwm/hyprpicker";
-
-    # Split monitor workspaces, a plugin to get per monitor workspaces (similar to awesomewm)
-    #split-monitor-workspaces.url = "github:Duckonaut/split-monitor-workspaces";
-    #split-monitor-workspaces.inputs.hyprland.follows = "hyprland";
 
     # Spicetify, a spotify theming tool
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
-    # My personal nixvim config
-    nixvim.url = "github:elythh/nixvim";
-
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
-
   };
 
   outputs = {
