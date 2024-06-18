@@ -275,10 +275,10 @@ in {
         "extensions.pocket.enabled" = false; # disable pocket, save links, send tabs
         "extensions.abuseReport.enabled" = false; # don't show 'report abuse' in extensions
         "extensions.formautofill.creditCards.enabled" = false; # don't auto-fill credit card information
-        "identity.fxaccounts.enabled" = false; # disable firefox login
-        "identity.fxaccounts.toolbar.enabled" = false;
-        "identity.fxaccounts.pairing.enabled" = false;
-        "identity.fxaccounts.commands.enabled" = false;
+        "identity.fxaccounts.enabled" = true; # disable firefox login
+        "identity.fxaccounts.toolbar.enabled" = true;
+        "identity.fxaccounts.pairing.enabled" = true;
+        "identity.fxaccounts.commands.enabled" = true;
         "browser.contentblocking.report.lockwise.enabled" = false; # don't use firefox password manger
         "browser.uitour.enabled" = false; # no tutorial please
         "browser.newtabpage.activity-stream.showSponsored" = false;
@@ -316,22 +316,22 @@ in {
       search = {
         force = true;
         default = "Google";
-        order = ["Kagi" "Google" "DuckDuckGo" "Youtube" "NixOS Options" "Nix Packages" "GitHub" "HackerNews"];
+        order = ["Yandex" "Google" "DuckDuckGo" "Youtube" "NixOS Options" "Nix Packages" "GitHub" "HackerNews"];
 
         engines = {
           "Bing".metaData.hidden = true;
           "Amazon.com".metaData.hidden = true;
 
-          "Kagi" = {
-            iconUpdateURL = "https://kagi.com/favicon.ico";
+          "Yandex" = {
+            iconUpdateURL = "https://ya.ru/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = ["@k"];
+            definedAliases = ["@y"];
             urls = [
               {
-                template = "https://kagi.com/search";
+                template = "https://ya.ru/search";
                 params = [
                   {
-                    name = "q";
+                    name = "text";
                     value = "{searchTerms}";
                   }
                 ];
