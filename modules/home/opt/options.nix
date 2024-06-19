@@ -34,6 +34,10 @@
         type = lib.types.enum ["hyprlock"];
         default = "hyprlock";
       };
+      prompt = lib.mkOption {
+        type = lib.types.enum ["starship" "oh-my-posh"];
+        default = "starship";
+      };
     };
   };
 }

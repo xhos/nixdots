@@ -32,9 +32,6 @@
       auth0-cli
       awscli
       bemoji
-      betterdiscordctl
-      bitwarden
-      bitwarden-cli
       charm
       charm-freeze
       chatterino2
@@ -57,7 +54,6 @@
       glab
       glow
       gnumake
-      google-cloud-sdk
       grimblast
       gum
       helmfile
@@ -67,15 +63,8 @@
       jq
       jqp
       just
-      k9s
       keybase
-      kubecolor
-      kubectl
-      kubectx
-      kubernetes-helm
-      kubie
       light
-      lunar-client
       marksman
       networkmanagerapplet
       nh
@@ -92,12 +81,6 @@
       pkgsStable.go
       playerctl
       presenterm
-      python311Packages.gst-python
-      python311Packages.pip
-      python311Packages.pygobject3
-      python311Packages.setuptools
-      python311Packages.virtualenv
-      qutebrowser
       rcon
       rustup
       satty
@@ -107,11 +90,8 @@
       skim
       slack
       slides
-      starship
       stern
-      syncthing
       tailspin
-      teams-for-linux
       telegram-desktop
       tldr
       ventoy
@@ -120,8 +100,6 @@
       xdotool
       xwayland
       yarn
-      zed-editor
-      zellij
       zoxide
     ];
   };
