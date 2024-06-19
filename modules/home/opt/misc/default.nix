@@ -4,5 +4,6 @@
     ./obsidian.nix
     ./neofetch.nix
     ./firefox.nix
+    ./fastfetch.nix
   ];
 }
