@@ -2,7 +2,7 @@
   pkgs,
   config,
   ...
-}: {
+}: { #TODO: this aint os pkgs
   environment.systemPackages = with pkgs; [
     swww
     nh
@@ -15,8 +15,6 @@
     networkmanagerapplet
     speedtest-cli
     lz4
-    obsidian
-    neofetch
     protonvpn-gui
 
     age

@@ -32,6 +32,7 @@
       docker-compose
       easyeffects
       eza
+      fastfetch
       feh
       fx
       fzf

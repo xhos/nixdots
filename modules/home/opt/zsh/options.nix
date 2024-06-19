@@ -1,14 +1,6 @@
 { config, lib, ... }:
 
 {
-	config = lib.mkIf (config.default.prompt == "oh-my-posh") {
-	  	programs.zsh.initExtra = ''eval "$(oh-my-posh init zsh)"'';
-	};
-
-	config = lib.mkIf (config.default.prompt == "starship") {
-	  	programs.zsh.initExtra = ''eval "$(starship init zsh)"'';
-	};
-
 	programs.zsh.initExtra = ''
 		umask 022
 		zmodload zsh/zle
@@ -24,8 +16,6 @@
 		zle -N _sudo_command_line
 
 		# Completion
-		source <(kubectl completion zsh)
-		compdef kubecolor=kubectl
 		# disable sort when completing `git checkout`
 		zstyle ':completion:*:git-checkout:*' sort false
 		# set descriptions format to enable group support
@@ -85,3 +75,12 @@
 		EOF
     '';
 }
+# don't need this for some reason (also probably broken)
+# ${
+# if (config.default.prompt == "oh-my-posh") then
+# 	''eval "$(oh-my-posh init zsh)"''
+# else if (config.default.prompt == "starship") then
+# 	''eval "$(starship init zsh)"''
+# else
+# 	'' ''
+# }

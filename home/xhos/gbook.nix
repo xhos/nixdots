@@ -19,11 +19,11 @@
   };
 
   default = {
-    de = "hyprland";
-    bar = "ags";
-    lock = "hyprlock";
+    de       = "hyprland";
+    bar      = "ags";
+    lock     = "hyprlock";
     terminal = "foot";
-    prompt = "oh-my-posh";
+    prompt   = "oh-my-posh";
   };
 
   home = {
