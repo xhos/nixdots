@@ -22,6 +22,7 @@
 		# alias cat="bat --color always"
 		alias grep='grep --color=auto'
 		alias v='nvim'
+		alias ns='nix-shell -p'
 		alias mv='mv -v'
 		alias cp='cp -vr'
 		alias rm='rm -vr'

@@ -1,6 +1,13 @@
 { config, lib, ... }:
 
-{ #TODO: Convert zsh config to pure nix
+{
+	config = lib.mkIf (config.default.prompt == "oh-my-posh") {
+	  	programs.zsh.initExtra = ''eval "$(oh-my-posh init zsh)"'';
+	};
+
+	config = lib.mkIf (config.default.prompt == "starship") {
+	  	programs.zsh.initExtra = ''eval "$(starship init zsh)"'';
+	};
 
 	programs.zsh.initExtra = ''
 		umask 022

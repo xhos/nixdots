@@ -6,7 +6,7 @@
     ./zsh
     ./misc
     ./music
-    ./term
+    ./terminals
     ./hyprland
     ./rofi
     ./prompts

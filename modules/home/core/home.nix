@@ -16,7 +16,6 @@
       (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
-      starship
       alejandra
       auth0-cli
       awscli
