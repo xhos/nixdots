@@ -36,7 +36,7 @@
       };
       prompt = lib.mkOption {
         type = lib.types.enum ["starship" "oh-my-posh"];
-        default = "starship";
+        default = "oh-my-posh";
       };
     };
   };

@@ -9,5 +9,6 @@
     ./term
     ./hyprland
     ./rofi
+    ./prompts
   ];
 }

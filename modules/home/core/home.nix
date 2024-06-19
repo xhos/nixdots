@@ -11,23 +11,12 @@
     homeDirectory = "/home/xhos";
     stateVersion = "24.05";
     file.".local/share/fonts".source = ./fonts;
-    activation = {
-      installConfig = ''
-        if [ ! -d "${config.home.homeDirectory}/.config/zsh" ]; then
-          ${pkgs.git}/bin/git clone --depth 1 --branch zsh https://github.com/elythh/dotfiles ${config.home.homeDirectory}/.config/zsh
-        fi
-      '';
-    };
 
     packages = with pkgs; [
-      inputs.zjstatus.packages.${system}.default
-      (pkgs.callPackage ../../../derivs/spotdl.nix {
-        inherit (pkgs.python311Packages) buildPythonApplication;
-      })
+      (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
-      (lib.mkIf config.modules.rbw.enable rbw)
-      (lib.mkIf config.modules.rbw.enable rofi-rbw)
+      starship
       alejandra
       auth0-cli
       awscli

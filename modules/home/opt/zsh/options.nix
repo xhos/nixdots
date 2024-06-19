@@ -1,6 +1,7 @@
 { config, lib, ... }:
 
 { #TODO: Convert zsh config to pure nix
+
 	programs.zsh.initExtra = ''
 		umask 022
 		zmodload zsh/zle
@@ -75,13 +76,5 @@
 		CORRECT
 		EQUALS
 		EOF
-
-		command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
-
-		# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-		bindkey -v
-
-		# vim:filetype=zsh:nowrap
-
     '';
 }

@@ -7,7 +7,6 @@
       in "^(${elements})$";
 
       layers = [
-        "anyrun"
         "gtk-layer-shell"
         "swaync-control-center"
         "swaync-notification-window"
