@@ -15,7 +15,6 @@
     hyprland.enable  = true;
     rofi.enable      = true;
     spicetify.enable = true;
-    zsh.enable       = true;
   };
 
   default = {
@@ -24,6 +23,7 @@
     lock     = "hyprlock";
     terminal = "foot";
     prompt   = "oh-my-posh";
+    shell    = "fish";
   };
 
   home = {

@@ -9,7 +9,7 @@
     ./plugins.nix
   ];
 
-  config = lib.mkIf config.modules.zsh.enable {
+  config = lib.mkIf (config.default.shell == "zsh") {
     programs.zsh = {
       enable = true;
     };

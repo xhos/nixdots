@@ -10,7 +10,6 @@
       spicetify.enable = lib.mkEnableOption "Enable spicetify";
       wezterm.enable   = lib.mkEnableOption "Enable wezterm";
       kitty.enable     = lib.mkEnableOption "Enable kitty";
-      zsh.enable       = lib.mkEnableOption "Enable zsh";
     };
 
     default = {
@@ -37,6 +36,10 @@
       prompt = lib.mkOption {
         type = lib.types.enum ["starship" "oh-my-posh"];
         default = "oh-my-posh";
+      };
+      shell = lib.mkOption {
+        type = lib.types.enum ["zsh" "fish"];
+        default = "zsh";
       };
     };
   };
