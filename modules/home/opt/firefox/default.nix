@@ -3,7 +3,7 @@
   lib,
   pkgs,
   ...
-}: let #TODO: i ain't needin all dat
+}: let 
   inherit (lib) concatStringsSep escapeShellArg mapAttrsToList;
   env = {
     MOZ_WEBRENDER = 1;
@@ -35,175 +35,177 @@ in {
       id = 0;
       isDefault = true;
 
-      # Hide tab bar because we have tree style tabs
-      userChrome = with config.lib.stylix.colors; ''
-        :root {
-          --sfwindow: #${base00};
-          --sfsecondary: #${base01};
-        }
+      userChrome = (builtins.readFile "./config/userChrome.css");
+      
+      # userChrome = with config.lib.stylix.colors; ''
+      #   :root {
+      #     --sfwindow: #${base00};
+      #     --sfsecondary: #${base01};
+      #   }
 
-        /* Urlbar View */
+      #   /* Urlbar View */
 
-        /*─────────────────────────────*/
-        /* Comment this section if you */
-        /* want to show the URL Bar    */
-        /*─────────────────────────────*/
+      #   /*─────────────────────────────*/
+      #   /* Comment this section if you */
+      #   /* want to show the URL Bar    */
+      #   /*─────────────────────────────*/
 
-        /*
-        .urlbarView {
-          display: none !important;
-        }
+      #   /*
+      #   .urlbarView {
+      #     display: none !important;
+      #   }
 
-        */
+      #   */
 
-        /*─────────────────────────────*/
+      #   /*─────────────────────────────*/
 
-        /*
-        ┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
-        │  │ ││  │ │├┬┘└─┐
-        └─┘└─┘┴─┘└─┘┴└─└─┘
-        */
+      #   /*
+      #   ┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
+      #   │  │ ││  │ │├┬┘└─┐
+      #   └─┘└─┘┴─┘└─┘┴└─└─┘
+      #   */
 
-        /* Tabs colors  */
-        #tabbrowser-tabs:not([movingtab])
-          > #tabbrowser-arrowscrollbox
-          > .tabbrowser-tab
-          > .tab-stack
-          > .tab-background[multiselected='true'],
-        #tabbrowser-tabs:not([movingtab])
-          > #tabbrowser-arrowscrollbox
-          > .tabbrowser-tab
-          > .tab-stack
-          > .tab-background[selected='true'] {
-          background-image: none !important;
-          background-color: var(--toolbar-bgcolor) !important;
-        }
+      #   /* Tabs colors  */
+      #   #tabbrowser-tabs:not([movingtab])
+      #     > #tabbrowser-arrowscrollbox
+      #     > .tabbrowser-tab
+      #     > .tab-stack
+      #     > .tab-background[multiselected='true'],
+      #   #tabbrowser-tabs:not([movingtab])
+      #     > #tabbrowser-arrowscrollbox
+      #     > .tabbrowser-tab
+      #     > .tab-stack
+      #     > .tab-background[selected='true'] {
+      #     background-image: none !important;
+      #     background-color: var(--toolbar-bgcolor) !important;
+      #   }
 
-        /* Inactive tabs color */
-        #navigator-toolbox {
-          background-color: var(--sfwindow) !important;
-        }
+      #   /* Inactive tabs color */
+      #   #navigator-toolbox {
+      #     background-color: var(--sfwindow) !important;
+      #   }
 
-        /* Window colors  */
-        :root {
-          --toolbar-bgcolor: var(--sfsecondary) !important;
-          --tabs-border-color: var(--sfsecondary) !important;
-          --lwt-sidebar-background-color: var(--sfwindow) !important;
-          --lwt-toolbar-field-focus: var(--sfsecondary) !important;
-        }
+      #   /* Window colors  */
+      #   :root {
+      #     --toolbar-bgcolor: var(--sfsecondary) !important;
+      #     --tabs-border-color: var(--sfsecondary) !important;
+      #     --lwt-sidebar-background-color: var(--sfwindow) !important;
+      #     --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+      #   }
 
-        /* Sidebar color  */
-        #sidebar-box,
-        .sidebar-placesTree {
-          background-color: var(--sfwindow) !important;
-        }
-        /* Tabs elements  */
+      #   /* Sidebar color  */
+      #   #sidebar-box,
+      #   .sidebar-placesTree {
+      #     background-color: var(--sfwindow) !important;
+      #   }
+      #   /* Tabs elements  */
 
-        #nav-bar:not([tabs-hidden='true']) {
-          box-shadow: none;
-        }
+      #   #nav-bar:not([tabs-hidden='true']) {
+      #     box-shadow: none;
+      #   }
 
-        #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-          > #tabbrowser-arrowscrollbox
-          > .tabbrowser-tab[first-visible-unpinned-tab] {
-          margin-inline-start: 0 !important;
-        }
+      #   #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+      #     > #tabbrowser-arrowscrollbox
+      #     > .tabbrowser-tab[first-visible-unpinned-tab] {
+      #     margin-inline-start: 0 !important;
+      #   }
 
-        :root {
-          --toolbarbutton-border-radius: 0 !important;
-          --tab-border-radius: 0 !important;
-          --tab-block-margin: 0 !important;
-        }
+      #   :root {
+      #     --toolbarbutton-border-radius: 0 !important;
+      #     --tab-border-radius: 0 !important;
+      #     --tab-block-margin: 0 !important;
+      #   }
 
-        .tab-background {
-          border-right: 0px solid rgba(0, 0, 0, 0) !important;
-          margin-left: -4px !important;
-        }
+      #   .tab-background {
+      #     border-right: 0px solid rgba(0, 0, 0, 0) !important;
+      #     margin-left: -4px !important;
+      #   }
 
-        .tabbrowser-tab:is([visuallyselected='true'], [multiselected])
-          > .tab-stack
-          > .tab-background {
-          box-shadow: none !important;
-        }
+      #   .tabbrowser-tab:is([visuallyselected='true'], [multiselected])
+      #     > .tab-stack
+      #     > .tab-background {
+      #     box-shadow: none !important;
+      #   }
 
-        .tabbrowser-tab[last-visible-tab='true'] {
-          padding-inline-end: 0 !important;
-        }
+      #   .tabbrowser-tab[last-visible-tab='true'] {
+      #     padding-inline-end: 0 !important;
+      #   }
 
-        #tabs-newtab-button {
-          padding-left: 0 !important;
-        }
+      #   #tabs-newtab-button {
+      #     padding-left: 0 !important;
+      #   }
 
-        /* Url Bar  */
-        #urlbar-input-container {
-          background-color: var(--sfsecondary) !important;
-          border: 1px solid rgba(0, 0, 0, 0) !important;
-        }
+      #   /* Url Bar  */
+      #   #urlbar-input-container {
+      #     background-color: var(--sfsecondary) !important;
+      #     border: 1px solid rgba(0, 0, 0, 0) !important;
+      #   }
 
-        #urlbar-container {
-          margin-left: 0 !important;
-        }
+      #   #urlbar-container {
+      #     margin-left: 0 !important;
+      #   }
 
-        #urlbar[focused='true'] > #urlbar-background {
-          box-shadow: none !important;
-        }
+      #   #urlbar[focused='true'] > #urlbar-background {
+      #     box-shadow: none !important;
+      #   }
 
-        #navigator-toolbox {
-          border: none !important;
-        }
+      #   #navigator-toolbox {
+      #     border: none !important;
+      #   }
 
-        /* Bookmarks bar  */
-        toolbarbutton.bookmark-item:not(.subviewbutton) {
-          min-width: 1.6em;
-        }
+      #   /* Bookmarks bar  */
+      #   toolbarbutton.bookmark-item:not(.subviewbutton) {
+      #     min-width: 1.6em;
+      #   }
 
-        /* Toolbar  */
-        #tracking-protection-icon-container,
-        #urlbar-zoom-button,
-        #star-button-box,
-        #pageActionButton,
-        #pageActionSeparator,
-        #PanelUI-button,
-        .tab-secondary-label {
-          display: none !important;
-        }
+      #   /* Toolbar  */
+      #   #tracking-protection-icon-container,
+      #   #urlbar-zoom-button,
+      #   #star-button-box,
+      #   #pageActionButton,
+      #   #pageActionSeparator,
+      #   #PanelUI-button,
+      #   .tab-secondary-label {
+      #     display: none !important;
+      #   }
 
-        .urlbarView-url {
-          color: #dedede !important;
-        }
+      #   .urlbarView-url {
+      #     color: #dedede !important;
+      #   }
 
-        /* Disable elements  */
-        #context-navigation,
-        #context-savepage,
-        #context-pocket,
-        #context-sendpagetodevice,
-        #context-selectall,
-        #context-viewsource,
-        #context-inspect-a11y,
-        #context-sendlinktodevice,
-        #context-openlinkinusercontext-menu,
-        #context-bookmarklink,
-        #context-savelink,
-        #context-savelinktopocket,
-        #context-sendlinktodevice,
-        #context-searchselect,
-        #context-sendimage,
-        #context-print-selection {
-          display: none !important;
-        }
+      #   /* Disable elements  */
+      #   #context-navigation,
+      #   #context-savepage,
+      #   #context-pocket,
+      #   #context-sendpagetodevice,
+      #   #context-selectall,
+      #   #context-viewsource,
+      #   #context-inspect-a11y,
+      #   #context-sendlinktodevice,
+      #   #context-openlinkinusercontext-menu,
+      #   #context-bookmarklink,
+      #   #context-savelink,
+      #   #context-savelinktopocket,
+      #   #context-sendlinktodevice,
+      #   #context-searchselect,
+      #   #context-sendimage,
+      #   #context-print-selection {
+      #     display: none !important;
+      #   }
 
-        #context_bookmarkTab,
-        #context_moveTabOptions,
-        #context_sendTabToDevice,
-        #context_reopenInContainer,
-        #context_selectAllTabs,
-        #context_closeTabOptions {
-          display: none !important;
-        }
-      '';
+      #   #context_bookmarkTab,
+      #   #context_moveTabOptions,
+      #   #context_sendTabToDevice,
+      #   #context_reopenInContainer,
+      #   #context_selectAllTabs,
+      #   #context_closeTabOptions {
+      #     display: none !important;
+      #   }
+      # '';
 
       extraConfig = builtins.concatStringsSep "\n" [
-        (builtins.readFile "${betterfox}/Securefox.js")
+        # (builtins.readFile "${betterfox}/Securefox.js")
+        # (builtins.readFile "./config/userChrome.css")
         (builtins.readFile "${betterfox}/Fastfox.js")
         (builtins.readFile "${betterfox}/Peskyfox.js")
       ];
@@ -215,7 +217,7 @@ in {
         "browser.aboutConfig.showWarning" = false; # I sometimes know what I'm doing
         "browser.ctrlTab.sortByRecentlyUsed" = false; # (default) Who wants that?
         "browser.download.useDownloadDir" = false; # Ask where to save stuff
-        "browser.translations.neverTranslateLanguages" = "de"; # No need :)
+        "browser.translations.neverTranslateLanguages" = "ru"; # No need :)
         "privacy.clearOnShutdown.history" = false; # We want to save history on exit
         # Allow executing JS in the dev console
         "devtools.chrome.enabled" = true;
@@ -234,8 +236,7 @@ in {
         "media.ffmpeg.vaapi.enabled" = true;
         "media.rdd-ffmpeg.enabled" = true;
         "widget.dmabuf.force-enabled" = true;
-        "media.av1.enabled" = false; # XXX: change once I've upgraded my GPU
-        # XXX: what is this?
+        "media.av1.enabled" = false;
         "media.ffvpx.enabled" = false;
         "media.rdd-vpx.enabled" = false;
 

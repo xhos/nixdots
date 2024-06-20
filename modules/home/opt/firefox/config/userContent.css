@@ -1,0 +1,39 @@
+@import "Newtabs/newtabs.css";
+@import "Color/Color.css";
+@import "Newtabs/private.css";
+
+/*Custom Websites*/
+@import "Web/github.css";
+@import "Web/youtube.css";
+@import "Web/facebook.css";
+@import "Web/duckduckgo.css";
+@import "Web/google.css";
+@import "Web/twitter.css";
+@import "Web/yandex.css";
+
+/*Extensions*/
+@import "Extensions/TWP.css";
+@import "Extensions/SponsorBlock.css";
+@import "Extensions/VideoSpeedController.css";
+
+*{
+  scrollbar-width: none !important;
+}
+.preview-overlay {
+  background: var(--gnome-darko) !important;
+  backdrop-filter: blur(33px) !important;
+  border:1px solid var(--gnome-kose) !important;
+  margin: auto !important;
+height: 50% !important;
+  width: 50% !important;
+    border-radius: 12px; /* Panel köşe yuvarlama */
+  top: 25% !important;
+    left: 25% !important;
+  padding: 10px !important;
+}
+.fixed-container {
+  height:57vh !important;
+}
+.all-buttons-container {
+  display: none !important;
+}
