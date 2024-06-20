@@ -6,7 +6,6 @@
 
     programs.oh-my-posh = with config.lib.stylix.colors; {
       enable = true;
-      enableZshIntegration = true;
 
       #:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
       #:original config https://github.com/dreamsofautonomy/zen-omp/blob/main/zen.toml

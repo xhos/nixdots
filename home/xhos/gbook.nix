@@ -23,7 +23,7 @@
     lock     = "hyprlock";
     terminal = "foot";
     prompt   = "oh-my-posh";
-    shell    = "fish";
+    shell    = "nushell";
   };
 
   home = {

@@ -11,6 +11,7 @@ lib.mkIf (config.default.terminal == "foot") {
     server.enable = false;
     settings = {
       main = {
+        shell = config.default.shell;
         app-id = "foot";
         title = "foot";
         locked-title = "no";

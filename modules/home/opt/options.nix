@@ -38,7 +38,7 @@
         default = "oh-my-posh";
       };
       shell = lib.mkOption {
-        type = lib.types.enum ["zsh" "fish"];
+        type = lib.types.enum ["zsh" "fish" "nushell"];
         default = "zsh";
       };
     };
