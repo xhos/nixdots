@@ -70,11 +70,8 @@ lib.mkIf (config.default.terminal == "foot") {
       };
 
       colors = with config.lib.stylix.colors; {
-        # cursor_bg = "#${base05}";
-        # cursor_border = "#${base05}";
-        # cursor_fg = "#${base0A}";
-        # split = "#${base01}";
-
+        alpha = 0.6;
+        
         foreground="${base05}";
         background="${base00}";
 
@@ -97,7 +94,7 @@ lib.mkIf (config.default.terminal == "foot") {
         bright7="${base0F}";
 
         selection-foreground="${base05}";
-        selection-background="${base01}";
+        selection-background="${base0D}";
 
         
         # search-box-no-match="181926 ed8796";

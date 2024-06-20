@@ -22,7 +22,7 @@
     bar      = "ags";
     lock     = "hyprlock";
     terminal = "foot";
-    prompt   = "oh-my-posh";
+    prompt   = "starship";
     shell    = "nu";
   };
 
