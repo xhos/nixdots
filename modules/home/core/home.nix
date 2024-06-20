@@ -13,10 +13,19 @@
     file.".local/share/fonts".source = ./fonts;
 
     packages = with pkgs; [
+      # TODO move cli tools to nixos module (those not home manager managed)
       (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       alejandra
+      swww 
+      protonvpn-gui
+      kitty
+      gnome.nautilus
+      vscode
+      obs-studio
+      fastfetch
+
       auth0-cli
       awscli
       bemoji
@@ -32,13 +41,10 @@
       docker-compose
       easyeffects
       eza
-      fastfetch
       feh
       fx
-      fzf
       gcc
       gh
-      git-lfs
       gitmoji-cli
       glab
       glow
@@ -55,8 +61,6 @@
       keybase
       light
       marksman
-      networkmanagerapplet
-      nh
       nix-inspect
       neovide
       obsidian
@@ -71,14 +75,11 @@
       playerctl
       presenterm
       rcon
-      rustup
       satty
       sherlock
       skopeo
       oras
       skim
-      slack
-      slides
       stern
       tailspin
       telegram-desktop

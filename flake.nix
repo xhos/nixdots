@@ -17,9 +17,6 @@
     # nix helper
     nh.url = "github:viperML/nh";
 
-    # Nix colors, used for app theming
-    nix-colors.url = "github:misterio77/nix-colors";
-
     # Stylix, nix-colors alertnative
     stylix.url = "github:danth/stylix";
 

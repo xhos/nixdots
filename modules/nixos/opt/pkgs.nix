@@ -4,18 +4,14 @@
   ...
 }: { #TODO: this aint os pkgs
   environment.systemPackages = with pkgs; [
-    swww
-    nh
-    protonvpn-gui
-    nerdfonts
-    fira-code-nerdfont
-    kitty
+    # no gui applications are supposed to be here
+    # the logic is that this is what might be installed on a headless machine
     nmap
-    gnome.nautilus
     networkmanagerapplet
     speedtest-cli
-    lz4
-    protonvpn-gui
+    nh
+    rustup
+    git-lfs
 
     age
     bat
@@ -39,15 +35,12 @@
     ncdu
     nix-prefetch-git
     nodejs
-    obs-studio
     pamixer
     procps
     pulseaudio
     python3
-    vscode
     ripgrep
     slop
-    # spotify
     srt
     (lib.mkIf config.tailscale.enable tailscale)
     terraform-ls

@@ -1,10 +1,4 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{ inputs, pkgs, lib, config, ... }: {
   theme = "verdant";
 
   imports = [

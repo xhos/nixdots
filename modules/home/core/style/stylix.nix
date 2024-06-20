@@ -14,7 +14,7 @@
       size = 20;
     };
 
-    targets = {
+    targets = { #TODO: Maybe use this more
       lazygit.enable = false;
       hyprland.enable = false;
       firefox.enable = false;
