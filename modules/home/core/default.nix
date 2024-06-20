@@ -4,7 +4,10 @@
   ...
 }: {
   wallpaper = ../../../home/shared/walls/${config.theme}.jpg;
-  home.sessionVariables.EDITOR = "nvim";
+  background = config.lib.stylix.colors.base00;
+  text = config.lib.stylix.colors.base05;
+  accent = config.lib.stylix.colors.base0D;
+  # home.sessionVariables.EDITOR = "nvim";
   imports = [
     ./gtk.nix
     ./nixpkgs.nix

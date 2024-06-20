@@ -12,4 +12,8 @@
       TimeoutStopSec = 10;
     };
   };
+  systemd.services.greetd = {
+    serviceConfig.Type = "idle";
+    unitConfig.After = [ "docker.service" ];
+  };
 }

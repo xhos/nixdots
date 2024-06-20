@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-{
+{ #TODO Config colors here
   config = lib.mkIf (config.default.prompt == "oh-my-posh") {
     home.packages = with pkgs; [ oh-my-posh ];
 

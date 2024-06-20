@@ -1,18 +1,18 @@
 scheme: 'verdant'
 author: 'decaycs'
-base00: '090909'
-base01: '060606'
-base02: '131313'
-base03: '5a5858'
-base04: '1b1b1b'
-base05: 'dfdddd'
-base06: 'b7b7b7'
-base07: 'dbdfdf'
-base08: 'c14d53'
-base09: 'dc8c61'
-base0A: '56966e'
-base0B: '6e95bd'
-base0C: '6a9f98'
-base0D: 'a56db1'
-base0E: '6e95bd'
-base0F: 'c14d53'
+base00: '090909' #090909
+base01: '060606' #060606
+base02: '131313' #131313
+base03: '5a5858' #5a5858
+base04: '1b1b1b' #1b1b1b
+base05: 'dfdddd' #dfdddd
+base06: 'b7b7b7' #b7b7b7
+base07: 'dbdfdf' #dbdfdf
+base08: 'c14d53' #c14d53
+base09: 'dc8c61' #dc8c61
+base0A: '56966e' #56966e
+base0B: '6e95bd' #6e95bd
+base0C: '6a9f98' #6a9f98
+base0D: 'a56db1' #a56db1
+base0E: '6e95bd' #6e95bd
+base0F: 'c14d53' #c14d53

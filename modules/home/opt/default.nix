@@ -3,7 +3,7 @@
     ./options.nix
 
     ./ags
-    ./zsh
+    ./shells
     ./misc
     ./music
     ./terminals
