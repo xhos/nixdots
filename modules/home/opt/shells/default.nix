@@ -2,6 +2,6 @@
   imports = [
     ./zsh
     ./fish
-    ./nushell
+    ./nu
   ];
 }
