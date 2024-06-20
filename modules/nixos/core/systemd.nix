@@ -13,7 +13,7 @@
     };
   };
   systemd.services.greetd = {
-    serviceConfig.Type = "idle";
-    unitConfig.After = [ "docker.service" ];
+    serviceConfig.Type = "idle"; # this fixes broken text on tuigreet
+    unitConfig.After = [ "docker.service" ]; 
   };
 }

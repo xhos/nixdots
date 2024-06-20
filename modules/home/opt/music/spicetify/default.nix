@@ -63,12 +63,12 @@ in {
       enabledExtensions = with spicePkgs.extensions; [
         playlistIcons
         lastfm
-        #genre
         historyShortcut
         spicetify-nix.packages.${pkgs.system}.default.extensions.adblock
         hidePodcasts
         fullAppDisplay
         shuffle
+        # beautifulLyrics
       ];
     };
   };

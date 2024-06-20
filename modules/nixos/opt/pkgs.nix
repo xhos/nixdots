@@ -47,7 +47,7 @@
     vscode
     ripgrep
     slop
-    spotify
+    # spotify
     srt
     (lib.mkIf config.tailscale.enable tailscale)
     terraform-ls
