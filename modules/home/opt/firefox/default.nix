@@ -1,9 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let 
+{ inputs, config, lib, pkgs, ... }:
+
+let 
   inherit (lib) concatStringsSep escapeShellArg mapAttrsToList;
   env = {
     MOZ_WEBRENDER = 1;
@@ -13,17 +10,39 @@
   };
   envStr = concatStringsSep " " (mapAttrsToList (n: v: "${n}=${escapeShellArg v}") env);
 
+  gwfox = pkgs.fetchFromGitHub {
+    owner = "xhos";
+    repo = "gwfox";
+    rev = "e9a120f76abed067b26ea418713a499f00705c86";
+    hash = "sha256-E+S36n8mrySOZRgj+6m7l7teIy1ks5h8E94hOm59MMo=";
+  };
+
+  minifox = pkgs.stdenv.mkDerivation {
+    name = "minifox";
+    src = pkgs.fetchgit {
+      url = "https://codeberg.org/awwpotato/MiniFox.git";
+      hash = "sha256-q9kMokofGbp8qUPiPP5i4xiFJ2yNecB6TkoBD0yFpP8=";
+    };
+
+    phases = ["postFetch"];
+    postFetch = ''
+      mkdir $out
+      cp -r $src/* $out
+    '';
+  };
+
   betterfox = pkgs.fetchFromGitHub {
     owner = "yokoffing";
     repo = "Betterfox";
     rev = "116.1";
     hash = "sha256-Ai8Szbrk/4FhGhS4r5gA2DqjALFRfQKo2a/TwWCIA6g=";
   };
+
 in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.overrideAttrs (old: {
-      buildCommand =
+      buildCommand = # don't know what this does - don't care
         old.buildCommand
         + ''
           substituteInPlace $out/bin/firefox \
@@ -35,179 +54,24 @@ in {
       id = 0;
       isDefault = true;
 
-      userChrome = (builtins.readFile "./config/userChrome.css");
+      userChrome = builtins.concatStringsSep "\n" [
+       (builtins.readFile "${minifox}/chrome/userChrome.css")
+       (builtins.readFile "${minifox}/chrome/browser/icons.css")
+       (builtins.readFile "${minifox}/chrome/browser/main.css")
+       (builtins.readFile "${minifox}/chrome/browser/url-bar.css")
+       (builtins.readFile "${minifox}/chrome/browser/vertical.css")
+       (builtins.readFile "${minifox}/chrome/browser/window-controls.css")
+      ];
       
-      # userChrome = with config.lib.stylix.colors; ''
-      #   :root {
-      #     --sfwindow: #${base00};
-      #     --sfsecondary: #${base01};
-      #   }
 
-      #   /* Urlbar View */
-
-      #   /*─────────────────────────────*/
-      #   /* Comment this section if you */
-      #   /* want to show the URL Bar    */
-      #   /*─────────────────────────────*/
-
-      #   /*
-      #   .urlbarView {
-      #     display: none !important;
-      #   }
-
-      #   */
-
-      #   /*─────────────────────────────*/
-
-      #   /*
-      #   ┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
-      #   │  │ ││  │ │├┬┘└─┐
-      #   └─┘└─┘┴─┘└─┘┴└─└─┘
-      #   */
-
-      #   /* Tabs colors  */
-      #   #tabbrowser-tabs:not([movingtab])
-      #     > #tabbrowser-arrowscrollbox
-      #     > .tabbrowser-tab
-      #     > .tab-stack
-      #     > .tab-background[multiselected='true'],
-      #   #tabbrowser-tabs:not([movingtab])
-      #     > #tabbrowser-arrowscrollbox
-      #     > .tabbrowser-tab
-      #     > .tab-stack
-      #     > .tab-background[selected='true'] {
-      #     background-image: none !important;
-      #     background-color: var(--toolbar-bgcolor) !important;
-      #   }
-
-      #   /* Inactive tabs color */
-      #   #navigator-toolbox {
-      #     background-color: var(--sfwindow) !important;
-      #   }
-
-      #   /* Window colors  */
-      #   :root {
-      #     --toolbar-bgcolor: var(--sfsecondary) !important;
-      #     --tabs-border-color: var(--sfsecondary) !important;
-      #     --lwt-sidebar-background-color: var(--sfwindow) !important;
-      #     --lwt-toolbar-field-focus: var(--sfsecondary) !important;
-      #   }
-
-      #   /* Sidebar color  */
-      #   #sidebar-box,
-      #   .sidebar-placesTree {
-      #     background-color: var(--sfwindow) !important;
-      #   }
-      #   /* Tabs elements  */
-
-      #   #nav-bar:not([tabs-hidden='true']) {
-      #     box-shadow: none;
-      #   }
-
-      #   #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-      #     > #tabbrowser-arrowscrollbox
-      #     > .tabbrowser-tab[first-visible-unpinned-tab] {
-      #     margin-inline-start: 0 !important;
-      #   }
-
-      #   :root {
-      #     --toolbarbutton-border-radius: 0 !important;
-      #     --tab-border-radius: 0 !important;
-      #     --tab-block-margin: 0 !important;
-      #   }
-
-      #   .tab-background {
-      #     border-right: 0px solid rgba(0, 0, 0, 0) !important;
-      #     margin-left: -4px !important;
-      #   }
-
-      #   .tabbrowser-tab:is([visuallyselected='true'], [multiselected])
-      #     > .tab-stack
-      #     > .tab-background {
-      #     box-shadow: none !important;
-      #   }
-
-      #   .tabbrowser-tab[last-visible-tab='true'] {
-      #     padding-inline-end: 0 !important;
-      #   }
-
-      #   #tabs-newtab-button {
-      #     padding-left: 0 !important;
-      #   }
-
-      #   /* Url Bar  */
-      #   #urlbar-input-container {
-      #     background-color: var(--sfsecondary) !important;
-      #     border: 1px solid rgba(0, 0, 0, 0) !important;
-      #   }
-
-      #   #urlbar-container {
-      #     margin-left: 0 !important;
-      #   }
-
-      #   #urlbar[focused='true'] > #urlbar-background {
-      #     box-shadow: none !important;
-      #   }
-
-      #   #navigator-toolbox {
-      #     border: none !important;
-      #   }
-
-      #   /* Bookmarks bar  */
-      #   toolbarbutton.bookmark-item:not(.subviewbutton) {
-      #     min-width: 1.6em;
-      #   }
-
-      #   /* Toolbar  */
-      #   #tracking-protection-icon-container,
-      #   #urlbar-zoom-button,
-      #   #star-button-box,
-      #   #pageActionButton,
-      #   #pageActionSeparator,
-      #   #PanelUI-button,
-      #   .tab-secondary-label {
-      #     display: none !important;
-      #   }
-
-      #   .urlbarView-url {
-      #     color: #dedede !important;
-      #   }
-
-      #   /* Disable elements  */
-      #   #context-navigation,
-      #   #context-savepage,
-      #   #context-pocket,
-      #   #context-sendpagetodevice,
-      #   #context-selectall,
-      #   #context-viewsource,
-      #   #context-inspect-a11y,
-      #   #context-sendlinktodevice,
-      #   #context-openlinkinusercontext-menu,
-      #   #context-bookmarklink,
-      #   #context-savelink,
-      #   #context-savelinktopocket,
-      #   #context-sendlinktodevice,
-      #   #context-searchselect,
-      #   #context-sendimage,
-      #   #context-print-selection {
-      #     display: none !important;
-      #   }
-
-      #   #context_bookmarkTab,
-      #   #context_moveTabOptions,
-      #   #context_sendTabToDevice,
-      #   #context_reopenInContainer,
-      #   #context_selectAllTabs,
-      #   #context_closeTabOptions {
-      #     display: none !important;
-      #   }
-      # '';
+      # userChrome = (builtins.readFile "${gwfox}/chrome/userChrome.css");
+      # userContent = (builtins.readFile "${gwfox}/chrome/userContent.css");
 
       extraConfig = builtins.concatStringsSep "\n" [
         # (builtins.readFile "${betterfox}/Securefox.js")
-        # (builtins.readFile "./config/userChrome.css")
         (builtins.readFile "${betterfox}/Fastfox.js")
         (builtins.readFile "${betterfox}/Peskyfox.js")
+        (builtins.readFile "${minifox}/user.js")
       ];
 
       settings = {
@@ -225,6 +89,16 @@ in {
         "browser.tabs.crashReporting.sendReport" = false;
         # Allow userCrome.css
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "svg.context-properties.content.enabled" = true;
+        "layout.css.backdrop-filter.enabled" = true;
+        "layers.acceleration.force-enabled" = true;
+
+        "uc.tweak.round-browser" = true;
+        "uc.tweak.browser-margins" = true;
+        "uc.tweak.translucency" = true;
+        "uc.tweak.bottom-nav" = false;
+        "uc.tweak.no-window-controls" = true;
+        
         # Why the fuck can my search window make bell sounds
         "accessibility.typeaheadfind.enablesound" = false;
         # Why the fuck can my search window make bell sounds
@@ -232,6 +106,7 @@ in {
 
         # Hardware acceleration
         # See https://github.com/elFarto/nvidia-vaapi-driver?tab=readme-ov-file#firefox
+        "gfx.webrender.enebled" = true;
         "gfx.webrender.all" = true;
         "media.ffmpeg.vaapi.enabled" = true;
         "media.rdd-ffmpeg.enabled" = true;
