@@ -17,80 +17,54 @@
       (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
-      alejandra
-      swww 
-      protonvpn-gui
-      kitty
+      
+      alejandra # nix code formatter
+      swww # wallpaper daemon
+      protonvpn-gui 
+      kitty # here as a fallback
       gnome.nautilus
       vscode
       obs-studio
       fastfetch
-
-      auth0-cli
-      awscli
-      bemoji
-      charm
-      charm-freeze
-      chatterino2
+      
+      bemoji # emoji picker
       chromium
-      circumflex
-      clipse
-      colordiff
-      copyq
-      deadnix
+      circumflex # (clx) hacker news cli
+      colordiff # file diff
+      deadnix # remove unused code in nix files
       docker-compose
-      easyeffects
-      eza
-      feh
-      fx
+      feh # image viewer
+      fx #json viewer
       gcc
-      gh
-      gitmoji-cli
-      glab
-      glow
+      gh # github cli
+      gitmoji-cli # emoji for commits
+      glab # gitlab cli
+      glow # cli markdown renderer
       gnumake
-      grimblast
-      gum
-      helmfile
+      gum # fancy scripts
       imagemagick
-      inotify-tools
-      jaq
-      jq
-      jqp
-      just
-      keybase
-      light
-      marksman
-      nix-inspect
-      neovide
+      jaq # jq but cooler
+      jq # cli json processor
+      jqp # tui jq playground
+      just # project specific commands
+      marksman # markdown language server
       obsidian
-      onefetch
+      onefetch # git repo summary
       openssl
       openvpn
-      pavucontrol
-      pfetch
-      picom
-      pinentry
-      pkgsStable.go
-      playerctl
-      presenterm
-      rcon
-      satty
+      pfetch-rs # system info
+      playerctl # media controls
+      rcon # remote console (minecraft?)
       sherlock
-      skopeo
-      oras
-      skim
-      stern
-      tailspin
+      skim # fzf in rust (sk)
+      tailspin # log highlighter
       telegram-desktop
-      tldr
+      tlrc # better man
       ventoy
-      viddy
-      wireplumber
-      xdotool
+      viddy # modern "watch"
+      wireplumber # A modular session / policy manager for PipeWire
       xwayland
-      yarn
-      zoxide
+      zoxide # better cd
     ];
   };
 }

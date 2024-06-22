@@ -1,37 +1,69 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, inputs, ... }:
+
 lib.mkIf (config.default.terminal == "wezterm") {
   home.sessionVariables.TERMINAL = "wezterm";
   programs.wezterm = {
     enable = true;
-    # colorSchemes = import ./colors.nix {inherit nix-colors config;};
+    colorSchemes = with config.lib.stylix.colors; {
+      followSystem = {
+        # basic colors
+        background = "#${base00}";
+        cursor_bg = "#${base05}";
+        cursor_border = "#${base05}";
+        cursor_fg = "#${base0A}";
+        foreground = "#${base05}";
+        selection_bg = "#${base01}";
+        selection_fg = "#${base05}";
+        split = "#${base01}";
+
+        # base16
+        ansi = [
+          "#${base01}"
+          "#${base08}"
+          "#${base0B}"
+          "#${base0A}"
+          "#${base0D}"
+          "#${base0E}"
+          "#${base0C}"
+          "#${base05}"
+        ];
+        brights = [
+          "#${base03}"
+          "#${base08}"
+          "#${base0B}"
+          "#${base0A}"
+          "#${base0D}"
+          "#${base0E}"
+          "#${base0C}"
+          "#${base0F}"
+        ];
+      };
+    };
+    
     extraConfig = ''
       local wez = require('wezterm')
       return {
-        default_prog     = { 'zsh' },
+        default_prog     = { 'nu' },
         cell_width = 0.85,
         -- Performance
         --------------
         enable_wayland   = false,
+        dpi = 96.0,
         scrollback_lines = 1024,
         -- Fonts
         --------
-        font         = wez.font_with_fallback({
-          "Fantasque Sans M Nerd Font",
-          "Material Design Icons",
-        }),
-        dpi = 96.0,
+        -- font         = wez.font_with_fallback({
+        --  "Fantasque Sans M Nerd Font",
+        --  "Material Design Icons",
+        --}),
         bold_brightens_ansi_colors = true,
-        font_rules    = {
-          {
-            italic = true,
-            font   = wez.font("JetBrainsMono Nerd Font", { italic = true })
-          }
-        },
-        freetype_load_target = "Normal",
+        -- font_rules    = {
+        --  {
+        --    italic = true,
+        --    font   = wez.font("JetBrainsMono Nerd Font", { italic = true })
+        --  }
+        --},
+        --freetype_load_target = "Normal",
         font_size         = 13.0,
         line_height       = 1.15,
         harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
@@ -48,7 +80,7 @@ lib.mkIf (config.default.terminal == "wezterm") {
         -- Tabbar
         ---------
         enable_tab_bar               = true,
-        use_fancy_tab_bar            = false,
+        use_fancy_tab_bar            = true,
         hide_tab_bar_if_only_one_tab = true,
         show_tab_index_in_tab_bar    = false,
         -- Miscelaneous
@@ -58,7 +90,7 @@ lib.mkIf (config.default.terminal == "wezterm") {
           saturation = 1.0, brightness = 0.8
         },
         check_for_updates = false,
-        window_background_opacity = 1,
+        window_background_opacity = 0.6,
       }
     '';
   };

@@ -1,57 +1,58 @@
-{
-  pkgs,
-  config,
-  ...
-}: { #TODO: this aint os pkgs
-  environment.systemPackages = with pkgs; [
-    # no gui applications are supposed to be here
-    # the logic is that this is what might be installed on a headless machine
+{ pkgs, config, ... }: {
+
+environment.systemPackages = with pkgs; [
+    # Networking
     nmap
     networkmanagerapplet
+    wirelesstools # wireless stuff
     speedtest-cli
-    nh
-    rustup
-    git-lfs
-
-    age
-    bat
     blueman
-    btop
-    brightnessctl
-    dig
-    dosis
-    ffmpeg_5-full
-    fzf
-    git
-    git-extras
-    gnu-config
-    gnupg
-    grim
-    gtk3
+    dig # dns lookup
+
+    # Nix related
+    nh # nix helper
     home-manager
-    lua-language-server
-    lua54Packages.lua
-    mpv
-    ncdu
     nix-prefetch-git
-    nodejs
-    pamixer
-    procps
-    pulseaudio
+    nix-inspect
+
+    # Dev
+    rustup
+    cargo
     python3
-    ripgrep
-    slop
-    srt
-    (lib.mkIf config.tailscale.enable tailscale)
-    terraform-ls
-    unzip
-    (lib.mkIf config.wayland.enable wayland)
+    yq # YAML, JSON and XML processor
+
+    # Audio
+    pulseaudio
+    pamixer # pulseaudio command line mixer
+    pavucontrol # pulseaudio controls
+    easyeffects # pipewire audio effects
+    
+    # Video
+    mpv # video player
+    ffmpeg_5-full
+
+    # Other      
+    brightnessctl
+    wayland
+
+    git
+    git-lfs
+    git-extras
+
+    age # file encryption
+    bat # cat but better
+    btop
+    fzf
+    procps # process info
+    ncdu # disk usage
+    ripgrep # recursively searches the current directory for a regex pattern
     wget
-    wirelesstools
-    xdg-utils
-    yaml-language-server
-    yq
+    xdg-utils # idk some utils
+    unzip
+    grim # screenshot util
+    gtk3
   ];
+  
   nixpkgs.config = {
     allowUnfree = true;
   };

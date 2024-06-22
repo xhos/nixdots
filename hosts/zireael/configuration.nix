@@ -1,10 +1,11 @@
-{
+{ pkgs, ... }: {
+
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
   ];
   
-  networking.hostName = "gbook";
+  networking.hostName = "zireael";
 
   tailscale .enable = false;
   fonts     .enable = true;

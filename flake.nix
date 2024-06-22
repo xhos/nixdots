@@ -43,6 +43,11 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
+
+    wezterm = {
+      url = "git+https://github.com/wez/wezterm.git?submodules=1";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -62,7 +67,7 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      gbook = nixpkgs.lib.nixosSystem {
+      zireael = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           hm.nixosModule
@@ -74,19 +79,19 @@
               })
             ];
           }
-          ./hosts/gbook/configuration.nix
+          ./hosts/zireael/configuration.nix
         ];
       };
     };
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "xhos@gbook" = inputs.hm.lib.homeManagerConfiguration {
+      "xhos@zireael" = inputs.hm.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs pkgsStable outputs;};
         modules = [
           # > Our main home-manager configuration file <
-          ./home/xhos/gbook.nix
+          ./home/xhos/zireael.nix
           stylix.homeManagerModules.stylix
         ];
       };

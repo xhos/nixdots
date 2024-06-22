@@ -10,6 +10,7 @@
       material-design-icons
 
       # normal fonts
+      dosis
       rubik
       gg-sans
       lexend
