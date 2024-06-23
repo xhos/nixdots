@@ -1,31 +1,12 @@
 { config, ... }:
 {
-  programs.fastfetch.settings = with config.lib.stylix.colors; {
-    logo = {
-      source = "nixos_small";
-      padding = {
-        right = 1;
-      };
-    };
-    display = {
-      binaryPrefix = "si";
-      color = "blue";
-      separator = "  ";
-    };
-    modules = [
+  programs.fastfetch = {
+    enable = true;
+    settings = with config.lib.stylix.colors; ''
       {
-        type = "datetime";
-        key = "Date";
-        format = "{1}-{3}-{11}";
+        "$schema": "https://github.com/LinusDierheimer/fastfetch/raw/master/data/config.json",
+
       }
-      {
-        type = "datetime";
-        key = "Time";
-        format = "{14}:{17}:{20}";
-      }
-      "break"
-      "player"
-      "media"
-    ];
+    '';
   };
 }
