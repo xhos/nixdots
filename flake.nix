@@ -8,9 +8,6 @@
     # Nixpkgs unstable
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-23.11";
 
-    # awesome-git
-    nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
-
     # Home-manager
     hm.url = "github:nix-community/home-manager";
 
@@ -33,17 +30,27 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     # Hyprspacem workspace overview plugin
-    hyprspace.url = "github:KZDKM/Hyprspace";
-    hyprspace.inputs.hyprland.follows = "hyprland";
+    hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
 
-    # hyprpicker, color picker for hyprland
+    # Hyprpicker, color picker for hyprland
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
     # Spicetify, a spotify theming tool
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
+    # Colorscheme generator
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
 
+    # Rust prject helper
+    naersk = {
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # Wezterm unstable
     wezterm = {
       url = "git+https://github.com/wez/wezterm.git?submodules=1";
       flake = false;
@@ -56,7 +63,6 @@
     nixpkgs-stable,
     hm,
     stylix,
-    nixpkgs-f2k,
     nixos-hardware,
     ...
   } @ inputs: let
@@ -66,25 +72,19 @@
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
+    # Or 'nh os switch'
     nixosConfigurations = {
       zireael = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           hm.nixosModule
-          # nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen2
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                awesome = nixpkgs-f2k.packages.${system}.awesome-git;
-              })
-            ];
-          }
           ./hosts/zireael/configuration.nix
         ];
       };
     };
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
+    # Or 'nh home switch'
     homeConfigurations = {
       "xhos@zireael" = inputs.hm.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance

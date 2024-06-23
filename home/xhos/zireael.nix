@@ -16,7 +16,7 @@
     bar      = "ags";
     lock     = "hyprlock";
     terminal = "wezterm";
-    prompt   = "starship";
+    prompt   = "oh-my-posh";
     shell    = "nu";
   };
 
