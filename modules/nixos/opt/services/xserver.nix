@@ -1,7 +1,14 @@
 {
-  services.xserver = {
-    enable = true;
-    # videoDrivers = ["amdgpu"];
+  services = {
+    # xserver = {
+    #   enable = true;
+    #   desktopManager.gnome.enable = false;
+    # };
+
+    displayManager = {
+      defaultSession = "Hyprland";
+    };
+
     libinput = {
       enable = true;
       touchpad = {
@@ -10,27 +17,5 @@
         naturalScrolling = true;
       };
     };
-    
-    displayManager = {
-      # defaultSession = "none+awesome";
-      defaultSession = "Hyprland";
-      startx.enable = true;
-    };
-
-    windowManager.awesome = {
-      enable = true;
-    };
-
-    desktopManager.gnome.enable = false;
   };
-
-  # services.displayManager.defaultSession ="none+awesome";
-  # services.libinput = {
-  #   enable = true;
-  #   touchpad = {
-  #     tapping = true;
-  #     middleEmulation = true;
-  #     naturalScrolling = true;
-  #   };
-  # };
 }

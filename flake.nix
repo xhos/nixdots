@@ -71,7 +71,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           hm.nixosModule
-          inputs.stylix.nixosModules.stylix
+          # inputs.stylix.nixosModules.stylix
           ./hosts/zireael/configuration.nix
         ];
       };
@@ -85,7 +85,7 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home/xhos/zireael.nix
-          # stylix.homeManagerModules.stylix
+          stylix.homeManagerModules.stylix
         ];
       };
     };

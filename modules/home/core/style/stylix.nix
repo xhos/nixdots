@@ -20,7 +20,8 @@
     #     @define-color accent_color #${base0D};
     #     @define-color accent_bg_color #${base0D};
     #   '';
-    # };
+    };
+
 
     fonts = {
       monospace = {
