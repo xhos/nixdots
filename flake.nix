@@ -57,27 +57,21 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-stable,
-    hm,
-    stylix,
-    nixos-hardware,
-    ...
-  } @ inputs: let
+  outputs = { self, nixpkgs, nixpkgs-stable, hm, stylix, ... }@inputs:
+  let
     inherit (self) outputs;
     system = "x86_64-linux";
-    pkgsStable = import nixpkgs-stable {inherit system;};
+    pkgsStable = import nixpkgs-stable { inherit system; };
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     # Or 'nh os switch'
     nixosConfigurations = {
       zireael = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = { inherit inputs; };
         modules = [
           hm.nixosModule
+          inputs.stylix.nixosModules.stylix
           ./hosts/zireael/configuration.nix
         ];
       };
@@ -88,11 +82,10 @@
     homeConfigurations = {
       "xhos@zireael" = inputs.hm.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs pkgsStable outputs;};
+        extraSpecialArgs = { inherit inputs; };
         modules = [
-          # > Our main home-manager configuration file <
           ./home/xhos/zireael.nix
-          stylix.homeManagerModules.stylix
+          # stylix.homeManagerModules.stylix
         ];
       };
     };
