@@ -7,7 +7,6 @@
   
   networking.hostName = "zireael";
 
-  tailscale .enable = false;
   fonts     .enable = true;
   wayland   .enable = true;
   pipewire  .enable = true;
@@ -20,7 +19,7 @@
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
   
-  hardware.opengl. extraPackages = with pkgs; [
+  hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver # LIBVA_DRIVER_NAME=iHD
     intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
   ];

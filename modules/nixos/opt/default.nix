@@ -1,9 +1,9 @@
 {
   imports = [
+    ./bluetooth.nix
+    ./sound.nix
     ./fonts
-    ./programs
-    ./services
-    ./overlays.nix
+    ./programs.nix
     ./pkgs.nix
     ./user.nix
     ./options.nix

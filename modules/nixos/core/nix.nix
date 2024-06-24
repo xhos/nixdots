@@ -24,4 +24,6 @@
     };
     optimise.automatic = true;
   };
+
+  system.stateVersion = "24.05";
 }

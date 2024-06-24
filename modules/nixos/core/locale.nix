@@ -13,4 +13,9 @@
       LC_TIME = "en_CA.UTF-8";
     };
   };
+  
+  time = {
+    hardwareClockInLocalTime = true;
+    timeZone = "Europe/Moscow";
+  };
 }
