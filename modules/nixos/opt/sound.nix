@@ -1,5 +1,5 @@
-{ pkgs, config, ... }: {
-  config = lib.mkIf config.sound.enable {
+{ pkgs, config, lib, ... }: {
+  config = lib.mkIf config.audio.enable {
     sound.enable = true;
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;

@@ -9,8 +9,8 @@
 
   fonts     .enable = true;
   wayland   .enable = true;
-  pipewire  .enable = true;
-  steam     .enable = true;
+  audio     .enable = true;
+  bluetooth .enable = true;
 
   # Intel specific stuff, not sure if needed but why not
   boot.kernelParams = [ "i915.force_probe=46a6" ]; # https://nixos.wiki/wiki/Intel_Graphics

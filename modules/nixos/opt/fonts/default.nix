@@ -7,7 +7,6 @@
       # normal fonts
       dosis
       rubik
-      gg-sans
       lexend
       lexend
       noto-fonts
