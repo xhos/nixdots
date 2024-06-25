@@ -2,7 +2,6 @@
 
 {
   config = lib.mkIf (config.default.shell == "fish") {
-    home.packages = with pkgs; [ fish grc ];
     programs.fish = {
       enable = true;
 

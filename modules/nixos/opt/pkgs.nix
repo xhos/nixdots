@@ -15,12 +15,6 @@ environment.systemPackages = with pkgs; [
     nix-prefetch-git
     nix-inspect
 
-    # Dev
-    rustup
-    cargo
-    python3
-    yq # YAML, JSON and XML processor
-
     # Audio
     pulseaudio
     pamixer # pulseaudio command line mixer
@@ -49,7 +43,6 @@ environment.systemPackages = with pkgs; [
     wget
     xdg-utils # idk some utils
     unzip
-    grim # screenshot util
     gtk3
   ];
   

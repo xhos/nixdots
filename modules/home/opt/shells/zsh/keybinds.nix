@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-{ #TODO: Zsh keybinds with nix
+{
 	programs.zsh.initExtra = ''
 		bindkey "^H" backward-word
 		bindkey '^J' beginning-of-line

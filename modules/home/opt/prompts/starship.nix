@@ -1,74 +1,55 @@
 { config, lib, pkgs, ... }: {
   
   config = lib.mkIf (config.default.prompt == "starship") {
-    home.packages = with pkgs; [ starship ];
     programs.starship = with config.lib.stylix.colors; {
       enable = true;
       settings = {
-        format = "$directory$nix_shell$fill$git_branch$kubernetes$git_status$cmd_duration$line_break$character";
-        add_newline = false;
-        c.disabled = true;
-        cmake.disabled = true;
-        haskell.disabled = true;
-        python.disabled = true;
-        ruby.disabled = true;
-        rust.disabled = true;
-        perl.disabled = true;
-        package.disabled = true;
-        lua.disabled = true;
-        nodejs.disabled = true;
-        java.disabled = true;
-        golang.disabled = true;
+        format = "$username $hostname $directory $git_branch $git_state $git_status $cmd_duration $line_break $python $character";
 
-        fill = {symbol = " ";};
-        conda = {format = " [ $symbol$environment ] (dimmed green) ";};
-    
         character = {
-          success_symbol = "[ ](#${base03} bold)";
-          error_symbol = "[ ](#${base04} bold)";
-          vicmd_symbol = "[](#${base03})";
+          success_symbol = "[❯](purple)";
+          error_symbol = "[❯](red)";
+          vimcmd_symbol = "[❮](green)";
         };
         
         directory = {
-          format = "[]($style)[  ](bg:#${base01} fg:#${base05})[$path](bg:#${base01} fg:#${base03} bold)[ ]($style)";
-          style = "bg:none fg:#${base01}";
-          truncation_length = 3;
-          truncate_to_repo = false;
+          style = "blue";
         };
         
         git_branch = {
-          format = "[]($style)[[ ](bg:#${base01} fg:#${base05} bold)$branch](bg:#${base01} fg:#${base03} bold)[ ]($style)";
-          style = "bg:none fg:#${base01}";
+          format = "[$branch]($style)";
+          style = "bright-black";
         };
         
         git_status = {
-          format = "[]($style)[$all_status$ahead_behind](bg:#${base01} fg:#${base03} bold)[ ]($style)";
-          style = "bg:none fg:#${base01}";
-          conflicted = "=";
-          ahead = "⇡\${count}";
-          behind = "⇣\${count} ";
-          diverged = "↑\${ahead_count} ⇣\${behind_count} ";
-          up_to_date = " ";
-          untracked = "?\${count} ";
-          stashed = "󰥔 ";
-          modified = "!\${count} ";
-          staged = "+\${count} ";
-          renamed = "»\${count} ";
-          deleted = " \${count} ";
+          format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
+          style = "cyan";
+          conflicted = "​";
+          untracked = "​";
+          modified = "​";
+          staged = "​";
+          renamed = "​";
+          deleted = "​";
+          stashed = "≡";
+        };
+        
+        git_state = {
+          format = "([$state( $progress_current/$progress_total)]($style))";
+          style = "bright-black";
         };
         
         cmd_duration = {
-          min_time = 1;
-          # duration & style ;
-          format = "[]($style)[[  ](bg:#${base01} fg:#${base05} bold)$duration](bg:#${base01} fg:#${base03} bold)[]($style)";
-          disabled = false;
-          style = "bg:none fg:#${base01}";
+          format = "[$duration]($style) ";
+          style = "yellow";
         };
         
+        python = {
+          format = "[$virtualenv]($style) ";
+          style = "bright-black";
+        };
+
         nix_shell = {
-          disabled = false;
-          heuristic = false;
-          format = "[]($style)[ ](bg:#${base01} fg:#${base05} bold)[]($style)";
+          format = "($style)[](fg:#${base05})($style)";
           style = "bg:none fg:#${base01}";
           impure_msg = "";
           pure_msg = "";

@@ -13,7 +13,6 @@
     file.".local/share/fonts".source = ./fonts;
 
     packages = with pkgs; [
-      # TODO move cli tools to nixos module (those not home manager managed)
       (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
@@ -27,6 +26,19 @@
       obs-studio
       fastfetch
       
+      starship
+      oh-my-posh
+      nushell
+      fish grc
+      ranger # cli explorer
+      # Dev
+      rustup
+      # cargo
+      python3
+      yq # YAML, JSON and XML processor
+
+      grim # screenshot util
+
       bemoji # emoji picker
       chromium
       circumflex # (clx) hacker news cli
@@ -34,7 +46,6 @@
       deadnix # remove unused code in nix files
       docker-compose
       feh # image viewer
-      fx #json viewer
       gcc
       gh # github cli
       gitmoji-cli # emoji for commits
@@ -43,9 +54,6 @@
       gnumake
       gum # fancy scripts
       imagemagick
-      jaq # jq but cooler
-      jq # cli json processor
-      jqp # tui jq playground
       just # project specific commands
       marksman # markdown language server
       obsidian

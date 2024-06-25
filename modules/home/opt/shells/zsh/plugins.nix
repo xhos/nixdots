@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-{ #TODO: Zsh plugins with nix
+{
 	programs.zsh.initExtra = ''
 		##
 		## Plugins
