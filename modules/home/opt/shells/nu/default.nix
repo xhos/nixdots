@@ -10,6 +10,7 @@
         alias ns = nix-shell -p
         alias gcl = git clone
         alias r = ranger
+        alias cat = bat
 
 
         let fish_completer = {|spans|
