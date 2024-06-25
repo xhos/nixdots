@@ -10,7 +10,7 @@
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
       "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
-      #"xwaylandvideobridge &"
+      "protonvpn-app" # TODO: find another way to do this
     ];
     animations = {
       enabled = true;

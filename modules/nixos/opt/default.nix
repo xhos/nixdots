@@ -1,11 +1,11 @@
 {
   imports = [
-    ./bluetooth.nix
-    ./sound.nix
     ./fonts
-    ./programs.nix
-    ./pkgs.nix
-    ./user.nix
+    ./bluetooth.nix
     ./options.nix
+    ./pkgs.nix
+    ./programs.nix
+    ./sound.nix
+    ./user.nix
   ];
 } 

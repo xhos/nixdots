@@ -8,6 +8,7 @@
     ./nix.nix
     ./portal.nix
     ./security.nix
+    ./services.nix
     ./virtualisation.nix
   ];
 }
