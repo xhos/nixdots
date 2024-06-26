@@ -35,6 +35,12 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    # Sops-nix, secrets management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hyprpicker, color picker for hyprland
     hyprpicker.url = "github:hyprwm/hyprpicker";
 

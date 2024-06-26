@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   users = {
     users.xhos = {
       isNormalUser = true;
-      password = "123456";
+      hashedPasswordFile = config.sops.secrets.password.path;
       extraGroups = [
         "wheel"
         "networkmanager"

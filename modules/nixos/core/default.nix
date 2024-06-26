@@ -1,5 +1,6 @@
 {
   imports = [
+    ./secrets
     ./boot.nix
     ./environment.nix
     ./hardware.nix

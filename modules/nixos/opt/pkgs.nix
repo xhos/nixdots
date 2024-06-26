@@ -29,11 +29,15 @@ environment.systemPackages = with pkgs; [
     brightnessctl
     wayland
 
+    rclone # to mount cloud storage
+    
     git
     git-lfs
     git-extras
 
     age # file encryption
+    sops # secrets encryption
+    
     bat # cat but better
     btop
     fzf

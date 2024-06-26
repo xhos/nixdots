@@ -25,7 +25,8 @@
       vscode
       obs-studio
       fastfetch
-      
+      termius # just for keychain accss
+
       starship
       oh-my-posh
       nushell
