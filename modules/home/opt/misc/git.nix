@@ -1,8 +1,8 @@
 {
-  programs.git ={
+  programs.git = {
     enable = true;
-    programs.git.userName = "xhos";
+    userName = "xhos";
     userEmail = "xxhos@pm.me";
-    programs.git.extraConfig.init.defaultBranch = "main";
+    extraConfig.init.defaultBranch = "main";
   };
 }
