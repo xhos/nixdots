@@ -63,7 +63,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, hm, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, hm, ... }@inputs:
   let
     inherit (self) outputs;
     system = "x86_64-linux";
@@ -87,11 +87,12 @@
     # Or 'nh home switch'
     homeConfigurations = {
       "xhos@zireael" = inputs.hm.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home/xhos/zireael.nix
-          stylix.homeManagerModules.stylix
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.stylix.homeManagerModules.stylix
         ];
       };
     };

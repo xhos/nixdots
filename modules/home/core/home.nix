@@ -22,7 +22,7 @@
       protonvpn-gui 
       kitty # here as a fallback
       gnome.nautilus
-      vscode
+      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
       obs-studio
       fastfetch
       termius # just for keychain accss
