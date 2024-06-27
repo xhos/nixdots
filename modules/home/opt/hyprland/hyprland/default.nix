@@ -116,11 +116,12 @@ in {
 
     wayland.windowManager.hyprland = {
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      
       plugins = [
+        inputs.hyprgrass.packages.${pkgs.system}.default
         inputs.hyprspace.packages.${pkgs.system}.Hyprspace
-        #inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
-        #inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
+
       xwayland.enable = true;
       enable = true;
       systemd = {

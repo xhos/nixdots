@@ -29,10 +29,16 @@
     # Hyprland, the modern compositor for wayland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    # Hyprspacem workspace overview plugin
+    # Hyprspacem, hyprland workspace overview plugin
     hyprspace = {
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
+    };
+
+    # Hyprgrass, hyprland touch gestures plugin
+    hyprgrass = {
+        url = "github:horriblename/hyprgrass";
+        inputs.hyprland.follows = "hyprland";
     };
 
     # Sops-nix, secrets management

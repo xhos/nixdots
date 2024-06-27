@@ -57,7 +57,7 @@
       border_size = "0";
       layout = "dwindle";
       resize_on_border = "true";
-      "col.active_border" = "rgba(88888888)";
+      "col.active_border" = "rgba(88888888)"; #TODO: stylix here
       "col.inactive_border" = "rgba(00000088)";
 
       allow_tearing = true;
@@ -65,7 +65,12 @@
 
     gestures = {
       workspace_swipe = true;
+      workspace_swipe_cancel_ratio = 0.01;
       workspace_swipe_forever = true;
+    };
+
+    "plugin:touch_gestures" = {
+      sensitivity = 5.0;
     };
 
     group = {
@@ -79,7 +84,7 @@
       kb_layout = "us, ru";
       kb_options = "grp:alt_shift_toggle";
 
-      # accel_profile = "flat";
+      accel_profile = "adaptive";
       follow_mouse = 1;
 
       touchpad = {
