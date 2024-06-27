@@ -32,3 +32,22 @@ Runner: rofi
 
 - **ags**
 - waybar
+
+## post install
+
+get user (dev) key for sops:
+
+```bash
+mkdir .config/sops/age
+age-keygen -o .config/sops/age/keys.txt
+```
+
+get age publick key from the machine ssh key to put into .sops.yaml:
+
+```bash
+nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+```
+
+sops updatekeys /etc/nixos/core/secrets/secrets.yaml
+
+❯ mkpasswd -s to get password hash

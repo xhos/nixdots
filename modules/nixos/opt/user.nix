@@ -2,7 +2,7 @@
   users = {
     users.xhos = {
       isNormalUser = true;
-      hashedPasswordFile = config.sops.secrets.password.path;
+      # hashedPasswordFile = config.sops.secrets.password.path;
       extraGroups = [
         "wheel"
         "networkmanager"

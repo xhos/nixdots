@@ -48,6 +48,7 @@ environment.systemPackages = with pkgs; [
     xdg-utils # idk some utils
     unzip
     gtk3
+    neovim
   ];
   
   nixpkgs.config = {

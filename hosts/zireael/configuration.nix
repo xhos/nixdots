@@ -7,10 +7,13 @@
   
   networking.hostName = "zireael";
 
+  # users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./zireael.pub ];
+
   fonts     .enable = true;
   wayland   .enable = true;
   audio     .enable = true;
   bluetooth .enable = true;
+  sshserver .enable = true;
 
   # Intel specific stuff, not sure if needed but why not
   boot.kernelParams = [ "i915.force_probe=46a6" ]; # https://nixos.wiki/wiki/Intel_Graphics
