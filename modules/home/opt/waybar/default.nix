@@ -1,10 +1,4 @@
-{
-  pkgs,
-  inputs,
-  config,
-  lib,
-  ...
-}: {
+{ pkgs, inputs, config, lib, ... }: {
   imports = [./style.nix];
 
   config = lib.mkIf (config.default.bar == "waybar") {
@@ -14,237 +8,130 @@
       systemd.enable = true;
       systemd.target = "graphical-session.target";
 
-      settings = [
-        {
-          layer = "top";
-          position = "top";
-          exclusive = true;
-          fixed-center = true;
-          gtk-layer-shell = true;
-          spacing = 0;
-          margin-top = 0;
-          margin-bottom = 0;
-          margin-left = 0;
-          margin-right = 0;
-          modules-left = ["custom/ghost" "hyprland/workspaces" "hyprland/window"];
-          modules-center = ["custom/weather" "clock"];
-          modules-right = [
-            "tray"
-            "custom/notification"
-            "group/network-pulseaudio-backlight-battery"
-            "group/powermenu"
+      settings = [{
+        battery = {
+          format = "{icon}  {capacity}%";
+          "format-alt" = "{icon} {time}";
+          "format-charging" = "  {capacity}%";
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
           ];
-
-          # Ghost
-          "custom/ghost" = {
-            format = "󱙝";
-            tooltip = false;
+          "format-plugged" = " {capacity}% ";
+          states = {
+            critical = 15;
+            good = 95;
+            warning = 30;
           };
-
-          # Workspaces
-          "hyprland/workspaces" = {
-            format = "";
-            on-click = "activate";
-            disable-scroll = true;
-            all-outputs = false;
-            show-special = true;
-            persistent-workspaces = {"*" = 5;};
+        };
+        clock = {
+          format = "{:%H:%M}";
+          tooltip = "true";
+          tooltip-format = "{:%B %d}";
+        };
+        cpu = {
+          format = "󰻠 {usage}%";
+          "format-alt" = "󰻠 {avg_frequency} GHz";
+          interval = 5;
+        };
+        "custom/playerctl#backward" = {
+          format = "󰙣 ";
+          "on-click" = "playerctl previous";
+          "on-scroll-down" = "playerctl volume .05-";
+          "on-scroll-up" = "playerctl volume .05+";
+        };
+        "custom/playerctl#foward" = {
+          format = "󰙡 ";
+          "on-click" = "playerctl next";
+          "on-scroll-down" = "playerctl volume .05-";
+          "on-scroll-up" = "playerctl volume .05+";
+        };
+        "custom/playerctl#play" = {
+          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          format = "{icon}";
+          "format-icons" = {
+            Paused = "<span> </span>";
+            Playing = "<span>󰏥 </span>";
+            Stopped = "<span> </span>";
           };
-
-          # Window
-          "hyprland/window" = {
-            format = "{}";
-            separate-outputs = true;
-          };
-
-          # Weather
-          "custom/weather" = {
-            format = "{}°";
-            tooltip = true;
-            interval = 3600;
-            exec = "${pkgs.wttrbar}/bin/wttrbar --location 'Paris' --hide-conditions";
-            return-type = "json";
-          };
-
-          # Clock & Calendar
-          clock = {
-            format = "{:%b %d %H:%M}";
-            actions = {
-              on-scroll-down = "shift_down";
-              on-scroll-up = "shift_up";
-            };
-            tooltip-format = "<tt><small>{calendar}</small></tt>";
-            calendar = {
-              format = {
-                days = "<span color='#98989d'><b>{}</b></span>";
-                months = "<span color='#ffffff'><b>{}</b></span>";
-                today = "<span color='#ffffff'><b><u>{}</u></b></span>";
-                weekdays = "<span color='#0a84ff'><b>{}</b></span>";
-              };
-              mode = "month";
-              on-scroll = 1;
-            };
-          };
-
-          # Tray
-          tray = {
-            icon-size = 16;
-            show-passive-items = true;
-            spacing = 8;
-          };
-
-          # Notifications
-          "custom/notification" = {
-            exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
-            return-type = "json";
-            format = "{icon}";
-            format-icons = {
-              notification = "󰂚";
-              none = "󰂜";
-              dnd-notification = "󰂛";
-              dnd-none = "󰪑";
-              inhibited-notification = "󰂛";
-              inhibited-none = "󰪑";
-              dnd-inhibited-notification = "󰂛";
-              dnd-inhibited-none = "󰪑";
-            };
-            on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
-            on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
-            tooltip = true;
-            escape = true;
-          };
-
-          # Group
-          "group/network-pulseaudio-backlight-battery" = {
-            modules = ["network" "group/audio-slider" "group/light-slider" "battery"];
-            orientation = "inherit";
-          };
-
-          # Network
-          network = {
-            format-wifi = "󰤨";
-            format-ethernet = "󰈀";
-            format-disconnected = "";
-            tooltip-format-wifi = ''
-              WiFi: {essid} ({signalStrength}%)
-              󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}'';
-            tooltip-format-ethernet = ''
-              Ethernet: {ifname}
-              󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}'';
-            tooltip-format-disconnected = "Disconnected";
-            on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
-          };
-
-          # Pulseaudio
-          "group/audio-slider" = {
-            orientation = "inherit";
-            drawer = {
-              transition-duration = 300;
-              children-class = "audio-slider-child";
-              transition-left-to-right = true;
-            };
-            modules = ["pulseaudio" "pulseaudio/slider"];
-          };
-          pulseaudio = {
-            format = "{icon}";
-            format-bluetooth = "󰂯";
-            format-muted = "󰖁";
-            format-icons = {
-              hands-free = "󱡏";
-              headphone = "󰋋";
-              headset = "󰋎";
-              default = ["󰕿" "󰖀" "󰕾"];
-            };
-            tooltip-format = "Volume: {volume}%";
-            on-click = "${pkgs.pamixer}/bin/pamixer --toggle-mute";
-            on-scroll-up = "${pkgs.pamixer}/bin/pamixer --decrease 1";
-            on-scroll-down = "${pkgs.pamixer}/bin/pamixer --increase 1";
-          };
-          "pulseaudio/slider" = {
-            min = 0;
-            max = 100;
-            orientation = "horizontal";
-          };
-
-          # Backlight
-          "group/light-slider" = {
-            orientation = "inherit";
-            drawer = {
-              transition-duration = 300;
-              children-class = "light-slider-child";
-              transition-left-to-right = true;
-            };
-            modules = ["backlight" "backlight/slider"];
-          };
-          backlight = {
-            format = "{icon}";
-            format-icons = ["󰝦" "󰪞" "󰪟" "󰪠" "󰪡" "󰪢" "󰪣" "󰪤" "󰪥"];
-            tooltip-format = "Backlight: {percent}%";
-            on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 1%-";
-            on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set +1%";
-          };
-          "backlight/slider" = {
-            min = 0;
-            max = 100;
-            orientation = "horizontal";
-          };
-
-          # Battery
-          battery = {
-            format = "{icon}";
-            format-charging = "󱐋";
-            format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-            format-plugged = "󰚥";
-            states = {
-              warning = 30;
-              critical = 20;
-            };
-            tooltip-format = "{timeTo}, {capacity}%";
-          };
-
-          # Powermenu
-          "group/powermenu" = {
-            drawer = {
-              children-class = "powermenu-child";
-              transition-duration = 300;
-              transition-left-to-right = false;
-            };
-            modules = [
-              "custom/power"
-              "custom/exit"
-              "custom/lock"
-              "custom/suspend"
-              "custom/reboot"
+          "on-click" = "playerctl play-pause";
+          "on-scroll-down" = "playerctl volume .05-";
+          "on-scroll-up" = "playerctl volume .05+";
+          "return-type" = "json";
+        };
+        "custom/playerlabel" = {
+          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          format = "<span>󰎈 {} 󰎈</span>";
+          "max-length" = 40;
+          "on-click" = "";
+          "return-type" = "json";
+        };
+        "custom/randwall" = {
+          format = "󰏘";
+        };
+        height = 35;
+        layer = "top";
+        "margin-bottom" = 0;
+        "margin-left" = 0;
+        "margin-right" = 0;
+        "margin-top" = 0;
+        memory = {
+          format = "󰍛 {}%";
+          "format-alt" = "󰍛 {used}/{total} GiB";
+          interval = 5;
+        };
+        "modules-center" = [
+          "hyprland/workspaces"
+        ];
+        "modules-left" = [
+          "custom/playerctl#backward"
+          "custom/playerctl#play"
+          "custom/playerctl#foward"
+          "custom/playerlabel"
+        ];
+        "modules-right" = [
+          "tray"
+          "battery"
+          "pulseaudio"
+          "clock"
+        ];
+        position = "top";
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          "format-icons" = {
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
             ];
-            orientation = "inherit";
           };
-          "custom/power" = {
-            format = "󰐥";
-            on-click = "${pkgs.systemd}/bin/systemctl poweroff";
-            tooltip = false;
+          "format-muted" = "󰝟";
+          "on-click" = "pavucontrol";
+          "scroll-step" = 5;
+        };
+        tray = {
+          "icon-size" = 20;
+          spacing = 8;
+        };
+        "wlr/workspaces" = {
+          "active-only" = false;
+          "all-outputs" = false;
+          "disable-scroll" = false;
+          format = "{name}";
+          "format-icons" = {
+            active = "";
+            default = "";
+            "sort-by-number" = true;
+            urgent = "";
           };
-          "custom/exit" = {
-            format = "󰈆";
-            on-click = "${pkgs.systemd}/bin/loginctl terminate-user $USER";
-            tooltip = false;
-          };
-          "custom/lock" = {
-            format = "󰌾";
-            on-click = "waylock";
-            tooltip = false;
-          };
-          "custom/suspend" = {
-            format = "󰤄";
-            on-click = "${pkgs.systemd}/bin/systemctl suspend";
-            tooltip = false;
-          };
-          "custom/reboot" = {
-            format = "󰜉";
-            on-click = "${pkgs.systemd}/bin/systemctl reboot";
-            tooltip = false;
-          };
-        }
-      ];
+          "on-click" = "activate";
+          "on-scroll-down" = "hyprctl dispatch workspace e+1";
+          "on-scroll-up" = "hyprctl dispatch workspace e-1";
+        };
+      }];
     };
   };
 }

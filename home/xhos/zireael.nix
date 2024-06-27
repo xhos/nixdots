@@ -6,14 +6,14 @@
   ];
 
   modules = {
-    hyprland.enable  = true;
     rofi.enable      = true;
+    hyprland.enable  = true;
     spicetify.enable = true;
   };
 
   default = {
     de       = "hyprland";
-    bar      = "ags";
+    bar      = "waybar";
     lock     = "hyprlock";
     shell    = "nu";
     prompt   = "starship";

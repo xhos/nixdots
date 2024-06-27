@@ -3,6 +3,7 @@
     ./options.nix
 
     ./ags
+    ./waybar
     ./shells
     ./misc
     ./firefox
