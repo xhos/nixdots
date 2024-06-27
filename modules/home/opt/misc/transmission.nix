@@ -1,0 +1,5 @@
+{
+  services.transmission = {
+    enable = true;
+  };
+}     
