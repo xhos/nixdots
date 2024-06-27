@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "ags"
@@ -57,8 +57,8 @@
       border_size = "0";
       layout = "dwindle";
       resize_on_border = "true";
-      "col.active_border" = "rgba(88888888)"; #TODO: stylix here
-      "col.inactive_border" = "rgba(00000088)";
+      "col.active_border" = "rgba(${config.accent}88)";
+      "col.inactive_border" = "rgba(${config.background}88)";
 
       allow_tearing = true;
     };

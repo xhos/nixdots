@@ -37,7 +37,7 @@
       grim # screenshot util
 
       qbittorrent-qt5
-      transmission
+      # rqbit
       # miru
       # stremio
 
