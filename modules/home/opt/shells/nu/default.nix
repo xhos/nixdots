@@ -6,12 +6,10 @@
       enable = true;
 
       configFile.text =  ''
-        alias ll = ls -l
         alias ns = nix-shell -p
         alias gcl = git clone
-        alias r = ranger
         alias cat = bat
-
+        alias fzf = sk
 
         let fish_completer = {|spans|
             fish --command $'complete "--do-complete=($spans | str join " ")"'

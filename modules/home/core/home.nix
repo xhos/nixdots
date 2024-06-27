@@ -1,11 +1,4 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  pkgsStable,
-  ...
-}: {
+{ config, inputs, lib, pkgs, pkgsStable, ... }: {
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";
@@ -17,12 +10,13 @@
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       
-      alejandra # nix code formatter
       swww # wallpaper daemon
       protonvpn-gui 
+      proton-pass
       kitty # here as a fallback
       gnome.nautilus
       (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+      (discord.override {withVencord = true;})
       obs-studio
       fastfetch
       termius # just for keychain accss
@@ -31,19 +25,27 @@
       oh-my-posh
       nushell
       fish grc
-      ranger # cli explorer
+      scrcpy # android screen mirroring
+      yazi # cli explorer
+
       # Dev
       rustup
-      # cargo
       python3
       yq # YAML, JSON and XML processor
+      alejandra # nix code formatter
 
       grim # screenshot util
+
+      qbittorrent-qt5
+      # transmission
+      # miru
+      # stremio
 
       bemoji # emoji picker
       chromium
       circumflex # (clx) hacker news cli
       colordiff # file diff
+      
       deadnix # remove unused code in nix files
       docker-compose
       feh # image viewer

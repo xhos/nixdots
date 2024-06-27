@@ -10,13 +10,6 @@ let
   };
   envStr = concatStringsSep " " (mapAttrsToList (n: v: "${n}=${escapeShellArg v}") env);
 
-  gwfox = pkgs.fetchFromGitHub {
-    owner = "xhos";
-    repo = "gwfox";
-    rev = "e9a120f76abed067b26ea418713a499f00705c86";
-    hash = "sha256-E+S36n8mrySOZRgj+6m7l7teIy1ks5h8E94hOm59MMo=";
-  };
-
   minifox = pkgs.stdenv.mkDerivation {
     name = "minifox";
     src = pkgs.fetchgit {
@@ -63,10 +56,6 @@ in {
        (builtins.readFile "${minifox}/chrome/browser/window-controls.css")
       ];
       
-
-      # userChrome = (builtins.readFile "${gwfox}/chrome/userChrome.css");
-      # userContent = (builtins.readFile "${gwfox}/chrome/userContent.css");
-
       extraConfig = builtins.concatStringsSep "\n" [
         # (builtins.readFile "${betterfox}/Securefox.js")
         (builtins.readFile "${betterfox}/Fastfox.js")
@@ -151,7 +140,7 @@ in {
         "extensions.pocket.enabled" = false; # disable pocket, save links, send tabs
         "extensions.abuseReport.enabled" = false; # don't show 'report abuse' in extensions
         "extensions.formautofill.creditCards.enabled" = false; # don't auto-fill credit card information
-        "identity.fxaccounts.enabled" = true; # disable firefox login
+        "identity.fxaccounts.enabled" = true; # enable firefox login
         "identity.fxaccounts.toolbar.enabled" = true;
         "identity.fxaccounts.pairing.enabled" = true;
         "identity.fxaccounts.commands.enabled" = true;
@@ -178,6 +167,7 @@ in {
         ublock-origin
         re-enable-right-click
         don-t-fuck-with-paste
+        proton-pass
 
         enhancer-for-youtube
         sponsorblock
