@@ -22,6 +22,7 @@ in {
         monocle = "dwindle:no_gaps_when_only";
       in
         [
+          #TODO: binds to resize windows
           # Compositor commands
           "CTRLSHIFT, Q, exit"
           "SUPER, C, killactive"

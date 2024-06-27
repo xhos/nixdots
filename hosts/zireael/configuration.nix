@@ -7,7 +7,7 @@
   
   networking.hostName = "zireael";
 
-  # users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./zireael.pub ];
+  users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./zireael.pub ];
 
   fonts     .enable = true;
   wayland   .enable = true;

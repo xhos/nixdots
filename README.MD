@@ -51,3 +51,5 @@ nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-ag
 sops updatekeys /etc/nixos/core/secrets/secrets.yaml
 
 ❯ mkpasswd -s to get password hash
+
+❯ cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub

@@ -39,7 +39,7 @@
       };
       shell = lib.mkOption {
         type = lib.types.enum ["zsh" "fish" "nu"];
-        default = "zsh";
+        default = "fish";
       };
     };
   };

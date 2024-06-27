@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  config = lib.mkIf (config.default.shell == "fish") {
+  # Fish always exists as a default shell
+  # config = lib.mkIf (config.default.shell == "fish") {
     programs.fish = {
       enable = true;
 
@@ -24,5 +25,5 @@
         # }
       ];
     };
-  };
+  # };
 }

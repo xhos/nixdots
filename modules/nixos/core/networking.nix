@@ -4,12 +4,19 @@ let
 in {
   networking = {
     networkmanager.enable = true;
-    firewall.enable = false;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        sshPort
+      ] ;
+    };
   };
+
+  services.fail2ban.enable = true;
 
   # actully this needs to be enabled for sops to get the key
   # so, TODO: a better way to disable ssh
-  services.openssh = lib.mkIf config.sshserver.enable {
+  services.openssh = {
     enable = true;
     ports = [ sshPort ];
     settings = {
