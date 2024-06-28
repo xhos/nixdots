@@ -23,6 +23,7 @@
       hyprshot
       starship
       oh-my-posh
+      wev # for keybindings 
       nushell
       fish grc
       scrcpy # android screen mirroring
