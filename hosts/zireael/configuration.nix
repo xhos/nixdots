@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
 
   imports = [
     ./hardware-configuration.nix
@@ -15,12 +15,16 @@
   bluetooth .enable = true;
   sshserver .enable = true;
 
-  # Galaxy Book driver
-  boot.extraModulePackages = config.boot.kernelPackages.callPackage ../../derivs/samsung-galaxybook-extras.nix { };
+  boot = {
+    extraModulePackages =
+    let 
+      sgbextras = config.boot.kernelPackages.callPackage ../../derivs/samsung-galaxybook-extras.nix { };
+    in [
+      sgbextras
+    ];
+    kernelParams = [ "i915.force_probe=46a6" ]; # https://nixos.wiki/wiki/Intel_Graphics
+  };
 
-  # Intel specific stuff, not sure if needed but why not
-  boot.kernelParams = [ "i915.force_probe=46a6" ]; # https://nixos.wiki/wiki/Intel_Graphics
-  
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
@@ -31,5 +35,4 @@
   ];
   
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
-  
 }
