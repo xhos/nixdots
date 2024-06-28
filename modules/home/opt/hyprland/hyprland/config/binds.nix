@@ -74,14 +74,14 @@ in {
           "SUPER, O, exec, run-as-service wl-ocr"
 
           # Screenshot
-          "SUPERSHIFT, S, exec, ~/.local/bin/captureArea"
+          # "SUPERSHIFT, S, exec, ~/.local/bin/captureArea"
+          "SUPERSHIFT, S ,exec, hyprshot -m region --clipboard-only"
           "CTRLSHIFT, S, exec, grimblast --notify --cursor copysave output"
         ]
         ++ workspaces;
 
       bindr = [
         # Launchers
-        # "ALT, code:65, exec, pkill anyrun || run-as-service anyrun"    # too slow
         "ALT, code:65, exec, rofi -show drun"
         "SUPERSHIFT, p, exec, rofi-rbw --no-help --clipboarder wl-copy"
         "SUPERSHIFT, e, exec, bemoji"

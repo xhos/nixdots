@@ -27,19 +27,24 @@
     };
 
     decoration = {
-      rounding = "6";
-      drop_shadow = "true";
-      shadow_range = "16";
-      "col.shadow" = "rgba(050505ff)";
-      shadow_render_power = "12";
+      "col.shadow" = "rgb(${config.background})";
+      "col.shadow_inactive" = "rgba(${config.background}00)";
       inactive_opacity = "0.94";
+      drop_shadow = "true";
+      rounding = 10;
+      shadow_ignore_window = "true";
+      shadow_range = 16;
+      shadow_render_power = 2;
 
       blur = {
+        brightness = 1;
+        contrast = "1.200000";
         enabled = "yes";
-        size = "3";
-        passes = "4";
-        new_optimizations = "on";
         ignore_opacity = "on";
+        new_optimizations = "on";
+        noise = "0.011700";
+        passes = 3;
+        size = 6;
         xray = "false";
       };
     };
@@ -61,6 +66,11 @@
       "col.inactive_border" = "rgba(${config.background}88)";
 
       allow_tearing = true;
+    };
+
+    device = {
+      name = "znt0001:00-14e5:650e-touchpad";
+      sensitivity = "+0.2";
     };
 
     gestures = {

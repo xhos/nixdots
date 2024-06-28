@@ -20,7 +20,7 @@
       obs-studio
       fastfetch
       termius # just for keychain accss
-     
+      hyprshot
       starship
       oh-my-posh
       nushell
