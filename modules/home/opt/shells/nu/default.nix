@@ -6,6 +6,8 @@
       enable = true;
 
       configFile.text =  ''
+        $env.TRANSIENT_PROMPT_COMMAND = ""
+        
         alias ns = nix-shell -p
         alias gcl = git clone
         alias cat = bat

@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
+    ../../derivs/gbook-driver.nix
   ];
   
   networking.hostName = "zireael";

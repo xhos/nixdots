@@ -48,16 +48,16 @@ in {
           "ALTSHIFT, Tab, bringactivetotop"
 
           # Move focus
-          "SUPER, left, movefocus, l"
-          "SUPER, right, movefocus, r"
-          "SUPER, up, movefocus, u"
-          "SUPER, down, movefocus, d"
+          # "SUPER, left, movefocus, l"
+          # "SUPER, right, movefocus, r"
+          # "SUPER, up, movefocus, u"
+          # "SUPER, down, movefocus, d"
 
           # Move windows
-          "SUPERSHIFT, left, movewindow, l"
-          "SUPERSHIFT, right, movewindow, r"
-          "SUPERSHIFT, up, movewindow, u"
-          "SUPERSHIFT, down, movewindow, d"
+          "SUPER, left, movewindow, l"
+          "SUPER, right, movewindow, r"
+          "SUPER, up, movewindow, u"
+          "SUPER, down, movewindow, d"
 
           # Special workspaces
           "SUPERSHIFT, grave, movetoworkspace, special"
@@ -72,6 +72,12 @@ in {
           "SUPER, B, exec, firefox"
           "SUPER, L, exec, hyprlock"
           "SUPER, O, exec, run-as-service wl-ocr"
+
+          # Resize windows
+          "SUPERSHIFT, right, resizeactive, 200 0"
+          "SUPERSHIFT, left, resizeactive, -200 0"
+          "SUPERSHIFT, up, resizeactive, 0 -200"
+          "SUPERSHIFT, down, resizeactive, 0 200"
 
           # Screenshot
           # "SUPERSHIFT, S, exec, ~/.local/bin/captureArea"
