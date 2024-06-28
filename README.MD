@@ -2,6 +2,7 @@
 
 ### main features:
 
+- ags widgets (JS 🤮}
 - spicetify with spicetify-nix
 - secret management with sops-nix
 - cool firefox theme (minfox)
