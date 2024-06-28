@@ -36,6 +36,11 @@
       shadow_range = 16;
       shadow_render_power = 2;
 
+      blurls = [
+        "RegularWindow"
+        "PopupWindow"
+      ];
+
       blur = {
         brightness = 1;
         contrast = "1.200000";

@@ -3,6 +3,12 @@
   background = config.lib.stylix.colors.base00;
   text = config.lib.stylix.colors.base05;
   accent = config.lib.stylix.colors.base0D;
+  
+  home.sessionVariables = rec {
+    ACCENT = config.accent;
+    BACKGROUND = config.background;
+    TEXT = config.text;
+  };
 
   home.pointerCursor = {
     name = "phinger-cursors-light";
