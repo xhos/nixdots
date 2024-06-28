@@ -1,9 +1,5 @@
-{ pkgs }:
-
-pkgs.writeShellApplication {
-  name = "modeSwitcher";
-
-  text = ''
+systemd.services."modeSwitcherService" = {
+  script = ''
     case "$1" in
         -s)
             # Set performance mode to low-power

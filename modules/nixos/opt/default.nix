@@ -7,5 +7,6 @@
     ./programs.nix
     ./sound.nix
     ./user.nix
+    ./services.nix
   ];
 } 

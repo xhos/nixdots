@@ -10,6 +10,7 @@
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       
+      (pkgs.callPackage ../../../scripts/modeSwitcher.nix {})
       swww # wallpaper daemon
       protonvpn-gui 
       proton-pass
