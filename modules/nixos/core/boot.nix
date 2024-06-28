@@ -9,6 +9,12 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    extraModulePackages = 
+    let 
+      sgbextras = config.boot.kernelPackages.callPackage ../../../derivs/samsung-galaxybook-extras.nix { };
+      # change path to match where you save the package to
+    in
+    [ sgbextras ];
   };
 
   services.displayManager.defaultSession = "Hyprland";
