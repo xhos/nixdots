@@ -15,6 +15,9 @@
   bluetooth .enable = true;
   sshserver .enable = true;
 
+  # Galaxy Book driver
+  boot.extraModulePackages = config.boot.kernelPackages.callPackage ../../derivs/samsung-galaxybook-extras.nix { };
+
   # Intel specific stuff, not sure if needed but why not
   boot.kernelParams = [ "i915.force_probe=46a6" ]; # https://nixos.wiki/wiki/Intel_Graphics
   
