@@ -5,6 +5,9 @@
 - spicetify with spicetify-nix
 - secret management with sops-nix
 - cool firefox theme (minfox)
+- custom driver for my samsung galaxy book 2 pro 360
+- touch support with hyprgrass
+- full system theming with stylix
 
 ### info:
 
@@ -33,7 +36,9 @@ Runner: rofi
 - **ags**
 - waybar
 
-## post install
+## post install (notes to self, not instructions)
+
+### sops-nix:
 
 get user (dev) key for sops:
 
@@ -48,11 +53,23 @@ get age publick key from the machine ssh key to put into .sops.yaml:
 nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
 ```
 
+if any erros with keys, or after key change:
+
+```bash
 sops updatekeys /etc/nixos/core/secrets/secrets.yaml
+```
 
-❯ mkpasswd -s to get password hash
+put password hash into secrets.yaml, to get hash:
 
-❯ cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub
+```bash
+mkpasswd -s to get password hash
+```
+
+copy ssh key into `/hosts`
+
+```bash
+cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub
+```
 
 # Credit/Thanks ❤️
 
