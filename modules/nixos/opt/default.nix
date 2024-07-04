@@ -8,5 +8,6 @@
     ./sound.nix
     ./user.nix
     ./services.nix
+    ./syncthing.nix
   ];
 } 

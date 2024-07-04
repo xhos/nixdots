@@ -4,7 +4,7 @@
   fetchFromGitHub,
   pkgs,
   ...
-}:
+}: #TODO: this: github.com/oSumAtrIX/DownOnSpot
 buildPythonApplication rec {
   pname = "spotdl";
   version = "4.1.3";

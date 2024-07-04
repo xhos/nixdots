@@ -1,3 +1,4 @@
+{
 systemd.services."modeSwitcherService" = {
   script = ''
     case "$1" in
@@ -17,4 +18,5 @@ systemd.services."modeSwitcherService" = {
             ;;
     esac
   '';
+};
 }
