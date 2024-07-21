@@ -14,7 +14,7 @@ let
     name = "minifox";
     src = pkgs.fetchgit {
       url = "https://codeberg.org/awwpotato/MiniFox.git";
-      hash = "sha256-q9kMokofGbp8qUPiPP5i4xiFJ2yNecB6TkoBD0yFpP8=";
+      hash = "sha256-I9kIDaqhP5FepTVGcYNLHP+2GQx6K8QdkNXO0KytQFM=";
     };
 
     phases = ["postFetch"];

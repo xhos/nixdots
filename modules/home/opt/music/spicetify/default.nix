@@ -5,10 +5,9 @@
   pkgs,
   ...
 }: let
-  inherit (inputs) spicetify-nix;
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
-  imports = [inputs.spicetify-nix.homeManagerModule];
+  imports = [inputs.spicetify-nix.homeManagerModules.default  ];
   config = lib.mkIf config.modules.spicetify.enable {
     programs.spicetify = let
       # use a different version of spicetify-themes than the one provided by
@@ -20,55 +19,48 @@ in {
       };
     in {
       enable = true;
-      theme = {
-        src = officialThemesOLD;
-        name = "Bloom";
-        injectCss = true;
-        replaceColors = true;
-        overwriteAssets = true;
-        sidebarConfig = true;
-        requiredExtensions = [
-          # define extensions that will be installed with this theme
-          {
-            # extension is "${src}/Dribbblish/dribbblish.js"
-            src = "${officialThemesOLD}/Bloom";
-            filename = "bloom.js";
-          }
-        ];
-        appendName = true;
-      };
-      colorScheme = "custom";
+      # theme = {
+      #   src = officialThemesOLD;
+      #   name = "Bloom";
+      #   injectCss = true;
+      #   replaceColors = true;
+      #   overwriteAssets = true;
+      #   sidebarConfig = true;
+      #   requiredExtensions = [
+      #     # define extensions that will be installed with this theme
+      #     {
+      #       # extension is "${src}/Dribbblish/dribbblish.js"
+      #       src = "${officialThemesOLD}/Bloom";
+      #       filename = "bloom.js";
+      #     }
+      #   ];
+      #   appendName = true;
+      # };
+      # colorScheme = "custom";
 
-      customColorScheme = with config.lib.stylix.colors; {
-        text = "${base05}";
-        subtext = "${base05}";
-        sidebar-text = "${base05}";
-        main = "${base00}";
-        sidebar = "${base01}";
-        player = "${base01}";
-        card = "${base00}";
-        shadow = "${base03}";
-        selected-row = "${base03}";
-        button = "${base0F}";
-        button-active = "${base05}";
-        button-disabled = "${base0E}";
-        tab-active = "${base03}";
-        notification = "${base0A}";
-        notification-error = "${base0F}";
-        misc = "${base05}";
-        alt-text = "${base05}";
-        player-bar-bg = "${base01}";
-        accent = "${base06}";
-      };
+      # customColorScheme = with config.lib.stylix.colors; {
+      #   text = "${base05}";
+      #   subtext = "${base05}";
+      #   sidebar-text = "${base05}";
+      #   main = "${base00}";
+      #   sidebar = "${base01}";
+      #   player = "${base01}";
+      #   card = "${base00}";
+      #   shadow = "${base03}";
+      #   selected-row = "${base03}";
+      #   button = "${base0F}";
+      #   button-active = "${base05}";
+      #   button-disabled = "${base0E}";
+      #   tab-active = "${base03}";
+      #   notification = "${base0A}";
+      #   notification-error = "${base0F}";
+      #   misc = "${base05}";
+      #   alt-text = "${base05}";
+      #   player-bar-bg = "${base01}";
+      #   accent = "${base06}";
+      # };
       enabledExtensions = with spicePkgs.extensions; [
-        playlistIcons
-        lastfm
-        historyShortcut
-        spicetify-nix.packages.${pkgs.system}.default.extensions.adblock
-        hidePodcasts
-        fullAppDisplay
-        shuffle
-        # beautifulLyrics
+        beautifulLyrics
       ];
     };
   };

@@ -51,7 +51,10 @@
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
     # Spicetify, a spotify theming tool
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Colorscheme generator
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
@@ -98,6 +101,7 @@
         modules = [
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops
+          # inputs.spicetify-nix.homeManagerModules.default
           inputs.stylix.homeManagerModules.stylix
         ];
       };
