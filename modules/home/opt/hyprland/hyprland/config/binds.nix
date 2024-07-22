@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config, pkgs, ... }:
+let
   # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   workspaces = builtins.concatLists (builtins.genList (x: let
       ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
@@ -14,12 +11,11 @@
 
   # Get default application
   terminal = config.home.sessionVariables.TERMINAL;
-
 in {
   wayland.windowManager.hyprland = {
     settings = {
       bind = let
-        monocle = "dwindle:no_gaps_when_only";
+       monocle = "dwindle:no_gaps_when_only";
       in
         [
           #TODO: binds to resize windows
@@ -71,7 +67,7 @@ in {
           "SUPER, Q, exec, run-as-service ${terminal}"
           "SUPER, B, exec, firefox"
           "SUPER, L, exec, hyprlock"
-          "SUPER, O, exec, run-as-service wl-ocr"
+          "SUPER, O, exec, run-as-service wl-ocr" # capture text
 
           # Resize windows
           "SUPERSHIFT, right, resizeactive, 200 0"
@@ -80,9 +76,8 @@ in {
           "SUPERSHIFT, down, resizeactive, 0 200"
 
           # Screenshot
-          # "SUPERSHIFT, S, exec, ~/.local/bin/captureArea"
           "SUPERSHIFT, S ,exec, hyprshot -m region --clipboard-only"
-          "CTRLSHIFT, S, exec, grimblast --notify --cursor copysave output"
+          "SUPER, V, exec, wezterm start --class clipse -e clipse"  # exec clipse
         ]
         ++ workspaces;
 

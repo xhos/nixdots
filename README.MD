@@ -14,6 +14,7 @@
 
 WM: Hyprland
 Runner: rofi
+Clipboard manager: [clipse](https://github.com/savedra1/clipse)
 
 #### terminals:
 
@@ -71,6 +72,10 @@ copy ssh key into `/hosts`
 ```bash
 cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub
 ```
+
+## mount onedrive with rclone
+
+[instructions](https://itsfoss.com/use-onedrive-linux-rclone/)
 
 # Credit/Thanks ❤️
 

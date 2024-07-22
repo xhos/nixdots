@@ -78,6 +78,7 @@
       wireplumber # A modular session / policy manager for PipeWire
       xwayland
       zoxide # better cd
+      clipse # clipboard manager
     ];
   };
 }

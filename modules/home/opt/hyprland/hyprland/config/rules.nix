@@ -14,8 +14,6 @@
       ];
     in ["blur, ${toRegex layers}" "ignorealpha 0.5, ${toRegex layers}"];
 
-    plugin = {split-monitor-workspaces = {count = 5;};};
-
     # window rules
     windowrulev2 = [
       "dimaround, class:^(gcr-prompter)$"
@@ -39,6 +37,8 @@
       "workspace special silent, title:^(.*is sharing (your screen|a window).)$"
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
       "workspace special, class:^(obsidian)$"
+      "float,class:(clipse)"
+      "size 622 652,class:(clipse)"
     ];
   };
 }
