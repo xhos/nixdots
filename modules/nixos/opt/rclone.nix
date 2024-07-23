@@ -1,17 +1,11 @@
 { pkgs, config, lib, ... }: {
   config = lib.mkIf config.rclone.enable {
-    systemd.services.rclone-gdrive-mount = {
-      Unit = {
-        Description = "Service that connects to OneDrive";
-        After = [ "network-online.target" ];
-        Requires = [ "network-online.target" ];
-      };
-
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-      
-      Service = let
+    systemd.services.rclone-onedrive-mount = {
+      wantedBy = [ "default.target" ];
+      after    = [ "network-online.target" ];
+      requires = [ "network-online.target" ];
+    
+      serviceConfig = let
         onedriveDir = "/home/xhos/onedrive";
       in {
         Type = "simple";
@@ -20,6 +14,8 @@
         ExecStop = "/run/current-system/sw/bin/fusermount -u ${onedriveDir}";
         Restart = "on-failure";
         RestartSec = "10s";
+        User = "xhos";
+        Group = "users";
         Environment = [ "PATH=/run/wrappers/bin/:$PATH" ];
       };
     };
