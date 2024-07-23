@@ -1,5 +1,5 @@
 { inputs, pkgs, lib, config, ... }: {
-  theme = "greenscreen";
+  theme = "catppuccin-macchiato";
 
   imports = [
     ../../modules/home

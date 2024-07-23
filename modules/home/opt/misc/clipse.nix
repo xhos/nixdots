@@ -1,20 +1,30 @@
-{
-  home.file.".config/clipse/custom_theme.json".text = ''
-    {
-        "useCustomTheme": false,
-        "DimmedDesc": "#ffffff",
-        "DimmedTitle": "#ffffff",
-        "FilteredMatch": "#ffffff",
-        "NormalDesc": "#ffffff",
-        "NormalTitle": "#ffffff",
-        "SelectedDesc": "#ffffff",
-        "SelectedTitle": "#ffffff",
-        "SelectedBorder": "#ffffff",
-        "SelectedDescBorder": "#ffffff",
-        "TitleFore": "#ffffff",
-        "Titleback": "#434C5E",
-        "StatusMsg": "#ffffff",
-        "PinIndicatorColor": "#ff0000"
-    }
-  '';
+{ config, ... }: {
+  home.file.".config/clipse/custom_theme.json".text = with config.lib.stylix.colors; '' {
+    "UseCustom":          true,
+    "TitleFore":          "#ffffff",
+    "TitleBack":          "#6F4CBC",
+    "TitleInfo":          "#3498db",
+    "NormalTitle":        "#ffffff",
+    "DimmedTitle":        "#808080",
+    "SelectedTitle":      "#${config.accent}",
+    "NormalDesc":         "#808080",
+    "DimmedDesc":         "#808080",
+    "SelectedDesc":       "#${config.accent}",
+    "StatusMsg":          "#2ecc71",
+    "PinIndicatorColor":  "#FFD700",
+    "SelectedBorder":     "#3498db",
+    "SelectedDescBorder": "#3498db",
+    "FilteredMatch":      "#ffffff",
+    "FilterPrompt":       "#2ecc71",
+    "FilterInfo":         "#3498db",
+    "FilterText":         "#ffffff",
+    "FilterCursor":       "#FFD700",
+    "HelpKey":            "#999999",
+    "HelpDesc":           "#808080",
+    "PageActiveDot":      "#3498db",
+    "PageInactiveDot":    "#808080",
+    "DividerDot":         "#3498db",
+    "PreviewedText":      "#ffffff",
+    "PreviewBorder":      "#3498db",
+  }'';
 }
