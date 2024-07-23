@@ -9,6 +9,7 @@
 - custom driver for my samsung galaxy book 2 pro 360
 - touch support with hyprgrass
 - full system theming with stylix
+- systemd service for rclone
 
 ### info:
 
@@ -73,9 +74,11 @@ copy ssh key into `/hosts`
 cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub
 ```
 
-## mount onedrive with rclone
+## configure onedrive with rclone
 
-[instructions](https://itsfoss.com/use-onedrive-linux-rclone/)
+```bash
+rclone config
+```
 
 # Credit/Thanks ❤️
 
