@@ -14,6 +14,7 @@
   audio     .enable = true;
   bluetooth .enable = true;
   sshserver .enable = true;
+  rclone    .enable = true;
 
   boot = {
     extraModulePackages =

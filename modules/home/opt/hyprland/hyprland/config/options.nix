@@ -12,7 +12,6 @@
       "wl-paste --type image --watch cliphist store"
       "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
       "protonvpn-app" # TODO: find another way to do this
-      "rclone --vfs-cache-mode writes mount onedrive:  ~/onedrive" # mount onedrive
       "clipse -listen" # exec clipse
     ];
     animations = {

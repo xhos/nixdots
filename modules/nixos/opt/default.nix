@@ -9,5 +9,6 @@
     ./user.nix
     ./services.nix
     ./syncthing.nix
+    ./rclone.nix
   ];
 } 
