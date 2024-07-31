@@ -80,6 +80,13 @@ cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub
 rclone config
 ```
 
+# Notes:
+
+update:
+```bash
+cd /etc/nixos/ && nix flake update && nh home switch && nh os switch
+```
+
 # Credit/Thanks ❤️
 
 - [@joshuagrisham](https://github.com/joshuagrisham) for his magnificent work on [the galaxy book driver](https://github.com/joshuagrisham/samsung-galaxybook-extras)
