@@ -23,7 +23,7 @@ environment.systemPackages = with pkgs; [
     
     # Video
     mpv # video player
-    ffmpeg_5-full
+    ffmpeg-full
 
     # Other      
     brightnessctl

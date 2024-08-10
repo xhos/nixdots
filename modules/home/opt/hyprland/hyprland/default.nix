@@ -119,7 +119,7 @@ in {
       
       plugins = [
         inputs.hyprgrass.packages.${pkgs.system}.default
-        inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+        # inputs.hyprspace.packages.${pkgs.system}.Hyprspace
       ];
 
       xwayland.enable = true;

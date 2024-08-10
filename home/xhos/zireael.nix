@@ -13,7 +13,7 @@
 
   default = {
     de       = "hyprland";
-    bar      = "ags";
+    bar      = "waybar";
     lock     = "hyprlock";
     shell    = "nu";
     prompt   = "starship";

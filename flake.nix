@@ -29,11 +29,11 @@
     # Hyprland, the modern compositor for wayland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    # Hyprspacem, hyprland workspace overview plugin
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # Hyprspace, hyprland workspace overview plugin
+    # hyprspace = {
+    #   url = "github:KZDKM/Hyprspace";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     # Hyprgrass, hyprland touch gestures plugin
     hyprgrass = {

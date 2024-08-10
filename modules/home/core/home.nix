@@ -12,10 +12,11 @@
       
       (pkgs.callPackage ../../../scripts/modeSwitcher.nix {})
       swww # wallpaper daemon
+      zed-editor
       protonvpn-gui 
       proton-pass
       kitty # here as a fallback
-      gnome.nautilus
+      nautilus
       (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
       (discord.override {withVencord = true;})
       obs-studio

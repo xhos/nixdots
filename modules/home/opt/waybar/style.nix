@@ -2,115 +2,237 @@
 
 * {
     border: none;
-    border-radius: 0px;
-    font-family: Iosevka, FontAwesome, Noto Sans CJK;
-    font-size: 14px;
+    border-radius: 4px;
+    /* `ttf-font-awesome` is required to be installed for icons */
+    font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
+
+    /* adjust font-size value to your liking: */
+    font-size: 10px;
+
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.5);
-    color: #${config.accent}
+    background-color: rgba(0, 0, 0, 0.9);
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    color: #ffffff;
+    /* transition-property: background-color; */
+    /* transition-duration: .5s; */
+    /* border-radius: 0; */
 }
 
-#workspaces {
-    background: #${config.background};
-    margin: 5px 5px;
-    padding: 8px 5px;
-    border-radius: 16px;
-    color: #${config.accent};
+/* window#waybar.hidden {
+    opacity: 0.2;
+} */
+
+/*
+window#waybar.empty {
+    background-color: transparent;
 }
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+/* window#waybar.termite {
+    background-color: #000000;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+} */
 
 #workspaces button {
-    padding: 0px 5px;
-    margin: 0px 3px;
-    border-radius: 16px;
-    color: transparent;
-    background: #${config.lib.stylix.colors.base01};
-    transition: all 0.3s ease-in-out;
+    /* padding: 0 0.4em; */
+    /* background-color: transparent; */
+    color: #ffffff;
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
 }
 
-#workspaces button.active {
-    background-color: #${config.accent};
-    color: #${config.background};
-    border-radius: 16px;
-    min-width: 50px;
-    background-size: 400% 400%;
-    transition: all 0.3s ease-in-out;
-}
-
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background-color: #${config.text};
-    color: #${config.background};
-    border-radius: 16px;
-    min-width: 50px;
-    background-size: 400% 400%;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 -3px #ffffff;
 }
 
-#tray, #pulseaudio, #battery,
-#custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
-    background: #${config.background};
-    font-weight: bold;
+#workspaces button.focused {
+    background-color: #64727D;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
-#tray, #pulseaudio, #battery{
-    color: #${config.text};
-    border-radius: 20px;
-    padding: 0 20px;
-    margin-left: 7px;
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    /* border-bottom: 3px solid #ffffff; */
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    margin: 6px 3px; 
+    color: #000000;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
 #clock {
-    color: #${config.text};
-    font-weight: bold;
-    font-size: 18px;
-    margin-left: 2px;
+    background-color: #000000;
+    color: white;
 }
 
-#custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward {
-    background: #${config.background};
-    font-size: 22px;
+#battery {
+    background-color: #000000;
+    color: white;
 }
 
-#custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.foward:hover{
-    color: #${config.text};
+#battery.charging {
+    color: #ffffff;
+    background-color: #000000;
 }
 
-#custom-playerctl.backward {
-    color: #${config.accent};
-    border-radius: 20px 0px 0px 20px;
-    padding-left: 16px;
-    margin-left: 7px;
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
 
-#custom-playerctl.play {
-    color: #${config.accent};
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#memory {
+    background-color: #000000;
+    color: white;
+}
+
+#backlight {
+    background-color: #000000;
+    color:white;
+}
+
+#network {
+    background-color: #000000;
+    color:white;
+
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#pulseaudio.muted {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #bbccdd;
+    color: #333333;
     padding: 0 5px;
-}
-
-#custom-playerctl.foward {
-    color: #${config.accent};
-    border-radius: 0px 20px 20px 0px;
-    padding-right: 12px;
-    margin-right: 7px
-}
-
-#custom-playerlabel {
-    background: transparent;
-    color: #${config.text};
-    margin: 5px 0;
-    font-weight: bold;
-}
-
-#window{
-    background: #${config.background};
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 16px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-weight: normal;
-    font-style: normal;
-}        
+    margin: 6px 3px;
+    min-width: 16px;
+}       
 
 '';}
