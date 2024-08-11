@@ -5,6 +5,7 @@
       material-design-icons
 
       # normal fonts
+      font-awesome
       dosis
       rubik
       lexend

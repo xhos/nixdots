@@ -9,5 +9,6 @@
     ./user.nix
     ./services.nix
     ./rclone.nix
+    ./misc.nix
   ];
-} 
+}

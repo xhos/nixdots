@@ -1,7 +1,10 @@
-{ config, ... }: {
-  wayland.windowManager.hyprland.settings = {
+{ config, ... }:
+let
+    launchBarCommand = if config.default.bar == "ags" then "ags" else "waybar";
+in {
+wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "ags"
+      launchBarCommand
       "nm-applet"
       "blueman-applet"
       "clipse -listen"
@@ -11,7 +14,7 @@
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
       "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
-      "protonvpn-app" # TODO: find another way to do this
+      "protonvpn-app"
       "clipse -listen" # exec clipse
     ];
     animations = {

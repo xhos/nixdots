@@ -2,18 +2,14 @@
 
 * {
     border: none;
-    border-radius: 4px;
-    /* `ttf-font-awesome` is required to be installed for icons */
-    font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
-
-    /* adjust font-size value to your liking: */
-    font-size: 10px;
-
+    border-radius: 0px;
+    font-family: NotoSans Nerd Font Mono;
+    font-size:  13px;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 1);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     /* transition-property: background-color; */
@@ -21,27 +17,10 @@ window#waybar {
     /* border-radius: 0; */
 }
 
-/* window#waybar.hidden {
-    opacity: 0.2;
-} */
-
-/*
-window#waybar.empty {
-    background-color: transparent;
+#custom-spotify {
+    margin:     0px 6px 0px 10px;
+    min-width:  100px;
 }
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-/* window#waybar.termite {
-    background-color: #000000;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-} */
 
 #workspaces button {
     /* padding: 0 0.4em; */
@@ -66,7 +45,7 @@ window#waybar.chromium {
     background-color: #eb4d4b;
 }
 
-#mode {
+#submap {
     background-color: #64727D;
     /* border-bottom: 3px solid #ffffff; */
 }
@@ -85,7 +64,7 @@ window#waybar.chromium {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    margin: 6px 3px; 
+    margin: 6px 3px;
     color: #000000;
 }
 
@@ -175,20 +154,6 @@ label:focus {
     color: #ffffff;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
 #temperature {
     background-color: #f0932b;
 }
@@ -198,7 +163,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: #000;
 }
 
 #idle_inhibitor {
@@ -233,6 +198,6 @@ label:focus {
     padding: 0 5px;
     margin: 6px 3px;
     min-width: 16px;
-}       
+}
 
 '';}
