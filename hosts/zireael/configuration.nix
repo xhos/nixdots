@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
   ];
-  
+
   networking.hostName = "zireael";
 
   users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./zireael.pub ];
@@ -15,10 +15,11 @@
   bluetooth .enable = true;
   sshserver .enable = true;
   rclone    .enable = true;
+  steam     .enable = true;
 
   boot = {
     extraModulePackages =
-    let 
+    let
       sgbextras = config.boot.kernelPackages.callPackage ../../derivs/samsung-galaxybook-extras.nix { };
     in [
       sgbextras
@@ -29,11 +30,11 @@
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
-  
+
   hardware.opengl.extraPackages = with pkgs; [
     intel-media-driver # LIBVA_DRIVER_NAME=iHD
     intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
   ];
-  
+
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
 }

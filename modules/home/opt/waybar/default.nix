@@ -14,7 +14,7 @@
 
         modules-left = ["hyprland/workspaces" "hyprland/submap" "custom/spotify"];
         modules-center = ["clock"];
-        modules-right = ["tray" "pulseaudio" "network" "battery"];
+        modules-right = ["tray" "hyprland/language" "pulseaudio" "network" "battery"];
 
         # Modules configuration
         # TODO: go to spotify on click
@@ -26,6 +26,13 @@
           escape = "true";
         };
 
+        "hyprland/language" = {
+            format = "{}";
+            format-en = "🦅";
+            format-ru = "🐻";
+            keyboard-name = "at-translated-set-2-keyboard";
+        };
+
         "hyprland/workspaces".active-only = true;
 
         tray = {
@@ -33,7 +40,7 @@
         };
 
         clock = {
-          format = "{:%I:%M }";
+          format = "{:%H:%M }";
           format-alt = "{:%Y-%m-%d}";
         };
 
@@ -78,7 +85,7 @@
         };
 
         pulseaudio = {
-          format = "{icon} {volume:2}%";
+          format = "{icon}  {volume:2}%";
           format-bluetooth = "{icon}  {volume}%";
           format-muted = "";
           format-icons = {

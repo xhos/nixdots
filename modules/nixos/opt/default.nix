@@ -10,5 +10,6 @@
     ./services.nix
     ./rclone.nix
     ./misc.nix
+    ./steam.nix
   ];
 }

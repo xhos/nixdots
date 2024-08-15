@@ -1,10 +1,12 @@
 { config, ... }:
 let
-    launchBarCommand = if config.default.bar == "ags" then "ags" else "waybar";
+    launchBar = if config.default.bar == "ags" then "ags" else "waybar";
+    setWallpaper = "swww img ${config.wallpaper}";
 in {
 wayland.windowManager.hyprland.settings = {
     exec-once = [
-      launchBarCommand
+      # launchBar
+      "swww-daemon"
       "nm-applet"
       "blueman-applet"
       "clipse -listen"
@@ -15,11 +17,11 @@ wayland.windowManager.hyprland.settings = {
       "wl-paste --type image --watch cliphist store"
       "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
       "protonvpn-app"
-      "clipse -listen" # exec clipse
+      setWallpaper
     ];
+
     animations = {
       enabled = true;
-
       bezier = ["md3_decel, 0.05, 0.7, 0.1, 1"];
 
       animation = [

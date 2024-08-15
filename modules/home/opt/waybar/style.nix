@@ -19,7 +19,7 @@ window#waybar {
 
 #custom-spotify {
     margin:     0px 6px 0px 10px;
-    min-width:  100px;
+    min-width:  10px;
 }
 
 #workspaces button {
@@ -193,11 +193,11 @@ label:focus {
 }
 
 #language {
-    background: #bbccdd;
+    background: #000000;
     color: #333333;
     padding: 0 5px;
     margin: 6px 3px;
-    min-width: 16px;
+    min-width: 1px;
 }
 
 '';}
