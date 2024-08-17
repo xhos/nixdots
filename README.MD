@@ -61,17 +61,18 @@ if any erros with keys, or after key change:
 ```bash
 sops updatekeys /etc/nixos/core/secrets/secrets.yaml
 ```
-
-put password hash into secrets.yaml, to get hash:
-
-```bash
-mkpasswd -s to get password hash
-```
+`note: if no key is able to decrypt this command will fail`
 
 copy ssh key into `/hosts`
 
 ```bash
 cp /etc/ssh/ssh_host_ed25519_key.pub /etc/nixos/hosts/zireael/zireael.pub
+```
+
+put password hash into secrets.yaml, to get hash:
+
+```bash
+mkpasswd -s
 ```
 
 ## configure onedrive with rclone

@@ -6,18 +6,32 @@
     pam.services = {
       greetd = {
         gnupg.enable = true;
-        enableGnomeKeyring = true;
+        # enableGnomeKeyring = true;
       };
 
       login = {
-        enableGnomeKeyring = true;
+        # enableGnomeKeyring = true;
         gnupg = {
           enable = true;
           noAutostart = true;
           storeOnly = true;
         };
       };
-    };    
+    };
+  };
+
+  systemd.user.services.ssh-agent = {
+    description = "SSH key agent";
+    wantedBy = [ "default.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      Environment = [
+        "SSH_AUTH_SOCK=%t/ssh-agent.socket"
+        "DISPLAY=:0"
+      ];
+      ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
+    };
   };
 
   systemd.user.services.polkit-gnome-authentication-agent-1 = {

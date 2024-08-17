@@ -8,7 +8,7 @@
         naturalScrolling = true;
       };
     };
-  
+
     dbus.enable = true;
     upower.enable = true;
 
@@ -26,7 +26,7 @@
     };
 
     gnome = {
-      gnome-keyring.enable = true;
+      # gnome-keyring.enable = true;
       glib-networking.enable = true;
     };
   };

@@ -15,7 +15,7 @@
     de       = "hyprland";
     bar      = "waybar";
     lock     = "hyprlock";
-    shell    = "nu";
+    shell    = "fish";
     prompt   = "starship";
     terminal = "wezterm";
   };

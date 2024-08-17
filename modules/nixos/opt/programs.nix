@@ -1,7 +1,8 @@
-{ 
+{
   programs = {
     fish.enable = true;
     dconf.enable = true;
+    # ssh.startAgent = true;
   };
 
   qt = {
