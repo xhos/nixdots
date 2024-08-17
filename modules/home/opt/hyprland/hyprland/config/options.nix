@@ -16,10 +16,8 @@ wayland.windowManager.hyprland.settings = {
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
       "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
-      # "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
-      # "eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
-      # "export SSH_AUTH_SOCK"
-      # "ssh-add /home/xhos/.ssh/github"
+      "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
+      # "ssh-add /home/xhos/.ssh/github" # pointless cause permissions are fucked: https://github.com/nix-community/home-manager/issues/322
       "protonvpn-app"
       setWallpaper
     ];

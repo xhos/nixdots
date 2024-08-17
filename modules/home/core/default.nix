@@ -24,10 +24,11 @@
     ACCENT = config.accent;
     BACKGROUND = config.background;
     TEXT = config.text;
-    # SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
-    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
+    SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
   };
+
   programs.ssh.addKeysToAgent = "yes";
+
   home.pointerCursor = {
     name = "phinger-cursors-dark";
     package = pkgs.phinger-cursors;
