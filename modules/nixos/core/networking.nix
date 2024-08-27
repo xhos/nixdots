@@ -2,6 +2,7 @@
 let
   sshPort = 10022;
 in {
+  # services.avahi.enable = true; # for gnome-network-displays
   networking = {
     networkmanager.enable = true;
     firewall = {

@@ -1,5 +1,5 @@
 {
-  description = "i don't know tf i'm doing";
+  description = "my os flake";
 
   inputs = {
     # Nixpkgs Stable
@@ -47,6 +47,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nixcord, a way to manage vencord plugins nix way
+    nixcord.url = "github:kaylorben/nixcord";
+
     # Hyprpicker, color picker for hyprland
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
@@ -64,7 +67,7 @@
       url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # Wezterm unstable
     wezterm = {
       url = "git+https://github.com/wez/wezterm.git?submodules=1";
@@ -101,6 +104,7 @@
         modules = [
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops
+          inputs.nixcord.homeManagerModules.nixcord
           # inputs.spicetify-nix.homeManagerModules.default
           inputs.stylix.homeManagerModules.stylix
         ];

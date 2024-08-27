@@ -20,24 +20,24 @@ environment.systemPackages = with pkgs; [
     pamixer # pulseaudio command line mixer
     pavucontrol # pulseaudio controls
     easyeffects # pipewire audio effects
-    
+
     # Video
     mpv # video player
     ffmpeg-full
 
-    # Other      
+    # Other
     brightnessctl
     wayland
 
     rclone # to mount cloud storage
-    
+
     git
     git-lfs
     git-extras
 
     age # file encryption
     sops # secrets encryption
-    
+
     bat # cat but better
     btop
     fzf
@@ -49,8 +49,9 @@ environment.systemPackages = with pkgs; [
     unzip
     gtk3
     neovim
+    protonup
   ];
-  
+
   nixpkgs.config = {
     allowUnfree = true;
   };

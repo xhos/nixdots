@@ -67,7 +67,7 @@ in {
           "SUPER, Q, exec, run-as-service ${terminal}"
           "SUPER, B, exec, firefox"
           "SUPER, L, exec, hyprlock"
-          "SUPER, O, exec, run-as-service wl-ocr" # capture text
+          "SUPERSHIFT, T, exec, run-as-service wl-ocr" # capture text
 
           # Resize windows
           "SUPERSHIFT, right, resizeactive, 200 0"

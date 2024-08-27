@@ -1,6 +1,6 @@
 {
   imports = [
-    ./vencord.nix
+    ./discord.nix
     # ./obsidian.nix
     ./fastfetch.nix
     ./git.nix

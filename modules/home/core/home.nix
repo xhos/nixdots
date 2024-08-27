@@ -9,60 +9,21 @@
       (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
-      
-      (pkgs.callPackage ../../../scripts/modeSwitcher.nix {})
+
+      # Utils
       swww # wallpaper daemon
-      zed-editor
-      protonvpn-gui 
-      proton-pass
-      kitty # here as a fallback
-      nautilus
-      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
-      (discord.override {withVencord = true;})
-      obs-studio
       fastfetch
-      termius # just for keychain accss
       hyprshot
-      starship
-      oh-my-posh
-      wev # for keybindings 
-      nushell
-      fish grc
+      wev # for keybindings
       scrcpy # android screen mirroring
       yazi # cli explorer
-
-      # Dev
-      rustup
-      python3
-      yq # YAML, JSON and XML processor
-      alejandra # nix code formatter
-
-      grim # screenshot util
-
-      qbittorrent-qt5
-      # rqbit
-      # miru
-      # stremio
-
-      bemoji # emoji picker
-      chromium
-      circumflex # (clx) hacker news cli
       colordiff # file diff
-      
-      deadnix # remove unused code in nix files
-      docker-compose
+      clipse # clipboard manager
       feh # image viewer
-      gcc
-      gh # github cli
       gitmoji-cli # emoji for commits
       glab # gitlab cli
       glow # cli markdown renderer
-      gnumake
-      gum # fancy scripts
       imagemagick
-      just # project specific commands
-      marksman # markdown language server
-      obsidian
       onefetch # git repo summary
       openssl
       openvpn
@@ -71,15 +32,59 @@
       rcon # remote console (minecraft?)
       sherlock
       skim # fzf in rust (sk)
+      zoxide # better cd
       tailspin # log highlighter
+
+      # Actual software
+      zed-editor
+      protonvpn-gui
+      proton-pass
+      kitty # here as a fallback
+      nautilus
+      bottles # run windows
+      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+      obs-studio
+      # termius # just for keychain accss
+      qbittorrent-qt5
+      obsidian
+      chromium
       telegram-desktop
-      tlrc # better man
-      ventoy
-      viddy # modern "watch"
+      # rqbit
+      # miru
+      # stremio
+
+      # TODO: ?Should not be here?
+      starship
+      oh-my-posh
+      nushell
+      fish grc
       wireplumber # A modular session / policy manager for PipeWire
       xwayland
-      zoxide # better cd
-      clipse # clipboard manager
+
+      # Dev
+      rustup
+      python3
+      # yq # YAML, JSON and XML processor
+      # alejandra # nix code formatter
+      # deadnix # remove unused code in nix files
+      docker-compose
+      gcc
+      gh # github cli
+      # marksman # markdown language server
+      # just # project specific commands
+      viddy # modern "watch"
+      gnumake
+      gum # fancy scripts
+
+      bemoji # emoji picker
+      # circumflex # (clx) hacker news cli
+
+
+      tlrc # better man
+      ventoy
+      # gnome-network-displays # not implemented yet: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/70
+      miraclecast
+
     ];
   };
 }
