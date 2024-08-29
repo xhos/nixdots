@@ -13,9 +13,7 @@
       LC_TIME = "en_CA.UTF-8";
     };
   };
-  
-  time = {
-    hardwareClockInLocalTime = true;
-    timeZone = "Japan";
-  };
+  services.avahi.enable = true;
+  time.hardwareClockInLocalTime = true;
+  services.automatic-timezoned.enable = true;
 }

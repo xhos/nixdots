@@ -1,6 +1,6 @@
 { inputs, config, lib, pkgs, ... }:
 
-let 
+let
   inherit (lib) concatStringsSep escapeShellArg mapAttrsToList;
   env = {
     MOZ_WEBRENDER = 1;
@@ -55,7 +55,7 @@ in {
        (builtins.readFile "${minifox}/chrome/browser/vertical.css")
        (builtins.readFile "${minifox}/chrome/browser/window-controls.css")
       ];
-      
+
       extraConfig = builtins.concatStringsSep "\n" [
         # (builtins.readFile "${betterfox}/Securefox.js")
         (builtins.readFile "${betterfox}/Fastfox.js")
@@ -87,7 +87,7 @@ in {
         "uc.tweak.translucency" = true;
         "uc.tweak.bottom-nav" = false;
         "uc.tweak.no-window-controls" = true;
-        
+
         # Why the fuck can my search window make bell sounds
         "accessibility.typeaheadfind.enablesound" = false;
         # Why the fuck can my search window make bell sounds
