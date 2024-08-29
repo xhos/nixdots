@@ -13,7 +13,7 @@
       LC_TIME = "en_CA.UTF-8";
     };
   };
-  services.avahi.enable = true;
+
   time.hardwareClockInLocalTime = true;
   services.automatic-timezoned.enable = true;
 }

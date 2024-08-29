@@ -65,6 +65,7 @@ wayland.windowManager.hyprland.settings = {
     dwindle = {
       pseudotile = true;
       preserve_split = true;
+      no_gaps_when_only = -1;
     };
 
     env = ["GDK_SCALE,2" "WLR_DRM_NO_ATOMIC,1"];
