@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   options = {
     bluetooth.enable = lib.mkEnableOption "Enable bluetooth";
     rclone   .enable = lib.mkEnableOption "Enable rclone";

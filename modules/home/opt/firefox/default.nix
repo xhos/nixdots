@@ -32,7 +32,7 @@ let
   };
 
 in {
-  programs.firefox = {
+  programs.firefox = lib.mkIf config.modules.firefox.enable {
     enable = true;
     package = pkgs.firefox.overrideAttrs (old: {
       buildCommand = # don't know what this does - don't care

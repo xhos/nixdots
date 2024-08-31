@@ -1,7 +1,6 @@
 {
   imports = [
     ./mpd
-    ./ncmp
     ./spicetify
   ];
 }

@@ -5,7 +5,6 @@
       hyprland.enable  = lib.mkEnableOption "Enable hyprland";
       lf.enable        = lib.mkEnableOption "Enable lf";
       mpd.enable       = lib.mkEnableOption "Enable mpd";
-      ncmpcpp.enable   = lib.mkEnableOption "Enable ncmp";
       rofi.enable      = lib.mkEnableOption "Enable rofi";
       spicetify.enable = lib.mkEnableOption "Enable spicetify";
       wezterm.enable   = lib.mkEnableOption "Enable wezterm";
@@ -14,23 +13,23 @@
 
     default = {
       de = lib.mkOption {
-        type = lib.types.enum ["hyprland"];
+        type = lib.types.enum ["hyprland" "none"];
         default = "hyprland";
       };
       bar = lib.mkOption {
-        type = lib.types.enum ["ags" "waybar"];
+        type = lib.types.enum ["ags" "waybar" "none"];
         default = "ags";
       };
       browser = lib.mkOption {
-        type = lib.types.enum ["firefox"];
+        type = lib.types.enum ["firefox" "none"];
         default = "firefox";
       };
       terminal = lib.mkOption {
-        type = lib.types.enum ["wezterm" "foot" "kitty"];
+        type = lib.types.enum ["wezterm" "foot" "kitty" "none"];
         default = "foot";
       };
       lock = lib.mkOption {
-        type = lib.types.enum ["hyprlock"];
+        type = lib.types.enum ["hyprlock" "none"];
         default = "hyprlock";
       };
       prompt = lib.mkOption {

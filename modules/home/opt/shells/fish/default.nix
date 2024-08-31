@@ -8,7 +8,12 @@
 
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
+        thefuck --alias | source
       '';
+
+      shellAliases = {
+        ns = "nix-shell -p";
+      };
 
       plugins = [
         # Enable a plugin (here grc for colorized command output) from nixpkgs
