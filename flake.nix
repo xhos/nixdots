@@ -17,6 +17,11 @@
     # Stylix, nix-colors alertnative
     stylix.url = "github:danth/stylix";
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Ags, a customizable and extensible shell
     ags.url = "github:Aylur/ags";
 

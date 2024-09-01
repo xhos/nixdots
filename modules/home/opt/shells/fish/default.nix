@@ -13,6 +13,11 @@
 
       shellAliases = {
         ns = "nix-shell -p";
+        ff = "fastfetch";
+        gcl = "git clone";
+        ga = "git add .";
+        gp = "git push";
+        gc = "git commit -m";
       };
 
       plugins = [
