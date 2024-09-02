@@ -2,7 +2,6 @@
 
 ### main features:
 
-- ags widgets (JS 🤮}
 - spicetify with spicetify-nix
 - secret management with sops-nix
 - cool firefox theme (minfox)
@@ -36,8 +35,7 @@ Clipboard manager: [clipse](https://github.com/savedra1/clipse)
 
 #### bars:
 
-- **ags**
-- waybar
+- **waybar**
 
 ## post install (notes to self, not instructions)
 
@@ -93,7 +91,5 @@ cd /etc/nixos/ && nix flake update && nh home switch && nh os switch
 - [@joshuagrisham](https://github.com/joshuagrisham) for his magnificent work on [the galaxy book driver](https://github.com/joshuagrisham/samsung-galaxybook-extras)
 
 - [@ItzDerock](https://github.com/ItzDerock) for sharing his [nix derivation](https://github.com/joshuagrisham/samsung-galaxybook-extras/issues/14#issue-2328871732) for that driver
-
-- [@Aylur](https://github.com/Aylur) for his [beautiful ags setup](https://github.com/Aylur/dotfiles)
 
 - [@elyth](https://github.com/elythh), my config started as a fork of his [flake](https://github.com/elythh/flake)

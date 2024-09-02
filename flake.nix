@@ -22,9 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Ags, a customizable and extensible shell
-    ags.url = "github:Aylur/ags";
-
     # Waybar, the wayland bar
     waybar.url = "github:/alexays/waybar";
 

@@ -17,8 +17,8 @@
         default = "hyprland";
       };
       bar = lib.mkOption {
-        type = lib.types.enum ["ags" "waybar" "none"];
-        default = "ags";
+        type = lib.types.enum ["waybar" "none"];
+        default = "waybar";
       };
       browser = lib.mkOption {
         type = lib.types.enum ["firefox" "none"];

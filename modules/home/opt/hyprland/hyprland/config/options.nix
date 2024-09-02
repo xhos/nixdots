@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  launchBar = if config.default.bar == "ags" then "ags" else "waybar";
+  # launchBar = if config.default.bar == "ags" then "ags" else "waybar";
   setWallpaper = "swww img ${config.wallpaper}";
 in { wayland.windowManager.hyprland.settings = {
   exec-once = [
