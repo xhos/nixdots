@@ -1,5 +1,5 @@
 { inputs, pkgs, lib, config, ... }: {
-  theme = "forest";
+  theme = "apathy";
 
   imports = [
     ../../modules/home
