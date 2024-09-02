@@ -35,7 +35,7 @@
 
       # http://kb.mozillazine.org/Category:Preferences
       settings = {
-		    "browser.search.defaultenginename" = "duckduckgo";
+		    "browser.search.defaultenginename" = "google";
 		    "browser.shell.checkDefaultBrowser" = false;
 		    "browser.shell.defaultBrowserCheckCount" = 1;
 		    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
@@ -74,34 +74,33 @@
 
 			extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
   			vimium
-  			duckduckgo-privacy-essentials
   			sidebery
-  			i-dont-care-about-cookies
   			adaptive-tab-bar-colour
+        don-t-fuck-with-paste
 
         ublock-origin
-        re-enable-right-click
-        don-t-fuck-with-paste
-        proton-pass
+  			duckduckgo-privacy-essentials
+  			i-dont-care-about-cookies
+        clearurls
+        decentraleyes
+        privacy-badger
 
+        proton-pass
+        darkreader
+        search-by-image
+
+        steam-database
+        github-file-icons
         sponsorblock
         return-youtube-dislikes
-
-        enhanced-github
-        refined-github
-        github-file-icons
-        reddit-enhancement-suite
       ];
 
       search = {
         force = true;
         default = "Google";
-        order = ["Yandex" "Google" "DuckDuckGo" "Youtube" "NixOS Options" "Nix Packages" "GitHub" "HackerNews"];
+        order = ["Google" "Yandex" "Youtube" "Nix Options" "Nix Packages" "Home Manager"];
 
         engines = {
-          "Bing".metaData.hidden = true;
-          "Amazon.com".metaData.hidden = true;
-
           "Yandex" = {
             iconUpdateURL = "https://ya.ru/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
@@ -176,24 +175,6 @@
             ];
           };
 
-          "GitHub" = {
-            iconUpdateURL = "https://github.com/favicon.ico";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = ["@gh"];
-
-            urls = [
-              {
-                template = "https://github.com/search";
-                params = [
-                  {
-                    name = "q";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-          };
-
           "Home Manager" = {
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@hm"];
@@ -210,33 +191,15 @@
               }
             ];
           };
-
-          "HackerNews" = {
-            iconUpdateURL = "https://hn.algolia.com/favicon.ico";
-            updateInterval = 24 * 60 * 60 * 1000;
-            definedAliases = ["@hn"];
-
-            url = [
-              {
-                template = "https://hn.algolia.com/";
-                params = [
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-          };
         };
       };
     };
   };
 
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "text/xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
-  };
+  # xdg.mimeApps.defaultApplications = {
+  #   "text/html" = ["firefox.desktop"];
+  #   "text/xml" = ["firefox.desktop"];
+  #   "x-scheme-handler/http" = ["firefox.desktop"];
+  #   "x-scheme-handler/https" = ["firefox.desktop"];
+  # };
 }
