@@ -59,6 +59,7 @@ if any erros with keys, or after key change:
 ```bash
 sops updatekeys /etc/nixos/core/secrets/secrets.yaml
 ```
+
 `note: if no key is able to decrypt this command will fail`
 
 copy ssh key into `/hosts`
@@ -82,9 +83,36 @@ rclone config
 # Notes:
 
 update:
+
 ```bash
 cd /etc/nixos/ && nix flake update && nh home switch && nh os switch
 ```
+
+# WSL install:
+
+Quick Start
+
+Enable WSL if you haven't done already:
+
+```bash
+wsl --install --no-distribution
+```
+
+Download nixos-wsl.tar.gz from the [latest release](https://github.com/nix-community/NixOS-WSL/releases/latest).
+
+Import the tarball into WSL:
+
+```bash
+    wsl --import NixOS --version 2 $env:USERPROFILE\NixOS\ nixos-wsl.tar.gz
+```
+
+You can now run NixOS:
+
+```bash
+    wsl -d NixOS
+```
+
+For more detailed instructions, [refer to the documentation](https://nix-community.github.io/NixOS-WSL/install.html).
 
 # Credit/Thanks ❤️
 

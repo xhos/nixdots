@@ -11,25 +11,37 @@
     # Home-manager
     hm.url = "github:nix-community/home-manager";
 
-    # nix helper
+    # Nix User Repository
+    nur.url = "github:nix-community/NUR";
+
+    # Nix helper
     nh.url = "github:viperML/nh";
 
     # Stylix, nix-colors alertnative
     stylix.url = "github:danth/stylix";
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # NixOS WSL, a way to use nix powers on windows
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # Waybar, the wayland bar
     waybar.url = "github:/alexays/waybar";
 
-    # Nix User Repository
-    nur.url = "github:nix-community/NUR";
-
     # Hyprland, the modern compositor for wayland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    # Nixcord, a way to manage vencord plugins nix way
+    nixcord.url = "github:kaylorben/nixcord";
+
+    # Hyprpicker, color picker for hyprland
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    # Colorscheme generator
+    matugen.url = "github:InioX/matugen?ref=v2.2.0";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Hyprspace, hyprland workspace overview plugin
     # hyprspace = {
@@ -49,20 +61,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nixcord, a way to manage vencord plugins nix way
-    nixcord.url = "github:kaylorben/nixcord";
-
-    # Hyprpicker, color picker for hyprland
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-
     # Spicetify, a spotify theming tool
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Colorscheme generator
-    matugen.url = "github:InioX/matugen?ref=v2.2.0";
 
     # Rust prject helper
     naersk = {
@@ -91,8 +94,17 @@
         specialArgs = { inherit inputs; };
         modules = [
           hm.nixosModule
-          # inputs.stylix.nixosModules.stylix
           ./hosts/zireael/configuration.nix
+        ];
+      };
+      aevon = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+          }
         ];
       };
     };
@@ -107,7 +119,16 @@
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixcord.homeManagerModules.nixcord
-          # inputs.spicetify-nix.homeManagerModules.default
+          inputs.stylix.homeManagerModules.stylix
+        ];
+      };
+      "xhos@aevon" = inputs.hm.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home/xhos/zireael.nix
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.nixcord.homeManagerModules.nixcord
           inputs.stylix.homeManagerModules.stylix
         ];
       };
