@@ -9,6 +9,7 @@
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
         thefuck --alias | source
+        source (/home/xhos/.nix-profile/bin/starship init fish --print-full-init | psub)
       '';
 
       shellAliases = {

@@ -16,6 +16,7 @@
   sshserver .enable = true;
   rclone    .enable = true;
   steam     .enable = true;
+  boot-management.enable = true;
 
   boot = {
     extraModulePackages =

@@ -8,7 +8,9 @@
     ./music
     ./terminals
     ./hyprland
+    ./overlays.nix
     ./rofi
+    ./style/stylix.nix
     ./prompts
   ];
 }

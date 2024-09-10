@@ -5,15 +5,24 @@
   ];
 
   networking.hostName = "aevon";
+  wsl.defaultUser = "xhos";
 
-  # users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./zireael.pub ];
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };  
 
-  fonts     .enable = false;
-  wayland   .enable = false;
-  audio     .enable = false;
-  bluetooth .enable = false;
-  sshserver .enable = false;
-  rclone    .enable = false;
-  steam     .enable = false;
-  firefox   .enable = false;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  environment.systemPackages = with pkgs; [
+    wget
+    git
+  ]; 
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
+  system.stateVersion = "24.05";
+  wsl.enable = true;
 }

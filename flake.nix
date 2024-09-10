@@ -80,7 +80,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, hm, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, hm, nixos-wsl, ... }@inputs:
   let
     inherit (self) outputs;
     system = "x86_64-linux";
@@ -100,11 +100,9 @@
       aevon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./hosts/aevon/configuration.nix
+          hm.nixosModule
           nixos-wsl.nixosModules.default
-          {
-            system.stateVersion = "24.05";
-            wsl.enable = true;
-          }
         ];
       };
     };
@@ -126,7 +124,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = [
-          ./home/xhos/zireael.nix
+          ./home/xhos/aevon.nix
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixcord.homeManagerModules.nixcord
           inputs.stylix.homeManagerModules.stylix

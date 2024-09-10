@@ -1,6 +1,8 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, lib, ... }: {
+  imports = [ ./settings.nix ];
+
   stylix = {
-    base16Scheme = ./${config.theme}.yaml;
+    base16Scheme = ./themes/${config.theme}.yaml;
     image = ../../../../home/shared/walls/${config.theme}.jpg;
 
     polarity = "dark";
