@@ -1,5 +1,5 @@
-{
-  programs.nixcord = {
+{ lib, config, ... }: {
+  programs.nixcord = lib.mkIf config.modules.discord.enable {
     enable = true;  # enable Nixcord. Also installs discord package
     quickCss = ''
     /* Sidebar */

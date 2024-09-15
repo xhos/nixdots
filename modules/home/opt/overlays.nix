@@ -1,5 +1,5 @@
-{ inputs, pkgs, lib, ... }: {
-  nixpkgs.overlays = [
+{ inputs, pkgs, lib, config, ... }: {
+  nixpkgs.overlays = lib.mkIf config.modules.wezterm.enable [
     inputs.nur.overlay (
       final: prev:
       let

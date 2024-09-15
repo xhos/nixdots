@@ -9,6 +9,7 @@
       spicetify.enable = lib.mkEnableOption "Enable spicetify";
       wezterm.enable   = lib.mkEnableOption "Enable wezterm";
       kitty.enable     = lib.mkEnableOption "Enable kitty";
+      discord.enable    = lib.mkEnableOption "Enable discord";
     };
 
     default = {

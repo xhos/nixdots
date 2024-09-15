@@ -3,12 +3,12 @@
     username = "xhos";
     homeDirectory = "/home/xhos";
     stateVersion = "24.05";
-    file.".local/share/fonts".source = ./fonts;
+    # file.".local/share/fonts".source = ./fonts;
 
     packages = with pkgs; [
-      (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
-      (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
-      (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
+      # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
+      # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
+      # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       thefuck
       # Utils
       swww # wallpaper daemon
@@ -42,7 +42,7 @@
       kitty # here as a fallback
       nautilus
       bottles # run windows
-      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+      # (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
       obs-studio
       # termius # just for keychain accss
       qbittorrent-qt5

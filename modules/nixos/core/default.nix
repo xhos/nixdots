@@ -1,7 +1,5 @@
 {
   imports = [
-    ./secrets
-    ./boot.nix
     ./environment.nix
     ./hardware.nix
     ./locale.nix
@@ -9,6 +7,7 @@
     ./nix.nix
     ./portal.nix
     ./security.nix
+    ./user.nix
     ./services.nix
     ./virtualisation.nix
   ];
