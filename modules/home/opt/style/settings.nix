@@ -1,6 +1,6 @@
 { inputs, config, pkgs, lib, ... }: {
   config = {
-    wallpaper = ../../../home/shared/walls/${config.theme}.jpg;
+    wallpaper = ../../../../home/shared/walls/${config.theme}.jpg;
 
     accent = config.lib.stylix.colors.base0D;
 

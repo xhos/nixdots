@@ -10,6 +10,9 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       thefuck
+      nwg-displays
+      alacritty
+      xwaylandvideobridge # for screen sharing
       # Utils
       swww # wallpaper daemon
       fastfetch

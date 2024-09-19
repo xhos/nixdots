@@ -2,8 +2,8 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme.override {color = "nordic";};
+      name = "SolArc-Dark";
+      package = pkgs.solarc-gtk-theme;
     };
   };
 }

@@ -97,6 +97,13 @@
           ./hosts/zireael/configuration.nix
         ];
       };
+      vyverne = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          hm.nixosModule
+          ./hosts/vyverne/configuration.nix
+        ];
+      };
       aevon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -115,6 +122,16 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home/xhos/zireael.nix
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.nixcord.homeManagerModules.nixcord
+          inputs.stylix.homeManagerModules.stylix
+        ];
+      };
+      "xhos@vyverne" = inputs.hm.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home/xhos/vyverne.nix
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixcord.homeManagerModules.nixcord
           inputs.stylix.homeManagerModules.stylix

@@ -30,8 +30,9 @@
       id = 0;
       isDefault = true;
 
-      userChrome = (builtins.readFile ./userChrome.css);
-      userContent =(builtins.readFile ./userContent.css);
+      # TODO: find a new ff theme
+      # userChrome = (builtins.readFile ./userChrome.css);
+      # userContent =(builtins.readFile ./userContent.css);
 
       # http://kb.mozillazine.org/Category:Preferences
       settings = {
@@ -39,7 +40,7 @@
 		    "browser.shell.checkDefaultBrowser" = false;
 		    "browser.shell.defaultBrowserCheckCount" = 1;
 		    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
+            "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
 		    "widget.use-xdg-desktop-portal.file-picker" = 1;
 		    "widget.use-xdg-desktop-portal.mime-handler" = 1;
 		    "browser.search.suggest.enabled" = false;
@@ -196,10 +197,10 @@
     };
   };
 
-  # xdg.mimeApps.defaultApplications = {
-  #   "text/html" = ["firefox.desktop"];
-  #   "text/xml" = ["firefox.desktop"];
-  #   "x-scheme-handler/http" = ["firefox.desktop"];
-  #   "x-scheme-handler/https" = ["firefox.desktop"];
-  # };
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = ["firefox.desktop"];
+    "text/xml" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
+  };
 }

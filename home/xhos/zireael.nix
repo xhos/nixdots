@@ -7,7 +7,6 @@
 
   modules = {
     rofi.enable      = true;
-    hyprland.enable  = true;
     spicetify.enable = true;
     firefox.enable   = true;
   };

@@ -2,7 +2,7 @@
   options = {
     modules = {
       firefox.enable   = lib.mkEnableOption "Enable firefox";
-      hyprland.enable  = lib.mkEnableOption "Enable hyprland";
+      # hyprland.enable  = lib.mkEnableOption "Enable hyprland";
       lf.enable        = lib.mkEnableOption "Enable lf";
       mpd.enable       = lib.mkEnableOption "Enable mpd";
       rofi.enable      = lib.mkEnableOption "Enable rofi";
@@ -14,7 +14,7 @@
 
     default = {
       de = lib.mkOption {
-        type = lib.types.enum ["hyprland" "none"];
+        type = lib.types.enum ["hyprland" "i3" "none"];
         default = "hyprland";
       };
       bar = lib.mkOption {
@@ -26,7 +26,7 @@
         default = "firefox";
       };
       terminal = lib.mkOption {
-        type = lib.types.enum ["wezterm" "foot" "kitty" "none"];
+        type = lib.types.enum ["wezterm" "foot" "kitty" "alacritty" "none"];
         default = "foot";
       };
       lock = lib.mkOption {

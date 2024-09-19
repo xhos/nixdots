@@ -9,6 +9,9 @@ environment.systemPackages = with pkgs; [
     blueman
     dig # dns lookup
 
+    lm_sensors
+    fan2go
+
     # Nix related
     nh # nix helper
     home-manager
