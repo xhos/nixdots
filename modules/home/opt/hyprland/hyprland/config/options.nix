@@ -34,8 +34,8 @@ in { wayland.windowManager.hyprland.settings = {
   };
 
   decoration = {
-    "col.shadow" = "rgb(${config.background})";
-    "col.shadow_inactive" = "rgba(${config.background}00)";
+    # "col.shadow" = "rgb(${config.w})";
+    # "col.shadow_inactive" = "rgba(${config.accent}00)";
     inactive_opacity = "0.94";
     drop_shadow = "true";
     rounding = 10;
@@ -73,8 +73,8 @@ in { wayland.windowManager.hyprland.settings = {
     border_size = "0";
     layout = "dwindle";
     resize_on_border = "true";
-    "col.active_border" = "rgba(${config.accent}88)";
-    "col.inactive_border" = "rgba(${config.background}88)";
+    # "col.active_border" = "rgba(${config.accent}88)";
+    # "col.inactive_border" = "rgba(${config.background}88)";
 
     allow_tearing = true;
   };

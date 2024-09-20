@@ -11,6 +11,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       egl-wayland # needed for a firefox fix
       thefuck
+      figlet # cool text gen
       nwg-displays
       alacritty
       xwaylandvideobridge # for screen sharing
@@ -46,7 +47,7 @@
       kitty # here as a fallback
       nautilus
       bottles # run windows
-      # (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
       obs-studio
       # termius # just for keychain accss
       qbittorrent-qt5
