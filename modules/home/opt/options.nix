@@ -2,7 +2,6 @@
   options = {
     modules = {
       firefox.enable   = lib.mkEnableOption "Enable firefox";
-      # hyprland.enable  = lib.mkEnableOption "Enable hyprland";
       lf.enable        = lib.mkEnableOption "Enable lf";
       mpd.enable       = lib.mkEnableOption "Enable mpd";
       rofi.enable      = lib.mkEnableOption "Enable rofi";

@@ -109,8 +109,8 @@ in {
         CLUTTER_BACKEND = "wayland";
         GDK_BACKEND = "wayland,x11";
         XDG_SESSION_TYPE = "wayland";
-        MOZ_ENABLE_WAYLAND = "0"; #TODO: wait for fix
-        QT_STYLE_OVERRIDE = "kvantum";
+        MOZ_ENABLE_WAYLAND = "1"; #TODO: wait for fix
+        # QT_STYLE_OVERRIDE = "kvantum";
       };
     };
 
