@@ -92,7 +92,7 @@ in {
         wlr-randr
         wlr-randr
         wtype
-        xwaylandvideobridge
+        # xwaylandvideobridge
         ydotool
         wlprop
         xorg.xprop
@@ -109,7 +109,7 @@ in {
         CLUTTER_BACKEND = "wayland";
         GDK_BACKEND = "wayland,x11";
         XDG_SESSION_TYPE = "wayland";
-        MOZ_ENABLE_WAYLAND = "1"; #TODO: wait for fix
+        MOZ_ENABLE_WAYLAND = "0"; #TODO: wait for fix
         # QT_STYLE_OVERRIDE = "kvantum";
       };
     };
@@ -122,7 +122,7 @@ in {
         # inputs.hyprspace.packages.${pkgs.system}.Hyprspace
       ];
 
-      xwayland.enable = true;
+      # xwayland.enable = true;
       enable = true;
       systemd = {
         enable = true;

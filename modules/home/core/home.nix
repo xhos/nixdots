@@ -64,7 +64,7 @@
       nushell
       fish grc
       wireplumber # A modular session / policy manager for PipeWire
-      xwayland
+      # xwayland
 
       # Dev
       rustup

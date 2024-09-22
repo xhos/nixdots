@@ -38,7 +38,7 @@
       # userContent =(builtins.readFile ./userContent.css);
 
       # http://kb.mozillazine.org/Category:Preferences
-      # settings = {
+      settings = {
       #   "browser.search.defaultenginename" = "google";
       #   "browser.shell.checkDefaultBrowser" = false;
       #   "browser.shell.defaultBrowserCheckCount" = 1;
@@ -64,7 +64,7 @@
       #   "layout.css.color-mix.enabled" = true;
       #   "layout.css.light-dark.enabled" = true;
       #   "layout.css.has-selector.enabled" = true;
-      #   "media.ffmpeg.vaapi.enabled" = true;
+        "media.ffmpeg.vaapi.enabled" = false;
       #   "media.rdd-vpx.enabled" = true;
       #   "browser.tabs.tabmanager.enabled" = false;
       #   "full-screen-api.ignore-widgets" = false;
@@ -74,7 +74,7 @@
       #   "browser.urlbar.suggest.addons" = false;
       #   "browser.urlbar.suggest.pocket" = false;
       #   "browser.urlbar.suggest.topsites" = false;
-      # };
+      };
 
 			extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
   		  vimium

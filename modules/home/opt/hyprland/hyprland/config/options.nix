@@ -64,7 +64,7 @@ in { wayland.windowManager.hyprland.settings = {
   dwindle = {
     pseudotile = true;
     preserve_split = true;
-    no_gaps_when_only = -1;
+    # no_gaps_when_only = -1;
   };
 
   general = {
@@ -133,6 +133,9 @@ in { wayland.windowManager.hyprland.settings = {
     # name, resolution, position, scale
     # "eDP-1, highres, 0x0, 1"
     "DP-1,1920x1080@239.76,1080x603,1.0"
+    "DP-2,disable"
+    "DP-3,disable"
+    "HDMI-A-1,disable"
     "HDMI-A-2,1920x1080@144.0,0x0,1.0"
     "HDMI-A-2,transform,1"
   ];

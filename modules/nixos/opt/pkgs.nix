@@ -1,7 +1,9 @@
 { pkgs, config, ... }: {
+services.xserver.enable = true;
 
 environment.systemPackages = with pkgs; [
     # Networking
+    xwayland
     nmap
     networkmanagerapplet
     wirelesstools # wireless stuff
