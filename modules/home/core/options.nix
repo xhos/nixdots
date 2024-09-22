@@ -1,8 +1,8 @@
 {lib, ...}:
 with lib; {
   options.wallpaper = mkOption {
-    type = types.path;
-    default = "";
+    type = types.path; # TODO: Fix this
+    default = /etc/nixos/home/shared/walls/apathy.jpg;
   };
   options.theme = mkOption {
     type = types.str;

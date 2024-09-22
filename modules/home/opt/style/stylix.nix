@@ -1,20 +1,27 @@
-{ pkgs, config, lib, ... }: {
-  imports = [ ./settings.nix ];
-
+{ inputs, config, pkgs, lib, ... }: {
   stylix = {
+    enable = true;
+
+    # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+
     base16Scheme = ./themes/${config.theme}.yaml;
-    image = ../../../../home/shared/walls/${config.theme}.jpg;
+    image = config.wallpaper;
 
     polarity = "dark";
+
+
+    opacity.terminal = 0.1;
+
     cursor = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-      size = 20;
+      name = "phinger-cursors-dark";
+      package = pkgs.phinger-cursors;
+      size = 10;
     };
 
-    targets = { 
-      # hyprland.enable = false;
-      # firefox.enable = false;
+    targets = {
+      hyprland.enable = false;
+      firefox.enable = false;
+      waybar.enable = false;
       gtk.extraCss = with config.lib.stylix.colors; ''
         @define-color accent_color #${base0D};
         @define-color accent_bg_color #${base0D};
@@ -23,13 +30,15 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["FiraCodeMono"];};
+        package = pkgs.nerdfonts.override { fonts = ["FiraCode"]; };
         name = "FiraCode Nerd Font Mono";
       };
+
       sansSerif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
       };
+
       serif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Serif";

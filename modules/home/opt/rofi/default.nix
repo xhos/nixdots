@@ -8,7 +8,7 @@
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
-      font = "Product Sans 12";
+      # font = "Product Sans 12";
       extraConfig = {
         modi = "drun";
         display-drun = "";

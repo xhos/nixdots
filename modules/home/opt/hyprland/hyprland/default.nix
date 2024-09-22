@@ -68,7 +68,7 @@ in {
     ./config
   ];
 
-  config = lib.mkIf config.modules.hyprland.enable {
+  config = lib.mkIf (config.default.de == "hyprland") {
     home = {
       packages = with pkgs; [
         config.wayland.windowManager.hyprland.package
@@ -92,7 +92,7 @@ in {
         wlr-randr
         wlr-randr
         wtype
-        xwaylandvideobridge
+        # xwaylandvideobridge
         ydotool
         wlprop
         xorg.xprop
@@ -109,20 +109,20 @@ in {
         CLUTTER_BACKEND = "wayland";
         GDK_BACKEND = "wayland,x11";
         XDG_SESSION_TYPE = "wayland";
-        MOZ_ENABLE_WAYLAND = "1";
-        QT_STYLE_OVERRIDE = "kvantum";
+        MOZ_ENABLE_WAYLAND = "0"; #TODO: wait for fix
+        # QT_STYLE_OVERRIDE = "kvantum";
       };
     };
 
     wayland.windowManager.hyprland = {
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      
+
       plugins = [
         inputs.hyprgrass.packages.${pkgs.system}.default
         # inputs.hyprspace.packages.${pkgs.system}.Hyprspace
       ];
 
-      xwayland.enable = true;
+      # xwayland.enable = true;
       enable = true;
       systemd = {
         enable = true;

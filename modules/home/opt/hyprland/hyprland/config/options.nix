@@ -34,8 +34,8 @@ in { wayland.windowManager.hyprland.settings = {
   };
 
   decoration = {
-    "col.shadow" = "rgb(${config.background})";
-    "col.shadow_inactive" = "rgba(${config.background}00)";
+    # "col.shadow" = "rgb(${config.w})";
+    # "col.shadow_inactive" = "rgba(${config.accent}00)";
     inactive_opacity = "0.94";
     drop_shadow = "true";
     rounding = 10;
@@ -64,10 +64,8 @@ in { wayland.windowManager.hyprland.settings = {
   dwindle = {
     pseudotile = true;
     preserve_split = true;
-    no_gaps_when_only = -1;
+    # no_gaps_when_only = -1;
   };
-
-  env = ["GDK_SCALE,2" "WLR_DRM_NO_ATOMIC,1"];
 
   general = {
     gaps_in = "8";
@@ -75,8 +73,8 @@ in { wayland.windowManager.hyprland.settings = {
     border_size = "0";
     layout = "dwindle";
     resize_on_border = "true";
-    "col.active_border" = "rgba(${config.accent}88)";
-    "col.inactive_border" = "rgba(${config.background}88)";
+    # "col.active_border" = "rgba(${config.accent}88)";
+    # "col.inactive_border" = "rgba(${config.background}88)";
 
     allow_tearing = true;
   };
@@ -133,9 +131,25 @@ in { wayland.windowManager.hyprland.settings = {
 
   monitor = [
     # name, resolution, position, scale
-    "eDP-1, highres, 0x0, 1"
+    # "eDP-1, highres, 0x0, 1"
+    "DP-1,1920x1080@239.76,1080x603,1.0"
+    "DP-2,disable"
+    "DP-3,disable"
+    "HDMI-A-1,disable"
+    "HDMI-A-2,1920x1080@144.0,0x0,1.0"
+    "HDMI-A-2,transform,1"
   ];
 
+  env = [
+    # "GDK_SCALE,2"
+    # "WLR_DRM_NO_ATOMIC,1"
+    "LIBVA_DRIVER_NAME,nvidia"
+    "XDG_SESSION_TYPE,wayland"
+    "GBM_BACKEND,nvidia-drm"
+    "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+  ];
+
+  cursor.no_hardware_cursors = true;
   xwayland.force_zero_scaling = true;
 };
 }

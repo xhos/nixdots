@@ -14,7 +14,7 @@
     };
 
     services.displayManager.defaultSession = "Hyprland";
-    services.greetd = lib.mkIf config.wayland.enable {
+    services.greetd = {
       enable = true;
       settings = {
         terminal.vt = 1;

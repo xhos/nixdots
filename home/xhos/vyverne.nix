@@ -5,9 +5,11 @@
     ../../modules/home
   ];
 
+  # xsession.scriptPath = ".hm-xsession";
+
   modules = {
     rofi.enable      = true;
-    hyprland.enable  = true;
+    discord.enable   = true;
     spicetify.enable = true;
     firefox.enable   = true;
   };
@@ -18,6 +20,6 @@
     lock     = "hyprlock";
     shell    = "fish";
     prompt   = "starship";
-    terminal = "wezterm";
+    terminal = "alacritty";
   };
 }

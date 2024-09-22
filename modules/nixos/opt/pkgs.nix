@@ -1,13 +1,18 @@
 { pkgs, config, ... }: {
+services.xserver.enable = true;
 
 environment.systemPackages = with pkgs; [
     # Networking
+    xwayland
     nmap
     networkmanagerapplet
     wirelesstools # wireless stuff
     speedtest-cli
     blueman
     dig # dns lookup
+
+    lm_sensors
+    fan2go
 
     # Nix related
     nh # nix helper

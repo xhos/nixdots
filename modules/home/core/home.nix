@@ -9,7 +9,12 @@
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
+      egl-wayland # needed for a firefox fix
       thefuck
+      figlet # cool text gen
+      nwg-displays
+      alacritty
+      xwaylandvideobridge # for screen sharing
       # Utils
       swww # wallpaper daemon
       fastfetch
@@ -42,7 +47,7 @@
       kitty # here as a fallback
       nautilus
       bottles # run windows
-      # (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
       obs-studio
       # termius # just for keychain accss
       qbittorrent-qt5
@@ -59,7 +64,7 @@
       nushell
       fish grc
       wireplumber # A modular session / policy manager for PipeWire
-      xwayland
+      # xwayland
 
       # Dev
       rustup

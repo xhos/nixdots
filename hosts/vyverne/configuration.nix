@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ config, lib, pkgs, callPackage, ... }: {
 
   imports = [
     ./hardware-configuration.nix
@@ -16,8 +16,17 @@
   sshserver      .enable = true;
   rclone         .enable = true;
   steam          .enable = true;
-  # boot-management.enable = true;
+  boot-management.enable = true;
 
-  boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
+  boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
+
+  hardware.opengl.enable = true;
+
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 }
