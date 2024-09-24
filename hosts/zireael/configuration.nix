@@ -17,6 +17,7 @@
   steam     .enable = true;
   greetd    .enable = true;
   hyprland  .enable = true;
+  xserver   .enable = true;
 
   boot = {
     extraModulePackages =
