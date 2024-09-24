@@ -4,7 +4,7 @@
     ./environment.nix
     ./hardware.nix
     ./locale.nix
-    ./misc.mix
+    ./misc.nix
     ./networking.nix
     ./nix.nix
     ./pkgs.nix
