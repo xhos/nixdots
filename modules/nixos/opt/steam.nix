@@ -10,7 +10,7 @@
       gamemode.enable = true;
     };
     
-    sessionVariables = {
+    environment.sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/xhos/.steam/root/.compatibilitytools.d";
     };
     
