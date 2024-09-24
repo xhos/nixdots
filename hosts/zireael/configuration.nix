@@ -9,14 +9,14 @@
 
   users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./zireael.pub ];
 
-  fonts     .enable = true;
   wayland   .enable = true;
   audio     .enable = true;
   bluetooth .enable = true;
   sshserver .enable = true;
   rclone    .enable = true;
   steam     .enable = true;
-  boot-management.enable = true;
+  greetd    .enable = true;
+  hyprland  .enable = true;
 
   boot = {
     extraModulePackages =

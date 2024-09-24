@@ -1,5 +1,6 @@
 { pkgs, config, lib, ... }: {
   config = lib.mkIf config.rclone.enable {
+    environment.systemPackages = with pkgs; [ rclone ];
     systemd.services.rclone-onedrive-mount = {
       wantedBy = [ "default.target" ];
       after    = [ "network-online.target" ];

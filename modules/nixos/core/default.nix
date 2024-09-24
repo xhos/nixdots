@@ -1,14 +1,17 @@
 {
   imports = [
+    ./boot.nix
     ./environment.nix
     ./hardware.nix
     ./locale.nix
+    ./misc.mix
     ./networking.nix
     ./nix.nix
+    ./pkgs.nix
     ./portal.nix
+    ./programs.nix
     ./security.nix
-    ./user.nix
     ./services.nix
-    ./virtualisation.nix
+    ./user.nix
   ];
 }

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -6,6 +6,5 @@
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
-    wlr.enable = true; # enable desktop portal for wlroots-based desktops.
   };
 }

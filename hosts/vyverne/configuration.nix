@@ -7,9 +7,6 @@
 
   networking.hostName = "vyverne";
 
-  # users.users.xhos.openssh.authorizedKeys.keyFiles = [ ./vyverne.pub ];
-
-  fonts          .enable = true;
   wayland        .enable = true;
   audio          .enable = true;
   bluetooth      .enable = true;
@@ -18,7 +15,7 @@
   steam          .enable = true;
   boot-management.enable = true;
 
-  boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
+  # boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
 
   hardware.opengl.enable = true;
 

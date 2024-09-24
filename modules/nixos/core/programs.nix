@@ -5,9 +5,9 @@
     ssh.startAgent = true;
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gtk2";
-    style = "gtk2";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gtk2";
+  #   style = "gtk2";
+  # };
 }

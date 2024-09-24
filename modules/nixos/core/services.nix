@@ -13,7 +13,7 @@
     upower.enable = true;
 
     logind = {
-      powerKey = "suspend";
+      powerKey = "poweroff";
       lidSwitch = "suspend";
       lidSwitchExternalPower = "lock";
     };

@@ -7,7 +7,7 @@
   programs.ssh.addKeysToAgent = "yes";
 
   imports = [
-    # ./gtk.nix
+    ./fonts
     ./nixpkgs.nix
     ./options.nix
     ./programs.nix

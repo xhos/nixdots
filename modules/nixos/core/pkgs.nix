@@ -3,7 +3,6 @@ services.xserver.enable = true;
 
 environment.systemPackages = with pkgs; [
     # Networking
-    xwayland
     nmap
     networkmanagerapplet
     wirelesstools # wireless stuff
@@ -32,9 +31,6 @@ environment.systemPackages = with pkgs; [
 
     # Other
     brightnessctl
-    wayland
-
-    rclone # to mount cloud storage
 
     git
     git-lfs
@@ -54,7 +50,6 @@ environment.systemPackages = with pkgs; [
     unzip
     gtk3
     neovim
-    protonup
   ];
 
   nixpkgs.config = {
