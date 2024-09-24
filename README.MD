@@ -121,3 +121,5 @@ For more detailed instructions, [refer to the documentation](https://nix-communi
 - [@ItzDerock](https://github.com/ItzDerock) for sharing his [nix derivation](https://github.com/joshuagrisham/samsung-galaxybook-extras/issues/14#issue-2328871732) for that driver
 
 - [@elyth](https://github.com/elythh), my config started as a fork of his [flake](https://github.com/elythh/flake)
+
+- [@MrVivekRajan](https://github.com/MrVivekRajan/) for hyprlock [style](https://github.com/MrVivekRajan/Hyprlock-Styles) inspiration

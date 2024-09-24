@@ -3,7 +3,7 @@
     username = "xhos";
     homeDirectory = "/home/xhos";
     stateVersion = "24.05";
-    # file.".local/share/fonts".source = ./fonts;
+    file.".local/share/fonts".source = ./fonts;
 
     packages = with pkgs; [
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
