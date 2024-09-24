@@ -7,13 +7,16 @@
 
   networking.hostName = "vyverne";
 
-  wayland        .enable = true;
-  audio          .enable = true;
-  bluetooth      .enable = true;
-  sshserver      .enable = true;
-  rclone         .enable = true;
-  steam          .enable = true;
-  boot-management.enable = true;
+  wayland   .enable = false;
+  audio     .enable = true;
+  bluetooth .enable = true;
+  sshserver .enable = true;
+  rclone    .enable = false;
+  steam     .enable = true;
+  greetd    .enable = false;
+  i3        .enable = true;
+  xserver   .enable = true;
+
 
   # boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
 

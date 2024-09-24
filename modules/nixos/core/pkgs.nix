@@ -35,6 +35,7 @@ environment.systemPackages = with pkgs; [
     git
     git-lfs
     git-extras
+    xterm
 
     age # file encryption
     sops # secrets encryption
