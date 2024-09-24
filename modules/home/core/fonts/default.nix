@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   fonts.fontconfig.enable = true;
-  file.".local/share/fonts".source = ./font-files;
+  home.file.".local/share/fonts".source = ./font-files;
   home.packages = with pkgs; [
     # icon fonts
     material-design-icons
