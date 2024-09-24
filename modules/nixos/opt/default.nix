@@ -5,7 +5,6 @@
     ./greetd.nix
     ./hyprland.nix
     ./i3.nix
-    ./misc.nix
     ./options.nix
     ./rclone.nix
     ./sound.nix
