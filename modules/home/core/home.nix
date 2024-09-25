@@ -10,6 +10,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       egl-wayland # needed for a firefox fix
       thefuck
+      rustdesk
       figlet # cool text gen
       nwg-displays
       alacritty

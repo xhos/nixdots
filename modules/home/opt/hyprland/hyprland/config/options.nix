@@ -131,13 +131,8 @@ in { wayland.windowManager.hyprland.settings = {
 
   monitor = [
     # name, resolution, position, scale
-    "eDP-1, highres, 0x0, 1"
-    "DP-1,1920x1080@239.76,1080x603,1.0"
-    "DP-2,disable"
-    "DP-3,disable"
-    "HDMI-A-1,disable"
-    "HDMI-A-2,1920x1080@144.0,0x0,1.0"
-    "HDMI-A-2,transform,1"
+    "eDP-1,1920x1080@60.0,640x1800,1.0"
+    "DP-1,1920x1080@120.0,0x0,0.6"
   ];
 
   env = [
@@ -146,7 +141,6 @@ in { wayland.windowManager.hyprland.settings = {
     # "LIBVA_DRIVER_NAME,nvidia" #MOVE
     "XDG_SESSION_TYPE,wayland"
     "GBM_BACKEND,nvidia-drm"
-    "__GLX_VENDOR_LIBRARY_NAME,nvidia"
   ];
 
   cursor.no_hardware_cursors = true;
