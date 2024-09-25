@@ -13,7 +13,7 @@
 
     default = {
       de = lib.mkOption {
-        type = lib.types.enum ["hyprland" "i3" "none"];
+        type = lib.types.enum ["hyprland" "none"];
         default = "hyprland";
       };
       bar = lib.mkOption {

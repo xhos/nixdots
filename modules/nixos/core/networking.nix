@@ -8,7 +8,8 @@ in {
       enable = true;
       allowedTCPPorts = [
         sshPort
-      ] ;
+        5900
+      ];
     };
   };
 

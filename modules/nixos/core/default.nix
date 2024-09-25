@@ -2,7 +2,6 @@
   imports = [
     ./boot.nix
     ./environment.nix
-    ./hardware.nix
     ./locale.nix
     ./misc.nix
     ./networking.nix

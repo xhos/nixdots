@@ -5,5 +5,6 @@
       wayland
     ];
     xdg.portal.wlr.enable = true; # enable desktop portal for wlroots-based desktops.
+    programs.xwayland.enable = true;
   };
 }

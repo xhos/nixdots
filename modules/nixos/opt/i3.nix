@@ -4,16 +4,15 @@
       enable = true;
       windowManager.i3.enable = true;
     };
-    services.displayManager = { 
-      defaultSession = "none+i3"; 
-      lightdm = { 
-        enable = true; 
-        greeter.enable = false; 
-        autoLogin = { 
-          enable = true; 
-          user = "xhos"; 
-        }; 
-      }; 
-    };
+    # services.displayManager = {
+    #   defaultSession = "none+i3";
+    #     enable = true;
+    #     greeter.enable = false;
+    #     autoLogin = {
+    #       enable = true;
+    #       user = "xhos";
+    #     };
+    #   };
+    # };
   };
 }
