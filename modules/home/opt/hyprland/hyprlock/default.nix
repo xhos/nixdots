@@ -9,8 +9,8 @@
       settings = {
         # BACKGROUND
         background = {
-          # path = "${config.wallpaper}";
-          path = "/etc/nixos/home/shared/walls/tokyo-night-storm.jpg";
+          path = "${config.stylix.image}";
+          # path = "/etc/nixos/home/shared/walls/tokyo-night-storm.jpg";
           blur_passes = 3;
           contrast = 0.8916;
           brightness = 0.8172;

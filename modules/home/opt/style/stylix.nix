@@ -5,7 +5,7 @@
     # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
     base16Scheme = ./themes/${config.theme}.yaml;
-    image = config.wallpaper;
+    image = ../../../../home/shared/walls/${config.theme}.jpg;
 
     polarity = "dark";
 
