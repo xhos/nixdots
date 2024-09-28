@@ -11,7 +11,7 @@
       egl-wayland # needed for a firefox fix
       wayvnc
       thefuck
-      rustdesk
+
       figlet # cool text gen
       nwg-displays
       alacritty

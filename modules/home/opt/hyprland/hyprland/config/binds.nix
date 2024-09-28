@@ -10,9 +10,7 @@ let
     10);
 
   # Get default application
-  # TODO: fix this
-  # terminal = config.home.sessionVariables.TERMINAL;
-  terminal = "alacritty";
+  terminal = config.home.sessionVariables.TERMINAL;
 in {
   wayland.windowManager.hyprland = {
     settings = {
