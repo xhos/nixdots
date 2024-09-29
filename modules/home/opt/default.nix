@@ -1,7 +1,7 @@
 {
   imports = [
     ./options.nix
-    # ./waybar
+    ./waybar
     ./shells
     ./misc
     ./firefox

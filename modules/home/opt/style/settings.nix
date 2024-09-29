@@ -26,13 +26,5 @@
       BACKGROUND = config.background;
       TEXT = config.text;
     };
-
-    #TODO: duplicate
-    home.pointerCursor = {
-      name = "phinger-cursors-dark";
-      package = pkgs.phinger-cursors;
-      size = 20;
-      gtk.enable = true;
-    };
   };
 }

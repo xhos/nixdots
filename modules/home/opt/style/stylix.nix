@@ -2,7 +2,7 @@
   stylix = {
     enable = true;
 
-    # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
     base16Scheme = ./themes/${config.theme}.yaml;
     image = ../../../../home/shared/walls/${config.theme}.jpg;
@@ -19,7 +19,6 @@
     };
 
     targets = {
-      hyprland.enable = false;
       firefox.enable = false;
       waybar.enable = false;
       gtk.extraCss = with config.lib.stylix.colors; ''

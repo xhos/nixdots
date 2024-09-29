@@ -111,7 +111,7 @@ in
 
       #audio {
         margin-top: 3px;
-        padding: 6px 0px 6px 0px;
+        padding: 8px 0px 8px 0px;
       }
 
       #brightness,
@@ -124,8 +124,19 @@ in
         padding-right: 4px;
       }
 
+      #custom-hotspot,
+      #custom-github,
       #custom-notifications {
         font-size: 14px;
+      }
+
+      #custom-hotspot {
+        padding-right: 2px;
+      }
+
+      #custom-vpn,
+      #custom-hotspot {
+        background: alpha(darker(@active), 0.3);
       }
 
       #privacy-item {

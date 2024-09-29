@@ -91,6 +91,7 @@
 
     "plugin:touch_gestures" = {
       sensitivity = 5.0;
+      hyprgrass-bind = ", edge:d:u, exec, firefox";
     };
 
     group = {

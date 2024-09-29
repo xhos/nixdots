@@ -14,5 +14,14 @@
     ./home.nix
   ];
 
+  gtk = {
+    gtk3.extraConfig.gtk-decoration-layout = "menu:";
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme.override {color = "nordic";};
+    };
+  };
+  
   programs.home-manager.enable = true;
 }
