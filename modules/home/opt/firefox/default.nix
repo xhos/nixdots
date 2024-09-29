@@ -1,79 +1,89 @@
-{ inputs, config, lib, pkgs, ... }: {
+{ inputs, config, lib, pkgs, ... }:
+let
+  scifox = pkgs.fetchFromGitHub {
+    owner = "scientiac";
+    repo = "scifox";
+    rev = "618b97dc318e0cd0d2822d7e7302fdd098f9c544";
+    hash = "sha256-F+h33dRs0Q2+9p66uI7QH+yifADkh9Hl48rbVtOzkvk=";
+  };
+in {
   programs.firefox = lib.mkIf config.modules.firefox.enable {
     enable = true;
 
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
- 	   #  extraPolicies = {
-    	# 	CaptivePortal = false;
-    	# 	DisableFirefoxStudies = true;
-    	# 	DisablePocket = true;
-    	# 	DisableTelemetry = true;
-    	# 	DisableFirefoxAccounts = false;
-    	# 	NoDefaultBookmarks = true;
-    	# 	OfferToSaveLogins = false;
-    	# 	OfferToSaveLoginsDefault = false;
-    	# 	PasswordManagerEnabled = false;
+    package = pkgs.wrapFirefox pkgs.firefox-beta-unwrapped {
+ 	    extraPolicies = {
+    		CaptivePortal = false;
+    		DisableFirefoxStudies = true;
+    		DisablePocket = true;
+    		DisableTelemetry = true;
+    		DisableFirefoxAccounts = false;
+    		NoDefaultBookmarks = true;
+    		OfferToSaveLogins = false;
+    		OfferToSaveLoginsDefault = false;
+    		PasswordManagerEnabled = false;
 
-    	# 	FirefoxHome = {
-    	# 	    Search = true;
-    	# 	    Pocket = false;
-    	# 	    Snippets = false;
-    	# 	    TopSites = false;
-    	# 	    Highlights = false;
-    	# 	};
+    		FirefoxHome = {
+    		    Search = true;
+    		    Pocket = false;
+    		    Snippets = false;
+    		    TopSites = false;
+    		    Highlights = false;
+    		};
 
-    	# 	UserMessaging = {
-    	# 	    ExtensionRecommendations = false;
-    	# 	    SkipOnboarding = true;
-    	# 	};
-	    # };
+    		UserMessaging = {
+    		    ExtensionRecommendations = false;
+    		    SkipOnboarding = true;
+    		};
+	    };
 		};
-
     profiles.default = {
       id = 0;
       isDefault = true;
 
-      # TODO: find a new ff theme
-      # userChrome = (builtins.readFile ./userChrome.css);
-      # userContent =(builtins.readFile ./userContent.css);
+      # https://github.com/scientiac/scifox/blob/main/sidebery.json
+      userChrome = (builtins.readFile "${scifox}/chrome/userChrome.css");
+      userContent =(builtins.readFile "${scifox}/chrome/userContent.css");
 
       # http://kb.mozillazine.org/Category:Preferences
       settings = {
-      #   "browser.search.defaultenginename" = "google";
-      #   "browser.shell.checkDefaultBrowser" = false;
-      #   "browser.shell.defaultBrowserCheckCount" = 1;
-      #   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-      #   "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
-      #   "widget.use-xdg-desktop-portal.file-picker" = 1;
-      #   "widget.use-xdg-desktop-portal.mime-handler" = 1;
-      #   "browser.search.suggest.enabled" = false;
-      #   "browser.search.suggest.enabled.private" = false;
-      #   "browser.urlbar.suggest.searches" = false;
-      #   "browser.urlbar.showSearchSuggestionsFirst" = false;
-      #   "browser.sessionstore.enabled" = true;
-      #   "browser.sessionstore.resume_from_crash" = true;
-      #   "browser.sessionstore.resume_session_once" = true;
-      #   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-      #   "browser.tabs.drawInTitlebar" = true;
-      #   "svg.context-properties.content.enabled" = true;
-      #   "general.smoothScroll" = true;
-      #   "uc.tweak.hide-tabs-bar" = true;
-      #   "uc.tweak.hide-forward-button" = true;
-      #   "uc.tweak.rounded-corners" = true;
-      #   "uc.tweak.floating-tabs" = true;
-      #   "layout.css.color-mix.enabled" = true;
-      #   "layout.css.light-dark.enabled" = true;
-      #   "layout.css.has-selector.enabled" = true;
+        "browser.search.defaultenginename" = "google";
+        "browser.shell.checkDefaultBrowser" = false;
+        "browser.shell.defaultBrowserCheckCount" = 1;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
+        "browser.aboutConfig.showWarning" = false;
+        "browser.ctrlTab.sortByRecentlyUsed" = false;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.use-xdg-desktop-portal.mime-handler" = 1;
+        "browser.search.suggest.enabled" = false;
+        "browser.translations.neverTranslateLanguages" = "ru";
+        "browser.search.suggest.enabled.private" = false;
+        "browser.urlbar.suggest.searches" = false;
+        "browser.urlbar.showSearchSuggestionsFirst" = false;
+        "browser.sessionstore.enabled" = true;
+        "browser.sessionstore.resume_from_crash" = true;
+        "browser.sessionstore.resume_session_once" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "browser.tabs.drawInTitlebar" = true;
+        "svg.context-properties.content.enabled" = true;
+        "general.smoothScroll" = true;
+        "uc.tweak.hide-tabs-bar" = true;
+        "uc.tweak.hide-forward-button" = true;
+        "uc.tweak.rounded-corners" = true;
+        "uc.tweak.floating-tabs" = true;
+        "layout.css.color-mix.enabled" = true;
+        "layout.css.light-dark.enabled" = true;
+        "layout.css.has-selector.enabled" = true;
         "media.ffmpeg.vaapi.enabled" = false;
-      #   "media.rdd-vpx.enabled" = true;
-      #   "browser.tabs.tabmanager.enabled" = false;
-      #   "full-screen-api.ignore-widgets" = false;
-      #   "browser.urlbar.suggest.engines" = false;
-      #   "browser.urlbar.suggest.openpage" = false;
-      #   "browser.urlbar.suggest.bookmark" = false;
-      #   "browser.urlbar.suggest.addons" = false;
-      #   "browser.urlbar.suggest.pocket" = false;
-      #   "browser.urlbar.suggest.topsites" = false;
+        "media.rdd-vpx.enabled" = true;
+        "browser.tabs.tabmanager.enabled" = false;
+        "full-screen-api.ignore-widgets" = false;
+        "browser.urlbar.suggest.engines" = false;
+        "browser.urlbar.suggest.openpage" = false;
+        "browser.urlbar.suggest.bookmark" = false;
+        "browser.urlbar.suggest.addons" = false;
+        "browser.urlbar.suggest.pocket" = false;
+        "browser.urlbar.suggest.topsites" = false;
       };
 
 			extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
