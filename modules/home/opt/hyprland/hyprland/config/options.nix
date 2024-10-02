@@ -1,5 +1,16 @@
-{ config, ... }:
+{ config, pkgs, ... }:
   let
+    wvkbd-toggle = let
+      inherit (pkgs) wvkbd;
+    in
+      pkgs.writeShellScriptBin "wvkbd" ''
+        if pgrep -x "wvkbd-mobintl" > /dev/null; then
+            pkill -x "wvkbd-mobintl"
+        else
+            wvkbd-mobintl -L 200 &
+        fi
+      '';
+
     setWallpaper = "swww img ${config.wallpaper}";
   in { wayland.windowManager.hyprland.settings = {
     exec-once = [
@@ -14,7 +25,7 @@
       "wl-paste --type image --watch cliphist store"
       "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
       "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
-      "ssh-add /home/xhos/.ssh/github" 
+      "ssh-add /home/xhos/.ssh/github"
       "protonvpn-app"
       "wayvnc"
       setWallpaper
@@ -78,7 +89,7 @@
       allow_tearing = true;
     };
 
-    device = {
+    device = {   
       name = "znt0001:00-14e5:650e-touchpad";
       sensitivity = "+0.2";
     };
@@ -91,7 +102,9 @@
 
     "plugin:touch_gestures" = {
       sensitivity = 5.0;
-      hyprgrass-bind = ", edge:d:u, exec, firefox";
+      workspace_swipe_edge = "";
+      hyprgrass-bindm = ", longpress:2, movewindow";
+      hyprgrass-bind = ", edge:d:u, exec, sh /home/xhos/test.sh";
     };
 
     group = {

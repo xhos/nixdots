@@ -3,6 +3,7 @@
   config = lib.mkIf (config.default.prompt == "starship") {
     programs.starship = with config.lib.stylix.colors; {
       enable = true;
+      enableTransience = true;
       settings = {
         format = "$username $hostname $directory $git_branch $git_state $git_status $cmd_duration $line_break $python $character";
 
