@@ -63,20 +63,20 @@
             valign = "center";
           }
 
-          # # USER
-          # {
-          #   text = "    $USER";
-          #   color = "rgba(216, 222, 233, 0.80)";
-          #   outline_thickness = 2;
-          #   dots_size = 0.2;
-          #   dots_spacing = 0.2;
-          #   dots_center = true;
-          #   font_size = 18;
-          #   font_family = "SF Pro Display Bold";
-          #   position = "0, -130";
-          #   halign = "center";
-          #   valign = "center";
-          # }
+          # USER
+          {
+            text = "    $USER";
+            color = "rgba(216, 222, 233, 0.80)";
+            outline_thickness = 2;
+            dots_size = 0.2;
+            dots_spacing = 0.2;
+            dots_center = true;
+            font_size = 18;
+            font_family = "SF Pro Display Bold";
+            position = "0, -130";
+            halign = "center";
+            valign = "center";
+          }
           # CURRENT SONG
           {
             text = "cmd[update:1000] echo \"$(sh /etc/nixos/modules/home/opt/hyprland/hyprlock/songdetail.sh)\"";
