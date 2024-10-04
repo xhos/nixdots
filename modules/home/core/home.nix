@@ -40,7 +40,7 @@
       skim # fzf in rust (sk)
       zoxide # better cd
       tailspin # log highlighter
-
+      devenv
       # Actual software
       zed-editor
       protonvpn-gui
