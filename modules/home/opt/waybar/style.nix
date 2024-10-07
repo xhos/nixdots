@@ -4,7 +4,7 @@ let
     @define-color background #${config.lib.stylix.colors.base00};
     @define-color foreground #${config.lib.stylix.colors.base0F};
     @define-color cursor #${config.lib.stylix.colors.base00};
-     
+
     @define-color color0 #${config.lib.stylix.colors.base00};
     @define-color color1 #${config.lib.stylix.colors.base01};
     @define-color color2 #${config.lib.stylix.colors.base02};
@@ -39,7 +39,7 @@ in
         transition-property: background-color;
         transition-duration: 0.5s;
         border-radius: 8px;
-        border: 2px solid @active;
+        border: 2px solid @inactive;
         background: @background;
         background: alpha(@background, 0.7);
         color: lighter(@active);
@@ -49,7 +49,7 @@ in
       tooltip {
         border-radius: 8px;
         padding: 2px;
-        border: 1px solid lighter(@active);
+        border: 1px solid lighter(@inactive);
         background: alpha(@background, 0.6);
 
         color: lighter(@active);
@@ -86,22 +86,21 @@ in
         margin: 6px 6px 6px 6px;
         border-radius: 4px;
         background: alpha(@background, 0.4);
-        color: lighter(@active);
+        color: alpha(@foreground, 0.3);
       }
 
       #gcpu,
-      #custom-github,
       #custom-notifications,
       #memory,
       #disk,
       #together,
       #submap,
-      #custom-weather,
       #custom-recorder,
       #connection,
       #cnoti,
       #power,
       #custom-updates,
+      #custom-wl-gammarelay-temperature,
       #tray,
       #privacy {
         margin: 3px 0px;
@@ -148,11 +147,6 @@ in
         font-weight: bold;
       }
 
-      #custom-github {
-        padding-top: 2px;
-        padding-right: 4px;
-      }
-
       #custom-dmark {
         color: alpha(@foreground, 0.3);
       }
@@ -195,11 +189,6 @@ in
       #submap {
         min-width: 0px;
         margin: 4px 6px 4px 6px;
-      }
-
-      #custom-weather,
-      #tray {
-        padding: 4px 0px 4px 0px;
       }
 
       #bluetooth {

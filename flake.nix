@@ -51,8 +51,8 @@
 
     # Hyprgrass, hyprland touch gestures plugin
     hyprgrass = {
-        url = "github:horriblename/hyprgrass";
-        inputs.hyprland.follows = "hyprland";
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland";
     };
 
     # Sops-nix, secrets management

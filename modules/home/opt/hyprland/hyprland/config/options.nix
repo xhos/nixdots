@@ -81,7 +81,7 @@
       gaps_in = "8";
       gaps_out = "12";
       border_size = "0";
-      layout = "dwindle";
+      layout = "scroller";
       resize_on_border = "true";
       # "col.active_border" = "rgba(${config.accent}88)";
       # "col.inactive_border" = "rgba(${config.background}88)";
@@ -89,7 +89,7 @@
       allow_tearing = true;
     };
 
-    device = {   
+    device = {
       name = "znt0001:00-14e5:650e-touchpad";
       sensitivity = "+0.2";
     };
@@ -145,7 +145,7 @@
     monitor = [
       # name, resolution, position, scale
       "eDP-1,1920x1080@60.0,640x1800,1.0"
-      "DP-1,1920x1080@120.0,0x0,0.6"
+      "DP-1,1920x1080@120.0,0x0,0.8"
     ];
 
     env = [

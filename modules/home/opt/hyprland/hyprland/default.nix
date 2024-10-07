@@ -1,21 +1,14 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
-  _ = lib.getExe;
-
+{ config, inputs, lib, pkgs, ... }:
+let
   # OCR (Optical Character Recognition) utility
   ocrScript = let
     inherit (pkgs) grim libnotify slurp tesseract5 wl-clipboard;
   in
     pkgs.writeShellScriptBin "wl-ocr" ''
-      ${_ grim} -g "$(${_ slurp})" -t ppm - | ${
-        _ tesseract5
+      ${lib.getExe grim} -g "$(${lib.getExe slurp})" -t ppm - | ${
+      lib.getExe tesseract5
       } - - | ${wl-clipboard}/bin/wl-copy
-      ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
+      ${lib.getExe libnotify} "$(${wl-clipboard}/bin/wl-paste)"
     '';
 
   # Volume control utility
@@ -27,18 +20,18 @@
 
       case "$1" in
       up)
-        ${_ pamixer} -i "$2"
+        ${lib.getExe pamixer} -i "$2"
         ;;
       down)
-        ${_ pamixer} -d "$2"
+        ${lib.getExe pamixer} -d "$2"
         ;;
       toggle-mute)
-        ${_ pamixer} -t
+        ${lib.getExe pamixer} -t
         ;;
       esac
 
-      volume_percentage="$(${_ pamixer} --get-volume)"
-      isMuted="$(${_ pamixer} --get-mute)"
+      volumelib.getExepercentage="$(${lib.getExe pamixer} --get-volume)"
+      isMuted="$(${lib.getExe pamixer} --get-mute)"
 
     '';
 
@@ -49,15 +42,15 @@
     pkgs.writeShellScriptBin "lightctl" ''
       case "$1" in
       up)
-        ${_ brightnessctl} -q s +"$2"%
+        ${lib.getExe brightnessctl} -q s +"$2"%
         ;;
       down)
-        ${_ brightnessctl} -q s "$2"%-
+        ${lib.getExe brightnessctl} -q s "$2"%-
         ;;
       esac
 
-      brightness_percentage=$((($(${_ brightnessctl} g) * 100) / $(${
-        _ brightnessctl
+      brightnesslib.getExepercentage=$((($(${lib.getExe brightnessctl} g) * 100) / $(${
+        lib.getExe brightnessctl
       } m)))
     '';
 in {
@@ -72,7 +65,7 @@ in {
     home = {
       packages = with pkgs; [
         config.wayland.windowManager.hyprland.package
-
+        wl-gammarelay-rs # display temp
         autotiling-rs
         brightnessctl
         cliphist
@@ -109,8 +102,7 @@ in {
         CLUTTER_BACKEND = "wayland";
         GDK_BACKEND = "wayland,x11";
         XDG_SESSION_TYPE = "wayland";
-        MOZ_ENABLE_WAYLAND = "1"; #TODO: wait for fix
-        # QT_STYLE_OVERRIDE = "kvantum";
+        MOZ_ENABLE_WAYLAND = "1";
       };
     };
 
@@ -119,6 +111,7 @@ in {
 
       plugins = [
         inputs.hyprgrass.packages.${pkgs.system}.default
+        # inputs.hyprscroller.packages.${pkgs.system}.default
         # inputs.hyprspace.packages.${pkgs.system}.Hyprspace
       ];
 
