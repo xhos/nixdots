@@ -33,21 +33,20 @@
     nixcord.url = "github:kaylorben/nixcord";
 
     # Hyprpicker, color picker for hyprland
-    hyprpicker.url = "github:hyprwm/hyprpicker";
+    # hyprpicker.url = "github:hyprwm/hyprpicker";
 
     # Colorscheme generator
-    matugen.url = "github:InioX/matugen?ref=v2.2.0";
+    # matugen.url = "github:InioX/matugen?ref=v2.2.0";
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprspace, hyprland workspace overview plugin
-    # hyprspace = {
-    #   url = "github:KZDKM/Hyprspace";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
+    nixvim = {
+      url = "github:xhos/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Hyprgrass, hyprland touch gestures plugin
     hyprgrass = {
@@ -67,17 +66,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Rust prject helper
-    naersk = {
-      url = "github:nix-community/naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # # Rust prject helper
+    # naersk = {
+    #   url = "github:nix-community/naersk";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    # Wezterm unstable
-    wezterm = {
-      url = "git+https://github.com/wez/wezterm.git?submodules=1";
-      flake = false;
-    };
+    # # Wezterm unstable
+    # wezterm = {
+    #   url = "git+https://github.com/wez/wezterm.git?submodules=1";
+    #   flake = false;
+    # };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, hm, nixos-wsl, ... }@inputs:
