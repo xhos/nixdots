@@ -143,11 +143,19 @@
     };
 
     monitor = [
-      # name, resolution, position, scale
-      "eDP-1,1920x1080@60.0,640x1800,1.0"
-      "DP-1,1920x1080@120.0,0x0,0.8"
+      "eDP-1,1920x1080@60.0,1608x1320,1.0"
+      "DP-1,1920x1080@120.0,1350x0,0.8"
+      "DP-2,1920x1080@120.0,20x0,0.8"
+      "DP-7,1920x1080@120.0,1092x1205,0.8"
+      "DP-2,transform,1"
     ];
-
+    
+    workspace= [
+      "1,monitor:DP-1,default:true"
+      "2,monitor:DP-2,default:true"
+      "10,monitor:eDP-1,default:true"
+    ];
+    
     env = [
       "GDK_SCALE,1"
       # "WLR_DRM_NO_ATOMIC,1"

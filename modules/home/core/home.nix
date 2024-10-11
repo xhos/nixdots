@@ -10,7 +10,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       egl-wayland # needed for a firefox fix
       wayvnc
-      inputs.nixvim.packages.${pkgs.system}.default
+      # inputs.nixvim.packages.${pkgs.system}.default
       thefuck
       wvkbd #osk
       figlet # cool text gen
