@@ -18,4 +18,8 @@
     prompt   = "starship";
     terminal = "alacritty";
   };
+
+  home.packages = with pkgs; [
+    (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];}) 
+  ];
 }

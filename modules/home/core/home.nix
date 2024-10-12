@@ -49,7 +49,6 @@
       kitty # here as a fallback
       nautilus
       bottles # run windows
-      (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
       obs-studio
       # termius # just for keychain accss
       qbittorrent-qt5
