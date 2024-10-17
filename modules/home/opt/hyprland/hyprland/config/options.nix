@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-  let
+let
     wvkbd-toggle = let
       inherit (pkgs) wvkbd;
     in
@@ -81,7 +81,7 @@
       gaps_in = "8";
       gaps_out = "12";
       border_size = "0";
-      layout = "scroller";
+      layout = "dwindle";
       resize_on_border = "true";
       # "col.active_border" = "rgba(${config.accent}88)";
       # "col.inactive_border" = "rgba(${config.background}88)";
@@ -130,34 +130,32 @@
 
     misc = {
       enable_swallow = true; # hide windows that spawn other windows
-      swallow_regex = "wezterm"; # windows for which swallow is applied
-      disable_autoreload = false;
+      swallow_regex = config.default.terminal; # windows for which swallow is applied
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
-      focus_on_activate = true;
+      focus_on_activate = true; # whether Hyprland should focus an app that requests to be focused (an activate request)
       force_default_wallpaper = 0;
       key_press_enables_dpms = true;
-      mouse_move_enables_dpms = true;
-      vfr = true;
-      vrr = 1;
+      mouse_move_enables_dpms = true; # if DPMS is set to off, wake up the monitors if the mouse moves
+      vfr = true;                     # lower the amount of sent frames when nothing is happening on-screen
     };
 
     monitor = [
-      "eDP-1,1920x1080@60.0,1608x1320,1.0"
-      "DP-1,1920x1080@120.0,1350x0,0.8"
-      "DP-2,1920x1080@120.0,20x0,0.8"
-      "DP-7,1920x1080@120.0,1092x1205,0.8"
+      "eDP-1,1920x1080@60.0,1615x1685,1.0"
+      "DP-1,1920x1080@120.0,1350x335,0.8"
+      "DP-2,1920x1080@120.0,0x0,0.8"
       "DP-2,transform,1"
     ];
-    
+
     workspace= [
-      "1,monitor:DP-1,default:true"
-      "2,monitor:DP-2,default:true"
-      "10,monitor:eDP-1,default:true"
+      "1,monitor:eDP-1,default:true"
+      "2,monitor:DP-1,default:true"
+      "3,monitor:DP-2,default:true"
     ];
-    
+
     env = [
-      "GDK_SCALE,1"
+      "GDK_SCALE,2"
+      "XCURSOR_SIZE,32"
       # "WLR_DRM_NO_ATOMIC,1"
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"

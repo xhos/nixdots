@@ -71,7 +71,7 @@ in {
 
         # Screenshot
         "SUPERSHIFT, S ,exec, hyprshot -m region --clipboard-only"
-        "SUPER, V, exec, alacritty -t clipse -e clipse"
+        "SUPER, V, exec, alacritty --class clipse -e clipse"
       ]
     ++ workspaces;
 

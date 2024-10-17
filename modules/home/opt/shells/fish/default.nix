@@ -19,6 +19,8 @@
         ga = "git add .";
         gp = "git push";
         gc = "git commit -m";
+        lg = "lazygit";
+        s = "nix search nixpkgs";
       };
 
       plugins = [
