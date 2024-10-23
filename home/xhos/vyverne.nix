@@ -1,17 +1,13 @@
 { inputs, pkgs, lib, config, ... }: {
-  theme = "apathy";
+  theme = "tokyo-night-storm";
 
-  imports = [
-    ../../modules/home
-  ];
-
-  # xsession.scriptPath = ".hm-xsession";
+  imports = [ ../../modules/home ];
 
   modules = {
     rofi.enable      = true;
-    discord.enable   = true;
     spicetify.enable = true;
     firefox.enable   = true;
+    discord.enable   = true;
   };
 
   default = {
@@ -22,4 +18,9 @@
     prompt   = "starship";
     terminal = "alacritty";
   };
+
+  home.packages = with pkgs; [
+    # (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+    vscode
+  ];
 }

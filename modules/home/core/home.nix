@@ -10,7 +10,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       egl-wayland # needed for a firefox fix
       wayvnc
-      lunarvim
+      # lunarvim
       httrack
       lazygit
       # inputs.nixvim.packages.${pkgs.system}.default
@@ -54,7 +54,7 @@
       bottles # run windows
       obs-studio
       # termius # just for keychain accss
-      qbittorrent-qt5
+      qbittorrent
       obsidian
       chromium
       telegram-desktop

@@ -21,6 +21,7 @@
         gc = "git commit -m";
         lg = "lazygit";
         s = "nix search nixpkgs";
+        spotify = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
       };
 
       plugins = [
