@@ -16,13 +16,6 @@
         terminal = false;
         categories = [ "Application" ];
     };
-    chromium = {
-        name = "Chromium";
-        genericName = "Chromium";
-        exec = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        terminal = false;
-        categories = [ "Application" ];
-    };
     discord = {
         name = "Discord";
         genericName = "Discord";

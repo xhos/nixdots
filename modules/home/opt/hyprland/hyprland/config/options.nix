@@ -1,26 +1,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  mkIfElse = p: yes: no: lib.mkMerge [
-    (lib.mkIf p yes)
-    (lib.mkIf (!p) no)
-  ];
-
-  nvidiaMonitors = [
-    "DP-1,1920x1080@239.76,1350x500,0.8"
-    "HDMI-A-2,1920x1080@144.0,0x0,0.8"
-    "HDMI-A-2,transform,1"
-  ];
-
-  intelMonitors = [
-    "eDP-1,1920x1080@60.0,1615x1685,1.0"
-    "DP-1,1920x1080@120.0,1350x335,0.8"
-    "DP-2,1920x1080@120.0,0x0,0.8"
-    "DP-2,transform,1"
-  ];
-
-  monitors = mkIfElse config.modules.nvidia.enable nvidiaMonitors intelMonitors;
-
   wvkbd-toggle = let
     inherit (pkgs) wvkbd;
   in
@@ -167,16 +147,13 @@ in { wayland.windowManager.hyprland.settings = {
       vfr = true;                     # lower the amount of sent frames when nothing is happening on-screen
     };
 
-    monitor = monitors;
+    monitor = [
+      "eDP-1,1920x1080@60.0,1615x1685,1.0"
+      "DP-1,1920x1080@239.76,1080x450,1"
+      "HDMI-A-2,1920x1080@144.0,0x0,1"
+      "HDMI-A-2,transform,1"
+    ];
 
-    # intel
-    # workspace= [
-    #   "1,monitor:eDP-1,default:true"
-    #   "2,monitor:DP-1,default:true"
-    #   "3,monitor:DP-2,default:true"
-    # ];
-
-    #nvidia
     workspace= [
       "1,monitor:DP-1,default:true"
       "2,monitor:HDMI-A-2,default:true"

@@ -20,6 +20,6 @@
   };
 
   home.packages = with pkgs; [
-    (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];}) 
+    (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 }

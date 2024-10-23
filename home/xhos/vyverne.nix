@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
-    # vscode
   ];
+
+  programs.waybar.settings.mainBar.output = [ "DP-1" ];
 }
