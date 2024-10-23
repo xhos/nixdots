@@ -1,26 +1,50 @@
-{ config, pkgs, ... }:
-let
-    wvkbd-toggle = let
-      inherit (pkgs) wvkbd;
-    in
-      pkgs.writeShellScriptBin "wvkbd" ''
-        if pgrep -x "wvkbd-mobintl" > /dev/null; then
-            pkill -x "wvkbd-mobintl"
-        else
-            wvkbd-mobintl -L 200 &
-        fi
-      '';
+{ config, pkgs, lib, ... }:
 
-    setWallpaper = "swww img ${config.wallpaper}";
-  in { wayland.windowManager.hyprland.settings = {
+let
+  mkIfElse = p: yes: no: lib.mkMerge [
+    (lib.mkIf p yes)
+    (lib.mkIf (!p) no)
+  ];
+
+  nvidiaMonitors = [
+    "DP-1,1920x1080@239.76,1350x500,0.8"
+    "HDMI-A-2,1920x1080@144.0,0x0,0.8"
+    "HDMI-A-2,transform,1"
+  ];
+
+  intelMonitors = [
+    "eDP-1,1920x1080@60.0,1615x1685,1.0"
+    "DP-1,1920x1080@120.0,1350x335,0.8"
+    "DP-2,1920x1080@120.0,0x0,0.8"
+    "DP-2,transform,1"
+  ];
+
+  monitors = mkIfElse config.modules.nvidia.enable nvidiaMonitors intelMonitors;
+
+  wvkbd-toggle = let
+    inherit (pkgs) wvkbd;
+  in
+    pkgs.writeShellScriptBin "wvkbd" ''
+      if pgrep -x "wvkbd-mobintl" > /dev/null; then
+          pkill -x "wvkbd-mobintl"
+      else
+          wvkbd-mobintl -L 200 &
+      fi
+    '';
+
+  setWallpaper = "swww img ${config.wallpaper}";
+
+in { wayland.windowManager.hyprland.settings = {
     exec-once = [
       "swww-daemon"
       "nm-applet"
       "blueman-applet"
       "clipse -listen"
-      # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-      "systemctl --user import-environment PATH"
-      "systemctl --user restart xdg-desktop-portal.service"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+      "dbus-update-activation-environment --systemd --all"
+      "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+      # "systemctl --user import-environment PATH"
+      # "systemctl --user restart xdg-desktop-portal.service"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
       # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
@@ -28,6 +52,7 @@ let
       # "ssh-add /home/xhos/.ssh/github"
       "protonvpn-app"
       "wayvnc"
+      "xwaylandvideobridge"
       # ''echo "Xft.dpi: 130" | xrdb -merge''
       # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 16c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 0.5"
       setWallpaper
@@ -142,25 +167,16 @@ let
       vfr = true;                     # lower the amount of sent frames when nothing is happening on-screen
     };
 
-    # monitor = [
-    #   "eDP-1,1920x1080@60.0,1615x1685,1.0"
-    #   "DP-1,1920x1080@120.0,1350x335,0.8"
-    #   "DP-2,1920x1080@120.0,0x0,0.8"
-    #   "DP-2,transform,1"
-    # ];
+    monitor = monitors;
 
-    monitor = [
-      "DP-1,1920x1080@239.76,1350x500,0.8"
-      "HDMI-A-2,1920x1080@144.0,0x0,0.8"
-      "HDMI-A-2,transform,1"
-    ];
-
+    # intel
     # workspace= [
     #   "1,monitor:eDP-1,default:true"
     #   "2,monitor:DP-1,default:true"
     #   "3,monitor:DP-2,default:true"
     # ];
 
+    #nvidia
     workspace= [
       "1,monitor:DP-1,default:true"
       "2,monitor:HDMI-A-2,default:true"
@@ -175,6 +191,7 @@ let
       "MOZ_ENABLE_WAYLAND=1"
       "MOZ_WEBRENDER=1"
       "MOZ_ACCELERATED=1"
+      "XDG_CURRENT_DESKTOP,Hyprland"
       #  Mozilla settings to make FF and forks play nice with Wayland
 
       # Sign in New API Help About

@@ -8,7 +8,7 @@
   #   vesktop
   # ];
 
-  # xdg.portal = {
+  # xdg.s = {
   #   enable = true;
   #   extraPortals = with pkgs; [
   #     xdg-desktop-portal-gtk

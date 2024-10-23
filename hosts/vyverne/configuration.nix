@@ -16,7 +16,7 @@
   greetd    .enable = true;
   i3        .enable = true;
   xserver   .enable = true;
-
+  hyprland  .enable = true;
 
   # boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
 #   hardware.opengl.enable = true;

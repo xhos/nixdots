@@ -2,6 +2,8 @@
 services.xserver.enable = true;
 
 environment.systemPackages = with pkgs; [
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
     # Networking
     nmap
     networkmanagerapplet

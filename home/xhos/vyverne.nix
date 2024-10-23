@@ -8,6 +8,7 @@
     spicetify.enable = true;
     firefox.enable   = true;
     discord.enable   = true;
+    nvidia.enable    = true;
   };
 
   default = {
@@ -20,7 +21,7 @@
   };
 
   home.packages = with pkgs; [
-    # (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
-    vscode
+    (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+    # vscode
   ];
 }

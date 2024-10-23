@@ -85,25 +85,26 @@ in {
         wlr-randr
         wlr-randr
         wtype
-        # xwaylandvideobridge
+        xwaylandvideobridge
         ydotool
         wlprop
         xorg.xprop
+        # xdg-desktop-portal-hyprland
 
         ocrScript
         volumectl
         lightctl
       ];
 
-      sessionVariables = {
-        QT_QPA_PLATFORM = "wayland;xcb";
-        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-        SDL_VIDEODRIVER = "wayland";
-        CLUTTER_BACKEND = "wayland";
-        GDK_BACKEND = "wayland,x11";
-        XDG_SESSION_TYPE = "wayland";
-        MOZ_ENABLE_WAYLAND = "1";
-      };
+      # sessionVariables = {
+      #   QT_QPA_PLATFORM = "wayland;xcb";
+      #   QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      #   SDL_VIDEODRIVER = "wayland";
+      #   CLUTTER_BACKEND = "wayland";
+      #   GDK_BACKEND = "wayland,x11";
+      #   XDG_SESSION_TYPE = "wayland";
+      #   MOZ_ENABLE_WAYLAND = "1";
+      # };
     };
 
     wayland.windowManager.hyprland = {
@@ -115,15 +116,15 @@ in {
         # inputs.hyprspace.packages.${pkgs.system}.Hyprspace
       ];
 
-      # xwayland.enable = true;
+      xwayland.enable = true;
       enable = true;
-      systemd = {
-        enable = true;
-        extraCommands = lib.mkBefore [
-          "systemctl --user stop graphical-session.target"
-          "systemctl --user start hyprland-session.target"
-        ];
-      };
+      # systemd = {
+      #   enable = true;
+      #   extraCommands = lib.mkBefore [
+      #     "systemctl --user stop graphical-session.target"
+      #     "systemctl --user start hyprland-session.target"
+      #   ];
+      # };
     };
 
     systemd.user.targets.tray = {

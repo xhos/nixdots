@@ -23,5 +23,12 @@
         terminal = false;
         categories = [ "Application" ];
     };
+    discord = {
+        name = "Discord";
+        genericName = "Discord";
+        exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        terminal = false;
+        categories = [ "Application" ];
+    };
   };
 }

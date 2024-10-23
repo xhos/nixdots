@@ -16,6 +16,13 @@
 
     # window rules
     windowrulev2 = [
+      # XWayland screen sharing related
+      "opacity 0.0 override, class:^(xwaylandvideobridge)$"
+      "noanim, class:^(xwaylandvideobridge)$"
+      "noinitialfocus, class:^(xwaylandvideobridge)$"
+      "maxsize 1 1, class:^(xwaylandvideobridge)$"
+      "noblur, class:^(xwaylandvideobridge)$"
+
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
