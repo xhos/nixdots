@@ -24,8 +24,8 @@ lib.mkIf (config.default.terminal == "foot") {
         # box-drawings-uses-font-glyphs = "yes";
         bold-text-in-bright = "yes";
         word-delimiters = ",│`|:\"'()[]{}<>";
-        font="monospace:size=12";
-        font-size-adjustment="150%";
+        font = "monospace:size=12";
+        font-size-adjustment = "150%";
       };
       cursor = {
         style = "beam";
@@ -71,32 +71,31 @@ lib.mkIf (config.default.terminal == "foot") {
 
       colors = with config.lib.stylix.colors; {
         alpha = 0.6;
-        
-        foreground="${base05}";
-        background="${base00}";
 
-        regular0="${base01}";
-        regular1="${base08}";
-        regular2="${base0B}";
-        regular3="${base0A}";
-        regular4="${base0D}";
-        regular5="${base0E}";
-        regular6="${base0C}";
-        regular7="${base05}";
+        foreground = "${base05}";
+        background = "${base00}";
 
-        bright0="${base03}";
-        bright1="${base08}";
-        bright2="${base0B}";
-        bright3="${base0A}";
-        bright4="${base0D}";
-        bright5="${base0E}";
-        bright6="${base0C}";
-        bright7="${base0F}";
+        regular0 = "${base01}";
+        regular1 = "${base08}";
+        regular2 = "${base0B}";
+        regular3 = "${base0A}";
+        regular4 = "${base0D}";
+        regular5 = "${base0E}";
+        regular6 = "${base0C}";
+        regular7 = "${base05}";
 
-        selection-foreground="${base05}";
-        selection-background="${base0D}";
+        bright0 = "${base03}";
+        bright1 = "${base08}";
+        bright2 = "${base0B}";
+        bright3 = "${base0A}";
+        bright4 = "${base0D}";
+        bright5 = "${base0E}";
+        bright6 = "${base0C}";
+        bright7 = "${base0F}";
 
-        
+        selection-foreground = "${base05}";
+        selection-background = "${base0D}";
+
         # search-box-no-match="181926 ed8796";
         # search-box-match="cad3f5 363a4f";
 

@@ -1,8 +1,11 @@
-{ inputs, config, lib, pkgs, ... }:
-
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   config = lib.mkIf (config.default.lock == "hyprlock" && config.default.de == "hyprland") {
-
     programs.hyprlock = with config.lib.stylix.colors; {
       enable = true;
 

@@ -1,9 +1,12 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   noti-cycle = pkgs.writeShellApplication {
     name = "noti-cycle";
-    runtimeInputs = with pkgs; [ rofi-wayland libnotify ];
-    bashOptions = [ "pipefail" ];
+    runtimeInputs = with pkgs; [rofi-wayland libnotify];
+    bashOptions = ["pipefail"];
     text = ''
       # Toggles the dnd state in mako notification.
 
@@ -121,13 +124,10 @@ let
       fi
     '';
   };
-in
-{
-
-  wayland.windowManager.hyprland.settings.bind =
-    [ "$modShift,d,exec,${lib.getExe noti-cycle}" ];
+in {
+  wayland.windowManager.hyprland.settings.bind = ["$modShift,d,exec,${lib.getExe noti-cycle}"];
   programs.waybar.settings.mainBar = {
-    modules-right = [ "custom/notifications" ];
+    modules-right = ["custom/notifications"];
     "custom/notifications" = {
       format = "<b>{}</b> ";
       exec = "${lib.getExe noti-cycle} -j";

@@ -16,8 +16,8 @@
   stylix.targets.waybar.enable = false;
 
   wayland.windowManager.hyprland.settings = {
-    bind = [ "SUPER,b,exec,killall -SIGUSR1 .waybar-wrapped" ];
-    exec = [ "systemctl --user restart waybar" ];
+    bind = ["SUPER,b,exec,killall -SIGUSR1 .waybar-wrapped"];
+    exec = ["systemctl --user restart waybar"];
   };
 
   programs.waybar = {

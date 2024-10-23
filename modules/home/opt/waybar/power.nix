@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.power-profiles-daemon ];
+{pkgs, ...}: {
+  home.packages = [pkgs.power-profiles-daemon];
   programs.waybar.settings.mainBar = {
-    modules-right = [ "group/power" ];
+    modules-right = ["group/power"];
 
     "group/power" = {
       orientation = "inherit";
@@ -9,7 +9,7 @@
         transition-duration = 500;
         transition-left-to-right = false;
       };
-      modules = [ "battery" "power-profiles-daemon" ];
+      modules = ["battery" "power-profiles-daemon"];
     };
     battery = {
       rotate = 270;
@@ -21,7 +21,7 @@
       format = "{icon}";
       format-charging = "<b>{icon} </b>";
       format-full = "<span color='#82A55F'><b>{icon}</b></span>";
-      format-icons = [ "󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹" ];
+      format-icons = ["󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹"];
       tooltip-format = "{timeTo} {capacity} % | {power} W";
     };
     power-profiles-daemon = {

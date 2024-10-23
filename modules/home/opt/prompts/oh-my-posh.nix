@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   config = lib.mkIf (config.default.prompt == "oh-my-posh") {
     programs.oh-my-posh = with config.lib.stylix.colors; {
       enable = true;
@@ -41,30 +44,34 @@
             type = "rprompt";
             overflow = "hidden";
 
-            segments = [{
-              type = "executiontime";
-              style = "plain";
-              foreground = "yellow";
-              background = "transparent";
-              template = "{{ .FormattedMs }}";
-              properties.threshold = 5000;
-            }];
+            segments = [
+              {
+                type = "executiontime";
+                style = "plain";
+                foreground = "yellow";
+                background = "transparent";
+                template = "{{ .FormattedMs }}";
+                properties.threshold = 5000;
+              }
+            ];
           }
           {
             type = "prompt";
             alignment = "left";
             newline = true;
 
-            segments = [{ 
-              type = "text";
-              style = "plain";
-              foreground_templates = [
-                "{{if gt .Code 0}}red{{end}}"
-                "{{if eq .Code 0}}magenta{{end}}"
-              ];
-              background = "transparent";
-              template = "❯";
-            }];
+            segments = [
+              {
+                type = "text";
+                style = "plain";
+                foreground_templates = [
+                  "{{if gt .Code 0}}red{{end}}"
+                  "{{if eq .Code 0}}magenta{{end}}"
+                ];
+                background = "transparent";
+                template = "❯";
+              }
+            ];
           }
         ];
 

@@ -1,5 +1,8 @@
-{ pkgs, config, ... }: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../../modules/nixos
   ];
@@ -10,14 +13,14 @@
   programs.nix-ld = {
     enable = true;
     package = pkgs.nix-ld-rs;
-  };  
+  };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
     wget
     git
-  ]; 
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;

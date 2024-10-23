@@ -1,5 +1,4 @@
-{ config, ... }:
-let
+{config, ...}: let
   colors = ''
     @define-color background #${config.lib.stylix.colors.base00};
     @define-color foreground #${config.lib.stylix.colors.base0F};
@@ -25,9 +24,9 @@ let
     @define-color inactive #${config.lib.stylix.colors.base03};
 
   '';
-in
-{
-  programs.waybar.style = # css
+in {
+  programs.waybar.style =
+    # css
     ''
       ${colors}
       * {

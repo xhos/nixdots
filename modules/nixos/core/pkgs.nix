@@ -1,7 +1,11 @@
-{ pkgs, config, ... }: {
-services.xserver.enable = true;
+{
+  pkgs,
+  config,
+  ...
+}: {
+  services.xserver.enable = true;
 
-environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
     # Networking

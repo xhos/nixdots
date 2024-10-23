@@ -1,5 +1,9 @@
-{ inputs, config, pkgs, ... }: {
-
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   home.sessionVariables = {
     SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
   };
@@ -22,6 +26,6 @@
       package = pkgs.papirus-icon-theme.override {color = "nordic";};
     };
   };
-  
+
   programs.home-manager.enable = true;
 }

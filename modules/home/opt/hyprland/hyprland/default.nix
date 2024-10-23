@@ -1,12 +1,17 @@
-{ config, inputs, lib, pkgs, ... }:
-let
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   # OCR (Optical Character Recognition) utility
   ocrScript = let
     inherit (pkgs) grim libnotify slurp tesseract5 wl-clipboard;
   in
     pkgs.writeShellScriptBin "wl-ocr" ''
       ${lib.getExe grim} -g "$(${lib.getExe slurp})" -t ppm - | ${
-      lib.getExe tesseract5
+        lib.getExe tesseract5
       } - - | ${wl-clipboard}/bin/wl-copy
       ${lib.getExe libnotify} "$(${wl-clipboard}/bin/wl-paste)"
     '';

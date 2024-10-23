@@ -1,5 +1,10 @@
-{ config, lib, pkgs, callPackage, ... }: {
-
+{
+  config,
+  lib,
+  pkgs,
+  callPackage,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -19,7 +24,7 @@
   hyprland  .enable = true;
 
   # boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
-#   hardware.opengl.enable = true;
+  #   hardware.opengl.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
 

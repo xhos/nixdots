@@ -1,5 +1,9 @@
-{ config, lib, inputs, ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 lib.mkIf (config.default.terminal == "alacritty") {
   home.sessionVariables.TERMINAL = "alacritty";
   programs.alacritty = {
@@ -7,6 +11,5 @@ lib.mkIf (config.default.terminal == "alacritty") {
     settings = {
       # window.opacity = 0.8;
     };
-
   };
 }

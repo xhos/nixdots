@@ -79,25 +79,31 @@
     # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, hm, nixos-wsl, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    hm,
+    nixos-wsl,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
     system = "x86_64-linux";
-    pkgsStable = import nixpkgs-stable { inherit system; };
+    pkgsStable = import nixpkgs-stable {inherit system;};
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     # Or 'nh os switch'
     nixosConfigurations = {
       zireael = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           hm.nixosModule
           ./hosts/zireael/configuration.nix
         ];
       };
       vyverne = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           hm.nixosModule
           ./hosts/vyverne/configuration.nix
@@ -118,7 +124,7 @@
     homeConfigurations = {
       "xhos@zireael" = inputs.hm.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops
@@ -128,7 +134,7 @@
       };
       "xhos@vyverne" = inputs.hm.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/vyverne.nix
           inputs.sops-nix.homeManagerModules.sops
@@ -138,7 +144,7 @@
       };
       "xhos@aevon" = inputs.hm.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/aevon.nix
           inputs.sops-nix.homeManagerModules.sops

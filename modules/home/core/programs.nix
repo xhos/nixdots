@@ -10,18 +10,18 @@
 
   xdg.desktopEntries = {
     spotify = {
-        name = "Spotify";
-        genericName = "Spotify";
-        exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        terminal = false;
-        categories = [ "Application" ];
+      name = "Spotify";
+      genericName = "Spotify";
+      exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      terminal = false;
+      categories = ["Application"];
     };
     discord = {
-        name = "Discord";
-        genericName = "Discord";
-        exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        terminal = false;
-        categories = [ "Application" ];
+      name = "Discord";
+      genericName = "Discord";
+      exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      terminal = false;
+      categories = ["Application"];
     };
   };
 }

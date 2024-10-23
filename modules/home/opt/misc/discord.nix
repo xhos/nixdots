@@ -1,10 +1,14 @@
-{ lib, config, ... }: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs.nixcord = lib.mkIf config.modules.discord.enable {
     enable = true;
 
     config = {
       # themeLinks = [ "https://refact0r.github.io/system24/theme/system24.theme.css" ];
-      themeLinks = [ "https://refact0r.github.io/system24/theme/flavors/catppuccin-mocha.theme.css" ];
+      themeLinks = ["https://refact0r.github.io/system24/theme/flavors/catppuccin-mocha.theme.css"];
 
       frameless = true;
 

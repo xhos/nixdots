@@ -1,5 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
-let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   scifox = pkgs.fetchFromGitHub {
     owner = "scientiac";
     repo = "scifox";
@@ -11,31 +16,31 @@ in {
     enable = true;
 
     package = pkgs.wrapFirefox pkgs.firefox-beta-unwrapped {
- 	    extraPolicies = {
-    		CaptivePortal = false;
-    		DisableFirefoxStudies = true;
-    		DisablePocket = true;
-    		DisableTelemetry = true;
-    		DisableFirefoxAccounts = false;
-    		NoDefaultBookmarks = true;
-    		OfferToSaveLogins = false;
-    		OfferToSaveLoginsDefault = false;
-    		PasswordManagerEnabled = false;
+      extraPolicies = {
+        CaptivePortal = false;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DisableFirefoxAccounts = false;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        OfferToSaveLoginsDefault = false;
+        PasswordManagerEnabled = false;
 
-    		FirefoxHome = {
-    		    Search = true;
-    		    Pocket = false;
-    		    Snippets = false;
-    		    TopSites = false;
-    		    Highlights = false;
-    		};
+        FirefoxHome = {
+          Search = true;
+          Pocket = false;
+          Snippets = false;
+          TopSites = false;
+          Highlights = false;
+        };
 
-    		UserMessaging = {
-    		    ExtensionRecommendations = false;
-    		    SkipOnboarding = true;
-    		};
-	    };
-		};
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
+        };
+      };
+    };
 
     profiles = {
       default = {
@@ -43,8 +48,8 @@ in {
         isDefault = true;
 
         # https://github.com/scientiac/scifox/blob/main/sidebery.json
-        userChrome = (builtins.readFile "${scifox}/chrome/userChrome.css");
-        userContent =(builtins.readFile "${scifox}/chrome/userContent.css");
+        userChrome = builtins.readFile "${scifox}/chrome/userChrome.css";
+        userContent = builtins.readFile "${scifox}/chrome/userContent.css";
 
         # http://kb.mozillazine.org/Category:Preferences
         settings = {
@@ -209,7 +214,7 @@ in {
           };
         };
       };
-      
+
       FTWA = {
         id = 1;
 

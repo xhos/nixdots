@@ -1,4 +1,10 @@
-{ inputs, pkgs, lib, config, ... }: {
+{
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   theme = "tokyo-night-storm";
 
   imports = [
@@ -6,11 +12,11 @@
   ];
 
   default = {
-    de       = "none";
-    bar      = "none";
-    lock     = "none";
-    shell    = "fish";
-    prompt   = "starship";
+    de = "none";
+    bar = "none";
+    lock = "none";
+    shell = "fish";
+    prompt = "starship";
     terminal = "none";
   };
 }

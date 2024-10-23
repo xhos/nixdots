@@ -1,5 +1,8 @@
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   sshPort = 10022;
 in {
   networking = {
@@ -19,7 +22,7 @@ in {
   # so, TODO: a better way to disable ssh
   services.openssh = {
     enable = true;
-    ports = [ sshPort ];
+    ports = [sshPort];
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";

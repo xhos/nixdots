@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.wayland.enable {
     environment.systemPackages = with pkgs; [
       xwayland

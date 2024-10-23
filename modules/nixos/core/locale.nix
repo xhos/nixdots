@@ -13,7 +13,7 @@
       LC_TIME = "en_CA.UTF-8";
     };
   };
-  
+
   time.timeZone = "America/Toronto";
   time.hardwareClockInLocalTime = true;
 }

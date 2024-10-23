@@ -1,4 +1,4 @@
-{lib,...}:{
+{lib, ...}: {
   lib.mkDefault.boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;

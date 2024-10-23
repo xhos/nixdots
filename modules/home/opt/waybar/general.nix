@@ -1,9 +1,13 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.waybar.settings.mainBar = {
-    modules-right = [ "group/together" ];
+    modules-right = ["group/together"];
     "group/together" = {
       orientation = "inherit";
-      modules = [ "group/utils" "clock" ];
+      modules = ["group/utils" "clock"];
     };
     "group/utils" = {
       orientation = "inherit";
@@ -47,7 +51,7 @@
         weeks-pos = "right";
         on-scroll = 1;
         on-click-right = "mode";
-        format = { today = "<span color='#a6e3a1'><b><u>{}</u></b></span>"; };
+        format = {today = "<span color='#a6e3a1'><b><u>{}</u></b></span>";};
       };
     };
   };

@@ -1,9 +1,12 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   recorder = pkgs.writeShellApplication {
     name = "recorder";
-    bashOptions = [ "pipefail" ];
-    runtimeInputs = with pkgs; [ wl-screenrec slurp libnotify pulseaudio ];
+    bashOptions = ["pipefail"];
+    runtimeInputs = with pkgs; [wl-screenrec slurp libnotify pulseaudio];
     text = ''
 
       notify() {
@@ -49,23 +52,25 @@ let
     '';
   };
 in {
-  home.packages = [ recorder ];
+  home.packages = [recorder];
   wayland.windowManager.hyprland.settings.bind = [
     "CTRL,Print,exec,${lib.getExe recorder}"
     "SUPERCTRL,Print,exec,${lib.getExe recorder} -s"
   ];
   programs.waybar.settings.mainBar = {
-    modules-right = [ "privacy" "custom/recorder" ];
+    modules-right = ["privacy" "custom/recorder"];
     privacy = {
       orientation = "vertical";
       icon-spacing = 4;
       icon-size = 14;
       transition-duration = 250;
-      modules = [{
-        "type" = "screenshare";
-        "tooltip" = true;
-        "tooltip-icon-size" = 24;
-      }];
+      modules = [
+        {
+          "type" = "screenshare";
+          "tooltip" = true;
+          "tooltip-icon-size" = 24;
+        }
+      ];
     };
     "custom/recorder" = {
       format = "{}";

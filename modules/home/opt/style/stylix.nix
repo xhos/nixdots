@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   stylix = {
     enable = true;
 
@@ -29,7 +35,7 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = ["FiraCode"]; };
+        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
         name = "FiraCode Nerd Font Mono";
       };
 

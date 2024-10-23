@@ -1,5 +1,7 @@
-{
+{inputs, ...}: {
   nix = {
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
     settings = {
       substituters = [
         "https://cache.nixos.org"
@@ -23,7 +25,7 @@
       automatic = true;
       options = "--delete-older-than 1d";
     };
-    
+
     optimise.automatic = true;
   };
 

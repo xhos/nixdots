@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.steam.enable {
     programs = {
       steam = {
@@ -9,11 +14,11 @@
       };
       gamemode.enable = true;
     };
-    
+
     environment.sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/xhos/.steam/root/.compatibilitytools.d";
     };
-    
-    environment.systemPackages = with pkgs; [ protonup ];
+
+    environment.systemPackages = with pkgs; [protonup];
   };
 }

@@ -1,20 +1,10 @@
-{ config, pkgs, lib, ... }:
-
-let
-  wvkbd-toggle = let
-    inherit (pkgs) wvkbd;
-  in
-    pkgs.writeShellScriptBin "wvkbd" ''
-      if pgrep -x "wvkbd-mobintl" > /dev/null; then
-          pkill -x "wvkbd-mobintl"
-      else
-          wvkbd-mobintl -L 200 &
-      fi
-    '';
-
-  setWallpaper = "swww img ${config.wallpaper}";
-
-in { wayland.windowManager.hyprland.settings = {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  wayland.windowManager.hyprland.settings = {
     exec-once = [
       "swww-daemon"
       "nm-applet"
@@ -35,7 +25,7 @@ in { wayland.windowManager.hyprland.settings = {
       "xwaylandvideobridge"
       # ''echo "Xft.dpi: 130" | xrdb -merge''
       # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 16c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 0.5"
-      setWallpaper
+      "swww img ${config.wallpaper}"
     ];
 
     animations = {
@@ -144,7 +134,7 @@ in { wayland.windowManager.hyprland.settings = {
       force_default_wallpaper = 0;
       key_press_enables_dpms = true;
       mouse_move_enables_dpms = true; # if DPMS is set to off, wake up the monitors if the mouse moves
-      vfr = true;                     # lower the amount of sent frames when nothing is happening on-screen
+      vfr = true; # lower the amount of sent frames when nothing is happening on-screen
     };
 
     monitor = [
@@ -154,7 +144,7 @@ in { wayland.windowManager.hyprland.settings = {
       "HDMI-A-2,transform,1"
     ];
 
-    workspace= [
+    workspace = [
       "1,monitor:DP-1,default:true"
       "2,monitor:HDMI-A-2,default:true"
     ];

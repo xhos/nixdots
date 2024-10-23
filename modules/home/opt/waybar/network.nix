@@ -1,29 +1,35 @@
-{ lib, config, pkgs, ... }: with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+with lib; {
   config = {
     programs.waybar.settings.mainBar = {
-      modules-right = [ "group/connection" ];
+      modules-right = ["group/connection"];
       "group/connection" = {
         orientation = "inherit";
         modules = [
           "group/network"
         ];
       };
-      
+
       "group/network" = {
         orientation = "inherit";
         drawer = {
           transition-duration = 500;
           transition-left-to-right = true;
         };
-        modules = [ "network" "network#speed" ];
+        modules = ["network" "network#speed"];
       };
-      
+
       network = {
         format = "{icon}";
         format-icons = {
-          wifi = [ "󰤨" ];
-          ethernet = [ "󰈀" ];
-          disconnected = [ "󰖪" ];
+          wifi = ["󰤨"];
+          ethernet = ["󰈀"];
+          disconnected = ["󰖪"];
         };
         format-wifi = "󰤨";
         format-ethernet = "󰈀";
@@ -32,7 +38,7 @@
         tooltip = false;
         on-click = "killall rofi || ${getExe pkgs.networkmanager_dmenu}";
       };
-      
+
       "network#speed" = {
         format = " {bandwidthDownBits} ";
         rotate = 90;

@@ -1,5 +1,10 @@
-{ stdenv, lib, fetchFromGitHub, kernel, kmod }:
-
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  kernel,
+  kmod,
+}:
 stdenv.mkDerivation rec {
   name = "samsung-galaxybook-extras-${version}-${kernel.version}";
   version = "0.1";
@@ -12,13 +17,13 @@ stdenv.mkDerivation rec {
   };
 
   sourceRoot = "source/driver";
-  hardeningDisable = [ "pic" "format" ];                                             # 1
-  nativeBuildInputs = kernel.moduleBuildDependencies;                       # 2
+  hardeningDisable = ["pic" "format"]; # 1
+  nativeBuildInputs = kernel.moduleBuildDependencies; # 2
 
   makeFlags = [
-    "KERNELRELEASE=${kernel.modDirVersion}"                                 # 3
-    "KERNEL_SRC=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"    # 4
-    "INSTALL_MOD_PATH=$(out)"                                               # 5
+    "KERNELRELEASE=${kernel.modDirVersion}" # 3
+    "KERNEL_SRC=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build" # 4
+    "INSTALL_MOD_PATH=$(out)" # 5
   ];
 
   installPhase = ''
@@ -29,7 +34,7 @@ stdenv.mkDerivation rec {
     description = "Mimics Samsung System Event Controller, allowing for more configuration.";
     homepage = "https://github.com/joshuagrisham/samsung-galaxybook-extras";
     license = licenses.gpl2;
-    maintainers = [ maintainers.derock ];
+    maintainers = [maintainers.derock];
     platforms = platforms.linux;
   };
 }

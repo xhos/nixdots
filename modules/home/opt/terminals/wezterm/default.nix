@@ -1,5 +1,9 @@
-{ config, lib, inputs, ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 lib.mkIf (config.default.terminal == "wezterm") {
   home.sessionVariables.TERMINAL = "wezterm";
   programs.wezterm = {
@@ -39,7 +43,7 @@ lib.mkIf (config.default.terminal == "wezterm") {
         ];
       };
     };
-    
+
     extraConfig = ''
       local wez = require('wezterm')
       return {

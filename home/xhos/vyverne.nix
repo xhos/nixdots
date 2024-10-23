@@ -1,28 +1,28 @@
-{ inputs, pkgs, lib, config, ... }: {
+{pkgs, ...}: {
   theme = "tokyo-night-storm";
 
-  imports = [ ../../modules/home ];
+  imports = [../../modules/home];
 
   modules = {
-    rofi.enable      = true;
+    rofi.enable = true;
     spicetify.enable = true;
-    firefox.enable   = true;
-    discord.enable   = true;
-    nvidia.enable    = true;
+    firefox.enable = true;
+    discord.enable = true;
+    nvidia.enable = true;
   };
 
   default = {
-    de       = "hyprland";
-    bar      = "waybar";
-    lock     = "hyprlock";
-    shell    = "fish";
-    prompt   = "starship";
+    de = "hyprland";
+    bar = "waybar";
+    lock = "hyprlock";
+    shell = "fish";
+    prompt = "starship";
     terminal = "alacritty";
   };
 
   home.packages = with pkgs; [
-    (vscode.override { commandLineArgs = [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+    (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 
-  programs.waybar.settings.mainBar.output = [ "DP-1" ];
+  programs.waybar.settings.mainBar.output = ["DP-1"];
 }

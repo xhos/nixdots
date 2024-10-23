@@ -1,11 +1,16 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.rclone.enable {
-    environment.systemPackages = with pkgs; [ rclone ];
+    environment.systemPackages = with pkgs; [rclone];
     systemd.services.rclone-onedrive-mount = {
-      wantedBy = [ "default.target" ];
-      after    = [ "network-online.target" ];
-      requires = [ "network-online.target" ];
-    
+      wantedBy = ["default.target"];
+      after = ["network-online.target"];
+      requires = ["network-online.target"];
+
       serviceConfig = let
         onedriveDir = "/home/xhos/onedrive";
       in {
@@ -17,7 +22,7 @@
         RestartSec = "10s";
         User = "xhos";
         Group = "users";
-        Environment = [ "PATH=/run/wrappers/bin/:$PATH" ];
+        Environment = ["PATH=/run/wrappers/bin/:$PATH"];
       };
     };
   };

@@ -1,13 +1,16 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   config = lib.mkIf (config.default.shell == "nu") {
     programs.nushell = {
       enable = true;
 
-      configFile.text =  ''
+      configFile.text = ''
         $env.TRANSIENT_PROMPT_COMMAND = ""
-        
+
         alias ns = nix-shell -p
         alias gcl = git clone
         alias cat = bat
@@ -56,7 +59,7 @@
 
 
         $env.config = {
-          show_banner: false, 
+          show_banner: false,
           completions: {
             external: {
               enable: true

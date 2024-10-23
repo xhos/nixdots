@@ -1,4 +1,11 @@
-{ config, inputs, lib, pkgs, pkgsStable, ... }: {
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  pkgsStable,
+  ...
+}: {
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";
@@ -66,7 +73,8 @@
       starship
       oh-my-posh
       nushell
-      fish grc
+      fish
+      grc
       wireplumber # A modular session / policy manager for PipeWire
       # xwayland
 
@@ -74,7 +82,8 @@
       rustup
       python3
       # yq # YAML, JSON and XML processor
-      # alejandra # nix code formatter
+      alejandra # nix code formatter
+      nixd
       # deadnix # remove unused code in nix files
       docker-compose
       gcc
@@ -88,12 +97,10 @@
       bemoji # emoji picker
       # circumflex # (clx) hacker news cli
 
-
       tlrc # better man
       ventoy
       # gnome-network-displays # not implemented yet: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/70
       miraclecast
-
     ];
   };
 }

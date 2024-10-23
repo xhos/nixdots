@@ -1,6 +1,10 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.waybar.settings.mainBar = {
-    modules-left = [ "group/info" ];
+    modules-left = ["group/info"];
 
     "group/info" = {
       orientation = "inherit";
@@ -8,7 +12,7 @@
         transition-duration = 500;
         transition-left-to-right = false;
       };
-      modules = [ "custom/dmark" "group/gcpu" "memory" "disk" ];
+      modules = ["custom/dmark" "group/gcpu" "memory" "disk"];
     };
     "custom/dmark" = {
       format = "";
@@ -16,7 +20,7 @@
     };
     "group/gcpu" = {
       orientation = "inherit";
-      modules = [ "custom/cpu-icon" "custom/cputemp" "cpu" ];
+      modules = ["custom/cpu-icon" "custom/cputemp" "cpu"];
     };
     "custom/cpu-icon" = {
       format = "󰻠";

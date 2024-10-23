@@ -1,9 +1,13 @@
-
-{ inputs, config, lib, pkgs,... }:
-let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+  imports = [inputs.spicetify-nix.homeManagerModules.default];
 
   config = lib.mkIf config.modules.spicetify.enable {
     programs.spicetify = {

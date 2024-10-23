@@ -1,12 +1,12 @@
-{ lib, ... }: {
+{lib, ...}: {
   options = with lib; {
     modules = {
-      firefox.enable   = mkEnableOption "Enable firefox";
-      mpd.enable       = mkEnableOption "Enable mpd";
-      rofi.enable      = mkEnableOption "Enable rofi";
+      firefox.enable = mkEnableOption "Enable firefox";
+      mpd.enable = mkEnableOption "Enable mpd";
+      rofi.enable = mkEnableOption "Enable rofi";
       spicetify.enable = mkEnableOption "Enable spicetify";
-      discord.enable   = mkEnableOption "Enable discord";
-      nvidia.enable    = mkEnableOption "Enable nvidia specific patches";
+      discord.enable = mkEnableOption "Enable discord";
+      nvidia.enable = mkEnableOption "Enable nvidia specific patches";
     };
 
     default = {
