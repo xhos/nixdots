@@ -37,7 +37,19 @@ Clipboard manager: [clipse](https://github.com/savedra1/clipse)
 
 - **waybar**
 
-## post install (notes to self, not instructions)
+## install (notes to self, not instructions)
+
+nix-shell -p git home-manager
+sudo rm -r /etc/nixos/*
+sudo git clone https://github.com/xhos/nixdots /etc/nixos
+cd /etc/nixos
+sudo nixos-generate-config
+rm configuration.nix
+sudo mv hardware-configuration.nix hosts/HOST/hardware-configuration.nix 
+home-manager switch --flake .#xhos@HOST --extra-experimental-features "nix-command flakes" -b b
+sudo nixos-rebuild switch --flake .#HOST
+
+## post install
 
 ### sops-nix:
 
