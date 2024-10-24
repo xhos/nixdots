@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   config = {
     wallpaper = ../../../../home/shared/walls/${config.theme}.jpg;
 

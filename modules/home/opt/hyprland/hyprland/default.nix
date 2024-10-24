@@ -20,23 +20,23 @@
   volumectl = let
     inherit (pkgs) libnotify pamixer libcanberra-gtk3;
   in
-    pkgs.writeShellScriptBin "volumectl" ''
-      #!/usr/bin/env bash
+    pkgs.writeShellScriptBin "volumectl" ''      libnotify
+            #!/usr/bin/env bash
 
-      case "$1" in
-      up)
-        ${lib.getExe pamixer} -i "$2"
-        ;;
-      down)
-        ${lib.getExe pamixer} -d "$2"
-        ;;
-      toggle-mute)
-        ${lib.getExe pamixer} -t
-        ;;
-      esac
+            case "$1" in
+            up)
+              ${lib.getExe pamixer} -i "$2"
+              ;;
+            down)
+              ${lib.getExe pamixer} -d "$2"
+              ;;
+            toggle-mute)
+              ${lib.getExe pamixer} -t
+              ;;
+            esac
 
-      volumelib.getExepercentage="$(${lib.getExe pamixer} --get-volume)"
-      isMuted="$(${lib.getExe pamixer} --get-mute)"
+            volumelib.getExepercentage="$(${lib.getExe pamixer} --get-volume)"
+            isMuted="$(${lib.getExe pamixer} --get-mute)"
 
     '';
 

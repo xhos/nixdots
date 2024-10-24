@@ -5,6 +5,6 @@
     ./fastfetch.nix
     ./git.nix
     ./clipse.nix
-    # ./ssh.nix
+    ./mako.nix
   ];
 }
