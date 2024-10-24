@@ -30,23 +30,22 @@ in {
     ''
       ${colors}
       * {
-        min-width: 8px;
+        min-width: 15px;
         min-height: 0px;
       }
 
       window#waybar {
         transition-property: background-color;
         transition-duration: 0.5s;
-        border-radius: 8px;
+        border-radius: 10px;
         border: 2px solid @inactive;
-        background: @background;
-        background: alpha(@background, 0.7);
-        color: lighter(@active);
+        background: alpha(@background, 0.6);
+        color: @active;
       }
 
       menu,
       tooltip {
-        border-radius: 8px;
+        border-radius: 10px;
         padding: 2px;
         border: 1px solid lighter(@inactive);
         background: alpha(@background, 0.6);
@@ -82,8 +81,8 @@ in {
       .modules-left {
         transition-property: background-color;
         transition-duration: 0.5s;
-        margin: 6px 6px 6px 6px;
-        border-radius: 4px;
+        margin: 10px 5px 10px 5px;
+        border-radius: 10px;
         background: alpha(@background, 0.4);
         color: alpha(@foreground, 0.3);
       }

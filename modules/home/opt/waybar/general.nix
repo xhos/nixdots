@@ -1,8 +1,4 @@
 {
-  pkgs,
-  lib,
-  ...
-}: {
   programs.waybar.settings.mainBar = {
     modules-right = ["group/together"];
     "group/together" = {

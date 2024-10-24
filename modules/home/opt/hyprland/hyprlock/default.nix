@@ -1,8 +1,6 @@
 {
-  inputs,
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf (config.default.lock == "hyprlock" && config.default.de == "hyprland") {
@@ -68,7 +66,7 @@
 
           # USER
           {
-            text = "    $USER";
+            text = "cmd[update:1000] echo \"$(sh /etc/nixos/modules/home/opt/hyprland/hyprlock/time.sh)\"";
             color = "rgba(216, 222, 233, 0.80)";
             outline_thickness = 2;
             dots_size = 0.2;

@@ -1,89 +1,100 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{config, ...}: {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
+      # daemons
       "swww-daemon"
       "nm-applet"
       "blueman-applet"
       "clipse -listen"
+      "xwaylandvideobridge"
+      "wayvnc"
+      "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
+
+      # misc
+      "swww img ${config.wallpaper}"
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
+
+      # random fixes
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "dbus-update-activation-environment --systemd --all"
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       # "systemctl --user import-environment PATH"
       # "systemctl --user restart xdg-desktop-portal.service"
-      "wl-paste --type text --watch cliphist store"
-      "wl-paste --type image --watch cliphist store"
       # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
-      "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
       # "ssh-add /home/xhos/.ssh/github"
-      "protonvpn-app"
-      "wayvnc"
-      "xwaylandvideobridge"
       # ''echo "Xft.dpi: 130" | xrdb -merge''
       # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 16c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 0.5"
-      "swww img ${config.wallpaper}"
     ];
+
+    #-----------------------------------------------------------------------------------------------------------
+    # GENERAL
+    #-----------------------------------------------------------------------------------------------------------
+
+    general = {
+      gaps_in = "5";
+      gaps_out = "10";
+      border_size = "2";
+      resize_on_border = "true";
+      layout = "dwindle";
+
+      "col.active_border" = "0xFF${config.lib.stylix.colors.base03})";
+      "col.inactive_border" = "rgb(000000)";
+    };
+
+    #-----------------------------------------------------------------------------------------------------------
+    # DECORATION
+    #-----------------------------------------------------------------------------------------------------------
+
+    decoration = {
+      rounding = 10;
+      "col.shadow" = "rgb(000000)";
+      drop_shadow = true;
+      shadow_ignore_window = true;
+      shadow_range = 30;
+      shadow_render_power = 4;
+
+      blur = {
+        enabled = true;
+        size = 12;
+        passes = 4;
+        new_optimizations = true;
+        brightness = 1;
+        contrast = "2";
+        # ignore_opacity = "on";
+        # noise = "0.011700";
+        # xray = "false";
+      };
+
+      # inactive_opacity = "0.94";
+      blurls = [
+        "RegularWindow"
+        "waybar"
+        "PopupWindow"
+      ];
+      layerrule = "blur,waybar";
+    };
+
+    #-----------------------------------------------------------------------------------------------------------
+    # ANIMATIONS
+    #-----------------------------------------------------------------------------------------------------------
 
     animations = {
       enabled = true;
-      bezier = ["md3_decel, 0.05, 0.7, 0.1, 1"];
+      bezier = "quart, 0.25, 1, 0.5, 1";
 
       animation = [
-        "border, 1, 2, default"
-        "fade, 1, 2, md3_decel"
-        "windows, 1, 4, md3_decel, popin 60%"
-        "workspaces, 1, 4, md3_decel, slidevert"
+        "windows, 1, 2, quart, slide"
+        "border, 1, 2, quart"
+        "borderangle, 1, 2, quart"
+        "fade, 1, 2, quart"
+        "workspaces, 1, 2, quart, slidevert"
       ];
-    };
-
-    decoration = {
-      # "col.shadow" = "rgb(${config.w})";
-      # "col.shadow_inactive" = "rgba(${config.accent}00)";
-      inactive_opacity = "0.94";
-      drop_shadow = "true";
-      rounding = 10;
-      shadow_ignore_window = "true";
-      shadow_range = 16;
-      shadow_render_power = 2;
-
-      blurls = [
-        "RegularWindow"
-        "PopupWindow"
-      ];
-
-      blur = {
-        brightness = 1;
-        contrast = "1.200000";
-        enabled = "yes";
-        ignore_opacity = "on";
-        new_optimizations = "on";
-        noise = "0.011700";
-        passes = 3;
-        size = 6;
-        xray = "false";
-      };
     };
 
     dwindle = {
       pseudotile = true;
       preserve_split = true;
-      # no_gaps_when_only = -1;
-    };
-
-    general = {
-      gaps_in = "8";
-      gaps_out = "12";
-      border_size = "0";
-      layout = "dwindle";
-      resize_on_border = "true";
-      # "col.active_border" = "rgba(${config.accent}88)";
-      # "col.inactive_border" = "rgba(${config.background}88)";
-
-      allow_tearing = true;
     };
 
     device = {
@@ -179,8 +190,8 @@
       # export XDG_SESSION_DESKTOP=sway
       # export XDG_CURRENT_DESKTOP=sway
 
-      # ## (From the XDG documentation) enables automatic scaling,
-      # ## based on the monitor’s pixel density
+      # ##
+      # export XDG_AUTO_SCREEN_SCALE_FACTOR=1
       # export XDG_AUTO_SCREEN_SCALE_FACTOR=1
 
       # # Wayland stuff

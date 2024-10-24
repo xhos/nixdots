@@ -65,18 +65,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # # Rust prject helper
-    # naersk = {
-    #   url = "github:nix-community/naersk";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # # Wezterm unstable
-    # wezterm = {
-    #   url = "git+https://github.com/wez/wezterm.git?submodules=1";
-    #   flake = false;
-    # };
   };
 
   outputs = {

@@ -1,8 +1,6 @@
 {
   imports = [
     ./hyprland.nix
-    ./stats.nix
-    # ./recorder.nix
     ./backlight.nix
     ./audio.nix
     ./notification.nix
@@ -16,7 +14,6 @@
   stylix.targets.waybar.enable = false;
 
   wayland.windowManager.hyprland.settings = {
-    bind = ["SUPER,b,exec,killall -SIGUSR1 .waybar-wrapped"];
     exec = ["systemctl --user restart waybar"];
   };
 
@@ -28,7 +25,7 @@
       mainBar = {
         layer = "top";
         position = "right";
-        margin = "5 2 5 0";
+        margin = "10 5 10 0";
         reload_style_on_change = true;
       };
     };

@@ -1,9 +1,10 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
-  programs.waybar.settings.mainBar = {
+  programs.waybar.settings.mainBar = lib.mkIf (!config.modules.nvidia.enable) {
     modules-right = ["group/brightness"];
     "group/brightness" = {
       orientation = "inherit";

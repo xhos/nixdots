@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  callPackage,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -41,5 +35,10 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  programs.coolercontrol = {
+    enable = true;
+    nvidiaSupport = true;
   };
 }

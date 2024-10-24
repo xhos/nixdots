@@ -3,8 +3,8 @@
     enable = true;
     settings = {
       logo = {
-        type = "iterm";
-        source = "/etc/nixos/home/shared/images/evanixlogo.png";
+        type = "logo";
+        source = "/etc/nixos/home/shared/images/ff.txt";
         width = 34;
         height = 17;
         padding = {

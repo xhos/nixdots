@@ -8,7 +8,6 @@
     ./aliases.nix
     ./keybinds.nix
     ./options.nix
-    ./plugins.nix
   ];
 
   config = lib.mkIf (config.default.shell == "zsh") {
