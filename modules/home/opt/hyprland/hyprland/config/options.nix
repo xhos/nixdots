@@ -1,4 +1,6 @@
-{config, ...}: {
+{config, ...}: let
+  setWallpaper = "swww img ${config.wallpaper}";
+in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       # daemons
@@ -8,10 +10,11 @@
       "clipse -listen"
       "xwaylandvideobridge"
       "wayvnc"
+      "mako"
       "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
 
       # misc
-      "swww img ${config.wallpaper}"
+      setWallpaper
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
 

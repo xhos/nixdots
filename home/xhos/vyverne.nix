@@ -17,7 +17,7 @@
     lock = "hyprlock";
     shell = "fish";
     prompt = "starship";
-    terminal = "alacritty";
+    terminal = "foot";
   };
 
   home.packages = with pkgs; [

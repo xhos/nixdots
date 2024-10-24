@@ -80,7 +80,7 @@ in {
         gtk3
         hyprpicker
         libcanberra-gtk3
-        libnotify
+        # libnotify
         pamixer
         sassc
         slurp

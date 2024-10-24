@@ -69,6 +69,8 @@
       # miru
       # stremio
 
+      mako
+      libnotify
       # TODO: ?Should not be here?
       starship
       oh-my-posh

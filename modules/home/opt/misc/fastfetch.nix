@@ -3,8 +3,8 @@
     enable = true;
     settings = {
       logo = {
-        type = "logo";
-        source = "/etc/nixos/home/shared/images/ff.txt";
+        type = "sixel";
+        source = "/etc/nixos/home/shared/images/evanixlogo.png";
         width = 34;
         height = 17;
         padding = {
