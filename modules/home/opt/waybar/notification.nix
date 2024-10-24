@@ -125,7 +125,7 @@
     '';
   };
 in {
-  wayland.windowManager.hyprland.settings.bind = ["$modShift,d,exec,${lib.getExe noti-cycle}"];
+  wayland.windowManager.hyprland.settings.bind = ["SUPERSHIFT,d,exec,${lib.getExe noti-cycle}"];
   programs.waybar.settings.mainBar = {
     modules-right = ["custom/notifications"];
     "custom/notifications" = {

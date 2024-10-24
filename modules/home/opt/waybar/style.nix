@@ -22,7 +22,6 @@
     @define-color color15 #${config.lib.stylix.colors.base0F};
     @define-color active #${config.lib.stylix.colors.base0D};
     @define-color inactive #${config.lib.stylix.colors.base03};
-
   '';
 in {
   programs.waybar.style =

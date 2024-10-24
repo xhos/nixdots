@@ -1,30 +1,23 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   services.mako = {
-    # Enables a simple notification daemon
     enable = true;
     anchor = "top-right";
-    backgroundColor = "#282a36";
-    borderColor = "#bd93f9";
-    borderSize = 3;
+    backgroundColor = "#${config.lib.stylix.colors.base00}66"; # Updated to include alpha value for transparency
+    borderSize = 2;
     defaultTimeout = 3000;
-    font = "Mononoki Nerd Font Mono 10";
+    font = "FiraCode Nerd Font Mono 10";
     height = 150;
     width = 300;
+    borderRadius = 5;
     icons = true;
     textColor = "#f8f8f2";
     layer = "overlay";
     sort = "-time";
     extraConfig = ''
       [urgency=low]
-      border-color=#282a36
+      border-color=#${config.lib.stylix.colors.base00}
       [urgency=normal]
-      border-color=#bd93f9
+      border-color=#${config.lib.stylix.colors.base03}
       [urgency=high]
       border-color=#ff5555
       default-timeout=0

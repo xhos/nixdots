@@ -70,12 +70,14 @@ in {
       };
 
       # inactive_opacity = "0.94";
-      blurls = [
-        "RegularWindow"
-        "waybar"
-        "PopupWindow"
+
+      layerrule = [
+        "blur,RegularWindow"
+        "blur,PopupWindow"
+        "blur,waybar"
+        "blur,notifications"
+        "ignorezero, notifications"
       ];
-      layerrule = "blur,waybar";
     };
 
     #-----------------------------------------------------------------------------------------------------------
