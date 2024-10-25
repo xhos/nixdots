@@ -16,13 +16,26 @@
   audio     .enable = true;
   bluetooth .enable = true;
   sshserver .enable = true;
-  rclone    .enable = true;
+  rclone    .enable = false;
   steam     .enable = true;
   greetd    .enable = true;
   hyprland  .enable = true;
   xserver   .enable = true;
 
   boot = {
+    loader = {
+      systemd-boot.enable = false;
+      grub = {
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+    };
     extraModulePackages = let
       sgbextras = config.boot.kernelPackages.callPackage ../../derivs/samsung-galaxybook-extras.nix {};
     in [
