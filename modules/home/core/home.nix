@@ -1,7 +1,5 @@
 {
-  config,
   inputs,
-  lib,
   pkgs,
   pkgsStable,
   ...
@@ -15,28 +13,30 @@
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
+      inputs.swww.packages.${pkgs.system}.swww
       egl-wayland # needed for a firefox fix
       wayvnc
       # lunarvim
-      httrack
+      # httrack # offline websites
       lazygit
       # inputs.nixvim.packages.${pkgs.system}.default
       thefuck
       wvkbd #osk
       figlet # cool text gen
       nwg-displays
-      alacritty
+      # alacritty
       xwaylandvideobridge # for screen sharing
       # Utils
-      swww # wallpaper daemon
+      # swww # wallpaper daemon
       fastfetch
       hyprshot
       wev # for keybindings
       scrcpy # android screen mirroring
       yazi # cli explorer
       colordiff # file diff
+      lz4
       clipse # clipboard manager
-      feh # image viewer
+      swayimg # image viewer
       gitmoji-cli # emoji for commits
       glab # gitlab cli
       glow # cli markdown renderer

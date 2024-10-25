@@ -21,6 +21,7 @@
       s = "nix search nixpkgs";
       nhs = "nh home switch";
       nos = "nh os switch";
+      img = "swayimg";
     };
 
     plugins = [

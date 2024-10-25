@@ -76,6 +76,8 @@ in {
           # Screenshot
           "SUPERSHIFT, S ,exec, hyprshot -m region --clipboard-only"
           "SUPER, V, exec, ${terminal} -a clipse clipse"
+
+          ",Insert, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle" # mute microphone
         ]
         ++ workspaces;
 

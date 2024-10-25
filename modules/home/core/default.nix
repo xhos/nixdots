@@ -1,7 +1,6 @@
 {
-  inputs,
-  config,
   pkgs,
+  config,
   ...
 }: {
   home.sessionVariables = {
@@ -27,5 +26,25 @@
     };
   };
 
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      associations.added = {
+        "image" = ["swayimg.desktop"];
+      };
+      defaultApplications = {
+        "image/jpeg" = ["swayimg.desktop"];
+        "image/png" = ["swayimg.desktop"];
+        "image/gif" = ["swayimg.desktop"];
+      };
+    };
+
+    cacheHome = config.home.homeDirectory + "/.cache";
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+  };
   programs.home-manager.enable = true;
 }

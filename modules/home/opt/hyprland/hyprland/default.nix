@@ -138,15 +138,5 @@ in {
         Requires = ["graphical-session-pre.target"];
       };
     };
-
-    xdg = {
-      enable = true;
-      mimeApps.enable = true;
-      cacheHome = config.home.homeDirectory + "/.cache";
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-      };
-    };
   };
 }

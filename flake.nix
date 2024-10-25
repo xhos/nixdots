@@ -32,6 +32,9 @@
     # Nixcord, a way to manage vencord plugins nix way
     nixcord.url = "github:kaylorben/nixcord";
 
+    # A solution to your Wayland Wallpaper Woes
+    swww.url = "github:LGFae/swww";
+
     # Hyprpicker, color picker for hyprland
     # hyprpicker.url = "github:hyprwm/hyprpicker";
 
@@ -73,6 +76,7 @@
     nixpkgs-stable,
     hm,
     nixos-wsl,
+    swww,
     ...
   } @ inputs: let
     inherit (self) outputs;

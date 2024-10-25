@@ -3,14 +3,18 @@
     ./options.nix
     ./waybar
     ./shells
-    ./misc
+    ./clipse.nix
+    ./discord.nix
+    ./fastfetch.nix
+    ./git.nix
+    ./mako.nix
     ./firefox
     ./music
     ./terminals
     ./hyprland
-    ./overlays.nix
     ./rofi
     ./style/stylix.nix
     ./prompts
+    ./rofi.nix
   ];
 }
