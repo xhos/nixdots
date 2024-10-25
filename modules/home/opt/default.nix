@@ -12,7 +12,6 @@
     ./music
     ./terminals
     ./hyprland
-    ./rofi
     ./style/stylix.nix
     ./prompts
     ./rofi.nix

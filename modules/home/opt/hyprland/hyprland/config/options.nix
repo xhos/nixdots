@@ -2,7 +2,11 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  wp =
+    pkgs.lib.getExe
+    (pkgs.callPackage ./wp-changer.nix {});
+in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       # daemons
@@ -16,7 +20,7 @@
       "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
 
       # misc
-      pkgs.wp-changer
+      wp
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
 
