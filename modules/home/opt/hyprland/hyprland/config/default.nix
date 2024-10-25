@@ -3,6 +3,6 @@
     ./binds.nix
     ./options.nix
     ./rules.nix
-    ./wallpaper.nix
+    ./wp-changer.nix
   ];
 }

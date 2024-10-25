@@ -24,7 +24,7 @@
         export SWWW_TRANSITION_STEP=2
 
         # This controls (in seconds) when to switch to the next image
-        INTERVAL=10
+        INTERVAL=600
 
         while true; do
           find "$WALLS_DIR" -type f \

@@ -1,6 +1,8 @@
-{config, ...}: let
-  setWallpaper = "swww img ${config.wallpaper}";
-in {
+{
+  config,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       # daemons
@@ -14,7 +16,7 @@ in {
       "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
 
       # misc
-      setWallpaper
+      pkgs.wp-changer
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
 
