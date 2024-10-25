@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  theme = "tokyo-night-storm";
+  theme = "tokyo-night-dark";
   wallsDir = "/home/xhos/Pictures/walls";
 
   imports = [../../modules/home];

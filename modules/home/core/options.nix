@@ -4,14 +4,6 @@ with lib; {
     type = types.str;
     default = "";
   };
-  options.wallsDir = mkOption {
-    type = types.str;
-    default = "";
-  };
-  options.theme = mkOption {
-    type = types.str;
-    default = "";
-  };
   options.accent = mkOption {
     type = types.str;
     default = "";

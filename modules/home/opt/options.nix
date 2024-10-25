@@ -1,5 +1,13 @@
 {lib, ...}: {
   options = with lib; {
+    wallsDir = mkOption {
+      type = types.str;
+      default = "";
+    };
+    theme = mkOption {
+      type = types.str;
+      default = "";
+    };
     modules = {
       firefox.enable = mkEnableOption "Enable firefox";
       mpd.enable = mkEnableOption "Enable mpd";
