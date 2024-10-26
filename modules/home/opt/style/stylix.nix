@@ -6,13 +6,9 @@
   stylix = {
     enable = true;
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-
-    base16Scheme = ./themes/${config.theme}.yaml;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
     image = ../../../../home/shared/walls/${config.theme}.jpg;
-
     polarity = "dark";
-
     opacity.terminal = 0.6;
 
     cursor = {
