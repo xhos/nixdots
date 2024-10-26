@@ -7,7 +7,6 @@
 with lib; {
   config = {
     programs.waybar.settings.mainBar = {
-      modules-right = ["group/connection"];
       "group/connection" = {
         orientation = "inherit";
         modules = [

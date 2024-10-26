@@ -2,6 +2,7 @@
   colors = ''
     @define-color background #${config.lib.stylix.colors.base00};
     @define-color foreground #${config.lib.stylix.colors.base0F};
+    @define-color text #${config.lib.stylix.colors.base07};
 
     @define-color color0 #${config.lib.stylix.colors.base00};
     @define-color color1 #${config.lib.stylix.colors.base01};
@@ -25,6 +26,10 @@
 in {
   programs.waybar.style = ''
     ${colors}
+    /********************************
+                  Global
+    ********************************/
+
     * {
       min-width: 15px;
       min-height: 0px;
@@ -39,23 +44,12 @@ in {
       color: @active;
     }
 
-    menu,
-    tooltip {
-      border-radius: 10px;
-      padding: 2px;
-      border: 1px solid lighter(@inactive);
-      background: alpha(@background, 0.6);
-      color: lighter(@active);
-    }
-
-    menu label,
-    tooltip label {
-      font-size: 14px;
-      color: lighter(@active);
-    }
+    /********************************
+                  Submap
+    ********************************/
 
     #submap,
-    #tray>.needs-attention {
+    #tray > .needs-attention {
       animation-name: blink-active;
       animation-duration: 1s;
       animation-timing-function: linear;
@@ -63,60 +57,13 @@ in {
       animation-direction: alternate;
     }
 
-    .modules-right {
-      margin: 0px 6px 6px 6px;
-      border-radius: 4px;
-      background: alpha(@background, 0.4);
-      color: lighter(@active);
-      padding: 2px 2px 4px 2px;
-    }
-
-    .modules-left {
-      transition-property: background-color;
-      transition-duration: 0.5s;
-      margin: 10px 5px 10px 5px;
-      border-radius: 10px;
-      background: alpha(@background, 0.4);
-      color: alpha(@foreground, 0.3);
-    }
-
-    #custom-notifications,
-    #together,
-    #submap,
-    #connection,
-    #cnoti,
-    #power,
-    #custom-updates,
-    #custom-wl-gammarelay-temperature,
-    #tray {
-      margin: 3px 0px;
-      border-radius: 4px;
-      background: alpha(darker(@active), 0.3);
-    }
-
-    #audio {
-      margin-top: 3px;
-      padding: 6px 0px 6px 0px;
-    }
-
-    #brightness,
-    #audio {
-      border-radius: 4px;
-      background: alpha(darker(@active), 0.3);
-    }
-
-    #custom-notifications {
-      font-size: 14px;
-      padding-right: 4px;
-    }
-
-    #custom-dmark {
-      color: alpha(@foreground, 0.3);
-    }
+    /********************************
+                  Workspaces
+    ********************************/
 
     #workspaces {
-      margin: 0px 2px;
-      padding: 4px 0px 0px 0px;
+      margin: 2px 2px;
+      padding: 1px 0px 1px 0px;
       border-radius: 8px;
     }
 
@@ -136,20 +83,56 @@ in {
 
     #workspaces button.active {
       padding: 4px 2px;
-      background: alpha(@active, 0.4);
-      color: lighter(@active);
+      background: alpha(@inactive, 0.4);
+      color: @text;
       border-radius: 4px;
     }
 
-    #network.wifi {
-      padding-right: 4px;
+    /********************************
+                  Modules
+    ********************************/
+
+    /* Top */
+    .modules-left {
+      background: alpha(@background, 0.4);
+      border-radius: 5px;
+      color: alpha(@foreground, 0.3);
+      margin: 5px 5px 5px 5px;
+      transition-duration: 0.5s;
+      transition-property: background-color;
     }
 
-    #submap {
-      margin-bottom: 0px;
-      min-width: 0px;
-      margin: 4px 6px 4px 6px;
+    /* Bottom */
+    .modules-right {
+      background: alpha(@background, 0.4);
+      border-radius: 5px;
+      color: @text;
+      margin: 5px 5px 5px 5px;
+      padding: 2px 2px 4px 2px;
     }
+
+    /********************************
+                  Misc
+    ********************************/
+
+    #clock {
+      font-weight: bold;
+      padding: 4px 2px 2px 2px;
+    }
+
+    #connection,
+    #custom-notifications,
+    #custom-updates,
+    #custom-wl-gammarelay-temperature,
+    #power,
+    #tray {
+      margin: 10px 0px 10px 0px;
+      border-radius: 4px;
+    }
+
+    /********************************
+                Battery
+    ********************************/
 
     #battery {
       border-radius: 8px;
@@ -173,10 +156,9 @@ in {
       animation-direction: alternate;
     }
 
-    #clock {
-      font-weight: bold;
-      padding: 4px 2px 2px 2px;
-    }
+    /********************************
+                Sliders
+    ********************************/
 
     #pulseaudio.mic {
       border-radius: 4px;
@@ -205,6 +187,29 @@ in {
       background-color: lighter(@active);
     }
 
+    /********************************
+                  Menu
+    ********************************/
+
+    menu,
+    tooltip {
+      border-radius: 10px;
+      padding: 2px;
+      border: 1px solid lighter(@inactive);
+      background: alpha(@background, 0.6);
+      color: lighter(@text);
+    }
+
+    menu label,
+    tooltip label {
+      font-size: 14px;
+      color: lighter(@text);
+    }
+
+    /********************************
+                Animations
+    ********************************/
+
     @keyframes blink-active {
       to {
         background-color: @active;
@@ -225,5 +230,6 @@ in {
         color: @foreground;
       }
     }
+
   '';
 }

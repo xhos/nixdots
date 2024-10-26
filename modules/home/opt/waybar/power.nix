@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   home.packages = [pkgs.power-profiles-daemon];
-  programs.waybar.settings.mainBar = {
+  programs.waybar.settings.mainBar = lib.mkIf (!config.modules.nvidia.enable) {
     modules-right = ["group/power"];
 
     "group/power" = {

@@ -12,7 +12,7 @@
     ./music
     ./terminals
     ./hyprland
-    ./style/stylix.nix
+    ./stylix.nix
     ./prompts
     ./rofi.nix
   ];

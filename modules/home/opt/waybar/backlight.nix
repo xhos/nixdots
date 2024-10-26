@@ -5,7 +5,6 @@
   ...
 }: {
   programs.waybar.settings.mainBar = lib.mkIf (!config.modules.nvidia.enable) {
-    modules-right = ["group/brightness"];
     "group/brightness" = {
       orientation = "inherit";
       drawer = {

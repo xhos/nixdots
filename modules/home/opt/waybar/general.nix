@@ -1,9 +1,16 @@
 {
   programs.waybar.settings.mainBar = {
-    modules-right = ["group/together"];
+    modules-right = ["group/together" "clock"];
     "group/together" = {
       orientation = "inherit";
-      modules = ["group/utils" "clock"];
+      modules = [
+        "group/utils"
+        "group/connection"
+        "custom/notifications"
+        "group/brightness"
+        "group/audio"
+        "custom/wl-gammarelay-temperature"
+      ];
     };
     "group/utils" = {
       orientation = "inherit";
@@ -13,7 +20,6 @@
       };
       modules = [
         "custom/mark"
-        "custom/wl-gammarelay-temperature"
         "tray"
       ];
     };

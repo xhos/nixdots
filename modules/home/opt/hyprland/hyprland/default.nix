@@ -70,7 +70,7 @@ in {
     home = {
       packages = with pkgs; [
         config.wayland.windowManager.hyprland.package
-        wl-gammarelay-rs # display temp
+        # wl-gammarelay-rs # display temp
         autotiling-rs
         brightnessctl
         cliphist

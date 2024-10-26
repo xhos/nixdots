@@ -4,7 +4,6 @@
   ...
 }: {
   programs.waybar.settings.mainBar = {
-    modules-right = ["group/audio"];
     "group/audio" = {
       orientation = "inherit";
       drawer = {
