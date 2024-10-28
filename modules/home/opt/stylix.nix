@@ -7,7 +7,7 @@
     enable = true;
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
-    image = ../../../../home/shared/walls/${config.theme}.jpg;
+    image = ./16_32.gif;
     polarity = "dark";
     opacity.terminal = 0.6;
 
