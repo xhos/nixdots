@@ -7,7 +7,7 @@
     enable = true;
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
-    image = ./16_32.gif;
+    image = ../../../home/shared/walls/tokyo-night-dark.jpg;
     polarity = "dark";
     opacity.terminal = 0.6;
 
@@ -31,8 +31,8 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
-        name = "FiraCode Nerd Font Mono";
+        package = pkgs.hack-font;
+        name = "Hack";
       };
 
       sansSerif = {

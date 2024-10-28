@@ -23,6 +23,8 @@
   };
 
   home.packages = with pkgs; [
+    sqldeveloper
+    jetbrains.datagrip
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 

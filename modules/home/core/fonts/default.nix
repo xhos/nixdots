@@ -15,7 +15,7 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
     roboto
-
+    hack-font
     (nerdfonts.override {fonts = ["FiraCode" "FantasqueSansMono" "ZedMono" "Iosevka" "JetBrainsMono"];})
   ];
 }

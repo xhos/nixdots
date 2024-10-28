@@ -52,6 +52,7 @@
       zoxide # better cd
       tailspin # log highlighter
       devenv
+      sshs
       # Actual software
       zed-editor
       protonvpn-gui
@@ -61,7 +62,7 @@
       nautilus
       bottles # run windows
       obs-studio
-      # termius # just for keychain accss
+      termius
       qbittorrent
       obsidian
       chromium

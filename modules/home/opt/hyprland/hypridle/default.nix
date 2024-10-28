@@ -18,10 +18,6 @@
           timeout = 600;
           on-timeout = "hyprlock";
         }
-        {
-          timeout = 1800;
-          on-timeout = "systemctl suspend";
-        }
       ];
     };
   };
