@@ -14,11 +14,13 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${pkgs.system}.swww
+      inputs.winapps.packages.${pkgs.system}.winapps
       egl-wayland # needed for a firefox fix
       wayvnc
       # lunarvim
       # httrack # offline websites
       lazygit
+      teams-for-linux
       # inputs.nixvim.packages.${pkgs.system}.default
       thefuck
       wvkbd #osk
@@ -104,7 +106,12 @@
       tlrc # better man
       ventoy
       # gnome-network-displays # not implemented yet: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/70
-      miraclecast
+      # miraclecast
+      dialog
+      freerdp3
+      iproute2
+      libnotify
+      netcat-gnu
     ];
   };
 }

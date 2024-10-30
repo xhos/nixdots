@@ -10,18 +10,16 @@
   audio     .enable = true;
   bluetooth .enable = true;
   sshserver .enable = true;
-  rclone    .enable = false;
+  rclone    .enable = true;
   steam     .enable = true;
   greetd    .enable = true;
-  i3        .enable = true;
   xserver   .enable = true;
   hyprland  .enable = true;
 
-  # boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
-  #   hardware.opengl.enable = true;
-
+  boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
   services.xserver.videoDrivers = ["nvidia"];
 
+  # TODO: make this a module
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";

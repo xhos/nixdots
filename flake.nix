@@ -68,6 +68,13 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    winapps = {
+      type = "github";
+      owner = "winapps-org";
+      repo = "winapps";
+      ref = "feat-nix-packaging";
+    };
   };
 
   outputs = {

@@ -29,4 +29,19 @@
   ];
 
   programs.waybar.settings.mainBar.output = ["DP-1"];
+
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "[workspace special silent] spotify"
+      "[workspace special silent] telegram-desktop"
+      "[workspace 9 silent] obsidian"
+      "[workspace 10 silent] discord"
+    ];
+
+    windowrulev2 = [
+      "workspace special silent, initialTitle: Spotify Premium"
+      "workspace special silent, class:(org.telegram.desktop)"
+      "size 600,class:(org.telegram.desktop)"
+    ];
+  };
 }
