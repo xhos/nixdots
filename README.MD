@@ -1,57 +1,78 @@
 # my NixOS config
 
-### main features:
+## main features
 
-- spicetify with spicetify-nix
+- full system theming with stylix
 - secret management with sops-nix
-- cool firefox theme (minfox)
 - custom driver for my samsung galaxy book 2 pro 360
 - touch support with hyprgrass
-- full system theming with stylix
 - systemd service for rclone
+- pre configured web apps
 
-### info:
+## themed apps
+> most of theese automaticly follow the stylix set base-16 color scheme
 
-WM: Hyprland
-Runner: rofi
-Clipboard manager: [clipse](https://github.com/savedra1/clipse)
+- discord:  [system24](https://github.com/refact0r/system24)
+- firefox:  [scifox](https://github.com/scientiac/scifox)
+- obsidian: [anuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin)
+- spotify:  [text](https://github.com/spicetify/spicetify-themes/tree/master/text)
+- and more that I'm forgetting...
 
-#### terminals:
+## info
 
-- **wezterm**
-- foot
+app runner:           [rofi](https://github.com/davatorium/rofi)
+clipboard manager:    [clipse](https://github.com/savedra1/clipse)
+compositor:           [hyprland](https://github.com/hyprwm/Hyprland)
+fetch:                [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+file manager:         [nautilus](https://gitlab.gnome.org/GNOME/nautilus)
+notifications deamon: [mako](https://github.com/emersion/mako)
+wallpaper setter:     [swww](https://github.com/LGFae/swww)
+
+### terminals
+
+- wezterm
+- **foot**
 - kitty
+- alacritty
 
-#### shells:
+### shells
 
-- **nushell**
-- fish
+- nushell
+- **fish**
 - zsh
 
-#### prompts:
+### prompts
 
 - **starship**
 - oh-my-posh
 
-#### bars:
+### bars
 
 - **waybar**
 
-## install (notes to self, not instructions)
+## install
+(notes to self, not really instructions)
 
+*must in bash fot commands to work*
+
+```bash
 nix-shell -p git home-manager
 sudo rm -r /etc/nixos/*
-sudo git clone https://github.com/xhos/nixdots /etc/nixos
+sudo git clone https://github.com/$USER/nixdots /etc/nixos
 cd /etc/nixos
 sudo nixos-generate-config
 rm configuration.nix
-sudo mv hardware-configuration.nix hosts/HOST/hardware-configuration.nix 
-home-manager switch --flake .#xhos@HOST --extra-experimental-features "nix-command flakes" -b b
-sudo nixos-rebuild switch --flake .#HOST
+sudo mv hardware-configuration.nix hosts/$HOSTNAME/hardware-configuration.nix 
+home-manager switch --flake .#$USER@$HOSTNAME --extra-experimental-features "nix-command flakes" -b b
+sudo nixos-rebuild switch --flake .#$HOSTNAME
+```
+
+</details>
 
 ## post install
 
-### sops-nix:
+<details>
+  <summary>sops-nix</summary>
 
 get user (dev) key for sops:
 
@@ -85,24 +106,26 @@ put password hash into secrets.yaml, to get hash:
 ```bash
 mkpasswd -s
 ```
+</details>
+<details>
+  <summary>configuring onedrive with rclone</summary>
 
-## configure onedrive with rclone
+```bash
+mkdir ~/onedrive
+```
 
 ```bash
 rclone config
 ```
+</details>
 
-# Notes:
-
-update:
+### updating
 
 ```bash
 cd /etc/nixos/ && nix flake update && nh home switch && nh os switch
 ```
 
-# WSL install:
-
-Quick Start
+### WSL install
 
 Enable WSL if you haven't done already:
 
@@ -126,7 +149,7 @@ You can now run NixOS:
 
 For more detailed instructions, [refer to the documentation](https://nix-community.github.io/NixOS-WSL/install.html).
 
-# Credit/Thanks ❤️
+## Credit/Thanks ❤️
 
 - [@joshuagrisham](https://github.com/joshuagrisham) for his magnificent work on [the galaxy book driver](https://github.com/joshuagrisham/samsung-galaxybook-extras)
 
