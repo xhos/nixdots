@@ -31,4 +31,8 @@
     iio-hyprland
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
+
+  wayland.windowManager.hyprland.settings.exec-once = [
+    "iio-hyprland"
+  ];
 }
