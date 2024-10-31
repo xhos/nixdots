@@ -62,10 +62,10 @@ in {
           "SUPERALT, down, workspace, m+1"
 
           # Utilities
-          "SUPER, Q, exec, run-as-service ${terminal}"
+          "SUPER, Q, exec, ${terminal}"
           "SUPER, B, exec, firefox"
           "SUPER, L, exec, hyprlock"
-          "SUPERSHIFT, T, exec, run-as-service wl-ocr" # capture text
+          "SUPERSHIFT, T, exec, wl-ocr" # capture text
 
           # Resize windows
           "SUPERSHIFT, right, resizeactive, 200 0"

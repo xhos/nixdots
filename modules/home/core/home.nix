@@ -80,6 +80,7 @@
       oh-my-posh
       nushell
       fish
+      zsh
       grc
       wireplumber # A modular session / policy manager for PipeWire
       # xwayland

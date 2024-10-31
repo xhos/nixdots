@@ -17,7 +17,7 @@
     de = "hyprland";
     bar = "waybar";
     lock = "hyprlock";
-    shell = "fish";
+    shell = "zsh";
     prompt = "starship";
     terminal = "foot";
   };

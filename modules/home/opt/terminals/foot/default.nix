@@ -46,6 +46,23 @@ lib.mkIf (config.default.terminal == "foot") {
         command = "notify-send bell";
         command-focused = "no";
       };
+
+      search-bindings = {
+        #  Added section for extended selection
+        extend-char = "Shift+Right";
+        extend-backward-char = "Shift+Left";
+        extend-line-down = "Shift+Down";
+        extend-line-up = "Shift+Up";
+        extend-to-word-boundary = "Control+Shift+Right";
+        extend-backward-to-word-boundary = "Control+Shift+Left";
+      };
+
+      mouse-bindings = {
+        # Modified mouse bindings
+        select-begin = "BTN_LEFT";
+        select-extend = "BTN_RIGHT BTN_MOTION"; # Extend selection on right-click + move
+        select-context-menu = "BTN_RIGHT-2"; # Context menu on right-click double-click
+      };
       # url = {
       #   launch = "xdg-open \${url}";
       #   label-letters = "sadfjklewcmpgh";
