@@ -28,6 +28,7 @@
   };
 
   home.packages = with pkgs; [
+    iio-hyprland
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 }
