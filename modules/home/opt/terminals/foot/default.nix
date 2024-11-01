@@ -1,4 +1,3 @@
-# https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
 {
   config,
   lib,
@@ -6,6 +5,8 @@
 }:
 lib.mkIf (config.default.terminal == "foot") {
   home.sessionVariables.TERMINAL = "foot";
+
+  # https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
   programs.foot = {
     enable = true;
     server.enable = false;
@@ -16,28 +17,10 @@ lib.mkIf (config.default.terminal == "foot") {
         title = "foot";
         locked-title = "no";
         term = "xterm-256color";
-        # vertical-letter-offset = "-0.75";
-        pad = "12x21 center";
         resize-delay-ms = 100;
         selection-target = "primary";
-        # box-drawings-uses-font-glyphs = "yes";
         bold-text-in-bright = "yes";
         word-delimiters = ",│`|:\"'()[]{}<>";
-        # font = "monospace:size=12";
-        # font-size-adjustment = "150%";
-      };
-
-      desktop-notifications = {
-        command = "notify-send -DDa \${app-id} -i \${app-id} \${title} \${body}";
-      };
-
-      cursor = {
-        style = "beam";
-        beam-thickness = 2;
-      };
-      scrollback = {
-        lines = 10000;
-        multiplier = 3;
       };
 
       bell = {
@@ -47,48 +30,19 @@ lib.mkIf (config.default.terminal == "foot") {
         command-focused = "no";
       };
 
-      search-bindings = {
-        #  Added section for extended selection
-        extend-char = "Shift+Right";
-        extend-backward-char = "Shift+Left";
-        extend-line-down = "Shift+Down";
-        extend-line-up = "Shift+Up";
-        extend-to-word-boundary = "Control+Shift+Right";
-        extend-backward-to-word-boundary = "Control+Shift+Left";
+      cursor = {
+        style = "beam";
+        beam-thickness = 2;
       };
 
-      mouse-bindings = {
-        # Modified mouse bindings
-        select-begin = "BTN_LEFT";
-        select-extend = "BTN_RIGHT BTN_MOTION"; # Extend selection on right-click + move
-        select-context-menu = "BTN_RIGHT-2"; # Context menu on right-click double-click
+      desktop-notifications = {
+        command = "notify-send -DDa \${app-id} -i \${app-id} \${title} \${body}";
       };
-      # url = {
-      #   launch = "xdg-open \${url}";
-      #   label-letters = "sadfjklewcmpgh";
-      #   osc8-underline = "url-mode";
-      #   protocols = "http, https, ftp, ftps, file, gemini, gopher, irc, ircs";
 
-      #   uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
-      # };
-      mouse = {
-        hide-when-typing = "yes";
+      scrollback = {
+        lines = 10000;
+        multiplier = 3;
       };
-      # key-bindings = {
-      #   show-urls-launch = "Control+Shift+u";
-      #   unicode-input = "Control+Shift+i";
-      # };
-      # mouse-bindings = {
-      # selection-override-modifiers = "Shift";
-      # primary-paste = "BTN_MIDDLE";
-      # select-begin = "BTN_LEFT";
-      # select-begin-block = "Control+BTN_LEFT";
-      # select-extend = "BTN_RIGHT";
-      # select-extend-character-wise = "Control+BTN_RIGHT";
-      # select-word = "BTN_LEFT-2";
-      # select-word-whitespace = "Control+BTN_LEFT-2";
-      #select-row = "BTN_LEFT-3";
-      # };
     };
   };
 }

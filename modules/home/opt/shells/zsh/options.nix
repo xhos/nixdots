@@ -1,5 +1,0 @@
-{
-  programs.zsh.initExtra = ''
-
-  '';
-}
