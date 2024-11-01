@@ -6,10 +6,11 @@
 - secret management with sops-nix
 - custom driver for my samsung galaxy book 2 pro 360
 - touch support with hyprgrass
-- systemd service for rclone
+- OneDrive and ProtonDrive mounted via [rclone](https://rclone.org) as [custom systemd services](modules/nixos/opt/rclone.nix)
 - pre configured web apps
 
 ## themed apps
+
 > most of theese automaticly follow the stylix set base-16 color scheme
 
 - discord:  [system24](https://github.com/refact0r/system24)
