@@ -14,7 +14,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${pkgs.system}.swww
-      inputs.winapps.packages.${pkgs.system}.winapps
+      # inputs.winapps.packages.${pkgs.system}.winapps
       egl-wayland # needed for a firefox fix
       wayvnc
       # lunarvim
