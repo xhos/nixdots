@@ -11,7 +11,7 @@
 
 ## themed apps
 
-> most of theese automaticly follow the stylix set base-16 color scheme
+> most of these automaticly follow the stylix set base-16 color scheme
 
 - discord:  [system24](https://github.com/refact0r/system24)
 - firefox:  [scifox](https://github.com/scientiac/scifox)
@@ -82,13 +82,13 @@ mkdir .config/sops/age
 age-keygen -o .config/sops/age/keys.txt
 ```
 
-get age publick key from the machine ssh key to put into .sops.yaml:
+get age public key from the machine ssh key to put into .sops.yaml:
 
 ```bash
 nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
 ```
 
-if any erros with keys, or after key change:
+if there are any erros with the keys, or after the keys were changed:
 
 ```bash
 sops updatekeys /etc/nixos/core/secrets/secrets.yaml
