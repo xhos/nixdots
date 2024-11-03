@@ -15,6 +15,7 @@
     ./options.nix
     ./programs.nix
     ./home.nix
+    ./desktop.nix
   ];
 
   gtk = {

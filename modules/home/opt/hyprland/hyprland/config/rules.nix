@@ -40,6 +40,8 @@
       "float,class:(clipse)"
       "size 622 652,class:(clipse)"
 
+      "tile, class:(web-app)" # for web apps to tile properly
+
       # Idk
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
