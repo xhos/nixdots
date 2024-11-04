@@ -15,8 +15,8 @@
   greetd    .enable = true;
   xserver   .enable = true;
   hyprland  .enable = true;
-
-  boot.kernelModules = ["adm1021" "coretemp" "nct6775"];
+  services.hardware.openrgb.enable = true;
+  boot.kernelModules = ["adm1021" "coretemp" "nct6775" "i2c-dev" "i2c-piix4"];
   services.xserver.videoDrivers = ["nvidia"];
 
   # TODO: make this a module

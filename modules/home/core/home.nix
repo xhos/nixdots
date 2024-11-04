@@ -17,7 +17,6 @@
       # inputs.winapps.packages.${pkgs.system}.winapps
       egl-wayland # needed for a firefox fix
       wayvnc
-      # lunarvim
       # httrack # offline websites
       lazygit
       teams-for-linux

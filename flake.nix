@@ -2,11 +2,11 @@
   description = "my os flake";
 
   inputs = {
-    # Nixpkgs Stable
+    # Nixpkgs Unstable
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Nixpkgs unstable
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-23.11";
+    # Nixpkgs Stable
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";
 
     # Home-manager
     hm.url = "github:nix-community/home-manager";

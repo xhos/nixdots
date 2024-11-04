@@ -13,7 +13,7 @@
         character = {
           success_symbol = "[ム](purple)";
           error_symbol = "[ム](red)";
-          vimcmd_symbol = "[❮](green)";
+          vimcmd_symbol = "[ム](green)";
         };
 
         directory = {
