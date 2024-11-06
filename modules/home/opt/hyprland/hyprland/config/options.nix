@@ -159,18 +159,6 @@ in {
       vfr = true; # lower the amount of sent frames when nothing is happening on-screen
     };
 
-    monitor = [
-      "eDP-1,1920x1080@60.0,1615x1685,1.0"
-      "DP-1,1920x1080@239.76,1080x450,1"
-      "HDMI-A-2,1920x1080@144.0,0x0,1"
-      "HDMI-A-2,transform,1"
-    ];
-
-    workspace = [
-      "1,monitor:DP-1,default:true"
-      "2,monitor:HDMI-A-2,default:true"
-    ];
-
     env = [
       # "GDK_SCALE,1"
       # "XCURSOR_SIZE,32"

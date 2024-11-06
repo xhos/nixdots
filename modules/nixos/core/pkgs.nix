@@ -15,6 +15,7 @@
     speedtest-cli
     blueman
     dig # dns lookup
+    gpclient
 
     lm_sensors
     fan2go

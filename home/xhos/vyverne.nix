@@ -28,7 +28,7 @@
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 
-  programs.waybar.settings.mainBar.output = ["DP-1"];
+  programs.waybar.settings.mainBar.output = ["DP-3"];
 
   wayland.windowManager.hyprland.settings = {
     exec-once = [
@@ -42,6 +42,17 @@
       "workspace special silent, initialTitle: Spotify Premium"
       "workspace special silent, class:(org.telegram.desktop)"
       "size 600,class:(org.telegram.desktop)"
+    ];
+
+    workspace = [
+      "1,monitor:DP-3,default:true"
+      "2,monitor:HDMI-A-1,default:true"
+    ];
+
+    monitor = [
+      "DP-3,1920x1080@239.76,1080x450,1"
+      "HDMI-A-1,1920x1080@144.0,0x0,1"
+      "HDMI-A-1,transform,1"
     ];
   };
 }

@@ -32,7 +32,13 @@
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 
-  wayland.windowManager.hyprland.settings.exec-once = [
-    "iio-hyprland"
-  ];
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "iio-hyprland"
+    ];
+
+    monitor = [
+      "eDP-1,1920x1080@60.0,1615x1685,1.0"
+    ];
+  };
 }

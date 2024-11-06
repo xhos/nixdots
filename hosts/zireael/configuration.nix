@@ -25,19 +25,6 @@
   hardware.sensor.iio.enable = true; # enables sensors needed for iio-hyprland (screen rotation)
 
   boot = {
-    loader = {
-      systemd-boot.enable = false;
-      grub = {
-        enable = true;
-        device = "nodev";
-        useOSProber = true;
-        efiSupport = true;
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-    };
     extraModulePackages = let
       sgbextras = config.boot.kernelPackages.callPackage ../../derivs/samsung-galaxybook-extras.nix {};
     in [
@@ -49,7 +36,7 @@
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
   };
-    
+
   hardware.graphics.extraPackages = with pkgs; [
     intel-media-driver # LIBVA_DRIVER_NAME=iHD
     intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)

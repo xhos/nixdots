@@ -8,7 +8,6 @@
     steam    .enable = lib.mkEnableOption "Enable steam";
     sshserver.enable = lib.mkEnableOption "Enable ssh server";
     greetd.enable = lib.mkEnableOption "Enable greetd";
-    i3.enable = lib.mkEnableOption "Enable i3";
     hyprland.enable = lib.mkEnableOption "Enable hyprland";
     xserver.enable = lib.mkEnableOption "Enable xserver";
   };

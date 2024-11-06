@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+let
   sshPort = 10022;
 in {
   networking = {
