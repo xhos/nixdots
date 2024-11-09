@@ -169,6 +169,10 @@ in {
       "MOZ_WEBRENDER=1"
       "MOZ_ACCELERATED=1"
       "XDG_CURRENT_DESKTOP,Hyprland"
+      "XDG_SESSION_TYPE,wayland"
+      "XDG_CURRENT_DESKTOP,Hyprland"
+      "XDG_SESSION_DESKTOP,Hyprland"
+      "XDG_AUTO_SCREEN_SCALE_FACTOR=1"
       #  Mozilla settings to make FF and forks play nice with Wayland
 
       # Sign in New API Help About
