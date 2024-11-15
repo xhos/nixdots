@@ -63,7 +63,7 @@ in {
 
           # Utilities
           "SUPER, Q, exec, ${terminal}"
-          "SUPER, B, exec, firefox"
+          "SUPER, B, exec, ${config.default.browser}"
           "SUPER, L, exec, hyprlock"
           "SUPERSHIFT, T, exec, wl-ocr" # capture text
 

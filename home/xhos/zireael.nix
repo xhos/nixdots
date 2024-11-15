@@ -25,6 +25,7 @@
     shell = "fish";
     prompt = "starship";
     terminal = "foot";
+    browser = "zen";
   };
 
   home.packages = with pkgs; [

@@ -39,6 +39,12 @@
         "image/jpeg" = ["swayimg.desktop"];
         "image/png" = ["swayimg.desktop"];
         "image/gif" = ["swayimg.desktop"];
+
+        "text/html" = ["zen.desktop"];
+        "text/xml" = ["zen.desktop"];
+        "application/pdf" = ["zen.desktop"];
+        "x-scheme-handler/http" = ["zen.desktop"];
+        "x-scheme-handler/https" = ["zen.desktop"];
       };
     };
 
