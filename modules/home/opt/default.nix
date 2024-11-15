@@ -14,6 +14,6 @@
     ./hyprland
     ./stylix.nix
     ./prompts
-    ./rofi.nix
+    ./rofi
   ];
 }

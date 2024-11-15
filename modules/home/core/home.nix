@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  pkgsStable,
+  # pkgsStable,
   ...
 }: {
   home = {
@@ -14,14 +14,17 @@
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
-      inputs.swww.packages.${pkgs.system}.swww
+      inputs.swww.packages.${system}.swww
+      inputs.zen-browser.packages."${system}".specific
       # inputs.winapps.packages.${pkgs.system}.winapps
       egl-wayland # needed for a firefox fix
       wayvnc
       vesktop
+      slack
       # httrack # offline websites
       lazygit
       teams-for-linux
+      cling
       # inputs.nixvim.packages.${pkgs.system}.default
       thefuck
       wvkbd #osk
