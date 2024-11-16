@@ -35,6 +35,9 @@
     # A solution to your Wayland Wallpaper Woes
     swww.url = "github:LGFae/swww";
 
+    # Zen Browser, a modern web browser
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
     # Hyprpicker, color picker for hyprland
     # hyprpicker.url = "github:hyprwm/hyprpicker";
 

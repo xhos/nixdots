@@ -20,31 +20,31 @@
     default = {
       de = mkOption {
         type = types.enum ["hyprland" "none"];
-        default = "hyprland";
+        default = "none";
       };
       bar = mkOption {
         type = types.enum ["waybar" "none"];
-        default = "waybar";
+        default = "none";
       };
       browser = mkOption {
-        type = types.enum ["firefox" "none"];
-        default = "firefox";
+        type = types.enum ["firefox" "zen" "none"];
+        default = "none";
       };
       terminal = mkOption {
         type = types.enum ["wezterm" "foot" "kitty" "alacritty" "none"];
-        default = "alacritty";
+        default = "kitty";
       };
       lock = mkOption {
         type = types.enum ["hyprlock" "none"];
-        default = "hyprlock";
+        default = "none";
       };
       prompt = mkOption {
         type = types.enum ["starship" "oh-my-posh"];
-        default = "oh-my-posh";
+        default = "starship";
       };
       shell = mkOption {
         type = types.enum ["zsh" "fish" "nu"];
-        default = "fish";
+        default = "zsh";
       };
     };
   };

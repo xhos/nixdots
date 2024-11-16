@@ -20,6 +20,7 @@
     shell = "zsh";
     prompt = "starship";
     terminal = "foot";
+    browser = "zen";
   };
 
   home.packages = with pkgs; [
