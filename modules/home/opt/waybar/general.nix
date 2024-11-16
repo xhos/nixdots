@@ -1,4 +1,4 @@
-{
+{lib,config,...}:{
   programs.waybar.settings.mainBar = {
     modules-right = ["group/together" "clock"];
     "group/together" = {
@@ -9,7 +9,8 @@
         "custom/notifications"
         "group/brightness"
         "group/audio"
-        "custom/wl-gammarelay-temperature"
+        "battery"
+        # "custom/wl-gammarelay-temperature"
       ];
     };
     "group/utils" = {
@@ -55,6 +56,20 @@
         on-click-right = "mode";
         format = {today = "<span color='#a6e3a1'><b><u>{}</u></b></span>";};
       };
+    };
+
+    battery = lib.mkIf (!config.modules.nvidia.enable) {
+      rotate = 270;
+      states = {
+        good = 90;
+        warning = 30;
+        critical = 15;
+      };
+      format = "{icon}";
+      format-charging = "<b>{icon} </b>";
+      format-full = "<span color='#82A55F'><b>{icon}</b></span>";
+      format-icons = ["󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹"];
+      tooltip-format = "{timeTo} {capacity} % | {power} W";
     };
   };
 }

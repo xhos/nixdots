@@ -16,7 +16,7 @@
   audio     .enable = true;
   bluetooth .enable = true;
   sshserver .enable = true;
-  rclone    .enable = false;
+  rclone    .enable = true;
   steam     .enable = true;
   greetd    .enable = true;
   hyprland  .enable = true;
