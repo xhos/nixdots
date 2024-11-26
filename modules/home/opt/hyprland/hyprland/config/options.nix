@@ -57,11 +57,11 @@ in {
 
     decoration = {
       rounding = 10;
-      "col.shadow" = "rgb(000000)";
+      "col.shadow" = "rgb(${config.lib.stylix.colors.base03})";
       drop_shadow = true;
       shadow_ignore_window = true;
-      shadow_range = 30;
-      shadow_render_power = 4;
+      shadow_range = 5;
+      shadow_render_power = 2;
 
       blur = {
         enabled = true;
@@ -70,19 +70,13 @@ in {
         new_optimizations = true;
         brightness = 1;
         contrast = "2";
-        # ignore_opacity = "on";
-        # noise = "0.011700";
-        # xray = "false";
       };
-
-      # inactive_opacity = "0.94";
 
       layerrule = [
         "blur,RegularWindow"
         "blur,PopupWindow"
-        "blur,waybar"
         "blur,notifications"
-        "ignorezero, notifications"
+        "ignorezero,notifications"
       ];
     };
 

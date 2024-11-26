@@ -35,19 +35,22 @@
     exec-once = [
       "[workspace special silent] spotify"
       "[workspace special silent] telegram-desktop"
+      "[workspace 1 silent] zen"
       "[workspace 9 silent] obsidian"
-      "[workspace 10 silent] discord"
+      "[workspace 10 silent] vesktop"
     ];
 
     windowrulev2 = [
       "workspace special silent, initialTitle: Spotify Premium"
       "workspace special silent, class:(org.telegram.desktop)"
-      "size 600,class:(org.telegram.desktop)"
+      # "size 600,class:(org.telegram.desktop)"
     ];
 
     workspace = [
       "1,monitor:DP-3,default:true"
       "2,monitor:HDMI-A-1,default:true"
+      "9,monitor:DP-3"
+      "10,monitor:DP-3"
     ];
 
     monitor = [

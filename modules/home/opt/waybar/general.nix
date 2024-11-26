@@ -9,7 +9,8 @@
         "custom/notifications"
         "group/brightness"
         "group/audio"
-        "custom/wl-gammarelay-temperature"
+        "custom/hyprsunset"
+        "hyprland/language"
       ];
     };
     "group/utils" = {
@@ -34,12 +35,18 @@
       tooltip = false;
     };
 
-    "custom/wl-gammarelay-temperature" = {
+    "custom/hyprsunset" = {
       format = '''';
-      exec = "wl-gammarelay-rs watch {t}";
-      on-scroll-up = "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100";
-      on-scroll-down = "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100";
-      on-click = "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 10000";
+      exec = "hyprsunset -t 6600";
+      on-scroll-up = "hyprsunset -t 6600";
+      on-scroll-down = "hyprsunset -t 2500";
+    };
+
+    "hyprland/language" = {
+      format = "{}";
+      format-en = "🦅";
+      format-ru = "🐻";
+      keyboard-name = "at-translated-set-2-keyboard";
     };
 
     clock = {

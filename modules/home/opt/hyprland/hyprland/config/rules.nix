@@ -11,8 +11,12 @@
         "swaync-control-center"
         "swaync-notification-window"
         "waybar"
+        "rofi"
       ];
-    in ["blur, ${toRegex layers}" "ignorealpha 0.5, ${toRegex layers}"];
+    in [
+      "blur, ${toRegex layers}"
+      "ignorealpha 0.5, ${toRegex layers}"
+    ];
 
     # window rules
     windowrulev2 = [

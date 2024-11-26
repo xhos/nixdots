@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "wp-changer";
 

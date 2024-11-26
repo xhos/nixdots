@@ -16,7 +16,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
       inputs.zen-browser.packages."${system}".specific
-      # inputs.winapps.packages.${pkgs.system}.winapps
+      inputs.hyprsunset.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix
       wayvnc
       vesktop

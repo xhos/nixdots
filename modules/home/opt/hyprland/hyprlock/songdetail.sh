@@ -1,5 +1,13 @@
 #!/bin/bash
 
-song_info=$(playerctl metadata --format '{{title}}      {{artist}}')
+artist=$(playerctl metadata xesam:artist)
+title=$(playerctl metadata xesam:title)
 
-echo "$song_info" 
+case "$1" in
+--title)
+  echo $title
+  ;;
+--artist)
+  echo $artist
+  ;;
+esac
