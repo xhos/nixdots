@@ -15,6 +15,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
+      gdb
       inputs.zen-browser.packages."${system}".specific
       inputs.hyprsunset.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix

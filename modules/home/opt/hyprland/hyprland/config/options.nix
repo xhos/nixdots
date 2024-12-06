@@ -43,11 +43,11 @@ in {
     general = {
       gaps_in = "5";
       gaps_out = "10";
-      border_size = "2";
+      border_size = "0";
       resize_on_border = "true";
       layout = "dwindle";
 
-      "col.active_border" = "0xFF${config.lib.stylix.colors.base03})";
+      "col.active_border" = "rgb(${config.lib.stylix.colors.base03})";
       "col.inactive_border" = "rgb(000000)";
     };
 
@@ -57,11 +57,16 @@ in {
 
     decoration = {
       rounding = 10;
-      "col.shadow" = "rgb(${config.lib.stylix.colors.base03})";
-      drop_shadow = true;
-      shadow_ignore_window = true;
-      shadow_range = 5;
-      shadow_render_power = 2;
+
+      shadow = {
+        enabled = true;
+        range = 15;
+        render_power = 2;
+        sharp = false;
+        ignore_window = true;
+        color = "rgb(${config.lib.stylix.colors.base03})";
+        color_inactive = "rgb(000000)";
+      };
 
       blur = {
         enabled = true;

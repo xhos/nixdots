@@ -19,6 +19,8 @@ in {
     settings = {
       bind =
         [
+          "SUPER, mouse_down, workspace, e-1"
+          "SUPER, mouse_up, workspace, e+1"
           #TODO: binds to resize windows
           # Compositor commands
           "CTRLSHIFT, Q, exit"

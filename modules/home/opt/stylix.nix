@@ -22,6 +22,7 @@
       waybar.enable = false;
       spicetify.enable = false;
       hyprland.enable = false;
+      hyprlock.enable = false;
       mako.enable = false;
       rofi.enable = false;
       gtk.extraCss = with config.lib.stylix.colors; ''
