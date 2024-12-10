@@ -2,7 +2,8 @@
   imports = [
     # ./secrets
     ./bluetooth.nix
-    ./greetd.nix
+    ./tuigreet.nix
+    ./regreet.nix
     ./hyprland.nix
     ./options.nix
     ./rclone.nix

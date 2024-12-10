@@ -12,7 +12,8 @@ in {
   config = lib.mkIf config.modules.spicetify.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.themes.text;
+      theme = spicePkgs.themes.lucid;
+  
 
       # customColorScheme = with config.lib.stylix.colors; {
       #   text = "${base05}";
@@ -38,6 +39,22 @@ in {
 
       enabledExtensions = with spicePkgs.extensions; [
         beautifulLyrics
+        ({
+          # The source of the extension
+          # make sure you're using the correct branch
+          # It could also be a sub-directory of the repo
+
+          src = 
+          let
+            catsync = pkgs.fetchFromGitHub {
+              owner = "BlafKing";
+              repo = "spicetify-cat-jam-synced";
+              rev = "e7bfd49fcc13457bbc98e696294cf5cf43eb6c31";
+              hash = "sha256-pyYa5i/gmf01dkEF9I2awrTGLqkAjV9edJBsThdFRv8=";
+            };
+          in "${catsync}/marketplace";
+          name = "cat-jam.js";
+        })
       ];
     };
   };
