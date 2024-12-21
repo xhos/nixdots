@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.default.greeter == "regreet") {
+  config = lib.mkIf (config.greeter == "regreet") {
     programs.regreet = let
       background =
         pkgs.fetchurl

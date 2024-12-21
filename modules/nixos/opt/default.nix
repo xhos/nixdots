@@ -11,5 +11,6 @@
     ./steam.nix
     ./wayland.nix
     ./gnome.nix
+    ./plasma.nix
   ];
 }

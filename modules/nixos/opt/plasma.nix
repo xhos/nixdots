@@ -3,15 +3,16 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.default.de == "plasma") {    
+  config = lib.mkIf (config.de == "plasma") {    
+    programs.dconf.enable = true;
     services = {
-      xserver.enable = true;
+      xserver.enable = false;
       desktopManager.plasma6.enable = true;
       displayManager = {
         defaultSession = "plasma";
         sddm = {
           enable = true;
-          wayland.enable = true;
+	        wayland.enable = true;
         };
       };
     };

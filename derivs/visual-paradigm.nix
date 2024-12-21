@@ -10,7 +10,7 @@ pkgs: self: super: let
     src = fetchurl {
       name = "visual-paradigm.tar.gz";
       url = "https://www.visual-paradigm.com/downloads/${version}/vp/Visual_Paradigm_Linux64_InstallFree.tar.gz";
-      sha256 = "sha256-tPnHMin7YM+sgsVl+WREx2MB9+5uUVbcGPljsy/KBlM=";
+      sha256 = "sha256-pvCSYw0FpoP25iO1lIpowY6KQYi9Ydghnic1PUO/76k=";
     };
   in
     stdenv.mkDerivation rec {

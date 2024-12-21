@@ -9,15 +9,14 @@
     sshserver.enable = mkEnableOption "Enable ssh server";
     greetd   .enable = mkEnableOption "Enable greetd";
    
-    default = {
-      de = mkOption {
-        type = types.enum ["hyprland" "gnome" "none"];
-        default = "none";
-      };
-      greeter = mkOption {
-        type = types.enum ["regreet" "tuigreet" "none"];
-        default = "none";
-      };
+    de = mkOption {
+      type = types.enum ["hyprland" "gnome" "plasma" "none"];
+      default = "none";
+    };
+
+    greeter = mkOption {
+      type = types.enum ["regreet" "tuigreet" "none"];
+      default = "none";
     };
   };
 }

@@ -2,8 +2,6 @@
   pkgs,
   ...
 }: {
-  services.xserver.enable = true;
-
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
@@ -59,7 +57,5 @@
     neovim
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = true;
 }

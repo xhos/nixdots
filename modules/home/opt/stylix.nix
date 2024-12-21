@@ -14,7 +14,7 @@
     cursor = {
       name = "phinger-cursors-dark";
       package = pkgs.phinger-cursors;
-      size = 10;
+      size = 24;
     };
 
     targets = {

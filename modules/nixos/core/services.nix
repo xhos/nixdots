@@ -18,7 +18,7 @@
       lidSwitchExternalPower = "lock";
     };
 
-    xserver.enable = true;
+    # xserver.enable = true;
 
     xserver.xkb = {
       layout = "us";
