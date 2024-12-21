@@ -1,5 +1,5 @@
 { config, lib, inputs, pkgs, ... }: {
-  config = lib.mkIf config.tuigreet.enable {
+  config = lib.mkIf (config.default.greeter == "tuigreet") {
     services.greetd = {
       enable = true;
       settings = {

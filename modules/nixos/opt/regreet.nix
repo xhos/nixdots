@@ -1,11 +1,10 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.default.regreet == "zsh") {
+  config = lib.mkIf (config.default.greeter == "regreet") {
     programs.regreet = let
       background =
         pkgs.fetchurl

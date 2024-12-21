@@ -1,10 +1,4 @@
 {
-  lib,
-  pkgs,
-  config,
-  inputs,
-  ...
-}: {
   config.services = {
     libinput = {
       enable = true;

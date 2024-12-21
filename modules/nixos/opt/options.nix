@@ -8,15 +8,13 @@
     steam    .enable = mkEnableOption "Enable steam";
     sshserver.enable = mkEnableOption "Enable ssh server";
     greetd   .enable = mkEnableOption "Enable greetd";
-    hyprland .enable = mkEnableOption "Enable hyprland";
-    xserver  .enable = mkEnableOption "Enable xserver";
    
     default = {
       de = mkOption {
         type = types.enum ["hyprland" "gnome" "none"];
         default = "none";
       };
-      greet = mkOption {
+      greeter = mkOption {
         type = types.enum ["regreet" "tuigreet" "none"];
         default = "none";
       };

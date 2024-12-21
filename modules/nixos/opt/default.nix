@@ -10,6 +10,6 @@
     ./sound.nix
     ./steam.nix
     ./wayland.nix
-    ./xserver.nix
+    ./gnome.nix
   ];
 }
