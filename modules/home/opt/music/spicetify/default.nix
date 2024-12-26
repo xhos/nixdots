@@ -13,7 +13,6 @@ in {
     programs.spicetify = {
       enable = true;
       theme = spicePkgs.themes.lucid;
-  
 
       # customColorScheme = with config.lib.stylix.colors; {
       #   text = "${base05}";
@@ -39,13 +38,12 @@ in {
 
       enabledExtensions = with spicePkgs.extensions; [
         beautifulLyrics
-        ({
+        {
           # The source of the extension
           # make sure you're using the correct branch
           # It could also be a sub-directory of the repo
 
-          src = 
-          let
+          src = let
             catsync = pkgs.fetchFromGitHub {
               owner = "BlafKing";
               repo = "spicetify-cat-jam-synced";
@@ -54,7 +52,7 @@ in {
             };
           in "${catsync}/marketplace";
           name = "cat-jam.js";
-        })
+        }
       ];
     };
   };

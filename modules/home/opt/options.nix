@@ -19,7 +19,7 @@
 
     default = {
       de = mkOption {
-        type = types.enum ["hyprland" "none"];
+        type = types.enum ["hyprland" "plasma" "none"];
         default = "none";
       };
       bar = mkOption {

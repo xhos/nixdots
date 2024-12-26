@@ -14,9 +14,9 @@
   };
 
   default = {
-    de = "hyprland";
-    bar = "waybar";
-    lock = "hyprlock";
+    de = "plasma";
+    bar = "none";
+    lock = "none";
     shell = "zsh";
     prompt = "starship";
     terminal = "foot";

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   users = {
     users.xhos = {
       isNormalUser = true;
