@@ -41,7 +41,7 @@
         name = "Hack";
       };
     };
-    
+
     services.greetd.enable = true;
   };
 }

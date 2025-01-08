@@ -1,5 +1,5 @@
 {lib, ...}: {
-  options = with lib;{
+  options = with lib; {
     bluetooth.enable = mkEnableOption "Enable bluetooth";
     rclone   .enable = mkEnableOption "Enable rclone";
     wayland  .enable = mkEnableOption "Enable wayland";
@@ -8,7 +8,7 @@
     steam    .enable = mkEnableOption "Enable steam";
     sshserver.enable = mkEnableOption "Enable ssh server";
     greetd   .enable = mkEnableOption "Enable greetd";
-   
+
     de = mkOption {
       type = types.enum ["hyprland" "gnome" "plasma" "none"];
       default = "none";

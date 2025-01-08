@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk

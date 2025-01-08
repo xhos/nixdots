@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.de == "plasma") {    
+  config = lib.mkIf (config.de == "plasma") {
     programs.dconf.enable = true;
     services = {
       xserver.enable = false;
@@ -12,7 +12,7 @@
         defaultSession = "plasma";
         sddm = {
           enable = true;
-	        wayland.enable = true;
+          wayland.enable = true;
         };
       };
     };

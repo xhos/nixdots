@@ -1,4 +1,10 @@
-{ config, lib, inputs, pkgs, ... }: {
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}: {
   config = lib.mkIf (config.greeter == "tuigreet") {
     services.greetd = {
       enable = true;
@@ -14,8 +20,8 @@
 
     # Fixes broken text on tuigreet
     systemd.services.greetd = {
-      serviceConfig.Type = "idle"; 
-      unitConfig.After = [ "docker.service" ];
+      serviceConfig.Type = "idle";
+      unitConfig.After = ["docker.service"];
     };
   };
 }
