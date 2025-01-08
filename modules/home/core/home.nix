@@ -7,7 +7,7 @@
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
 
     packages = with pkgs; [
       libreoffice
@@ -15,8 +15,9 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
+      inputs.ghostty.packages.${system}.default
       gdb
-      inputs.zen-browser.packages."${system}".specific
+      inputs.zen-browser.packages."${system}".default
       inputs.hyprsunset.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix
       wayvnc
@@ -65,7 +66,7 @@
       protonvpn-gui
       proton-pass
       kitty # here as a fallback
-      quickemu
+      # quickemu
       nautilus
       bottles # run windows
       obs-studio

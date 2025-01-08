@@ -6,7 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Nixpkgs Stable
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
 
     # Home-manager
     hm.url = "github:nix-community/home-manager";
@@ -38,7 +38,12 @@
     # Zen Browser, a modern web browser
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
+    # Ghostty, an overhyped modern terminal emulator
+    ghostty.url = "github:ghostty-org/ghostty";
+    
+    # Hyprsunset, a hyprland way to manage screen temperature
     hyprsunset.url = "github:hyprwm/hyprsunset";
+    
     # Hyprpicker, color picker for hyprland
     # hyprpicker.url = "github:hyprwm/hyprpicker";
 

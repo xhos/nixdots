@@ -15,17 +15,13 @@
   wayland   .enable = true;
   audio     .enable = true;
   bluetooth .enable = true;
-  sshserver .enable = true;
-  rclone    .enable = true;
+  sshserver .enable = false;
+  rclone    .enable = false;
   steam     .enable = true;
   greetd    .enable = true;
-  hyprland  .enable = true;
-  xserver   .enable = true;
 
-  default = {
-    de = "hyprland";
-    greet = "tuigreet";
-  };
+  de = "hyprland";
+  greeter = "tuigreet";
   
   hardware.sensor.iio.enable = true; # enables sensors needed for iio-hyprland (screen rotation)
 
