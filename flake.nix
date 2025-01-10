@@ -6,10 +6,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Nixpkgs Stable
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
 
     # Home-manager
-    hm.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Nix User Repository
     nur.url = "github:nix-community/NUR";
@@ -44,6 +47,14 @@
 
     # Colorscheme generator
     # matugen.url = "github:InioX/matugen?ref=v2.2.0";
+    
+    ghostty.url = "github:ghostty-org/ghostty";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -78,7 +89,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
-    hm,
+    home-manager,
     nixos-wsl,
     ...
   } @ inputs: let
@@ -93,14 +104,14 @@
       zireael = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          hm.nixosModule
+          home-manager.nixosModule
           ./hosts/zireael/configuration.nix
         ];
       };
       vyverne = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          hm.nixosModule
+          home-manager.nixosModule
           ./hosts/vyverne/configuration.nix
         ];
       };
@@ -108,7 +119,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/aevon/configuration.nix
-          hm.nixosModule
+          home-manager.nixosModule
           nixos-wsl.nixosModules.default
         ];
       };
@@ -117,7 +128,7 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     # Or 'nh home switch'
     homeConfigurations = {
-      "xhos@zireael" = inputs.hm.lib.homeManagerConfiguration {
+      "xhos@zireael" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [
@@ -127,17 +138,18 @@
           inputs.stylix.homeManagerModules.stylix
         ];
       };
-      "xhos@vyverne" = inputs.hm.lib.homeManagerConfiguration {
+      "xhos@vyverne" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/vyverne.nix
+          inputs.plasma-manager.homeManagerModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixcord.homeManagerModules.nixcord
           inputs.stylix.homeManagerModules.stylix
         ];
       };
-      "xhos@aevon" = inputs.hm.lib.homeManagerConfiguration {
+      "xhos@aevon" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [

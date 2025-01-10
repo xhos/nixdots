@@ -7,17 +7,22 @@
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
 
     packages = with pkgs; [
+      #kde 
+      plasma-panel-colorizer
+      linux-wallpaperengine
+      #endkde
       libreoffice
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
       gdb
-      inputs.zen-browser.packages."${system}".specific
+      inputs.zen-browser.packages."${system}".default
       inputs.hyprsunset.packages.${pkgs.system}.default
+      inputs.ghostty.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix
       wayvnc
       vesktop

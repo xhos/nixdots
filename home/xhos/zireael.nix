@@ -1,8 +1,5 @@
 {
-  inputs,
   pkgs,
-  lib,
-  config,
   ...
 }: {
   # https://tinted-theming.github.io/base16-gallery/
