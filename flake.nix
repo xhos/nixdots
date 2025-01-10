@@ -41,7 +41,12 @@
     # Zen Browser, a modern web browser
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
+    # Ghostty, an overhyped modern terminal emulator
+    ghostty.url = "github:ghostty-org/ghostty";
+    
+    # Hyprsunset, a hyprland way to manage screen temperature
     hyprsunset.url = "github:hyprwm/hyprsunset";
+    
     # Hyprpicker, color picker for hyprland
     # hyprpicker.url = "github:hyprwm/hyprpicker";
 

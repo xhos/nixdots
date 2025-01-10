@@ -19,6 +19,7 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
+      inputs.ghostty.packages.${system}.default
       gdb
       inputs.zen-browser.packages."${system}".default
       inputs.hyprsunset.packages.${pkgs.system}.default
@@ -70,7 +71,7 @@
       protonvpn-gui
       proton-pass
       kitty # here as a fallback
-      quickemu
+      # quickemu
       nautilus
       bottles # run windows
       obs-studio
