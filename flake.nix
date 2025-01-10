@@ -52,8 +52,6 @@
 
     # Colorscheme generator
     # matugen.url = "github:InioX/matugen?ref=v2.2.0";
-    
-    ghostty.url = "github:ghostty-org/ghostty";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";

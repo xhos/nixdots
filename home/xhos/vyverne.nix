@@ -9,7 +9,7 @@
     rofi.enable = true;
     spicetify.enable = true;
     firefox.enable = true;
-    discord.enable = true;
+    discord.enable = false;
     nvidia.enable = true;
   };
 

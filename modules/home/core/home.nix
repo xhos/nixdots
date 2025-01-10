@@ -20,13 +20,12 @@
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
       inputs.ghostty.packages.${system}.default
-      gdb
       inputs.zen-browser.packages."${system}".default
       inputs.hyprsunset.packages.${pkgs.system}.default
-      inputs.ghostty.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix
+      gdb
       wayvnc
-      vesktop
+      # vesktop
       slack
       # httrack # offline websites
       lazygit
