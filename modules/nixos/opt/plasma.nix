@@ -1,19 +1,28 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf (config.de == "plasma") {
-    programs.dconf.enable = true;
+    environment.systemPackages = [
+      pkgs.kdePackages.qtsvg
+      pkgs.kdePackages.qtmultimedia
+      pkgs.kdePackages.qtvirtualkeyboard
+
+      (pkgs.callPackage ../../../derivs/sddm-astronaut-theme.nix {
+        theme = "japanese_aesthetic";
+      })
+    ];
+
     services = {
       xserver.enable = false;
       desktopManager.plasma6.enable = true;
-      displayManager = {
-        defaultSession = "plasma";
-        sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
+
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+        theme = "sddm-astronaut-theme";
       };
     };
   };
