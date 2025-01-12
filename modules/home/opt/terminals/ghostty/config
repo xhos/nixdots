@@ -5,7 +5,7 @@ scrollback-limit = 10_000
 window-theme = ghostty
 clipboard-read = allow
 clipboard-paste-protection = false
-window-decoration = false
+# window-decoration = false
 shell-integration = zsh
 
 # Transparency

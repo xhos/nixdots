@@ -15,6 +15,6 @@
     ./stylix.nix
     ./prompts
     ./rofi.nix
-    ./plasma
+    # ./plasma
   ];
 }

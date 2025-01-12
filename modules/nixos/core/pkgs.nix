@@ -21,8 +21,8 @@
     nix-inspect
 
     # Audio
-    pulseaudio
-    pamixer # pulseaudio command line mixer
+    # pulseaudio
+    # pamixer # pulseaudio command line mixer
     pavucontrol # pulseaudio controls
     easyeffects # pipewire audio effects
 
