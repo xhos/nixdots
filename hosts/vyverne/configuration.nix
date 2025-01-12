@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -18,18 +13,22 @@
   rclone    .enable = false;
   steam     .enable = true;
   greetd    .enable = false;
+  nvidia    .enable = true;
 
   de = "plasma";
 
   # Nvidia related
-  boot.kernelModules = ["adm1021" "coretemp" "nct6775" "i2c-dev" "i2c-piix4"];
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    open = true;
-    modesetting.enable = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  # boot.kernelModules = ["adm1021" "coretemp" "nct6775" "i2c-dev" "i2c-piix4"];
+  # services.xserver.videoDrivers = ["nvidia"];
+  # hardware.nvidia = {
+  #   forceFullCompositionPipeline = true;
+  #   modesetting.enable = true;
+  #   powerManagement.enable = true;
+  #   powerManagement.finegrained = false;
+  #   open = false;
+  #   nvidiaSettings = true;
+  #   package = config.boot.kernelPackages.nvidiaPackages.latest;
+  # };
 
   # Fan control
   programs.coolercontrol = {

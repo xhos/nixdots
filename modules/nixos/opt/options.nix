@@ -8,9 +8,10 @@
     steam    .enable = mkEnableOption "Enable steam";
     sshserver.enable = mkEnableOption "Enable ssh server";
     greetd   .enable = mkEnableOption "Enable greetd";
+    nvidia   .enable = mkEnableOption "Enable nvidia support";
 
     de = mkOption {
-      type = types.enum ["hyprland" "gnome" "plasma" "none"];
+      type = types.enum ["hyprland" "gnome" "plasma" "xfce" "none"];
       default = "none";
     };
 

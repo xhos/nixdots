@@ -12,5 +12,7 @@
     ./wayland.nix
     ./gnome.nix
     ./plasma.nix
+    ./xfce.nix
+    ./nvidia.nix
   ];
 }
