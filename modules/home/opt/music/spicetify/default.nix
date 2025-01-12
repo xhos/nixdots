@@ -12,7 +12,7 @@ in {
   config = lib.mkIf config.modules.spicetify.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.themes.lucid;
+      theme = spicePkgs.themes.text;
 
       # customColorScheme = with config.lib.stylix.colors; {
       #   text = "${base05}";
@@ -38,6 +38,7 @@ in {
 
       enabledExtensions = with spicePkgs.extensions; [
         beautifulLyrics
+        adblock
         {
           # The source of the extension
           # make sure you're using the correct branch
