@@ -2,13 +2,14 @@
   xdg.desktopEntries = let
     web-app-args = "--class=web-app --enable-features=UseOzonePlatform,OverlayScrollbar --ozone-platform=wayland";
   in {
-    spotify = {
-      name = "Spotify";
-      genericName = "Spotify";
-      exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
-      terminal = false;
-      categories = ["Application"];
-    };
+    # spotify = {
+    #   name = "Spotify";
+    #   genericName = "Spotify";
+    #   icon = "${pkgs.spotify}/share/icons/spotify_icon.ico";
+    #   exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    #   terminal = false;
+    #   categories = ["Application"];
+    # };
 
     notion-calendar = {
       name = "Notion Calendar";

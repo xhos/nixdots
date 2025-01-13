@@ -5,8 +5,7 @@
 }: {
   stylix = {
     enable = true;
-
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
     image = ../../../home/shared/walls/tokyo-night-dark.jpg;
     polarity = "dark";
     opacity.terminal = 0.6;

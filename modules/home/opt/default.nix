@@ -16,5 +16,6 @@
     ./prompts
     ./rofi.nix
     # ./plasma
+    ./discord.nix
   ];
 }

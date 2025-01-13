@@ -10,7 +10,7 @@
     stateVersion = "24.11";
 
     packages = with pkgs; [
-      #kde 
+      #kde
       plasma-panel-colorizer
       linux-wallpaperengine
       #endkde
@@ -76,7 +76,8 @@
       obs-studio
       termius
       qbittorrent
-      obsidian
+      # draggind kanban board items doesn't work otherwise
+      (obsidian.override {commandLineArgs = ["--no-sandbox"];})
       chromium
       telegram-desktop
       # rqbit

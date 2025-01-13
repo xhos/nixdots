@@ -43,10 +43,10 @@
 
     # Ghostty, an overhyped modern terminal emulator
     ghostty.url = "github:ghostty-org/ghostty";
-    
+
     # Hyprsunset, a hyprland way to manage screen temperature
     hyprsunset.url = "github:hyprwm/hyprsunset";
-    
+
     # Hyprpicker, color picker for hyprland
     # hyprpicker.url = "github:hyprwm/hyprpicker";
 
@@ -61,6 +61,11 @@
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

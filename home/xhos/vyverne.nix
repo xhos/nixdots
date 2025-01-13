@@ -4,7 +4,7 @@
   ...
 }: {
   # https://tinted-theming.github.io/base16-gallery/
-  theme = "tokyo-night-dark";
+  # theme = "tokyo-night-dark";
   wallsDir = "/home/xhos/Pictures/walls";
 
   imports = [../../modules/home];
@@ -13,7 +13,7 @@
     rofi.enable = true;
     spicetify.enable = true;
     firefox.enable = true;
-    discord.enable = false;
+    discord.enable = true;
     nvidia.enable = true;
   };
 
