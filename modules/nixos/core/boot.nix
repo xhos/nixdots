@@ -1,10 +1,18 @@
 {pkgs, ...}: {
+  nixpkgs.overlays = [
+    (final: prev: {
+      yorha-grub-theme = import ../../../derivs/yorha-grub-theme.nix {
+        inherit (final) fetchFromGitHub stdenvNoCC lib;
+      };
+    })
+  ];
+
   boot.loader = {
     systemd-boot.enable = false;
 
     grub = {
       enable = true;
-      theme = "${pkgs.catppuccin-grub}";
+      theme = "${pkgs.yorha-grub-theme}/yorha-1920x1080";
       device = "nodev";
       useOSProber = true;
       efiSupport = true;
