@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   # Fish always exists as a default shell
   # config = lib.mkIf (config.default.shell == "fish") {
-  programs.fish = {
+  programs.fish = lib.mkIf (config.default.shell == "nu") {
     enable = true;
 
     interactiveShellInit = ''
