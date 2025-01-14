@@ -2,11 +2,19 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  background =
+    pkgs.fetchurl
+    {
+      url = "https://w.wallhaven.cc/full/x6/wallhaven-x6q9md.jpg";
+      sha256 = "sha256-jBm+XKSCTWM99fbJIgOBiDNrow4DpfXMCawh8J67uVk=";
+    };
+in {
   stylix = {
     enable = true;
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
-    image = ../../../home/shared/walls/tokyo-night-dark.jpg;
+    # image = ../../../home/shared/walls/tokyo-night-dark.jpg;
+    image = background;
     polarity = "dark";
     opacity.terminal = 0.6;
 

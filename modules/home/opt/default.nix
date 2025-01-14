@@ -17,5 +17,6 @@
     ./rofi.nix
     # ./plasma
     ./discord.nix
+    ./web-apps
   ];
 }
