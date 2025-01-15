@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # https://tinted-theming.github.io/base16-gallery/
   theme = "tokyo-night-dark";
   wallsDir = "/home/xhos/Pictures/walls";
@@ -10,19 +7,19 @@
 
   modules = {
     rofi.enable = true;
-    spicetify.enable = true;
     firefox.enable = true;
     discord.enable = true;
+    spicetify.enable = true;
   };
 
   default = {
     de = "hyprland";
     bar = "waybar";
     lock = "hyprlock";
-    shell = "fish";
+    shell = "zsh";
     prompt = "starship";
-    terminal = "foot";
     browser = "zen";
+    terminal = "foot";
   };
 
   home.packages = with pkgs; [

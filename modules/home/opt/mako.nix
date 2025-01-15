@@ -1,11 +1,11 @@
 {config, ...}: {
   services.mako = {
     enable = true;
+    font = "Hack 12";
     anchor = "top-right";
     backgroundColor = "#${config.lib.stylix.colors.base00}66"; # Updated to include alpha value for transparency
     borderSize = 2;
     defaultTimeout = 3000;
-    font = "FiraCode Nerd Font Mono 10";
     height = 150;
     width = 300;
     borderRadius = 5;

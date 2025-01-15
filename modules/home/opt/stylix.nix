@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   background =
@@ -12,8 +13,11 @@
 in {
   stylix = {
     enable = true;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
-    # image = ../../../home/shared/walls/tokyo-night-dark.jpg;
+
+    base16Scheme =
+      lib.mkIf (config ? theme)
+      "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
+
     image = background;
     polarity = "dark";
     opacity.terminal = 0.6;
