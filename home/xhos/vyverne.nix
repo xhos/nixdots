@@ -13,7 +13,7 @@
     rofi.enable = true;
     spicetify.enable = true;
     firefox.enable = true;
-    discord.enable = true;
+    discord.enable = false;
     nvidia.enable = true;
   };
 
@@ -34,6 +34,7 @@
   home.packages = with pkgs; [
     # sqldeveloper
     # visual-paradigm
+    vesktop
     jetbrains.datagrip
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];

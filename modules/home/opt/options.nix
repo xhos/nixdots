@@ -5,8 +5,8 @@
       default = "";
     };
     theme = mkOption {
-      type = types.str;
-      default = "";
+      type = lib.types.nullOr lib.types.str;
+      default = null;
     };
     modules = {
       firefox.enable = mkEnableOption "Enable firefox";
