@@ -15,7 +15,7 @@ in {
     enable = true;
 
     base16Scheme =
-      lib.mkIf (config ? theme)
+      lib.mkIf (config ? theme && config.theme != null)
       "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
 
     image = background;

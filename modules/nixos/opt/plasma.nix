@@ -7,14 +7,17 @@
 }: {
   config = lib.mkIf (config.de == "plasma") {
     environment.systemPackages = [
+      # sddm related
       pkgs.kdePackages.qtsvg
       pkgs.kdePackages.qtmultimedia
       pkgs.kdePackages.qtvirtualkeyboard
-
-      inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
       (pkgs.callPackage ../../../derivs/sddm-astronaut-theme.nix {
         theme = "japanese_aesthetic";
       })
+
+      # cosmetic
+      pkgs.kde-rounded-corners
+      inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     ];
 
     services = {
