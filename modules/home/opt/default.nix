@@ -18,5 +18,6 @@
     # ./plasma
     ./discord.nix
     ./web-apps
+    ./astal.nix
   ];
 }

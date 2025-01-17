@@ -53,6 +53,8 @@
     # Colorscheme generator
     # matugen.url = "github:InioX/matugen?ref=v2.2.0";
 
+    astal-shell.url = "github:xhos/astal";
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";

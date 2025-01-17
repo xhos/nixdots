@@ -23,7 +23,7 @@
         default = "none";
       };
       bar = mkOption {
-        type = types.enum ["waybar" "none"];
+        type = types.enum ["waybar" "astal" "none"];
         default = "none";
       };
       browser = mkOption {
