@@ -14,5 +14,6 @@
     ./plasma.nix
     ./xfce.nix
     ./nvidia.nix
+    ./cosmic.nix
   ];
 }

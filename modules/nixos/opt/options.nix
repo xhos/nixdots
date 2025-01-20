@@ -11,7 +11,7 @@
     nvidia   .enable = mkEnableOption "Enable nvidia support";
 
     de = mkOption {
-      type = types.enum ["hyprland" "gnome" "plasma" "xfce" "none"];
+      type = types.enum ["hyprland" "gnome" "cosmic" "plasma" "xfce" "none"];
       default = "none";
     };
 

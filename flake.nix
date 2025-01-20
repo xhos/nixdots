@@ -93,6 +93,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Cosmic, an unfinished, but promising de
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = {
@@ -122,6 +126,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           home-manager.nixosModule
+          # inputs.nixos-cosmic.nixosModules.default
           ./hosts/vyverne/configuration.nix
         ];
       };
