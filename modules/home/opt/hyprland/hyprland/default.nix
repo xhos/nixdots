@@ -113,7 +113,7 @@ in {
     };
 
     wayland.windowManager.hyprland = {
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
       plugins = [
         # inputs.hyprgrass.packages.${pkgs.system}.default

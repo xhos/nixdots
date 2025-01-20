@@ -1,5 +1,5 @@
 {
-  description = "my os flake";
+  description = "overcomplicated mess of a flake that works for some reason";
 
   inputs = {
     # Nixpkgs Unstable
@@ -29,9 +29,6 @@
     # Waybar, the wayland bar
     waybar.url = "github:/alexays/waybar";
 
-    # Hyprland, the modern compositor for wayland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
     # Nixcord, a way to manage vencord plugins nix way
     nixcord.url = "github:kaylorben/nixcord";
 
@@ -46,12 +43,6 @@
 
     # Hyprsunset, a hyprland way to manage screen temperature
     hyprsunset.url = "github:hyprwm/hyprsunset";
-
-    # Hyprpicker, color picker for hyprland
-    # hyprpicker.url = "github:hyprwm/hyprpicker";
-
-    # Colorscheme generator
-    # matugen.url = "github:InioX/matugen?ref=v2.2.0";
 
     astal-shell.url = "github:xhos/astal";
 
@@ -76,12 +67,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprgrass, hyprland touch gestures plugin
-    hyprgrass = {
-      url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     # Sops-nix, secrets management
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -93,6 +78,21 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Hyprland, the modern compositor for wayland
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    # Hyprgrass, hyprland touch gestures plugin
+    # hyprgrass = {
+    #   url = "github:horriblename/hyprgrass";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+
+    # Hyprpicker, color picker for hyprland
+    # hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    # Colorscheme generator
+    # matugen.url = "github:InioX/matugen?ref=v2.2.0";
 
     # Cosmic, an unfinished, but promising de
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
