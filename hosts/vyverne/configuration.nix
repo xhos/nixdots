@@ -12,29 +12,11 @@
   sshserver .enable = false;
   rclone    .enable = false;
   steam     .enable = true;
-  greetd    .enable = false;
+  greetd    .enable = true;
   nvidia    .enable = true;
 
-  de = "plasma";
-
-  # Nvidia related
-  # boot.kernelModules = ["adm1021" "coretemp" "nct6775" "i2c-dev" "i2c-piix4"];
-  # services.xserver.videoDrivers = ["nvidia"];
-  # hardware.nvidia = {
-  #   forceFullCompositionPipeline = true;
-  #   modesetting.enable = true;
-  #   powerManagement.enable = true;
-  #   powerManagement.finegrained = false;
-  #   open = false;
-  #   nvidiaSettings = true;
-  #   package = config.boot.kernelPackages.nvidiaPackages.latest;
-  # };
-
-  # Fan control
-  programs.coolercontrol = {
-    enable = true;
-    nvidiaSupport = true;
-  };
+  de = "hyprland";
+  greeter = "tuigreet";
 
   # RGB control
   services.hardware.openrgb.enable = true;

@@ -1,10 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   # https://tinted-theming.github.io/base16-gallery/
   # theme = "tokyo-night-dark";
+
   wallsDir = "/home/xhos/Pictures/walls";
 
   imports = [../../modules/home];
@@ -14,28 +11,20 @@
     spicetify.enable = true;
     firefox.enable = true;
     discord.enable = false;
-    nvidia.enable = true;
   };
 
   default = {
-    de = "plasma";
-    bar = "none";
-    lock = "none";
+    de = "hyprland";
+    bar = "waybar";
+    lock = "hyprlock";
     shell = "zsh";
     prompt = "starship";
-    terminal = "foot";
     browser = "zen";
+    terminal = "foot";
   };
 
-  nixpkgs.overlays = [
-    (import ../../derivs/visual-paradigm.nix pkgs)
-  ];
-
   home.packages = with pkgs; [
-    # sqldeveloper
-    # visual-paradigm
     vesktop
-    jetbrains.datagrip
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 
@@ -53,7 +42,6 @@
     windowrulev2 = [
       "workspace special silent, initialTitle: Spotify Premium"
       "workspace special silent, class:(org.telegram.desktop)"
-      # "size 600,class:(org.telegram.desktop)"
     ];
 
     workspace = [
@@ -64,9 +52,9 @@
     ];
 
     monitor = [
-      "DP-3,1920x1080@239.76,1080x450,1"
-      "HDMI-A-1,1920x1080@144.0,0x0,1"
-      "HDMI-A-1,transform,1"
+      "HDMI-A-1,1920x1080@144.0,1920x0,1.0"
+      "HDMI-A-1,transform,3"
+      "DP-3,1920x1080@239.76,0x444,1.0"
     ];
   };
 }
