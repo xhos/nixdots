@@ -49,6 +49,13 @@ in {
 
       "col.active_border" = "rgb(${config.lib.stylix.colors.base03})";
       "col.inactive_border" = "rgb(000000)";
+
+      snap = {
+        enabled = true;
+        window_gap = 10;
+        monitor_gap = 10;
+        border_overlap = true;
+      };
     };
 
     #-----------------------------------------------------------------------------------------------------------
