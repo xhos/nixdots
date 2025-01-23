@@ -70,7 +70,6 @@
       protonvpn-gui
       proton-pass
       kitty # here as a fallback
-      # quickemu
       nautilus
       bottles # run windows
       obs-studio

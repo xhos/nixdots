@@ -14,6 +14,7 @@
   steam     .enable = true;
   greetd    .enable = true;
   nvidia    .enable = true;
+  vm        .enable = true;
 
   de = "hyprland";
   greeter = "tuigreet";

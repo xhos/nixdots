@@ -15,5 +15,6 @@
     ./xfce.nix
     ./nvidia.nix
     ./cosmic.nix
+    ./virtualisation.nix
   ];
 }

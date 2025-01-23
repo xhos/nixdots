@@ -9,6 +9,7 @@
     sshserver.enable = mkEnableOption "Enable ssh server";
     greetd   .enable = mkEnableOption "Enable greetd";
     nvidia   .enable = mkEnableOption "Enable nvidia support";
+    vm       .enable = mkEnableOption "Enable vm support";
 
     de = mkOption {
       type = types.enum ["hyprland" "gnome" "cosmic" "plasma" "xfce" "none"];
