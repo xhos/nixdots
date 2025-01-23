@@ -19,5 +19,6 @@
     ./discord.nix
     ./web-apps
     ./astal.nix
+    ./telegram.nix
   ];
 }

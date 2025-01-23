@@ -57,7 +57,6 @@ in {
 
     decoration = {
       rounding = 10;
-
       shadow = {
         enabled = true;
         range = 15;
@@ -75,6 +74,7 @@ in {
         new_optimizations = true;
         brightness = 1;
         contrast = "2";
+        ignore_opacity = true;
       };
 
       layerrule = [
