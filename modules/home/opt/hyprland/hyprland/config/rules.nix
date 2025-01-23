@@ -54,6 +54,7 @@
       # "workspace special silent, title:^(.*is sharing (your screen|a window).)$"
       # "workspace special silent, title:^(Firefox — Sharing Indicator)$"
       # "workspace special, class:^(obsidian)$"
+      "opacity 0.99, class:^(obsidian)$"
     ];
   };
 }

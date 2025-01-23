@@ -20,5 +20,6 @@
     ./web-apps
     ./astal.nix
     ./hyprpanel.nix
+    ./telegram.nix
   ];
 }
