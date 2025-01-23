@@ -46,6 +46,11 @@
 
     astal-shell.url = "github:xhos/astal";
 
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -154,7 +159,13 @@
         ];
       };
       "xhos@vyverne" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.hyprpanel.overlay
+          ];
+        };
+        # pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/vyverne.nix
@@ -169,8 +180,6 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/aevon.nix
-          inputs.sops-nix.homeManagerModules.sops
-          inputs.nixcord.homeManagerModules.nixcord
           inputs.stylix.homeManagerModules.stylix
         ];
       };

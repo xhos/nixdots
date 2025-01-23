@@ -66,7 +66,6 @@
       devenv
       sshs
       # Actual software
-      zed-editor
       protonvpn-gui
       proton-pass
       kitty # here as a fallback

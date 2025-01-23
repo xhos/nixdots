@@ -29,6 +29,7 @@ in {
     };
 
     targets = {
+      zed.enable = false;
       firefox.enable = false;
       waybar.enable = false;
       spicetify.enable = false;

@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  fonts.packages = [pkgs.hack-font] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
   environment.systemPackages = with pkgs; [
     # xdg-desktop-portal-wlr
     # xdg-desktop-portal-gtk
