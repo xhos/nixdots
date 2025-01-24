@@ -10,9 +10,10 @@
     stateVersion = "24.11";
 
     packages = with pkgs; [
+      nil # nix lsp
       #kde
-      plasma-panel-colorizer
-      linux-wallpaperengine
+      # plasma-panel-colorizer
+      # linux-wallpaperengine
       #endkde
       libreoffice
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })

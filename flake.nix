@@ -67,10 +67,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:xhos/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixvim = {
+    #   url = "github:xhos/nixvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Sops-nix, secrets management
     sops-nix = {

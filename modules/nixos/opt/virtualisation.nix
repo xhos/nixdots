@@ -8,18 +8,22 @@
     environment.systemPackages = with pkgs; [quickemu];
     programs.virt-manager.enable = true;
     users.groups.libvirtd.members = ["xhos"];
-    virtualisation.spiceUSBRedirection.enable = true;
 
-    virtualisation.libvirtd = {
-      enable = true;
+    virtualisation = {
+      spiceUSBRedirection.enable = true;
+      docker.enable = true;
 
-      qemu = {
-        package = pkgs.qemu_kvm;
-        ovmf = {
-          enable = true;
-          packages = [pkgs.OVMFFull.fd];
+      libvirtd = {
+        enable = true;
+
+        qemu = {
+          package = pkgs.qemu_kvm;
+          ovmf = {
+            enable = true;
+            packages = [pkgs.OVMFFull.fd];
+          };
+          swtpm.enable = true;
         };
-        swtpm.enable = true;
       };
     };
   };

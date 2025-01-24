@@ -15,6 +15,7 @@
   greetd    .enable = true;
   nvidia    .enable = true;
   vm        .enable = true;
+  ai        .enable = true;
 
   de = "hyprland";
   greeter = "tuigreet";

@@ -3,7 +3,6 @@
     ./boot.nix
     ./environment.nix
     ./locale.nix
-    ./misc.nix
     ./networking.nix
     ./nix.nix
     ./pkgs.nix

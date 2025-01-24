@@ -32,7 +32,7 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "[workspace special silent] spotify"
-      "[workspace special silent] telegram-desktop"
+      "[workspace special silent] materialgram"
       "[workspace 1 silent] zen"
       "[workspace 9 silent] obsidian"
       "[workspace 10 silent] vesktop"
@@ -40,7 +40,7 @@
 
     windowrulev2 = [
       "workspace special silent, initialTitle: Spotify Premium"
-      "workspace special silent, class:(org.telegram.desktop)"
+      "workspace special silent, class:(materialgram)"
     ];
 
     workspace = [

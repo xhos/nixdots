@@ -11,14 +11,22 @@
     validateSopsFiles = false;
 
     age = {
+      # import host ssh key as age key
       sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+      # this will use an age key that is expected to be already in the filesystem
       keyFile = "/var/lib/sops-nix/key.txt";
+      # genrete new key if above does not exist
       generateKey = true;
     };
 
     secrets = {
-      # "ssh/github" = { };
-      "ssh/github" = {path = "/home/xhos/.ssh/github";};
+      # "api_keys/openai"    = {path = "/home/xhos/.secrets/openai";};
+      # "api_keys/gemeni"    = {path = "/home/xhos/.secrets/gemeni";};
+      # "api_keys/anthropic" = {path = "/home/xhos/.secrets/anthropic";};
+      "api_keys/openai" = {};
+      "api_keys/gemeni" = {};
+      "api_keys/anthropic" = {};
+      # "ssh/github" = {path = "/home/xhos/.ssh/github";};
 
       # "ssh/github".neededForUsers = true;
       # password.neededForUsers = true; # needed for the password to be accessible before login

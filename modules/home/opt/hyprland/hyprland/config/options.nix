@@ -47,8 +47,8 @@ in {
       resize_on_border = "true";
       layout = "dwindle";
 
-      "col.active_border" = "rgb(${config.lib.stylix.colors.base03})";
-      "col.inactive_border" = "rgb(000000)";
+      "col.inactive_border" = "rgb(A9B1D6)";
+      "col.active_border" = "rgb(A9B1D6)";
 
       snap = {
         enabled = true;
@@ -70,7 +70,7 @@ in {
         render_power = 2;
         sharp = false;
         ignore_window = true;
-        color = "rgb(${config.lib.stylix.colors.base03})";
+        color = "rgb(000000)";
         color_inactive = "rgb(000000)";
       };
 
@@ -114,10 +114,17 @@ in {
       preserve_split = true;
     };
 
-    device = {
-      name = "znt0001:00-14e5:650e-touchpad";
-      sensitivity = "+0.2";
-    };
+    device = [
+      {
+        name = "znt0001:00-14e5:650e-touchpad";
+        sensitivity = "+0.2";
+      }
+      {
+        name = "razer-razer-mamba-elite";
+        accel_profile = "flat";
+        sensitivity = "-0.2";
+      }
+    ];
 
     gestures = {
       workspace_swipe = true;
