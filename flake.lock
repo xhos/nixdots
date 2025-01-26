@@ -697,6 +697,24 @@
         "type": "github"
       }
     },
+    "nix-secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737872727,
+        "narHash": "sha256-Ld+fS8yE84nKG87RbBJU6mz3QYhdjJwpQ0QPd5wM4pE=",
+        "ref": "main",
+        "rev": "36f4795d9b226d7cf7a742017cc7ad91bb2b6916",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/xhos/nix-secrets"
+      },
+      "original": {
+        "ref": "main",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/xhos/nix-secrets"
+      }
+    },
     "nixcord": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1031,6 +1049,7 @@
         "hyprsunset": "hyprsunset",
         "kwin-effects-forceblur": "kwin-effects-forceblur",
         "nh": "nh",
+        "nix-secrets": "nix-secrets",
         "nixcord": "nixcord",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_7",

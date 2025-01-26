@@ -102,6 +102,12 @@
     # Cosmic, an unfinished, but promising de
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
+    # Priavte secrets repository
+    nix-secrets = {
+      url = "git+ssh://git@github.com/xhos/nix-secrets?shallow=1&ref=main";
+      flake = false;
+    };
   };
 
   outputs = {

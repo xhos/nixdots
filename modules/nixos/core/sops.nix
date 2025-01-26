@@ -3,11 +3,13 @@
   inputs,
   config,
   ...
-}: {
+}: let
+secretspath = builtins.toString inputs.nix-secrets;
+in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
   sops = {
-    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = "${secretspath}/secrets.yaml";
     validateSopsFiles = false;
 
     age = {
@@ -20,15 +22,12 @@
     };
 
     secrets = {
-      # "api_keys/openai"    = {path = "/home/xhos/.secrets/openai";};
-      # "api_keys/gemeni"    = {path = "/home/xhos/.secrets/gemeni";};
-      # "api_keys/anthropic" = {path = "/home/xhos/.secrets/anthropic";};
       "api_keys/openai" = {};
       "api_keys/gemeni" = {};
       "api_keys/anthropic" = {};
-      # "ssh/github" = {path = "/home/xhos/.ssh/github";};
+      # "gh_ssh" = { path = "/home/xhos/.ssh/github"; };
 
-      # "ssh/github".neededForUsers = true;
+      # "gh_ssh".neededForUsers = true;
       # password.neededForUsers = true; # needed for the password to be accessible before login
 
       # all secrets need to be defined here to be accessible
