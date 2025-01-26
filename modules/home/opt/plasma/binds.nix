@@ -16,13 +16,13 @@
         "Toggle Window Floating" = "Meta+D";
         "Window to Next Screen" = "Meta+Shift+Right";
         "Window to Previous Screen" = "Meta+Shift+Left";
-        
+
         # Workspace navigation remains the same
         "Switch to Next Desktop" = "Meta+Alt+Down";
         "Switch to Previous Desktop" = "Meta+Alt+Up";
         "Window to Next Desktop" = "Meta+Alt+Shift+Down";
         "Window to Previous Desktop" = "Meta+Alt+Shift+Up";
-        
+
         # Desktop switching remains the same
         "Switch to Desktop 1" = "Meta+1";
         "Switch to Desktop 2" = "Meta+2";
@@ -32,7 +32,7 @@
         "Switch to Desktop 6" = "Meta+6";
         "Switch to Desktop 7" = "Meta+7";
         "Switch to Desktop 8" = "Meta+8";
-        
+
         # Window moving remains the same
         "Window to Desktop 1" = "Meta+Shift+1";
         "Window to Desktop 2" = "Meta+Shift+2";

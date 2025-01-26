@@ -10,7 +10,6 @@
     ./plasma.nix
     ./rclone.nix
     ./regreet.nix
-    ./secrets
     ./sound.nix
     ./steam.nix
     ./tuigreet.nix

@@ -22,7 +22,7 @@
 
   de = "hyprland";
   greeter = "tuigreet";
-  
+
   hardware.sensor.iio.enable = true; # enables sensors needed for iio-hyprland (screen rotation)
 
   boot = {

@@ -3,18 +3,17 @@
   config,
   ...
 }: {
-  home.sessionVariables = {
-    SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
-  };
-
-  programs.ssh.addKeysToAgent = "yes";
+  # home.sessionVariables = {
+  #   SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+  # };
 
   imports = [
     ./fonts
+    ./home.nix
     ./nixpkgs.nix
     ./options.nix
     ./programs.nix
-    ./home.nix
+    ./ssh.nix
     ./zed.nix
   ];
 

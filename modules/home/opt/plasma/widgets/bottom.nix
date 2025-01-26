@@ -1,4 +1,8 @@
-{lib,config,...}:{
+{
+  lib,
+  config,
+  ...
+}: {
   programs.plasma.panels = lib.mkIf (config.default.de == "plasma") [
     # Windows-like panel at the bottom
     {
