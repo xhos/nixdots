@@ -10,6 +10,7 @@
     stateVersion = "24.11";
 
     packages = with pkgs; [
+      font-manager
       nil # nix lsp
       #kde
       # plasma-panel-colorizer
