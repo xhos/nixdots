@@ -5,7 +5,7 @@
       "github" = {
         host = "github.com";
         identitiesOnly = true;
-        identityFile = "~/.ssh/github";
+        identityFile = "~/.ssh/github-auth-key";
       };
     };
   };

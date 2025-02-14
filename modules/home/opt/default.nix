@@ -1,25 +1,24 @@
 {
   imports = [
-    ./options.nix
-    ./waybar
-    ./shells
+    ./astal.nix
     ./clipse.nix
     ./discord.nix
     ./fastfetch.nix
-    ./git.nix
-    ./mako.nix
     ./firefox
-    ./music
-    ./terminals
+    ./git.nix
     ./hyprland
-    ./stylix.nix
+    ./hyprpanel.nix
+    ./mako.nix
+    ./music
+    ./options.nix
     ./prompts
     ./rofi.nix
-    # ./plasma
-    ./discord.nix
-    ./web-apps
-    ./astal.nix
-    ./hyprpanel.nix
+    ./shells
+    ./stylix.nix
     ./telegram.nix
+    ./terminals
+    ./waybar
+    ./web-apps
+    # ./plasma
   ];
 }
