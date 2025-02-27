@@ -11,7 +11,7 @@
     ];
 
     wayland.windowManager.hyprland.settings = {
-      exec = ["my-shell"];
+      exec = ["aard"];
     };
   };
 }
