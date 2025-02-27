@@ -129,14 +129,14 @@
       zireael = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          home-manager.nixosModule
+          # home-manager.nixosModule
           ./hosts/zireael/configuration.nix
         ];
       };
       vyverne = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          home-manager.nixosModule
+          # home-manager.nixosModule
           # inputs.nixos-cosmic.nixosModules.default
           ./hosts/vyverne/configuration.nix
         ];
@@ -145,7 +145,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/aevon/configuration.nix
-          home-manager.nixosModule
+          # home-manager.nixosModule
           nixos-wsl.nixosModules.default
         ];
       };

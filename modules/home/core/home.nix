@@ -39,7 +39,7 @@
       figlet # cool text gen
       nwg-displays
       # alacritty
-      xwaylandvideobridge # for screen sharing
+      # xwaylandvideobridge # for screen sharing
       # Utils
       # swww # wallpaper daemon
       fastfetch
@@ -64,7 +64,7 @@
       sherlock
       skim # fzf in rust (sk)
       zoxide # better cd
-      tailspin # log highlighter
+      # tailspin # log highlighter
       devenv
       sshs
       # Actual software
@@ -72,7 +72,7 @@
       proton-pass
       kitty # here as a fallback
       nautilus
-      bottles # run windows
+      # bottles # run windows
       obs-studio
       termius
       qbittorrent
