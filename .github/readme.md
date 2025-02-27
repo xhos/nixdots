@@ -1,6 +1,14 @@
-# nixdots
+# ❄️ nixdots
 
-## ❄️ main features
+<p float="left">
+  <img src="./ss1.png" width="500" />
+  <img src="./ss2.png" width="500" /> 
+  <img src="./ss3.png" width="500" />
+  <img src="./ss4.png" width="500" />
+</p>
+
+
+## 🌌 main features
 
 - modular setup, everything is toggleable and switchable
 - easy full system theming with stylix, based on the wallpaper or a base16 scheme
