@@ -21,13 +21,13 @@
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
       inputs.swww.packages.${system}.swww
-      inputs.ghostty.packages.${system}.default
+      # inputs.ghostty.packages.${system}.default
       inputs.zen-browser.packages."${system}".default
       inputs.hyprsunset.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix
       gdb
       wayvnc
-      # vesktop
+      vesktop
       slack
       # httrack # offline websites
       lazygit
@@ -39,7 +39,7 @@
       figlet # cool text gen
       nwg-displays
       # alacritty
-      xwaylandvideobridge # for screen sharing
+      # xwaylandvideobridge # for screen sharing
       # Utils
       # swww # wallpaper daemon
       fastfetch
@@ -64,7 +64,7 @@
       sherlock
       skim # fzf in rust (sk)
       zoxide # better cd
-      tailspin # log highlighter
+      # tailspin # log highlighter
       devenv
       sshs
       # Actual software
@@ -72,7 +72,7 @@
       proton-pass
       kitty # here as a fallback
       nautilus
-      bottles # run windows
+      # bottles # run windows
       obs-studio
       termius
       qbittorrent

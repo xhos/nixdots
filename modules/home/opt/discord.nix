@@ -19,7 +19,7 @@
         friendsSince.enable = true;
         gameActivityToggle.enable = true;
         messageLogger.enable = true;
-        noScreensharePreview.enable = true;
+        # noScreensharePreview.enable = true;
         petpet.enable = true;
         reverseImageSearch.enable = true;
 

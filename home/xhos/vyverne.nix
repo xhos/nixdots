@@ -23,7 +23,7 @@
   };
 
   home.packages = with pkgs; [
-    vesktop
+    # vesktop
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 

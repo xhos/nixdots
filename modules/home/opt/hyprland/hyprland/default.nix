@@ -90,7 +90,7 @@ in {
         wlr-randr
         wlr-randr
         wtype
-        xwaylandvideobridge
+        # xwaylandvideobridge
         ydotool
         wlprop
         xorg.xprop

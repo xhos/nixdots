@@ -8,13 +8,12 @@
   modules = {
     rofi.enable = true;
     firefox.enable = true;
-    discord.enable = true;
     spicetify.enable = true;
   };
 
   default = {
     de = "hyprland";
-    bar = "waybar";
+    bar = "astal";
     lock = "hyprlock";
     shell = "zsh";
     prompt = "starship";

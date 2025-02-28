@@ -38,9 +38,10 @@ in {
     window#waybar {
       transition-property: background-color;
       transition-duration: 0.5s;
-      border-radius: 10px;
-      border: 2px solid @inactive;
-      background: alpha(@background, 0.6);
+      /* border-radius: 10px; */
+      /* border: 2px solid @inactive; */
+      /* background: alpha(@background, 0.6); */
+      background: #000000;
       color: @active;
     }
 
