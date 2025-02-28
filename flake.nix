@@ -44,7 +44,7 @@
     # Hyprsunset, a hyprland way to manage screen temperature
     hyprsunset.url = "github:hyprwm/hyprsunset";
 
-    astal-shell.url = "github:xhos/astal";
+    aard.url = "github:xhos/astal";
 
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
