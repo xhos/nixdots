@@ -1,10 +1,10 @@
 # ❄️ nixdots
 
 <p float="left">
-  <img src="./ss1.png" width="500" />
-  <img src="./ss2.png" width="500" /> 
-  <img src="./ss3.png" width="500" />
-  <img src="./ss4.png" width="500" />
+  <img src="./ss1.png" width="400" />
+  <img src="./ss2.png" width="400" /> 
+  <img src="./ss3.png" width="400" />
+  <img src="./ss4.png" width="400" />
 </p>
 
 
