@@ -1,4 +1,8 @@
-{pkgs, modulesPath, config, ...}: {
+{
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
   ];
@@ -11,7 +15,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # isoImage.forceTextMode = true;
-  
+
   environment.systemPackages = with pkgs; [
     git
     disko
