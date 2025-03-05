@@ -17,15 +17,6 @@
     ./zed.nix
   ];
 
-  gtk = {
-    gtk3.extraConfig.gtk-decoration-layout = "menu:";
-    enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme.override {color = "nordic";};
-    };
-  };
-
   xdg = {
     enable = true;
     mimeApps = {
@@ -53,5 +44,6 @@
       createDirectories = true;
     };
   };
+
   programs.home-manager.enable = true;
 }

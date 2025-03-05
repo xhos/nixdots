@@ -12,7 +12,7 @@ in {
   config = lib.mkIf config.modules.spicetify.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.themes.text;
+      theme = spicePkgs.themes.dribbblish;
 
       customColorScheme = with config.lib.stylix.colors; {
         text = "${base05}";
