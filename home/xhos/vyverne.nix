@@ -13,9 +13,9 @@
   };
 
   default = {
-    de = "hyprland";
-    bar = "astal";
-    lock = "hyprlock";
+    de = "none";
+    bar = "none";
+    lock = "none";
     shell = "zsh";
     prompt = "starship";
     browser = "zen";

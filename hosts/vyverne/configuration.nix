@@ -17,8 +17,8 @@
   vm        .enable = true;
   ai        .enable = true;
 
-  de = "hyprland";
-  greeter = "tuigreet";
+  de = "gnome";
+  greeter = "none";
 
   # RGB control
   services.hardware.openrgb.enable = true;

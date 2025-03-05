@@ -13,7 +13,6 @@
     networkmanagerapplet
     wirelesstools # wireless stuff
     speedtest-cli
-    blueman
     dig # dns lookup
     gpclient
 

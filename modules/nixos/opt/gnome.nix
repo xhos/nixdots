@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf (config.de == "gnome") {
@@ -12,6 +13,11 @@
       };
       desktopManager.gnome.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      gnome-tweaks
+      ghostty
+    ];
 
     services.displayManager.defaultSession = "gnome";
   };
