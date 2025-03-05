@@ -16,6 +16,8 @@
     dig # dns lookup
     gpclient
 
+    openssl
+
     lm_sensors
     fan2go
 

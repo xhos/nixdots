@@ -56,7 +56,6 @@
       glow # cli markdown renderer
       imagemagick
       onefetch # git repo summary
-      openssl
       openvpn
       pfetch-rs # system info
       playerctl # media controls

@@ -5,44 +5,48 @@
   ...
 }: {
   config = lib.mkIf config.steam.enable {
-    environment.systemPackages = with pkgs; [gamescope];
-    nixpkgs.config.packageOverrides = pkgs: {
-      steam = pkgs.steam.override {
-        extraPkgs = pkgs:
-          with pkgs; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            libpng
-            libpulseaudio
-            libvorbis
-            stdenv.cc.cc.lib
-            libkrb5
-            keyutils
-            protonup
-          ];
-      };
-    };
+    environment.systemPackages = with pkgs; [
+      # gamescope
+      heroic
+    ];
+
+    # nixpkgs.config.packageOverrides = pkgs: {
+    #   steam = pkgs.steam.override {
+    #     extraPkgs = pkgs:
+    #       with pkgs; [
+    #         keyutils
+    #         libkrb5
+    #         libpng
+    #         libpulseaudio
+    #         libvorbis
+    #         protonup
+    #         stdenv.cc.cc.lib
+    #         xorg.libXcursor
+    #         xorg.libXi
+    #         xorg.libXinerama
+    #         xorg.libXScrnSaver
+    #       ];
+    #   };
+    # };
 
     programs = {
       steam = {
         enable = true;
-        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
         gamescopeSession.enable = true;
-        package = pkgs.steam.override {
-          extraPkgs = pkgs:
-            with pkgs; [
-              libkrb5
-              keyutils
-            ];
-        };
+        # package = pkgs.steam.override {
+        #   extraPkgs = pkgs:
+        #     with pkgs; [
+        #       keyutils
+        #       libkrb5
+        #     ];
+        # };
       };
       gamemode.enable = true;
     };
 
-    environment.sessionVariables = {
+    environment.sessionVariables = lib.mkIf (config.de == "hyprland") {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/xhos/.steam/root/.compatibilitytools.d";
       GDK_BACKEND = "wayland,x11";
       QT_QPA_PLATFORM = "wayland;xcb";
