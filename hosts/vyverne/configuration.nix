@@ -10,7 +10,7 @@
   audio     .enable = true;
   bluetooth .enable = true;
   sshserver .enable = false;
-  rclone    .enable = false;
+  rclone    .enable = true;
   steam     .enable = true;
   greetd    .enable = true;
   nvidia    .enable = true;

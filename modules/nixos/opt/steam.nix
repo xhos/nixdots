@@ -6,8 +6,10 @@
 }: {
   config = lib.mkIf config.steam.enable {
     environment.systemPackages = with pkgs; [
-      # gamescope
+      gamescope
       heroic
+      lutris
+      protontricks
     ];
 
     # nixpkgs.config.packageOverrides = pkgs: {
