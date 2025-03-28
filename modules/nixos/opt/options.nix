@@ -11,6 +11,7 @@
     nvidia   .enable = mkEnableOption "Enable nvidia support";
     vm       .enable = mkEnableOption "Enable vm support";
     ai       .enable = mkEnableOption "Enable ai support";
+    obs      .enable = mkEnableOption "Enable obs support";
 
     de = mkOption {
       type = types.enum ["hyprland" "gnome" "cosmic" "plasma" "xfce" "none"];

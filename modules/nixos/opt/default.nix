@@ -16,5 +16,6 @@
     ./virtualisation.nix
     ./wayland.nix
     ./xfce.nix
+    ./obs.nix
   ];
 }
