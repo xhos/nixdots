@@ -1,13 +1,2 @@
-gtk-tabs-location = hidden
-font-family = {{ terminal_font }}
-font-size = 14
-scrollback-limit = 10_000
-window-theme = ghostty
-clipboard-read = allow
-clipboard-paste-protection = false
-# window-decoration = false
 shell-integration = zsh
-
-# Transparency
-background-opacity = 0.8
-background-blur-radius = 20
+background-opacity = 0
