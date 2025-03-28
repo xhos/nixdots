@@ -10,6 +10,7 @@
       heroic
       lutris
       protontricks
+      prismlauncher
     ];
 
     # nixpkgs.config.packageOverrides = pkgs: {

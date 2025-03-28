@@ -17,6 +17,9 @@
       # linux-wallpaperengine
       #endkde
       libreoffice
+      postman
+      gnome-solanum
+      xournalpp
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
@@ -72,7 +75,7 @@
       kitty # here as a fallback
       nautilus
       # bottles # run windows
-      obs-studio
+      # obs-studio
       termius
       qbittorrent
       # draggind kanban board items doesn't work otherwise
