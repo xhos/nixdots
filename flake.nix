@@ -169,6 +169,7 @@
           inherit system;
           overlays = [
             inputs.hyprpanel.overlay
+            inputs.aard.overlay
           ];
         };
         # pkgs = nixpkgs.legacyPackages.x86_64-linux;
