@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1743214681,
-        "narHash": "sha256-LDo0VrqfNRS5wZIcIl/yFJDSKKX6h4m4p4vQizn9DAE=",
+        "lastModified": 1743216439,
+        "narHash": "sha256-G5NOkIToO9Nx7DzXssspjht/N0pmsoaJ2CBOjnZs28U=",
         "owner": "xhos",
         "repo": "astal",
-        "rev": "45be8f825f3df50d25484b292d5aee828d4d8f83",
+        "rev": "b71775d9f9bb6740c497766cd129990ab603bb7d",
         "type": "github"
       },
       "original": {

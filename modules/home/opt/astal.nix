@@ -10,7 +10,7 @@
     programs.aard = {
       enable = true;
       wallpaper = config.stylix.image;
-      # systemd.enable = true;
+      systemd.enable = true;
     };
   };
 }
