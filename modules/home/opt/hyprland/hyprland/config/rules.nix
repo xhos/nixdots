@@ -5,17 +5,12 @@
       toRegex = list: let
         elements = lib.concatStringsSep "|" list;
       in "^(${elements})$";
-
       layers = [
-        "gtk-layer-shell"
-        "swaync-control-center"
-        "swaync-notification-window"
-        "waybar"
+        "gtk4-layer-shell"
         "rofi"
       ];
     in [
       "blur, ${toRegex layers}"
-      "ignorealpha 0.5, ${toRegex layers}"
     ];
 
     # window rules
