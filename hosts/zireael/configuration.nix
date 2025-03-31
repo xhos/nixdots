@@ -15,9 +15,6 @@
   wayland   .enable = true;
   audio     .enable = true;
   bluetooth .enable = true;
-  sshserver .enable = false;
-  rclone    .enable = false;
-  steam     .enable = true;
   greetd    .enable = true;
 
   de = "hyprland";
@@ -45,4 +42,6 @@
   ];
 
   environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Force intel-media-driver
+
+  services.fprintd.enable = true;
 }
