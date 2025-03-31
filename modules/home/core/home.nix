@@ -126,6 +126,8 @@
       iproute2
       libnotify
       netcat-gnu
+      loupe
+      jq
     ];
   };
 }

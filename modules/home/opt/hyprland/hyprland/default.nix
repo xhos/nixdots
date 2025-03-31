@@ -116,9 +116,7 @@ in {
       # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
       plugins = [
-        # inputs.hyprgrass.packages.${pkgs.system}.default
-        # inputs.hyprscroller.packages.${pkgs.system}.default
-        # inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+        pkgs.hyprlandPlugins.hyprgrass
       ];
 
       xwayland.enable = true;
