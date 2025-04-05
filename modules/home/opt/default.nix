@@ -7,7 +7,6 @@
     ./firefox
     ./git.nix
     ./hyprland
-    ./hyprpanel.nix
     ./mako.nix
     ./music
     ./options.nix

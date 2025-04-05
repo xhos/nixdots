@@ -23,4 +23,6 @@
 
   # RGB control
   services.hardware.openrgb.enable = true;
+
+  boot.kernelParams = ["hid_apple.fnmode=2"];
 }

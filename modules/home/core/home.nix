@@ -16,6 +16,7 @@
       # plasma-panel-colorizer
       # linux-wallpaperengine
       #endkde
+      rnote
       libreoffice
       postman
       gnome-solanum

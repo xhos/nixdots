@@ -46,11 +46,6 @@
 
     aard.url = "github:xhos/astal";
 
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -137,7 +132,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           # home-manager.nixosModule
-          # inputs.nixos-cosmic.nixosModules.default
+          inputs.sops-nix.nixosModules.sops
           ./hosts/vyverne/configuration.nix
         ];
       };
@@ -168,7 +163,6 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            inputs.hyprpanel.overlay
             inputs.aard.overlay
           ];
         };
