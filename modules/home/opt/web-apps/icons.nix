@@ -29,7 +29,7 @@ in {
 
   yandex-music = mkWebAppIcon {
     name = "yandex-music";
-    url = "https://upload.wikimedia.org/wikipedia/commons/f/fa/Yandex_Music_icon_2023.svg";
-    hash = "sha256-Q/oyTftMAsHLIyPxNAr88IGFxFlGt58rHmgy0J01ado=";
+    url = "https://i.imgur.com/tJuGyOB.png";
+    hash = "sha256-VE/He5iwrH+oSAn4sN467h2FBweZj3Fw5NFBoi0iXL4=";
   };
 }
