@@ -7,8 +7,8 @@
   background =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/o5/wallhaven-o5kq3l.png";
-      sha256 = "sha256-opBSe0bkBImbz9ALwwqDCCUBOqS1YcgOLuP+WfTk70k=";
+      url = "https://w.wallhaven.cc/full/21/wallhaven-21gkvy.jpg";
+      sha256 = "sha256-CsKT+3Tdyc28kNakOxzOavOg7lfzm2B+O/SsNX2W7Oc=";
     };
 in {
   stylix = {
