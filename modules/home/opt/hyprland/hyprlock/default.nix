@@ -11,7 +11,7 @@
         -------------------- ADJUSTMENT --------------------
 
         $img                        = /etc/nixos/modules/home/opt/hyprland/hyprlock/assets
-        $wallpaper                  = /home/xhos/Pictures/beams.jpg
+        $wallpaper                  = /home/xhos/Pictures/marathon2.jpg
         $widget                     = /etc/nixos/modules/home/opt/hyprland/hyprlock
 
         # COLORS
@@ -21,9 +21,16 @@
         $color1                     =
 
         $fail                       = rgba(221, 8, 8, 0.8)
+        $green                      = rgba(196,252,4,1.0)
+
 
         # FONT
+        # KH Interference
+        # MonoSpec
+        # Synchro
+        $title                      = Maratype
         $main                       = Ndot55
+        $pixel                      = KH Interference
         $alt                        = LetteraMonoLL Bold
         $jp                         = Noto Sans CJK JP
 
@@ -54,95 +61,244 @@
 
         }
 
+        -------------------- RIGHT BAR --------------------
+        # DATE (LAST NUMBER)
+        label {
+            monitor                 =
+            text                    = cmd[update:1000] echo -e "$(date +"%d")"
+            color                   = $green
+            font_family             = Nimbus Sans L Thin
+            font_size               = 40
+            rotate                  = -90
+            position                = -33, -77
+            halign                  = right
+            valign                  = top
+        }
 
+        # DOT
+        image {
+            monitor                 =
+            path                    = $img/g-2x2dot.png
+            size                    = 6
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -48, -148
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # MONTH NUMBER
+        label {
+            monitor                 =
+            text                    = cmd[update:1000] echo -e "$(date +"%m")"
+            color                   = $green
+            font_family             = Nimbus Sans L Thin
+            font_size               = 40
+            rotate                  = -90
+            position                = -33, -165
+            halign                  = right
+            valign                  = top
+        }
+
+        # DOT
+        image {
+            monitor                 =
+            path                    = $img/g-2x2dot.png
+            size                    = 6
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -48, -230
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # YEAR
+        label {
+            monitor                 =
+            text                    = cmd[update:1000] echo -e "$(date +"%Y")"
+            color                   = $green
+            font_family             = Nimbus Sans Black
+            font_size               = 40
+            rotate                  = -90
+            position                = -34, -250
+            halign                  = right
+            valign                  = top
+        }
+
+        # LEFT DOT
+        image {
+            monitor                 =
+            path                    = $img/g-2x2dot.png
+            size                    = 6
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -67, -470
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # RIGHT DOT
+        image {
+            monitor                 =
+            path                    = $img/g-2x2dot.png
+            size                    = 6
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -30, -470
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # BARCODE
+        image {
+            monitor                 =
+            path                    = $img/g-barcode.png
+            size                    = 24
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -40, -570
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # CROSS
+        image {
+            monitor                 =
+            path                    = $img/g-cross.png
+            size                    = 24
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -40, -710
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # CIRCLE
+        image {
+            monitor                 =
+            path                    = $img/g-circle.png
+            size                    = 24
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -40, -770
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        # CLOCK-HOUR
+        label {
+            monitor                 =
+            text                    = cmd[update:1000] echo "<b><big> $(date +"%H") </big></b>" # 12-h format (%H for 24-h format)
+            color                   = $green
+            font_family             = $pixel
+            font_size               = 30
+            rotate                  = -90
+            position                = -30, -800
+            halign                  = right
+            valign                  = top
+        }
+
+        # CLOCK-MINUTE
+        label {
+            monitor                 =
+            text                    = cmd[update:1000] echo "<b><big> $(date +"%M") </big></b>"
+            color                   = $green
+            font_family             = $pixel
+            font_size               = 30
+            rotate                  = -90
+            position                = -30, -870
+            halign                  = right
+            valign                  = top
+        }
+
+        # TAXI
+        image {
+            monitor                 =
+            path                    = $img/g-taxi.png
+            size                    = 24
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = -42, -970
+            halign                  = right
+            valign                  = top
+            color                   = $foreground
+        }
+
+        -------------------- CENTER --------------------
+        # NAME
+        label {
+            monitor                 =
+            # text                    = ESCAPE WILL MAKE ME GOD
+            text                    = OZYMANDIAS
+            in the heavens they are waiting
+            TAU CETI IV    # text                    = cmd[] echo "HELLO $(whoami) PLEASE LOGIN"
+            color                   = $green
+            font_family             = Maratype
+            font_size               = 110
+
+            position                = 30, -77
+            halign                  = left
+            valign                  = top
+        }
+
+        label {
+            monitor                 =
+            # text                    = in the heavens they are waiting / TAU CETI IV
+            text                    = ESCAPE WILL MAKE ME GOD / TAU CETI IV
+            color                   = $green
+            font_family             = $pixel
+            font_size               = 20
+
+            position                = 34, -230
+            halign                  = left
+            valign                  = top
+        }
+
+        # PLUS
+        image {
+            monitor                 =
+            path                    = $img/g-plus.png
+            size                    = 24
+            rounding                = 0
+            border_size             = 0
+            rotate                  = -90
+
+            position                = 640, -140
+            halign                  = left
+            valign                  = top
+            color                   = $foreground
+        }
 
         -------------------- ELEMENT --------------------
-
-        # TOP LINE
-        shape {
-            monitor                 =
-            size                    = 1860, 2
-            color                   = $foreground
-            rounding                = -1 # circle
-
-            position                = 0, 370
-            halign                  = center
-            valign                  = center
-        }
-
-        # ICON-ARROW
-        image {
-            monitor                 =
-            path                    = $img/arrow.png
-            size                    = 30
-            rounding                = 0
-            border_size             = 0
-
-            position                = 150, 95
-            halign                  = left
-            valign                  = bottom
-        }
-
-        # ICON-STAR
-        image {
-            monitor                 =
-            path                    = $img/star-circle.png
-            size                    = 53
-            rounding                = 0
-            border_size             = 0
-
-            position                = 13, -400
-            halign                  = left
-            valign                  = center
-        }
-
-        # ICON-LOGO
-        image {
-            monitor                 =
-            path                    = $img/logo.png
-            size                    = 70
-            rounding                = 0
-            border_size             = 0
-
-            position                = 0, -5
-            halign                  = center
-            valign                  = bottom
-            zindex                  = -1
-        }
-
-
-        # ICON-SMILEY
-        image {
-            monitor                 =
-            path                    = $img/smiley.png
-            size                    = 27
-            rounding                = 0
-            border_size             = 0
-
-            position                = 24, 55
-            halign                  = left
-            valign                  = center
-            zindex                  = 1
-        }
-
-        # ICON-GLOBE
-        image {
-            monitor                 =
-            path                    = $img/globe.png
-            size                    = 23
-            rounding                = 0
-            border_size             = 0
-
-            position                = 26, 85
-            halign                  = left
-            valign                  = center
-        }
 
         # USERBOX TOP LINE
         shape {
             monitor                 =
             size                    = 140, 1
-            color                   = $foreground
+            color                   = $green
             rounding                = -1
 
             position                = 150, 57
@@ -154,7 +310,7 @@
         shape {
             monitor                 =
             size                    = 140, 1
-            color                   = $foreground
+            color                   = $green
             rounding                = -1
 
             position                = 150, 32
@@ -162,146 +318,13 @@
             valign                  = bottom
         }
 
-        # XRAY BOX CENTER
-        shape {
-            monitor                 =
-            size                    = 30, 30
-            color                   = $background # no fill
-            rounding                = 0
-            border_color            = $foreground
-            border_size             = 0
-
-            position                = 0, -140
-            halign                  = center
-            valign                  = center
-            xray                    = true
-        }
-
-        # XRAY BOX LEFT
-        shape {
-            monitor                 =
-            size                    = 30, 30
-            color                   = $background # no fill
-            rounding                = 0
-            border_color            = $foreground
-            border_size             = 0
-
-            position                = -35, -140
-            halign                  = center
-            valign                  = center
-            xray                    = true
-        }
-
-        # XRAY BOX RIGHT
-        shape {
-            monitor                 =
-            size                    = 30, 30
-            color                   = $background # no fill
-            rounding                = 0
-            border_color            = $foreground
-            border_size             = 0
-
-            position                = 35, -140
-            halign                  = center
-            valign                  = center
-            xray                    = true
-        }
-
-        # XRAY BOX BOT-RIGHT
-        # shape {
-        #     monitor                 =
-        #     size                    = 30, 30
-        #     color                   = $background # no fill
-        #     rounding                = 0
-        #     border_color            = $foreground
-        #     border_size             = 0
-
-        #     position                = -35, 75
-        #     halign                  = right
-        #     valign                  = bottom
-        #     xray                    = true
-        # }
-
-
-
-        -------------------- TIME & DATE --------------------
-
-        # CLOCK-HOUR
-        label {
-            monitor                 =
-            text                    = cmd[update:1000] echo "<b><big> $(date +"%I") </big></b>" # 12-h format (%H for 24-h format)
-            color                   = $foreground
-            font_family             = $main
-            font_size               = 90
-
-            position                = 0, -60
-            halign                  = left
-            valign                  = top
-        }
-
-        # CLOCK-MINUTE
-        label {
-            monitor                 =
-            text                    = cmd[update:1000] echo "<b><big> $(date +"%M") </big></b>"
-            color                   = $foreground
-            font_family             = $main
-            font_size               = 90
-
-            position                = 0, -190
-            halign                  = left
-            valign                  = top
-        }
-
-        # DATE
-        label {
-            monitor                 =
-            text                    = cmd[update:1000] echo -e "$(date +"%a %B %d")"
-            color                   = $foreground
-            font_family             = $main
-            font_size               = 50
-
-            position                = -25, -190
-            rotate                  = 90
-            halign                  = right
-            valign                  = top
-        }
-
-        # YEAR PILL
-        shape {
-            monitor                 =
-            size                    = 60, 20
-            color                   = $background # no fill
-            rounding                = -1 # circle
-            border_color            = $foreground
-            border_size             = 1
-            # -35 22
-            position                = -30, -122
-            halign                  = right
-            valign                  = top
-        }
-
-        # YEAR
-        label {
-            monitor                 =
-            text                    = cmd[update:1000] echo -e "$(date +"%Y")"
-            color                   = $foreground
-            font_family             = $alt
-            font_size               = 10
-
-            position                = -43, -128
-            halign                  = right
-            valign                  = top
-        }
-
-
-
         -------------------- TEXT --------------------
 
         # NAME
         label {
             monitor                 =
             text                    = cmd[] echo "$(whoami)"
-            color                   = $foreground
+            color                   = $green
             font_family             = $alt
             font_size               = 11
 
@@ -309,106 +332,12 @@
             halign                  = right
             valign                  = bottom
         }
-
-        # TAG-LEFT
-        label {
-            monitor                 =
-            text                    = LIVE
-            color                   = $foreground
-            font_family             = $alt
-            font_size               = 10
-
-            position                = 300, 344
-            halign                  = left
-            valign                  = center
-        }
-
-        # TAG-CENTER
-        label {
-            monitor                 =
-            text                    = YOUR
-            color                   = $foreground
-            font_family             = $alt
-            font_size               = 10
-
-            position                = 0, 344
-            halign                  = center
-            valign                  = center
-        }
-
-        # TAG-RIGHT
-        label {
-            monitor                 =
-            text                    = LIFE
-            color                   = $foreground
-            font_family             = $alt
-            font_size               = 10
-
-            position                = -300, 344
-            halign                  = right
-            valign                  = center
-        }
-
-        # TAG-BOT
-        # label {
-        #     monitor                 =
-        #     text                    = NIXOS
-        #     color                   = $foreground
-        #     font_family             = $alt
-        #     font_size               = 9
-
-        #     position                = -35, 25
-        #     halign                  = right
-        #     valign                  = bottom
-        # }
-
-        # HIRAGANA
-        label {
-            monitor                 =
-            text                    = かいぜん
-            color                   = $foreground
-            font_family             = $jp
-            font_size               = 14
-
-            position                = 0, 190
-            halign                  = center
-            valign                  = bottom
-        }
-
-        # QUOTES-TOP
-        label {
-            monitor                 =
-            text                    = You can have everything and feel nothing.
-            color                   = $foreground
-            font_family             = Ndot55Caps
-            font_size               = 12
-
-            position                = 0, 130
-            halign                  = center
-            valign                  = bottom
-        }
-
-        # QUOTES-BOT
-        label {
-            monitor                 =
-            text                    = What you resist, persists. What you accept, dissolves.    What you resist, persists. What you accept, dissolves.
-            color                   = $foreground
-            font_family             = Ndot55Caps
-            font_size               = 12
-
-            position                = 0, 115
-            halign                  = center
-            valign                  = bottom
-        }
-
-
-
         --------------------- USER --------------------
 
         # AVATAR
         image {
             monitor                 =
-            path                    = $img/pfp.jpg
+            path                    = $img/pfp.png
             border_color            = $foreground-alt
             border_size             = 0
             size                    = 110
@@ -446,7 +375,7 @@
             dots_rounding           = -1
 
             font_family             = $alt
-            font_color              = $foreground
+            font_color              = $green
 
             placeholder_text        = PASSCODE
             fail_text               = WRONG PASSCODE <b>($ATTEMPTS)</b>
@@ -464,11 +393,11 @@
 
         -------------------- WIDGET --------------------
 
-        # BATTERY
+        BATTERY
         label {
             monitor             =
             text                = cmd[update:1000] sh /etc/nixos/modules/home/opt/hyprland/hyprlock/battery.sh
-            color               = $foreground
+            color               = $green
             font_family         = $main Bold
             font_size           = 14
 
@@ -479,91 +408,7 @@
             zindex              = 1
         }
 
-        # LOG
-        label {
-            monitor             =
-            text                = cmd[update:3000] sh /etc/nixos/modules/home/opt/hyprland/hyprlock/log.sh
-            color               = $foreground
-            font_family         = Ndot55Caps
-            font_size           = 12
 
-
-            position            = -30, 30
-            halign              = right
-            valign              = bottom
-            zindex              = 1
-        }
-
-        # CPU
-        label {
-            monitor             =
-            text                = cmd[] echo "$(grep "model name" /proc/cpuinfo | head -1 | cut -d: -f2 | sed 's/^ //')"
-            color               = $foreground
-            font_family         = Ndot55Caps
-            font_size           = 12
-
-
-            position            = -30, 45
-            halign              = right
-            valign              = bottom
-            zindex              = 1
-        }
-
-        label {
-            monitor             =
-            text                = cmd[] echo "$(grep '^PRETTY_NAME=' /etc/os-release | cut -d= -f2 | tr -d '\"')"
-            color               = $foreground
-            font_family         = Ndot55Caps
-            font_size           = 12
-
-
-            position            = -30, 60
-            halign              = right
-            valign              = bottom
-            zindex              = 1
-        }
-
-        label {
-            monitor             =
-            text                = cmd[] echo "$(awk '{print "Uptime: " int($1/3600)"h " int(($1%3600)/60)"m"}' /proc/uptime)"
-            color               = $foreground
-            font_family         = Ndot55Caps
-            font_size           = 12
-
-
-            position            = -30, 75
-            halign              = right
-            valign              = bottom
-            zindex              = 1
-        }
-
-        label {
-            monitor             =
-            text                = cmd[] echo "$(uname -m)"
-            color               = $foreground
-            font_family         = Ndot55Caps
-            font_size           = 12
-
-
-            position            = -30, 90
-            halign              = right
-            valign              = bottom
-            zindex              = 1
-        }
-
-        label {
-            monitor             =
-            text                = cmd[] echo "$(cat /proc/sys/kernel/osrelease)"
-            color               = $foreground
-            font_family         = Ndot55Caps
-            font_size           = 12
-
-
-            position            = -30, 105
-            halign              = right
-            valign              = bottom
-            zindex              = 1
-        }
       '';
     };
   };
