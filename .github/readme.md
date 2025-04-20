@@ -7,7 +7,6 @@
   <img src="./ss4.png" width="400" />
 </p>
 
-
 ## 🌌 main features
 
 - modular setup, everything is toggleable and switchable
@@ -41,14 +40,27 @@
 > | app runner           | [rofi](https://github.com/davatorium/rofi)              |
 > | clipboard manager    | [clipse](https://github.com/savedra1/clipse)            |
 > | fetch                | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
-> | editor               | [custom nixvim flake](https://github.com/elythh/nixvim) |
-> | bar                  | [waybar](https://github.com/Alexays/Waybar)             |
+> | bar                  | [aard](https://github.com/xhos/aard)                    |
 > | notification         | [mako](https://github.com/emersion/mako)                |
 > | desktop environments | **hyprland**, plasma, xfce                              |
 > | terminals            | alacritty, **foot**, ghostty, kitty, wezterm            |
 > | shells               | nushell, fish, **zsh**                                  |
 > | prompts              | **starship**, oh-my-posh                                |
 > | file managers        | **nautilus**, dolphin, yazi                             |
+
+## 🔒️ hyprlock
+
+| name | preview | sources |
+| :--- | :--- | :--- |
+| **Main (Animated)** | <img src="./hyprlock.gif" alt="main Hyprlock Style" width="400" /> | [config](../modules/home/opt/hyprland/hyprlock/hyprlock.conf) <br> [assets](../modules/home/opt/hyprland/hyprlock/assets/) <br> [scripts](../modules/home/opt/hyprland/hyprlock/scripts/) <br> [fonts](../modules/home/core/fonts/font-files/) |
+| **Alternative (Static)** | <img src="./hyprlock-alt.png" alt="alternative Hyprlock Style" width="400" /> | [config](../modules/home/opt/hyprland/hyprlock/hyprlock-alt.conf) <br> [assets](../modules/home/opt/hyprland/hyprlock/assets/) <br> [scripts](../modules/home/opt/hyprland/hyprlock/scripts/) <br> [fonts](../modules/home/core/fonts/font-files/) |
+
+fonts used are:
+- Maratype (credit to @notevencontestplayer on discord)
+- KH Interference
+- Synchro
+- Nimbus Sans L Thin
+- Nimbus Sans Black
 
 ## 🖌️ themed apps
 

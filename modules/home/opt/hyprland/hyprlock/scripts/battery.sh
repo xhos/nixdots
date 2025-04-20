@@ -1,4 +1,11 @@
+this script is currently used in the hyprlock config, it's here in case i want to use it in the future
 #!/usr/bin/bash
+
+# Check if the battery path exists
+if [ ! -d "/sys/class/power_supply/BAT1" ]; then
+    echo ""
+    exit 0
+fi
 
 # Get the current battery percentage
 battery_percentage=$(cat /sys/class/power_supply/BAT1/capacity)
