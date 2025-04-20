@@ -18,8 +18,8 @@
   ai        .enable = true;
   obs       .enable = true;
 
-  de = "gnome";
-  greeter = "none";
+  de = "hyprland";
+  greeter = "tuigreet";
 
   # RGB control
   services.hardware.openrgb.enable = true;

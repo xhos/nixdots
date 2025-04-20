@@ -13,9 +13,9 @@
   };
 
   default = {
-    de = "none";
-    bar = "none";
-    lock = "none";
+    de = "hyprland";
+    bar = "astal";
+    lock = "hyprlock";
     shell = "zsh";
     prompt = "starship";
     browser = "zen";
@@ -51,10 +51,10 @@
     ];
 
     monitor = [
-      "HDMI-A-1,1920x1080@144.0,1920x0,1.0"
+      "HDMI-A-1,1920x1080@144.0,1920x0,1.0,vrr,0"
       "HDMI-A-1,transform,3"
       # "HDMI-A-1,1920x1080@144.0,1920x0,1.0,mirror,DP-3"
-      "DP-3,1920x1080@239.76,0x444,1.0"
+      "DP-3,1920x1080@239.76,0x444,1.0,vrr,0"
     ];
   };
 }

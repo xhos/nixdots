@@ -17,6 +17,7 @@
       # linux-wallpaperengine
       #endkde
       rnote
+      krita
       libreoffice
       postman
       gnome-solanum
