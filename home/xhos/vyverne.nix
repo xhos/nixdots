@@ -12,6 +12,8 @@
     discord.enable = false;
   };
 
+  hyprland.hyprspace.enable = true;
+
   default = {
     de = "hyprland";
     bar = "astal";

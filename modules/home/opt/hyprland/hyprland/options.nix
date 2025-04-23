@@ -265,7 +265,13 @@
       # export QT_AUTO_SCREEN_SCALE_FACTOR=1
       # export QT_QPA_PLATFORMTHEME=qt5ct
       # export QT_QPA_PLATFORMTHEME=qt6ct
-
+      #   QT_QPA_PLATFORM = "wayland;xcb";
+      #   QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      #   SDL_VIDEODRIVER = "wayland";
+      #   CLUTTER_BACKEND = "wayland";
+      #   GDK_BACKEND = "wayland,x11";
+      #   XDG_SESSION_TYPE = "wayland";
+      #   MOZ_ENABLE_WAYLAND = "1";
       # #  GTK: Use wayland if available, fall back to x11 if not.
       "GDK_BACKEND=wayland,x11"
 

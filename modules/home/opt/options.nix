@@ -17,6 +17,10 @@
       nvidia.enable = mkEnableOption "Enable nvidia specific patches";
     };
 
+    hyprland = {
+      hyprspace.enable = mkEnableOption "Enable hyprland overview plugin";
+    };
+
     default = {
       de = mkOption {
         type = types.enum ["hyprland" "plasma" "none"];

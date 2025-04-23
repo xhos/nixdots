@@ -42,6 +42,12 @@
       "float,class:(bluetui)"
       "size 622 652,class:(bluetui)"
 
+      "float,class:(impala)"
+      "size 622 652,class:(impala)"
+
+      "float,class:(pulsemixer)"
+      "size 622 652,class:(pulsemixer)"
+
       "tile, class:(web-app)" # for web apps to tile properly
 
       # Idk

@@ -17,9 +17,7 @@
       # linux-wallpaperengine
       #endkde
       rnote
-      bluetui
       krita
-      impala
       libreoffice
       postman
       gnome-solanum
@@ -56,7 +54,6 @@
       yazi # cli explorer
       colordiff # file diff
       lz4
-      clipse # clipboard manager
       swayimg # image viewer
       gitmoji-cli # emoji for commits
       glab # gitlab cli
@@ -118,7 +115,6 @@
       gnumake
       gum # fancy scripts
 
-      bemoji # emoji picker
       # circumflex # (clx) hacker news cli
 
       tlrc # better man
