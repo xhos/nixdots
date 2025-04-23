@@ -39,6 +39,9 @@
       "float,class:(clipse)"
       "size 622 652,class:(clipse)"
 
+      "float,class:(bluetui)"
+      "size 622 652,class:(bluetui)"
+
       "tile, class:(web-app)" # for web apps to tile properly
 
       # Idk

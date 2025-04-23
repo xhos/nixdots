@@ -115,8 +115,10 @@ in {
     wayland.windowManager.hyprland = {
       # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
-      plugins = [
-        pkgs.hyprlandPlugins.hyprgrass
+      plugins = with pkgs.hyprlandPlugins; [
+        hyprgrass
+        hyprspace
+        hypr-dynamic-cursors
       ];
 
       xwayland.enable = true;

@@ -19,6 +19,7 @@ in {
     settings = {
       bind =
         [
+          "SUPER, Tab, overview:toggle"
           "SUPER, mouse_down, workspace, e-1"
           "SUPER, mouse_up, workspace, e+1"
           #TODO: binds to resize windows
@@ -78,6 +79,7 @@ in {
           # Screenshot
           "SUPERSHIFT, S ,exec, hyprshot -m region --clipboard-only"
           "SUPER, V, exec, ${terminal} -a clipse clipse"
+          "SUPER, N, exec, ${terminal} -a bluetui bluetui"
 
           ",Insert, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle" # mute microphone
         ]
@@ -95,7 +97,7 @@ in {
         ",XF86AudioRaiseVolume, exec, volumectl up 5"
         ",XF86AudioLowerVolume, exec, volumectl down 5"
         ",XF86AudioMute, exec, volumectl toggle-mute"
-        ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
+        ",insert, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute"
 
         # Brightness
         ",XF86MonBrightnessUp, exec, lightctl up 5"

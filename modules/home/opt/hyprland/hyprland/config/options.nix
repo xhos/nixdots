@@ -60,22 +60,22 @@
     };
 
     # not supported yet on Hyprland 47
-    # "plugin:dynamic-cursors" = {
-    #   enabled = true;
-    #   mode = "stretch";
-    #   threshold = 2;
-    #   stretch = {
-    #     # controls how much the cursor is stretched
-    #     # this value controls at which speed (px/s) the full stretch is reached
-    #     limit = 3000;
+    "plugin:dynamic-cursors" = {
+      enabled = true;
+      mode = "stretch";
+      threshold = 2;
+      stretch = {
+        # controls how much the cursor is stretched
+        # this value controls at which speed (px/s) the full stretch is reached
+        limit = 3000;
 
-    #     # relationship between speed and stretch amount, supports these values:
-    #     # linear             - a linear function is used
-    #     # quadratic          - a quadratic function is used
-    #     # negative_quadratic - negative version of the quadratic one, feels more aggressive
-    #     function = "quadratic";
-    #   };
-    # };
+        # relationship between speed and stretch amount, supports these values:
+        # linear             - a linear function is used
+        # quadratic          - a quadratic function is used
+        # negative_quadratic - negative version of the quadratic one, feels more aggressive
+        function = "quadratic";
+      };
+    };
 
     # "plugin:hyprfocus" = {
     #   enabled = true;
@@ -106,7 +106,7 @@
     decoration = {
       rounding = 8;
       rounding_power = "4.0";
-      inactive_opacity = 0.8;
+      inactive_opacity = 1;
       shadow = {
         enabled = true;
         range = 15;
