@@ -1,12 +1,17 @@
 let
   sshPort = 10022;
 in {
-  networking.wireless.iwd.enable = true;
   networking = {
+    wireless = {
+      enable = false; # make sure wpa_supplicant is disabled
+      iwd.enable = true; # use iwd instead of wpa_supplicant
+    };
+
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
     };
+
     firewall = {
       enable = true;
       allowedTCPPorts = [
