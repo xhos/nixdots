@@ -10,7 +10,7 @@
     ./plasma.nix
     ./rclone.nix
     ./regreet.nix
-    ./sound.nix
+    ./audio.nix
     ./steam.nix
     ./tuigreet.nix
     ./virtualisation.nix
