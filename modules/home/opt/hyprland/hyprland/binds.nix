@@ -7,8 +7,8 @@
   workspaces = builtins.concatLists (builtins.genList (x: let
       ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
     in [
-      "SUPER, ${ws}, workspace, ${toString (x + 1)}"
-      "SUPERSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+      "SUPER, ${ws}, split:workspace, ${toString (x + 1)}"
+      "SUPERSHIFT, ${ws}, split:movetoworkspace, ${toString (x + 1)}"
     ])
     10);
 
@@ -56,10 +56,15 @@ in {
         "SUPER, grave, togglespecialworkspace"
 
         # Cycle through workspaces
-        "SUPERALT, up, workspace, m-1"
-        "SUPERALT, down, workspace, m+1"
-        "SUPER, mouse_down, workspace, e-1"
-        "SUPER, mouse_up, workspace, e+1"
+        "SUPERALT, up, split:workspace, m-1"
+        "SUPERALT, down, split:workspace, m+1"
+        "SUPER, mouse_down, split:workspace, e-1"
+        "SUPER, mouse_up, split:workspace, e+1"
+
+        # swap all windows between monitors
+        "SUPERSHIFT, G, split:swapactiveworkspaces, current +1"
+        # bring any “rogue” windows back to this ws
+        "SUPERSHIFT, R, split:grabroguewindows"
 
         # Utilities
         "SUPER, Q, exec, ${terminal}" # open terminal

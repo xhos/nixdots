@@ -39,10 +39,11 @@
     #-----------------------------------------------------------------------------------------------------------
 
     general = {
-      gaps_in = "5";
-      gaps_out = "10";
-      border_size = "0";
-      resize_on_border = "true";
+      gaps_in = 5;
+      gaps_out = 10;
+      border_size = 1;
+      "col.active_border" = "rgba(262626aa)";
+      "col.inactive_border" = "rgba(111111aa)";
       layout = "dwindle";
 
       # "col.active_border"="rgba(ffffffff) rgba(ffffff00) rgba(ffffffff) rgba(ffffff00) rgba(ffffffff) 45deg";
@@ -104,27 +105,29 @@
     #-----------------------------------------------------------------------------------------------------------
 
     decoration = {
-      rounding = 8;
-      rounding_power = "4.0";
+      rounding = 6;
+      # rounding_power = "4.0";
       inactive_opacity = 1;
+
       shadow = {
         enabled = true;
-        range = 15;
-        render_power = 2;
-        sharp = false;
+        range = 20;
+        render_power = 4;
+        color = "rgba(000000b3)";
         ignore_window = true;
-        color = "rgb(000000)";
-        color_inactive = "rgb(000000)";
       };
 
       blur = {
         enabled = true;
-        size = 12;
-        passes = 4;
-        new_optimizations = true;
-        brightness = 1;
-        contrast = "2";
+        size = 5;
+        passes = 2;
         ignore_opacity = true;
+        popups = true;
+        new_optimizations = true;
+        noise = 0.0200;
+        contrast = 1;
+        brightness = 0.8172;
+        vibrancy = 0.1696;
       };
 
       layerrule = [
@@ -174,6 +177,11 @@
       workspace_swipe_cancel_ratio = 0.01;
       workspace_swipe_forever = true;
     };
+
+    # plugin.hyprsplit = {
+    # num_workspaces = 10;          # how many workspaces per monitor
+    # persistent_workspaces = true; # keep them alive even when empty
+    # };
 
     "plugin:touch_gestures" = {
       sensitivity = 5.0;

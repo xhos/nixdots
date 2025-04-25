@@ -16,7 +16,7 @@
 
   default = {
     de = "hyprland";
-    bar = "astal";
+    bar = "aard";
     lock = "hyprlock";
     shell = "zsh";
     prompt = "starship";
@@ -25,13 +25,15 @@
   };
 
   home.packages = with pkgs; [
-    # vesktop
+    davinci-resolve
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 
   programs.waybar.settings.mainBar.output = ["DP-3"];
 
   wayland.windowManager.hyprland.settings = {
+    debug.damage_tracking = 0;
+
     exec-once = [
       "[workspace special silent] spotify"
       "[workspace special silent] materialgram"
@@ -45,18 +47,11 @@
       "workspace special silent, class:(materialgram)"
     ];
 
-    workspace = [
-      "1,monitor:DP-3,default:true"
-      "2,monitor:HDMI-A-1,default:true"
-      "9,monitor:DP-3"
-      "10,monitor:DP-3"
-    ];
-
     monitor = [
-      "HDMI-A-1,1920x1080@144.0,1920x0,1.0,vrr,0"
+      "HDMI-A-1,1920x1080@144.0,1920x0,1.0"
       "HDMI-A-1,transform,3"
       # "HDMI-A-1,1920x1080@144.0,1920x0,1.0,mirror,DP-3"
-      "DP-3,1920x1080@239.76,0x444,1.0,vrr,0"
+      "DP-3,1920x1080@239.76,0x444,1.0"
     ];
   };
 }

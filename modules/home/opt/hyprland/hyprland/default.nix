@@ -18,6 +18,7 @@
       plugins = with pkgs.hyprlandPlugins; [
         hyprgrass
         hypr-dynamic-cursors
+        hyprsplit
       ];
 
       xwayland.enable = true;
