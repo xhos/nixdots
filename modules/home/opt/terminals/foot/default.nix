@@ -21,6 +21,7 @@ lib.mkIf (config.default.terminal == "foot") {
         selection-target = "primary";
         bold-text-in-bright = "yes";
         word-delimiters = ",│`|:\"'()[]{}<>";
+        pad = "10x10";
       };
 
       bell = {

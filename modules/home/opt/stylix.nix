@@ -20,7 +20,7 @@ in {
 
     image = background;
     polarity = "dark";
-    opacity.terminal = 0.6;
+    opacity.terminal = 0.7;
 
     cursor = {
       name = "phinger-cursors-dark";
