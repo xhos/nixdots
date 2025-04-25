@@ -1,6 +1,6 @@
 {
   imports = [
-    ./astal.nix
+    ./aard.nix
     ./clipse.nix
     ./discord.nix
     ./fastfetch.nix

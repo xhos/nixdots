@@ -13,7 +13,7 @@
 
   default = {
     de = "hyprland";
-    bar = "astal";
+    bar = "aard";
     lock = "hyprlock";
     shell = "zsh";
     prompt = "starship";

@@ -44,7 +44,8 @@
     # Hyprsunset, a hyprland way to manage screen temperature
     hyprsunset.url = "github:hyprwm/hyprsunset";
 
-    aard.url = "github:xhos/astal";
+    # aard, my own astal bar
+    aard.url = "github:xhos/aard";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
@@ -155,7 +156,7 @@
         modules = [
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops
-          inputs.nixcord.homeManagerModules.nixcord
+          inputs.nixcord.homeModules.nixcord
           inputs.stylix.homeManagerModules.stylix
         ];
       };
@@ -172,7 +173,7 @@
           ./home/xhos/vyverne.nix
           inputs.plasma-manager.homeManagerModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
-          inputs.nixcord.homeManagerModules.nixcord
+          inputs.nixcord.homeModules.nixcord
           inputs.stylix.homeManagerModules.stylix
         ];
       };

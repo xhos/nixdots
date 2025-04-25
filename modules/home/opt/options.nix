@@ -27,7 +27,7 @@
         default = "none";
       };
       bar = mkOption {
-        type = types.enum ["waybar" "hyprpanel" "astal" "none"];
+        type = types.enum ["waybar" "aard" "none"];
         default = "none";
       };
       browser = mkOption {
