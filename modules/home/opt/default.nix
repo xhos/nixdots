@@ -18,6 +18,7 @@
     ./terminals
     ./waybar
     ./web-apps
+    ./swaync
     # ./plasma
   ];
 }
