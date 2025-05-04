@@ -7,11 +7,6 @@ in {
       iwd.enable = true; # use iwd instead of wpa_supplicant
     };
 
-    networkmanager = {
-      enable = true;
-      wifi.backend = "iwd";
-    };
-
     firewall = {
       enable = true;
       allowedTCPPorts = [
