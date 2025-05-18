@@ -11,6 +11,8 @@
       lutris
       protontricks
       prismlauncher
+      protonup-qt
+      protonup
     ];
 
     # nixpkgs.config.packageOverrides = pkgs: {
