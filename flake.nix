@@ -15,10 +15,10 @@
     };
 
     # Nix User Repository
-    nur.url = "github:nix-community/NUR";
+    # nur.url = "github:nix-community/NUR";
 
     # Nix helper
-    nh.url = "github:viperML/nh";
+    # nh.url = "github:viperML/nh";
 
     # Stylix, nix-colors alertnative
     stylix.url = "github:danth/stylix";
@@ -27,41 +27,41 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # Waybar, the wayland bar
-    waybar.url = "github:/alexays/waybar";
+    # waybar.url = "github:/alexays/waybar";
 
     # Nixcord, a way to manage vencord plugins nix way
     nixcord.url = "github:kaylorben/nixcord";
 
     # A solution to your Wayland Wallpaper Woes
-    swww.url = "github:LGFae/swww";
+    # swww.url = "github:LGFae/swww";
 
     # Zen Browser, a modern web browser
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Ghostty, an overhyped modern terminal emulator
-    ghostty.url = "github:ghostty-org/ghostty";
+    # ghostty.url = "github:ghostty-org/ghostty";
 
     # Hyprsunset, a hyprland way to manage screen temperature
-    hyprsunset.url = "github:hyprwm/hyprsunset";
+    # hyprsunset.url = "github:hyprwm/hyprsunset";
 
     # aard, my own astal bar
     aard.url = "github:xhos/aard";
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # plasma-manager = {
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # firefox-addons = {
+    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    kwin-effects-forceblur = {
-      url = "github:taj-ny/kwin-effects-forceblur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # kwin-effects-forceblur = {
+    #   url = "github:taj-ny/kwin-effects-forceblur";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # nixvim = {
     #   url = "github:xhos/nixvim";
@@ -114,9 +114,9 @@
     nixos-wsl,
     ...
   } @ inputs: let
-    inherit (self) outputs;
+    # inherit (self) outputs;
     system = "x86_64-linux";
-    pkgsStable = import nixpkgs-stable {inherit system;};
+    # pkgsStable = import nixpkgs-stable {inherit system;};
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -157,7 +157,7 @@
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixcord.homeModules.nixcord
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
         ];
       };
       "xhos@vyverne" = inputs.home-manager.lib.homeManagerConfiguration {
@@ -171,10 +171,10 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/vyverne.nix
-          inputs.plasma-manager.homeManagerModules.plasma-manager
+          # inputs.plasma-manager.homeManagerModules.plasma-manager
           inputs.sops-nix.homeManagerModules.sops
           inputs.nixcord.homeModules.nixcord
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
         ];
       };
       "xhos@aevon" = inputs.home-manager.lib.homeManagerConfiguration {
@@ -182,7 +182,7 @@
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/xhos/aevon.nix
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
         ];
       };
     };

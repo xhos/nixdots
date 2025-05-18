@@ -8,13 +8,13 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       # daemons
-      "swww-daemon"
-      "nm-applet"
+      "hyprpaper"
+      # "nm-applet"
       "blueman-applet"
       "clipse -listen"
       "xwaylandvideobridge"
       "wayvnc"
-      "mako"
+      # "mako"Q
       "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
 
       # misc
@@ -135,6 +135,13 @@
         "blur,PopupWindow"
         "blur,notifications"
         "ignorezero,notifications"
+        "blur, swaync-control-center"
+        "ignorezero, swaync-control-center"
+        "animation popin 95%, swaync-control-center"
+
+        "blur, swaync-notification-window"
+        "ignorezero, swaync-notification-window"
+        "animation slide, swaync-notification-window"
       ];
     };
 
@@ -166,9 +173,9 @@
         sensitivity = "+0.2";
       }
       {
-        name = "razer-razer-mamba-elite";
+        name = "razer-razer-mamba-elite-1";
         accel_profile = "flat";
-        sensitivity = "-0.2";
+        sensitivity = "-0.3";
       }
     ];
 

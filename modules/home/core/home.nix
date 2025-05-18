@@ -25,10 +25,10 @@
       # (pkgs.callPackage ../../../derivs/spotdl.nix { inherit (pkgs.python311Packages) buildPythonApplication; })
       # (pkgs.callPackage ../../../home/shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../../../home/shared/icons/reversal.nix {})
-      inputs.swww.packages.${system}.swww
+      # inputs.swww.packages.${system}.swww
       # inputs.ghostty.packages.${system}.default
       inputs.zen-browser.packages."${system}".default
-      inputs.hyprsunset.packages.${pkgs.system}.default
+      # inputs.hyprsunset.packages.${pkgs.system}.default
       egl-wayland # needed for a firefox fix
       gdb
       wayvnc
@@ -87,8 +87,8 @@
       # miru
       # stremio
 
-      mako
-      libnotify
+      # mako
+      # libnotify
       # TODO: ?Should not be here?
       starship
       oh-my-posh
@@ -118,7 +118,7 @@
       # circumflex # (clx) hacker news cli
 
       tlrc # better man
-      ventoy
+      # ventoy
       # gnome-network-displays # not implemented yet: https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/70
       # miraclecast
       dialog

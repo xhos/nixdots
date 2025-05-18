@@ -1,22 +1,17 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: let
   background =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/21/wallhaven-21gkvy.jpg";
-      sha256 = "sha256-CsKT+3Tdyc28kNakOxzOavOg7lfzm2B+O/SsNX2W7Oc=";
+      url = "https://w.wallhaven.cc/full/yx/wallhaven-yxz687.png";
+      sha256 = "sha256-HVdX81SmdVumy56dop7M9JVyreHBEtMxIS9xC7CJ+S8=";
     };
 in {
   stylix = {
     enable = true;
-
-    # base16Scheme =
-    #   lib.mkIf (config ? theme && config.theme != null)
-    #   "${pkgs.base16-schemes}/share/themes/${config.theme}.yaml";
 
     image = background;
     polarity = "dark";

@@ -25,4 +25,6 @@
   services.hardware.openrgb.enable = true;
 
   boot.kernelParams = ["hid_apple.fnmode=2"];
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 }
