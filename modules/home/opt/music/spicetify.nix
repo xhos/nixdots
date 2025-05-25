@@ -12,7 +12,7 @@ in {
   config = lib.mkIf config.modules.spicetify.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.themes.dribbblish;
+      # theme = spicePkgs.themes.dribbblish;
 
       customColorScheme = with config.lib.stylix.colors; {
         text = "${base05}";
@@ -38,14 +38,14 @@ in {
 
       enabledExtensions = with spicePkgs.extensions; [
         beautifulLyrics
-        adblock
+        # adblock
       ];
 
-      enabledCustomApps = with spicePkgs.apps; [
-        betterLibrary
-        reddit
-        newReleases
-      ];
+      # enabledCustomApps = with spicePkgs.apps; [
+      # betterLibrary
+      # reddit
+      # newReleases
+      # ];
     };
   };
 }
