@@ -4,6 +4,19 @@
     userName = "xhos";
     userEmail = "60789741+xhos@users.noreply.github.com";
     extraConfig = {
+      url = {
+        "https://github.com/" = {
+          insteadOf = ["gh:"];
+        };
+        "https://github.com/xhos/" = {
+          insteadOf = ["x:"];
+        };
+      };
+      status = {
+        branch = true;
+        showStash = true;
+        showUntrackedFiles = "all";
+      };
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
       credential.helper = "${
