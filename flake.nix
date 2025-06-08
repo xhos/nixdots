@@ -26,9 +26,6 @@
     # NixOS WSL, a way to use nix powers on windows
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
-    # Waybar, the wayland bar
-    # waybar.url = "github:/alexays/waybar";
-
     # Nixcord, a way to manage vencord plugins nix way
     nixcord.url = "github:kaylorben/nixcord";
 
@@ -77,6 +74,12 @@
     # Spicetify, a spotify theming tool
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # flexbile QtQuick based desktop shell toolkit
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

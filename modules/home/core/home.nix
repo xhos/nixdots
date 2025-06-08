@@ -34,7 +34,6 @@
       egl-wayland # needed for a firefox fix
       gdb
       wayvnc
-      vesktop
       slack
       # httrack # offline websites
       lazygit

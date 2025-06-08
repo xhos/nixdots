@@ -1,18 +1,19 @@
 {config, ...}: {
   services.mako = {
-    enable = true;
-    font = "Hack 12";
-    anchor = "top-right";
-    backgroundColor = "#${config.lib.stylix.colors.base00}66"; # Updated to include alpha value for transparency
-    borderSize = 2;
-    defaultTimeout = 3000;
-    height = 150;
-    width = 300;
-    borderRadius = 5;
-    icons = true;
-    textColor = "#f8f8f2";
-    layer = "overlay";
-    sort = "-time";
+    enable = false;
+    settings = {
+      font = "Hack 12";
+      anchor = "top-right";
+      background-color = "#${config.lib.stylix.colors.base00}66";
+      default-timeout = 3000;
+      height = 150;
+      width = 300;
+      border-radius = 5;
+      icons = true;
+      text-color = "#f8f8f2";
+      layer = "overlay";
+      sort = "-time";
+    };
     extraConfig = ''
       [urgency=low]
       border-color=#${config.lib.stylix.colors.base00}

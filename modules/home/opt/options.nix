@@ -27,7 +27,7 @@
         default = "none";
       };
       bar = mkOption {
-        type = types.enum ["waybar" "aard" "none"];
+        type = types.enum ["quickshell" "aard" "none"];
         default = "none";
       };
       browser = mkOption {

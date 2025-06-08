@@ -16,9 +16,8 @@
     ./stylix.nix
     ./telegram.nix
     ./terminals
-    ./waybar
     ./web-apps
-    ./swaync
+    ./quickshell
     # ./plasma
   ];
 }

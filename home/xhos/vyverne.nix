@@ -9,14 +9,14 @@
     rofi.enable = true;
     spicetify.enable = true;
     firefox.enable = true;
-    discord.enable = false;
+    discord.enable = true;
   };
 
   hyprland.hyprspace.enable = true;
 
   default = {
     de = "hyprland";
-    bar = "aard";
+    bar = "quickshell";
     lock = "hyprlock";
     shell = "zsh";
     prompt = "starship";
@@ -25,26 +25,23 @@
   };
 
   home.packages = with pkgs; [
-    davinci-resolve
+    # davinci-resolve
+    jetbrains.goland
+    jetbrains.datagrip
+    firefox
+    go
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
-
-  programs.waybar.settings.mainBar.output = ["DP-3"];
 
   wayland.windowManager.hyprland.settings = {
     debug.damage_tracking = 0;
 
     exec-once = [
       "[workspace special silent] spotify"
-      "[workspace special silent] materialgram"
-      "[workspace 1 silent] zen"
-      "[workspace 9 silent] obsidian"
-      "[workspace 10 silent] vesktop"
     ];
 
     windowrulev2 = [
-      "workspace special silent, initialTitle: Spotify Premium"
-      "workspace special silent, class:(materialgram)"
+      "workspace special silent, initialClass: spotify"
     ];
 
     monitor = [

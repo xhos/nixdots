@@ -105,7 +105,7 @@
     #-----------------------------------------------------------------------------------------------------------
 
     decoration = {
-      rounding = 6;
+      rounding = 10;
       # rounding_power = "4.0";
       inactive_opacity = 1;
 
@@ -135,13 +135,6 @@
         "blur,PopupWindow"
         "blur,notifications"
         "ignorezero,notifications"
-        "blur, swaync-control-center"
-        "ignorezero, swaync-control-center"
-        "animation popin 95%, swaync-control-center"
-
-        "blur, swaync-notification-window"
-        "ignorezero, swaync-notification-window"
-        "animation slide, swaync-notification-window"
       ];
     };
 
