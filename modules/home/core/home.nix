@@ -13,11 +13,13 @@
       font-manager
       nil # nix lsp
       #kde
+      delve
       # plasma-panel-colorizer
       # linux-wallpaperengine
       #endkde
       rnote
       krita
+      fd
       libreoffice
       postman
       gnome-solanum
@@ -39,7 +41,6 @@
       teams-for-linux
       cling
       # inputs.nixvim.packages.${pkgs.system}.default
-      thefuck
       wvkbd #osk
       figlet # cool text gen
       nwg-displays

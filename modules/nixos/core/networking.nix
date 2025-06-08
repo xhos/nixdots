@@ -1,6 +1,7 @@
 let
   sshPort = 10022;
 in {
+  services.resolved.enable = true;
   networking = {
     wireless = {
       enable = false; # make sure wpa_supplicant is disabled

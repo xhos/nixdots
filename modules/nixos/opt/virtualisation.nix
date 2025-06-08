@@ -9,7 +9,6 @@
     users.users.xhos.extraGroups = ["libvirtd"];
     # Install necessary packages
     environment.systemPackages = with pkgs; [
-      virt-manager
       virt-viewer
       spice
       spice-gtk
@@ -20,9 +19,10 @@
       # quickemu
     ];
     services.qemuGuest.enable = true;
-    # programs.virt-manager.enable = true;
+    programs.virt-manager.enable = true;
     users.groups.libvirtd.members = ["xhos"];
     virtualisation = {
+      docker.enable = true;
       libvirtd = {
         enable = true;
         qemu = {
@@ -35,22 +35,5 @@
     };
 
     services.spice-vdagentd.enable = true;
-    # virtualisation = {
-    #   spiceUSBRedirection.enable = true;
-    #   docker.enable = true;
-
-    #   libvirtd = {
-    #     enable = true;
-
-    #     qemu = {
-    #       package = pkgs.qemu_kvm;
-    #       ovmf = {
-    #         enable = true;
-    #         packages = [pkgs.OVMFFull.fd];
-    #       };
-    #       swtpm.enable = true;
-    #     };
-    #   };
-    # };
   };
 }

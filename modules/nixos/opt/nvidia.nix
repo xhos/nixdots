@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.nvidia.enable {
@@ -23,5 +24,10 @@
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
+
+    environment.systemPackages = with pkgs; [
+      cudatoolkit
+      cudaPackages.cudnn
+    ];
   };
 }

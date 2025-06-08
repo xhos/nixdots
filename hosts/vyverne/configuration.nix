@@ -1,7 +1,15 @@
-{config, ...}: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+in {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
+    inputs.spicetify-nix.nixosModules.default
   ];
 
   networking.hostName = "vyverne";
@@ -23,6 +31,8 @@
 
   # RGB control
   services.hardware.openrgb.enable = true;
+
+  programs.adb.enable = true;
 
   boot.kernelParams = ["hid_apple.fnmode=2"];
   services.gvfs.enable = true;
