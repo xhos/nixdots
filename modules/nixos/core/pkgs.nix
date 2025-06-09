@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  fonts.packages = [pkgs.hack-font] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  # fonts.packages = [pkgs.hack-font] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   environment.systemPackages = with pkgs; [
     # xdg-desktop-portal-wlr
@@ -32,10 +32,6 @@
     # pamixer # pulseaudio command line mixer
     pavucontrol # pulseaudio controls
     easyeffects # pipewire audio effects
-
-    # Video
-    mpv # video player
-    ffmpeg-full
 
     # Other
     brightnessctl

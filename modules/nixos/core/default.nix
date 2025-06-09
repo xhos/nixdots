@@ -5,7 +5,6 @@
     ./networking.nix
     ./nix.nix
     ./pkgs.nix
-    ./portal.nix
     ./programs.nix
     ./security.nix
     ./services.nix

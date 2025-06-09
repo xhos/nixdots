@@ -18,8 +18,6 @@
       lidSwitchExternalPower = "lock";
     };
 
-    # xserver.enable = true;
-
     xserver.xkb = {
       layout = "us";
       options = "compose:rctrl,caps:escape";

@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   theme = "tokyo-night-dark";
 
   imports = [
@@ -15,8 +11,8 @@
 
   default = {
     de = "hyprland";
-    bar = "quickshell";
-    lock = "hyprlock";
+    bar = "none";
+    lock = "none";
     shell = "zsh";
     prompt = "starship";
     browser = "zen";
@@ -27,12 +23,7 @@
     "Virtual-1,1920x1080@60.0,0x0,2.0"
   ];
 
-  home = {
-    username = "xhos";
-    homeDirectory = "/home/xhos";
-    stateVersion = "25.05";
-    packages = with pkgs; [
-      (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
-    ];
-  };
+  home.packages = with pkgs; [
+    (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+  ];
 }

@@ -1,5 +1,7 @@
 {lib, ...}:
 with lib; {
+  options.optPkgs.enable = mkEnableOption "Enable optPkgs";
+
   options.wallpaper = mkOption {
     type = types.str;
     default = "";
