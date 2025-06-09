@@ -5,6 +5,12 @@
 
   imports = [../../modules/home];
 
+  home = {
+    username = "xhos";
+    homeDirectory = "/home/xhos";
+    stateVersion = "25.05";
+  };
+
   modules = {
     rofi.enable = true;
     firefox.enable = true;

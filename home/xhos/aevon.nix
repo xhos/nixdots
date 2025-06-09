@@ -11,6 +11,12 @@
     ../../modules/home
   ];
 
+  home = {
+    username = "xhos";
+    homeDirectory = "/home/xhos";
+    stateVersion = "25.05";
+  };
+
   default = {
     de = "none";
     bar = "none";

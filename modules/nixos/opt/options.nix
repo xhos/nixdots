@@ -12,6 +12,7 @@
     vm       .enable = mkEnableOption "Enable vm support";
     ai       .enable = mkEnableOption "Enable ai support";
     obs      .enable = mkEnableOption "Enable obs support";
+    boot      .enable = mkEnableOption "Enable boot support";
 
     de = mkOption {
       type = types.enum ["hyprland" "gnome" "cosmic" "plasma" "xfce" "none"];

@@ -15,6 +15,7 @@
       spicetify.enable = mkEnableOption "Enable spicetify";
       discord.enable = mkEnableOption "Enable discord";
       nvidia.enable = mkEnableOption "Enable nvidia specific patches";
+      secrets.enable = mkEnableOption "Enable secrets management";
     };
 
     hyprland = {

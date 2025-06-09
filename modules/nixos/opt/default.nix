@@ -17,5 +17,6 @@
     ./wayland.nix
     ./xfce.nix
     ./obs.nix
+    ./boot.nix
   ];
 }

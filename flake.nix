@@ -21,7 +21,10 @@
     # nh.url = "github:viperML/nh";
 
     # Stylix, nix-colors alertnative
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # NixOS WSL, a way to use nix powers on windows
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
@@ -141,11 +144,21 @@
         ];
       };
       aevon = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
           ./hosts/aevon/configuration.nix
           # home-manager.nixosModule
           nixos-wsl.nixosModules.default
+        ];
+      };
+      nyx = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          inputs.stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          ./hosts/nyx/configuration.nix
+          ./home/xhos/nyx-wrapper.nix
         ];
       };
     };

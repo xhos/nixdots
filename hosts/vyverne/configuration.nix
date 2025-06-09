@@ -1,15 +1,7 @@
 {
-  config,
-  inputs,
-  pkgs,
-  ...
-}: let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-in {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
-    inputs.spicetify-nix.nixosModules.default
   ];
 
   networking.hostName = "vyverne";

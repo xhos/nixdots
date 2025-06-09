@@ -687,10 +687,10 @@
             if command -v zip >/dev/null 2>&1; then
               if [ "$walmode" = "solid" ]; then
                 # $background is set by wal in colors.sh template
-                magick convert -size 256x256 "xc:''${bgcolor:-''${background:-$color0}}" "$tempdir/$walname"
+                magick -size 256x256 "xc:''${bgcolor:-''${background:-$color0}}" "$tempdir/$walname"
               else
                 case "$(file -b --mime-type "${config.stylix.image}")" in
-                image/*) convert ''${blur:+-blur 0x16} -resize 1920x1080 "${config.stylix.image}" "$tempdir/$walname" ;;
+                image/*) magick "${config.stylix.image}" ''${blur:+-blur 0x16} -resize 1920x1080 "$tempdir/$walname" ;;
                 *) echo "not an image: ${config.stylix.image}" ;;
                 esac
               fi

@@ -5,14 +5,18 @@
 
   imports = [../../modules/home];
 
+  home = {
+    username = "xhos";
+    homeDirectory = "/home/xhos";
+    stateVersion = "25.05";
+  };
+
   modules = {
     rofi.enable = true;
     spicetify.enable = true;
     firefox.enable = true;
     discord.enable = true;
   };
-
-  hyprland.hyprspace.enable = true;
 
   default = {
     de = "hyprland";
@@ -32,6 +36,8 @@
     go
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
+
+  hyprland.hyprspace.enable = true;
 
   wayland.windowManager.hyprland.settings = {
     debug.damage_tracking = 0;

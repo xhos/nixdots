@@ -70,11 +70,11 @@
       hicolor = pkgs.hicolor-icon-theme;
     in {
       QT_ICON_THEME = "Papirus"; # force the name Qt should load
-      QT_QPA_PLATFORMTHEME = "qt6ct"; # so Qt obeys the user icon theme
+      # QT_QPA_PLATFORMTHEME = "qt6ct"; # so Qt obeys the user icon theme
       # Pre-pend the *parent* dir – Qt automatically appends “/icons”
-      XDG_DATA_DIRS =
-        "${papirus}/share:${hicolor}/share"
-        + ":${builtins.getEnv "XDG_DATA_DIRS"}";
+      # XDG_DATA_DIRS =
+      #   "${papirus}/share:${hicolor}/share"
+      #   + ":${builtins.getEnv "XDG_DATA_DIRS"}";
     };
   };
 }

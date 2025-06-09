@@ -15,7 +15,6 @@
     ./programs.nix
     ./ssh.nix
     ./zed.nix
-    ./secrets.nix
   ];
 
   xdg = {

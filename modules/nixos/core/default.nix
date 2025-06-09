@@ -1,6 +1,5 @@
 {
   imports = [
-    ./boot.nix
     ./environment.nix
     ./locale.nix
     ./networking.nix
