@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../../modules/nixos
+    ../../modules/nixos/core
   ];
 
   networking.hostName = "aevon";
