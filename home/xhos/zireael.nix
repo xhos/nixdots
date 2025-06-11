@@ -5,6 +5,8 @@
 
   imports = [../../modules/home];
 
+  optPkgs.enable = true;
+
   modules = {
     rofi.enable = true;
     firefox.enable = true;

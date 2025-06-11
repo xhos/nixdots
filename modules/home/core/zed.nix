@@ -2,15 +2,91 @@
   programs.zed-editor = {
     enable = true;
     # extensions = ["nix"];
+    # // Zed settings
+    # //
+    # // For information on how to configure Zed, see the Zed
+    # // documentation: https://zed.dev/docs/configuring-zed
+    # //
+    # // To see all of Zed's default settings without changing your
+    # // custom settings, run the `zed: Open Default Settings` command
+    # // from the command palette
+    # {
+    #   "icon_theme": "Material Icon Theme",
+    #   "project_panel": {
+    #     "dock": "left",
+    #     "indent_size": 12,
+    #     "entry_spacing": "standard",
+    #     "indent_guides": {
+    #       "show": "never"
+    #     },
+    #     "scrollbar": {
+    #       "show": "never"
+    #     }
+    #   },
+    #   "base_keymap": "VSCode",
+    #   "vim_mode": false,
+    #   "assistant": {
+    #     "version": "2",
+    #     "default_model": {
+    #       "provider": "ollama",
+    #       "model": "llama3.1:latest"
+    #     }
+    #   },
+    #   "ui_font_size": 16,
+    #   "buffer_font_size": 16,
+    #   "tab_size": 2,
+    #   "theme": {
+    #     "mode": "system",
+    #     "light": "Tokyo Night",
+    #     "dark": "Tokyo Night Storm"
+    #   },
+    #   "experimental.theme_overrides": {
+    #     "renamed.background": "#d",
+    #     "search.match_background": "#FFFFFF20",
+    #     "ghost_element.background": "#00000010",
+    #     "ghost_element.hover": "#00000099",
+    #     "background.appearance": "blurred",
+    #     "background": "#00000066",
+    #     "editor.background": "#00000010",
+    #     "editor.gutter.background": "#00000010",
+    #     "title_bar.background": "#000000DF",
+    #     "toolbar.background": "#00000010",
+    #     "terminal.background": "#00000000",
+    #     "status_bar.background": "#000000DF",
+    #     "tab.active_background": "#000000",
+    #     "tab.inactive_background": "#00000000",
+    #     "tab_bar.background": "#00000010",
+    #     "panel.background": "#00000010",
+    #     "border": "#00000000",
+    #     "border.variant": "#00000000",
+    #     "scrollbar.track.border": "#00000000",
+    #     "scrollbar.track.background": "#00000000",
+    #     "scrollbar.thumb.background": "#00000000",
+    #     "scrollbar.thumb.hover.background": "#00000000",
+    #     "scrollbar.thumb.active.background": "#00000000",
+    #     "scrollbar.thumb.border": "#FFFFFF90",
+    #     "editor.line_highlight": "#00000000",
+    #     "editor.active_line.background": "#00000000",
+    #     "editor.selection.background": "#00000000",
+    #     "editor.selection.foreground": "#00000000",
+    #     "editor.selection.border": "#00000000",
+    #     "editor.selection.inactive.foreground": "#00000000",
+    #     "editor.selection.inactive.border": "#00000000",
+    #     "editor.selection.active.background": "#00000000",
+    #     "editor.selection.active.foreground": "#00000000",
+    #     "editor.selection.active.border": "#00000000",
+    #     "editor.selection.inactive.background": "#00000000"
+    #   }
+    # }
 
-    # everything inside of these brackets are Zed options.
-    # userSettings = {
-    #   assistant = {
-    #     enabled = true;
-    #     version = "2";
-    #     default_open_ai_model = null;
-    #     # PROVIDER OPTIONS
-    #     # zed.dev models { claude-3-5-sonnet-latest } requires github connected
+    #   # everything inside of these brackets are Zed options.
+    #   # userSettings = {
+    #   #   assistant = {
+    #   #     enabled = true;
+    #   #     version = "2";
+    #   #     default_open_ai_model = null;
+    #   #     # PROVIDER OPTIONS
+    #   #     # zed.dev models { claude-3-5-sonnet-latest } requires github connected
     #     # anthropic models { claude-3-5-sonnet-latest claude-3-haiku-latest claude-3-opus-latest  } requires API_KEY
     #     # copilot_chat models { gpt-4o gpt-4 gpt-3.5-turbo o1-preview } requires github connected
     #     default_model = {
