@@ -8,6 +8,8 @@
     # Nixpkgs Stable
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
 
+    impermanence.url = "github:nix-community/impermanence";
+    disko.url = "github:nix-community/disko";
     # Home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -139,6 +141,8 @@
         specialArgs = {inherit inputs;};
         modules = [
           # home-manager.nixosModule
+          inputs.disko.nixosModules.disko
+          inputs.impermanence.nixosModules.impermanence
           inputs.sops-nix.nixosModules.sops
           ./hosts/vyverne/configuration.nix
         ];
