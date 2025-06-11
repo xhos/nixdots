@@ -7,6 +7,11 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/github-auth-key";
       };
+      "azure" = {
+        host = "ssh.dev.azure.com";
+        identityFile = "~/.ssh/azure";
+        identitiesOnly = true;
+      };
       "kaminari" = {
         host = "kaminari";
         hostname = "40.233.72.203";
