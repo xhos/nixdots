@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -8,7 +8,7 @@
   networking.hostName = "vyverne";
 
   environment.persistence."/persist" = {
-    directories = ["/home"];
+    directories = ["/home" "/etc/nixos"];
   };
 
   fileSystems."/" = {
