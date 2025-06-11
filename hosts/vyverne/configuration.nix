@@ -1,4 +1,4 @@
-{lib, ...}: {
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -7,13 +7,11 @@
 
   networking.hostName = "vyverne";
 
-  disko.devices.disk.main.device = "/dev/nvme0n1";
-
   environment.persistence."/persist" = {
     directories = ["/home"];
   };
 
-  fileSystems."/" = lib.mkForce {
+  fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
     options = ["defaults" "size=25%" "mode=755"];
