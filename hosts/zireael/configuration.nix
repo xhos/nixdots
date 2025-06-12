@@ -16,6 +16,7 @@
   audio     .enable = true;
   bluetooth .enable = true;
   greetd    .enable = true;
+  boot      .enable = true;
 
   de = "hyprland";
   greeter = "tuigreet";

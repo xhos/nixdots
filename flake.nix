@@ -131,16 +131,34 @@
     # Or 'nh os switch'
     nixosConfigurations = {
       zireael = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
-          # home-manager.nixosModule
+          home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          {
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
+            home-manager.users."xhos" = ./home/xhos/zireael.nix;
+          }
           ./hosts/zireael/configuration.nix
         ];
       };
       vyverne = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          # home-manager.nixosModule
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
+            home-manager.users."xhos" = ./home/xhos/vyverne.nix;
+          }
+          inputs.stylix.nixosModules.stylix
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
           inputs.sops-nix.nixosModules.sops
@@ -162,7 +180,13 @@
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           ./hosts/nyx/configuration.nix
-          ./home/xhos/nyx-wrapper.nix
+          {
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
+            home-manager.users."xhos" = ./home/xhos/nyx.nix;
+          }
         ];
       };
     };
@@ -172,7 +196,10 @@
     homeConfigurations = {
       "xhos@zireael" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          system = "x86_64-linux";
+        };
         modules = [
           ./home/xhos/zireael.nix
           inputs.sops-nix.homeManagerModules.sops

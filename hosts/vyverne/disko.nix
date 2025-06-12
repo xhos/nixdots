@@ -18,7 +18,7 @@
         };
 
         nix = {
-          size = "20%";
+          size = "100G";
           content = {
             type = "filesystem";
             format = "ext4";
@@ -27,7 +27,7 @@
         };
 
         persist = {
-          size = "80%";
+          size = "100%";
           content = {
             type = "filesystem";
             format = "ext4";

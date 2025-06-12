@@ -1,4 +1,4 @@
-{lib, ...}: {
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -17,6 +17,9 @@
     options = ["defaults" "size=25%" "mode=755"];
   };
 
+  fileSystems."/nix".neededForBoot = true;
+  fileSystems."/persist".neededForBoot = true;
+
   wayland   .enable = true;
   audio     .enable = true;
   bluetooth .enable = true;
@@ -28,6 +31,7 @@
   vm        .enable = true;
   ai        .enable = true;
   obs       .enable = true;
+  boot      .enable = true;
 
   de = "hyprland";
   greeter = "tuigreet";
