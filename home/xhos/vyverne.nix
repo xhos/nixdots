@@ -1,9 +1,23 @@
-{pkgs, ...}: {
+{inputs,pkgs, ...}: {
   # https://tinted-theming.github.io/base16-gallery/
   theme = "tokyo-night-dark";
   wallsDir = "/home/xhos/Pictures/walls";
 
-  imports = [../../modules/home];
+  imports = [
+	../../modules/home
+	inputs.impermanence.homeManagerModules.impermanence
+	];
+  home.persistence."/persistent/home/xhos" = {
+	directories = [
+	  ".config"
+	  "Downloads"
+          "Pictures"
+          "Documents"
+          "Videos"
+          ".local/share/direnv"	
+];
+	allowOther = true;
+};
 
   modules = {
     rofi.enable = true;
