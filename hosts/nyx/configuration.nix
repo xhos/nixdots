@@ -37,53 +37,55 @@
     disko
     rsync
     (writeShellApplication {
-      name = "install";
+      name = "i";
       text = ''
         #!/usr/bin/env bash
         set -euo pipefail
 
-        fail() { echo "--> $*" >&2; exit 1; }
+        fail() { echo "$*" >&2; exit 1; }
 
-        # 1) Where to put the repo
         WORKDIR=/tmp/nixdots
 
-        # 2) Clone or pull
+        # Clone or update repository
         if [ -d "$WORKDIR/.git" ]; then
           git -C "$WORKDIR" pull --ff-only
         else
           git clone https://github.com/xhos/nixdots.git "$WORKDIR"
         fi
 
-        # 3) List hosts in the flake
-        HOST=$(nix flake show "$WORKDIR" --json |
-               jq -r '.nixosConfigurations | keys[]' |
-               gum choose --header "Select machine")
+        # Select host
+        HOST=$(nix flake show "$WORKDIR" --json \
+                | jq -r '.nixosConfigurations | keys[]' \
+                | gum choose --header "Select machine")
         [ -n "$HOST" ] || fail "No host selected"
 
-        # 4) Pick a disk
-        DISK=$(lsblk -dpno NAME,SIZE |
-               gum choose --header "Select target disk for \"$HOST\"" |
-               awk '{print $1}')
+        # Select disk
+        DISK=$(lsblk -dpno NAME,SIZE \
+                | gum choose --header "Select target disk for \"$HOST\"" \
+                | awk '{print $1}')
         [ -b "$DISK" ] || fail "Invalid disk selected"
 
-        gum confirm "⚠️  All data on \"$DISK\" will be destroyed. Continue?" || exit 1
+        gum confirm "⚠️  Wipe $DISK? Continue?" || exit 1
 
-        # 5) Partition
-        gum spin --title "Partitioning $DISK" -- \
-          disko \
-            --mode zap_create_mount \
-            --argstr disk "$DISK" \
-            "/etc/nixdots/hosts/$HOST/disko.nix"
+        # Run disko
+        CONFIG="$WORKDIR/hosts/$HOST/rebo.nix"
+        ls -l "$CONFIG" || fail "disko.nix missing"
 
-        # 6) Generate hardware-configuration.nix
+        disko --mode zap_create_mount \
+          --argstr disk "$DISK" \
+          "$CONFIG" || fail "disko failed"
+
+        # Generate hardware config
         nixos-generate-config --root /mnt --no-filesystems
+
+        # Move hardware config
         mv /mnt/etc/nixos/hardware-configuration.nix \
            "$WORKDIR/hosts/$HOST/"
 
-        # 7) Copy repo onto target root
+        # Sync repository
         rsync -a --delete "$WORKDIR/" /mnt/etc/nixos/
 
-        # 8) Install
+        # Install NixOS
         nixos-install --root /mnt --flake /mnt/etc/nixos#"$HOST" --no-root-passwd
 
         echo "✅ Done. Reboot."

@@ -19,7 +19,7 @@
           };
 
           games = {
-            size = "2G";
+            size = "1T";
             type = "8300";
             content = {
               type = "filesystem";
