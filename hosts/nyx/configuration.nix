@@ -68,7 +68,7 @@
         gum confirm "⚠️  Wipe $DISK? Continue?" || exit 1
 
         # Run disko
-        CONFIG="$WORKDIR/hosts/$HOST/rebo.nix"
+        CONFIG="$WORKDIR/hosts/$HOST/disko.nix"
         ls -l "$CONFIG" || fail "disko.nix missing"
 
         disko --mode zap_create_mount \
