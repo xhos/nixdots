@@ -1,4 +1,4 @@
-{disk ? "/dev/vda"}: {
+{disk ? "/dev/vda", ...}: {
   disko.devices = {
     disk.main = {
       type = "disk";
