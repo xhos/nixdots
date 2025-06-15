@@ -170,23 +170,16 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/aevon/configuration.nix
-          # home-manager.nixosModule
           nixos-wsl.nixosModules.default
         ];
       };
+      # nix run nixpkgs#nixos-generators -- --format iso --flake .#nyx -o iso
       nyx = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          inputs.stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          ./hosts/nyx/configuration.nix
           {
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              system = "x86_64-linux";
-            };
-            home-manager.users."xhos" = ./home/xhos/nyx.nix;
           }
+          ./hosts/nyx/configuration.nix
         ];
       };
     };

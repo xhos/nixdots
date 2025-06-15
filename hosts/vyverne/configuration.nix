@@ -17,12 +17,6 @@
       "/etc/NetworkManager/system-connections" # wifi
       "/var/lib/bluetooth" # bluetooth
       "/var/lib/libvirt" # virt-manager
-      {
-        directory = "/games";
-        user = "xhos";
-        group = "xhos";
-        mode = "0755";
-      }
     ];
     files = [
       "/etc/machine-id"
@@ -49,11 +43,9 @@
   #   "d /persist/games 0755 xhos xhos -"
   # ];
 
-  # fileSystems."/games" = {
-  #   device = "rpool/safe/games";
-  #   fsType = "zfs";
-  #   neededForBoot = true;
-  # };
+  systemd.tmpfiles.rules = [
+    "d /games 0755 xhos xhos -"
+  ];
 
   fileSystems."/nix".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
