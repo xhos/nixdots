@@ -69,9 +69,11 @@
         gum confirm "⚠️  All data on \"$DISK\" will be destroyed. Continue?" || exit 1
 
         # 5) Partition
-        nix run github:nix-community/disko -- \
-              --arg disk "\"$DISK\"" --mode zap_create_mount \
-              "$WORKDIR/hosts/$HOST/disko.nix"
+        gum spin --title "Partitioning $DISK" -- \
+          disko \
+            --mode zap_create_mount \
+            --argstr disk "$DISK" \
+            "/etc/nixdots/hosts/$HOST/disko.nix"
 
         # 6) Generate hardware-configuration.nix
         nixos-generate-config --root /mnt --no-filesystems
