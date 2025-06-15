@@ -1,24 +1,63 @@
-{inputs,pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   # https://tinted-theming.github.io/base16-gallery/
   theme = "tokyo-night-dark";
-  wallsDir = "/home/xhos/Pictures/walls";
 
   imports = [
-	../../modules/home
-	inputs.impermanence.homeManagerModules.impermanence
-	];
-  home.persistence."/persistent/home/xhos" = {
-	directories = [
-	  ".config"
-	  "Downloads"
-          "Pictures"
-          "Documents"
-          "Videos"
-          ".local/share/direnv"	
-];
-	allowOther = true;
-};
+    ../../modules/home
+    inputs.impermanence.homeManagerModules.impermanence
+  ];
+  home.persistence."/persist/home/xhos" = {
+    directories = [
+      ".zen"
+      ".mozilla"
+      ".vscode"
+      ".ssh"
 
+      {
+        directory = ".steam";
+        method = "symlink";
+      }
+      {
+        directory = ".local/share/Steam";
+        method = "symlink";
+      }
+
+      ".local/share/materialgram/tdata"
+      ".local/share/direnv"
+      ".local/share/PrismLauncher"
+
+      ".local/share/zed"
+      ".config/zed"
+
+      ".config/pulse"
+      ".config/hypr"
+      ".config/libreoffice"
+      ".config/spotify"
+      ".config/vesktop"
+      ".config/clipse"
+      ".config/Code"
+
+      "Projects"
+      "Documents"
+      "Downloads"
+      "Pictures"
+      "Videos"
+    ];
+    files = [".wakatime.cfg"];
+    allowOther = true;
+  };
+
+  optPkgs.enable = true;
+  wallpaper =
+    pkgs.fetchurl
+    {
+      url = "https://w.wallhaven.cc/full/l8/wallhaven-l86p22.jpg";
+      sha256 = "sha256-weEc237eZ8TK8DMNzBDZdPkjS5WMseJ6H4TiJcLC2C4=";
+    };
   modules = {
     rofi.enable = true;
     spicetify.enable = true;

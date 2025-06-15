@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   # https://tinted-theming.github.io/base16-gallery/
   theme = "tokyo-night-dark";
-  wallsDir = "/home/xhos/Pictures/walls";
 
   imports = [../../modules/home];
 

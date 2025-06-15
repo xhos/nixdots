@@ -1,7 +1,7 @@
 {lib, ...}: {
   options = with lib; {
-    wallsDir = mkOption {
-      type = types.str;
+    wallpaper = mkOption {
+      type = types.path;
       default = "";
     };
     theme = mkOption {

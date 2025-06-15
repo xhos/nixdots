@@ -31,7 +31,6 @@
         "application/x-extension-xht" = ["zen-beta.desktop"];
       };
       defaultApplications = {
-        "x-scheme-handler/msteams" = ["teams-for-linux.desktop"];
         "image/jpeg" = ["swayimg.desktop"];
         "image/png" = ["swayimg.desktop"];
         "image/gif" = ["swayimg.desktop"];

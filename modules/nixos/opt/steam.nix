@@ -5,15 +5,15 @@
   ...
 }: {
   config = lib.mkIf config.steam.enable {
-    environment.systemPackages = with pkgs; [
-      gamescope
-      heroic
-      lutris
-      protontricks
-      prismlauncher
-      protonup-qt
-      protonup
-    ];
+    # environment.systemPackages = with pkgs; [
+    #   gamescope
+    #   heroic
+    #   lutris
+    #   protontricks
+    #   prismlauncher
+    #   protonup-qt
+    #   protonup
+    # ];
 
     # nixpkgs.config.packageOverrides = pkgs: {
     #   steam = pkgs.steam.override {
@@ -37,9 +37,9 @@
     programs = {
       steam = {
         enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
-        gamescopeSession.enable = true;
+        # remotePlay.openFirewall = true;
+        # dedicatedServer.openFirewall = true;
+        # gamescopeSession.enable = true;
         # package = pkgs.steam.override {
         #   extraPkgs = pkgs:
         #     with pkgs; [
@@ -48,19 +48,19 @@
         #     ];
         # };
       };
-      gamemode.enable = true;
+      # gamemode.enable = true;
     };
 
-    environment.sessionVariables = lib.mkIf (config.de == "hyprland") {
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/xhos/.steam/root/.compatibilitytools.d";
-      GDK_BACKEND = "wayland,x11";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      #SDL_VIDEODRIVER = "x11";
-      CLUTTER_BACKEND = "wayland";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      WLR_NO_HARDWARE_CURSORS = "1";
-    };
+    # environment.sessionVariables = lib.mkIf (config.de == "hyprland") {
+    #   STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/xhos/.steam/root/.compatibilitytools.d";
+    #   GDK_BACKEND = "wayland,x11";
+    #   QT_QPA_PLATFORM = "wayland;xcb";
+    #   #SDL_VIDEODRIVER = "x11";
+    #   CLUTTER_BACKEND = "wayland";
+    #   XDG_CURRENT_DESKTOP = "Hyprland";
+    #   XDG_SESSION_TYPE = "wayland";
+    #   XDG_SESSION_DESKTOP = "Hyprland";
+    #   WLR_NO_HARDWARE_CURSORS = "1";
+    # };
   };
 }

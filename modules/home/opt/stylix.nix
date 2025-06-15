@@ -2,18 +2,11 @@
   config,
   pkgs,
   ...
-}: let
-  background =
-    pkgs.fetchurl
-    {
-      url = "https://w.wallhaven.cc/full/7j/wallhaven-7jg5vy.jpg";
-      sha256 = "sha256-hSgqvGwJaY6p6tJV2d8rKrOMbXretAkS+7zfFbjekXc=";
-    };
-in {
+}: {
   stylix = {
     enable = true;
 
-    image = background;
+    image = config.wallpaper;
     polarity = "dark";
     opacity.terminal = 0.7;
 
