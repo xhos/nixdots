@@ -17,15 +17,6 @@
       ".vscode"
       ".ssh"
 
-      {
-        directory = ".steam";
-        method = "symlink";
-      }
-      {
-        directory = ".local/share/Steam";
-        method = "symlink";
-      }
-
       ".local/share/materialgram/tdata"
       ".local/share/direnv"
       ".local/share/PrismLauncher"
@@ -40,6 +31,13 @@
       ".config/vesktop"
       ".config/clipse"
       ".config/Code"
+      ".config/obsidian"
+      ".config/chromium"
+      ".config/sops"
+
+      ".local/share/caelestia"
+      ".local/state/caelestia"
+      ".config/caelestia"
 
       "Projects"
       "Documents"
@@ -47,7 +45,13 @@
       "Pictures"
       "Videos"
     ];
-    files = [".wakatime.cfg"];
+
+    files = [
+      ".wakatime.cfg"
+      ".zsh_history"
+      ".config/OpenRGB/config.json"
+    ];
+
     allowOther = true;
   };
 
@@ -55,14 +59,16 @@
   wallpaper =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/l8/wallhaven-l86p22.jpg";
-      sha256 = "sha256-weEc237eZ8TK8DMNzBDZdPkjS5WMseJ6H4TiJcLC2C4=";
+      url = "https://w.wallhaven.cc/full/o3/wallhaven-o3km89.png";
+      sha256 = "sha256-11Dk/EDBQPH9V/+RnMAkMBsW7wLhFiv8qU4ve72jT8A=";
     };
+
   modules = {
     rofi.enable = true;
     spicetify.enable = true;
     firefox.enable = true;
     discord.enable = true;
+    secrets.enable = true;
   };
 
   default = {
@@ -78,7 +84,7 @@
   home.packages = with pkgs; [
     # davinci-resolve
     jetbrains.goland
-    jetbrains.datagrip
+    # jetbrains.datagrip
     firefox
     go
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})

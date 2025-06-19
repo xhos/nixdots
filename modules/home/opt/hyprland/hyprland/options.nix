@@ -22,6 +22,9 @@
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
 
+      "swww-daemon"
+      "swww img ${config.wallpaper}"
+
       # random fixes
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "dbus-update-activation-environment --systemd --all"
@@ -37,6 +40,8 @@
     #-----------------------------------------------------------------------------------------------------------
     # GENERAL
     #-----------------------------------------------------------------------------------------------------------
+
+    ecosystem.no_update_news = true;
 
     general = {
       gaps_in = 5;
@@ -105,7 +110,7 @@
     #-----------------------------------------------------------------------------------------------------------
 
     decoration = {
-      rounding = 10;
+      rounding = 15;
       # rounding_power = "4.0";
       inactive_opacity = 1;
 
@@ -119,14 +124,14 @@
 
       blur = {
         enabled = true;
-        size = 5;
-        passes = 2;
+        size = 12;
+        passes = 4;
         ignore_opacity = true;
         popups = true;
         new_optimizations = true;
         noise = 0.0200;
         contrast = 1;
-        brightness = 0.8172;
+        brightness = 0.4172;
         vibrancy = 0.1696;
       };
 

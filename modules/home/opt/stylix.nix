@@ -8,7 +8,7 @@
 
     image = config.wallpaper;
     polarity = "dark";
-    opacity.terminal = 0.7;
+    opacity.terminal = 0.0;
 
     cursor = {
       name = "phinger-cursors-dark";

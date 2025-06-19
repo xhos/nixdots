@@ -1,80 +1,121 @@
 {
-  pkgs,
-  lib,
   config,
+  pkgs,
   inputs,
+  lib,
   ...
 }: {
-  config = lib.mkIf (config.default.bar == "quickshell") {
-    qt.enable = true;
-    home.packages = with pkgs; let
-      qsBase = inputs.quickshell.packages.${pkgs.system}.default.override {
-        withJemalloc = true;
-        withQtSvg = true;
-        withWayland = true;
-        withX11 = false;
-        withPipewire = true;
-        withPam = true;
-        withHyprland = true;
-        withI3 = false;
-      };
-    in [
-      # add Qt5Compat to the *build* so it’s wrapped automatically
-      (qsBase.overrideAttrs (old: {
-        buildInputs =
-          old.buildInputs
-          ++ [
-            pkgs.qt6.qt5compat
-            pkgs.python312Packages.pyaudio
-            pkgs.python312Packages.numpy
-            pkgs.python3
-          ];
-      }))
-      # Essential Qt runtime components for quickshell and its themes
-      qt6.qtwayland
-      qt6.qt5compat # For Qt5Compat.GraphicalEffects and other compat QML modules
+  imports = [
+    ./packages.nix # Caelestia scripts and quickshell wrapper derivations
+    ./config.nix # Configuration files and environment setup
+  ];
 
-      # General runtime dependencies for quickshell based on BUILD.MD and enabled features
-      cli11 # Base dependency for quickshell
-      wayland # For Wayland support
-      wayland-protocols # For Wayland support
-      libdrm # For Screencopy feature (often enabled with Wayland)
-      libgbm # For Screencopy feature (often enabled with Wayland)
-      # google-breakpad # Optional: for crash reporter feature (enabled by default in quickshell)
+  # Main packages
+  home.packages = with pkgs; [
+    config.programs.quickshell.finalPackage # Our wrapped quickshell
+    config.programs.quickshell.caelestia-scripts
+    # Qt dependencies
+    qt6.qt5compat
+    qt6.qtdeclarative
 
-      # User requested packages
-      git
-      curl
-      jq
-      # app2unit-git # Placeholder: find equivalent Nix package or add via overlay
-      fd
-      fish
-      python312Packages.pyaudio
-      python312Packages.numpy
-      cava
-      networkmanager # Provides CLI tools, for GUI use networkmanagerapplet
-      bluez # Provides bluez-utils
-      brightnessctl
-      ddcutil # monitor control (already present)
+    # Runtime dependencies
+    hyprpaper
+    imagemagick
+    wl-clipboard
+    fuzzel
+    socat
+    foot
+    jq
+    python3
+    python3Packages.materialyoucolor
+    grim
+    wayfreeze
+    wl-screenrec
+    # inputs.astal.packages.${pkgs.system}.default
 
-      # Existing Caelestia helpers & theming
-      python3
-      python311Packages.aubio # python-aubio
-      papirus-icon-theme # or breeze-icons
-      hicolor-icon-theme # fallback skeleton
-      qt6ct # GUI to pick icons/colours
-    ];
-    # fonts.packages = with pkgs; [ibm-plex nerd-fonts.jetbrains-mono];
-    home.sessionVariables = let
-      papirus = pkgs.papirus-icon-theme;
-      hicolor = pkgs.hicolor-icon-theme;
-    in {
-      QT_ICON_THEME = "Papirus"; # force the name Qt should load
-      # QT_QPA_PLATFORMTHEME = "qt6ct"; # so Qt obeys the user icon theme
-      # Pre-pend the *parent* dir – Qt automatically appends “/icons”
-      # XDG_DATA_DIRS =
-      #   "${papirus}/share:${hicolor}/share"
-      #   + ":${builtins.getEnv "XDG_DATA_DIRS"}";
+    # Additional dependencies
+    lm_sensors
+    curl
+    material-symbols
+    nerd-fonts.jetbrains-mono
+    ibm-plex
+    fd
+    python3Packages.pyaudio
+    python3Packages.numpy
+    cava
+    networkmanager
+    bluez
+    ddcutil
+    brightnessctl
+
+    # Wrapper for caelestia to work with quickshell
+    (writeScriptBin "caelestia-quickshell" ''
+      #!${pkgs.fish}/bin/fish
+
+      # Override for caelestia shell commands to work with quickshell
+      set -l original_caelestia ${config.programs.quickshell.caelestia-scripts}/bin/caelestia
+
+      if test "$argv[1]" = "shell" -a -n "$argv[2]"
+          set -l cmd $argv[2]
+          set -l args $argv[3..]
+
+          switch $cmd
+              case "show" "toggle"
+                  if test -n "$args[1]"
+                      exec ${config.programs.quickshell.finalPackage}/bin/qs -c caelestia ipc call drawers $cmd $args[1]
+                  else
+                      echo "Usage: caelestia shell $cmd <drawer>"
+                      exit 1
+                  end
+              case "media"
+                  if test -n "$args[1]"
+                      set -l action $args[1]
+                      switch $action
+                          case "play-pause"
+                              exec ${config.programs.quickshell.finalPackage}/bin/qs -c caelestia ipc call mpris playPause
+                          case '*'
+                              exec ${config.programs.quickshell.finalPackage}/bin/qs -c caelestia ipc call mpris $action
+                      end
+                  else
+                      echo "Usage: caelestia shell media <action>"
+                      exit 1
+                  end
+              case '*'
+                  # For other shell commands, try the original
+                  exec $original_caelestia $argv
+          end
+      else
+          # For non-shell commands, use the original
+          exec $original_caelestia $argv
+      end
+    '')
+  ];
+
+  wayland.windowManager.hyprland.settings.bind = lib.mkIf (config.default.de == "hyprland") [
+    "ALT, code:65, exec, caelestia-quickshell shell toggle launcher"
+  ];
+
+  # Systemd service
+  systemd.user.services.caelestia-shell = {
+    Unit = {
+      Description = "Caelestia desktop shell";
+      After = ["graphical-session.target"];
     };
+    Service = {
+      Type = "exec";
+      ExecStart = "${config.programs.quickshell.finalPackage}/bin/qs -c caelestia";
+      Restart = "on-failure";
+      Slice = "app-graphical.slice";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+  };
+
+  # Shell aliases
+  home.shellAliases = {
+    caelestia-shell = "qs -c caelestia";
+    caelestia-edit = "cd ${config.xdg.configHome}/quickshell/caelestia && $EDITOR";
+    caelestia = "caelestia-quickshell";
   };
 }

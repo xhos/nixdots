@@ -13,6 +13,7 @@
 
       bemoji # emoji picker
       clipse # clipboard manager
+      swww
 
       # TODO: this.
       autotiling-rs
