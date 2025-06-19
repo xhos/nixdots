@@ -9,6 +9,8 @@
   ];
 
   config = lib.mkIf (config.default.shell == "zsh") {
+    programs.zoxide.enable = true;
+    programs.zoxide.enableZshIntegration = true;
     programs.zsh = {
       enable = true;
 

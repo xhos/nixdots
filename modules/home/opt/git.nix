@@ -8,7 +8,7 @@
         "https://github.com/" = {
           insteadOf = ["gh:"];
         };
-        "https://github.com/xhos/" = {
+        "git@github.com:xhos/" = {
           insteadOf = ["x:"];
         };
       };

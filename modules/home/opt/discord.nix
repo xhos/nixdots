@@ -1,13 +1,16 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: {
+  imports = [inputs.nixcord.homeModules.nixcord];
+
   programs.nixcord = lib.mkIf config.modules.discord.enable {
     enable = true;
 
     config = {
-      themeLinks = ["https://refact0r.github.io/system24/theme/flavors/catppuccin-mocha.theme.css"];
+      themeLinks = ["https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/system24.theme.css"];
 
       frameless = true;
 
@@ -19,7 +22,6 @@
         friendsSince.enable = true;
         gameActivityToggle.enable = true;
         messageLogger.enable = true;
-        # noScreensharePreview.enable = true;
         petpet.enable = true;
         reverseImageSearch.enable = true;
 

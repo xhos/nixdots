@@ -8,7 +8,7 @@
     ./programs.nix
     ./security.nix
     ./services.nix
-    # ./sops.nix
+    ./sops.nix
     ./user.nix
   ];
 }

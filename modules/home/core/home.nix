@@ -42,7 +42,6 @@
     rcon # remote console
     sherlock
     skim # fzf in rust
-    zoxide # better cd
     devenv
     sshs
 

@@ -3,6 +3,10 @@
     rtkit.enable = true;
     polkit.enable = true;
 
+    sudo.extraConfig = ''
+      Defaults:xhos lecture = never
+    '';
+
     pam.services = {
       greetd = {
         gnupg.enable = true;
