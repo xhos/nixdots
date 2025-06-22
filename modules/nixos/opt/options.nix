@@ -15,12 +15,12 @@
     boot      .enable = mkEnableOption "Enable boot support";
 
     de = mkOption {
-      type = types.enum ["hyprland" "gnome" "cosmic" "plasma" "xfce" "none"];
+      type = types.enum ["gnome" "cosmic" "plasma" "xfce" "none"];
       default = "none";
     };
 
     greeter = mkOption {
-      type = types.enum ["regreet" "tuigreet" "none"];
+      type = types.enum ["regreet" "tuigreet" "sddm" "none"];
       default = "none";
     };
   };

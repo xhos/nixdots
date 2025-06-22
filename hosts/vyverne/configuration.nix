@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
@@ -63,11 +63,9 @@
   obs       .enable = true;
   boot      .enable = true;
 
-  de = "hyprland";
-  greeter = "tuigreet";
+  greeter = "sddm";
 
   services.hardware.openrgb.enable = true;
-
   programs.adb.enable = true;
 
   boot.kernelParams = ["hid_apple.fnmode=2"];

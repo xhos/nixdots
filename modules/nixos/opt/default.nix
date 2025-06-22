@@ -1,22 +1,22 @@
 {
   imports = [
     ./ai.nix
+    ./audio.nix
     ./bluetooth.nix
+    ./boot.nix
     ./cosmic.nix
     ./gnome.nix
-    ./hyprland.nix
     ./nvidia.nix
+    ./obs.nix
     ./options.nix
     ./plasma.nix
     ./rclone.nix
     ./regreet.nix
-    ./audio.nix
+    ./sddm.nix
     ./steam.nix
     ./tuigreet.nix
     ./virtualisation.nix
     ./wayland.nix
     ./xfce.nix
-    ./obs.nix
-    ./boot.nix
   ];
 }
