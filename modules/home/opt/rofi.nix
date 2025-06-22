@@ -12,12 +12,12 @@
     in {
       "*" = {
         font = mkl "\"Montserrat 12\"";
-        bg0 = mkl "#${config.lib.stylix.colors.base00}E6";
-        bg1 = mkl "#${config.lib.stylix.colors.base01}E6";
-        bg2 = mkl "#${config.lib.stylix.colors.base0E}E6";
+        bg0 = mkl "#${config.lib.stylix.colors.base00}55";
+        bg1 = mkl "#${config.lib.stylix.colors.base01}55";
+        bg2 = mkl "#${config.lib.stylix.colors.base0E}55";
         fg0 = mkl "#${config.lib.stylix.colors.base06}";
         fg1 = mkl "#${config.lib.stylix.colors.base07}";
-        fg2 = mkl "#${config.lib.stylix.colors.base05}E6";
+        fg2 = mkl "#${config.lib.stylix.colors.base05}55";
         background-color = mkl "transparent";
         text-color = mkl "@fg0";
         margin = 0;

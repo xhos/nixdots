@@ -6,7 +6,6 @@
   stylix = {
     enable = true;
 
-    image = config.wallpaper;
     polarity = "dark";
     opacity.terminal = 0.0;
 
@@ -31,10 +30,12 @@
       firefox.enable = false;
       spicetify.enable = false;
       hyprland.enable = false;
+      hyprland.hyprpaper.enable = true;
       hyprlock.enable = false;
       mako.enable = false;
       rofi.enable = false;
       kde.enable = false;
+      waybar.enable = false;
       gtk.extraCss = with config.lib.stylix.colors; ''
         @define-color accent_color #${base0D};
         @define-color accent_bg_color #${base0D};
@@ -48,7 +49,7 @@
 
         /* Transparent Sidebar */
         window {
-          background: alpha(@window_bg_color, 0.6);
+          background: transparent;
         }
 
         .sidebar-pane,

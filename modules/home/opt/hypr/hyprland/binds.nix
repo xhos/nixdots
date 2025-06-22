@@ -78,7 +78,7 @@ in {
         "SUPERSHIFT, A, exec, ${terminal} -a pulsemixer pulsemixer" # network manager
         "SUPERSHIFT, e, exec, bemoji" # emoji picker
         ",insert, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute" # toggle mic mute
-        # "ALT, code:65, exec, rofi -show drun" # rofi drun
+        "ALT, code:65, exec, rofi -show drun" # rofi drun
       ]
       ++ workspaces;
 

@@ -6,6 +6,13 @@
 
   optPkgs.enable = true;
 
+  stylix.image =
+    pkgs.fetchurl
+    {
+      url = "https://w.wallhaven.cc/full/o3/wallhaven-o3km89.png";
+      sha256 = "sha256-11Dk/EDBQPH9V/+RnMAkMBsW7wLhFiv8qU4ve72jT8A=";
+    };
+
   modules = {
     rofi.enable = true;
     firefox.enable = true;
@@ -14,8 +21,7 @@
 
   default = {
     de = "hyprland";
-    bar = "aard";
-    lock = "hyprlock";
+    bar = "waybar";
     shell = "zsh";
     prompt = "starship";
     browser = "zen";
@@ -26,6 +32,8 @@
     iio-hyprland
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
+
+  services.hypridle.enable = true;
 
   wayland.windowManager.hyprland.settings = {
     exec-once = [

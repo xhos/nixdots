@@ -1,6 +1,6 @@
 {config, ...}: {
   services.mako = {
-    enable = false;
+    enable = true;
     settings = {
       font = "Hack 12";
       anchor = "top-right";

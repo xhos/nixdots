@@ -1,13 +1,5 @@
 {lib, ...}: {
   options = with lib; {
-    wallpaper = mkOption {
-      type = types.path;
-      default = "";
-    };
-    theme = mkOption {
-      type = lib.types.nullOr lib.types.str;
-      default = null;
-    };
     modules = {
       firefox.enable = mkEnableOption "Enable firefox";
       mpd.enable = mkEnableOption "Enable mpd";
@@ -28,7 +20,7 @@
         default = "none";
       };
       bar = mkOption {
-        type = types.enum ["quickshell" "aard" "none"];
+        type = types.enum ["quickshell" "waybar" "aard" "none"];
         default = "none";
       };
       browser = mkOption {
@@ -38,10 +30,6 @@
       terminal = mkOption {
         type = types.enum ["wezterm" "foot" "kitty" "alacritty" "none"];
         default = "kitty";
-      };
-      lock = mkOption {
-        type = types.enum ["hyprlock" "none"];
-        default = "none";
       };
       prompt = mkOption {
         type = types.enum ["starship" "oh-my-posh"];

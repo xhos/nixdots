@@ -3,13 +3,11 @@
   pkgs,
   ...
 }: {
-  # https://tinted-theming.github.io/base16-gallery/
-  theme = "tokyo-night-dark";
-
   imports = [
     ../../modules/home
     inputs.impermanence.homeManagerModules.impermanence
   ];
+
   home.persistence."/persist/home/xhos" = {
     directories = [
       ".zen"
@@ -24,6 +22,9 @@
       ".local/share/zed"
       ".config/zed"
 
+      ".local/share/JetBrains"
+      ".config/JetBrains"
+
       ".config/pulse"
       ".config/hypr"
       ".config/libreoffice"
@@ -34,6 +35,7 @@
       ".config/obsidian"
       ".config/chromium"
       ".config/sops"
+      ".config/waybar"
 
       ".local/share/caelestia"
       ".local/state/caelestia"
@@ -56,7 +58,8 @@
   };
 
   optPkgs.enable = true;
-  wallpaper =
+
+  stylix.image =
     pkgs.fetchurl
     {
       url = "https://w.wallhaven.cc/full/o3/wallhaven-o3km89.png";
@@ -73,8 +76,7 @@
 
   default = {
     de = "hyprland";
-    bar = "quickshell";
-    lock = "hyprlock";
+    bar = "waybar";
     shell = "zsh";
     prompt = "starship";
     browser = "zen";
@@ -84,7 +86,7 @@
   home.packages = with pkgs; [
     # davinci-resolve
     jetbrains.goland
-    # jetbrains.datagrip
+    jetbrains.datagrip
     firefox
     go
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})

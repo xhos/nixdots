@@ -1,14 +1,7 @@
-{config, ...}:
-# let
-# wp =
-# pkgs.lib.getExe
-# (pkgs.callPackage ./wp-changer.nix {});
-# in
-{
+{config, ...}: {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       # daemons
-      "hyprpaper"
       # "nm-applet"
       "blueman-applet"
       "clipse -listen"
@@ -22,9 +15,6 @@
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
 
-      "swww-daemon"
-      "swww img ${config.wallpaper}"
-
       # random fixes
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "dbus-update-activation-environment --systemd --all"
@@ -35,6 +25,8 @@
       # "ssh-add /home/xhos/.ssh/github"
       # ''echo "Xft.dpi: 130" | xrdb -merge''
       # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 16c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 0.5"
+      # "swww-daemon"
+      # "sleep 5; swww img ${config.wallpaper}"
     ];
 
     #-----------------------------------------------------------------------------------------------------------
@@ -123,13 +115,11 @@
       };
 
       blur = {
-        enabled = true;
         size = 12;
         passes = 4;
-        ignore_opacity = true;
+        special = true;
         popups = true;
-        new_optimizations = true;
-        noise = 0.0200;
+        noise = 0.0117;
         contrast = 1;
         brightness = 0.4172;
         vibrancy = 0.1696;
@@ -140,6 +130,15 @@
         "blur,PopupWindow"
         "blur,notifications"
         "ignorezero,notifications"
+
+        "blur,waybar"
+        "ignorezero,waybar"
+        "blurpopups,waybar"
+
+        "blur,rofi"
+        "ignorezero,rofi"
+
+        "blur,gtk-layer-shell"
       ];
     };
 
@@ -233,6 +232,7 @@
       # "XCURSOR_SIZE,32"
       # "WLR_DRM_NO_ATOMIC,1"
       # "XDG_SESSION_TYPE,wayland"
+      "ELECTRON_OZONE_PLATFORM_HINT,wayland"
       "GBM_BACKEND,nvidia-drm"
       "MOZ_ENABLE_WAYLAND=1"
       "MOZ_WEBRENDER=1"
@@ -242,6 +242,7 @@
       "XDG_CURRENT_DESKTOP,Hyprland"
       "XDG_SESSION_DESKTOP,Hyprland"
       "XDG_AUTO_SCREEN_SCALE_FACTOR=1"
+      "NIXOS_OZONE_WL"
       #  Mozilla settings to make FF and forks play nice with Wayland
 
       # Sign in New API Help About

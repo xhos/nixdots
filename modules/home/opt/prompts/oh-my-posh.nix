@@ -1,11 +1,10 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf (config.default.prompt == "oh-my-posh") {
-    programs.oh-my-posh = with config.lib.stylix.colors; {
+    programs.oh-my-posh = {
       enable = true;
 
       #:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json

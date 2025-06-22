@@ -22,13 +22,17 @@
       ];
 
       xwayland.enable = true;
-      # systemd = {
-      #   enable = true;
-      #   extraCommands = lib.mkBefore [
-      #     "systemctl --user stop graphical-session.target"
-      #     "systemctl --user start hyprland-session.target"
-      #   ];
-      # };
+    };
+
+    services.hyprpaper.enable = true;
+
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      configPackages = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+      ];
     };
 
     systemd.user.targets.tray = {

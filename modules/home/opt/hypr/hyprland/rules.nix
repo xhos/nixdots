@@ -1,18 +1,31 @@
-{lib, ...}: {
+{
   wayland.windowManager.hyprland.settings = {
     # layer rules
-    layerrule = let
-      toRegex = list: let
-        elements = lib.concatStringsSep "|" list;
-      in "^(${elements})$";
-      layers = [
-        "gtk4-layer-shell"
-        "rofi"
-      ];
-    in [
-      "blur, ${toRegex layers}"
-    ];
+    # layerrule = [
+    #   "blur,waybar"
+    #   "ignorezero,waybar"
+    #   "ignorealpha 0.5,waybar"
+    #   "blur,gtk-layer-shell"
 
+    #   "blur,rofi"
+    #   "ignorezero,rofi"
+    #   "ignorealpha 0.5,rofi"
+    # ];
+    # layerrule = [
+    #   "blur,RegularWindow"
+    #   "blur,PopupWindow"
+    #   "blur,notifications"
+    #   "ignorezero,notifications"
+
+    #   "blur,waybar"
+    #   "ignorezero,waybar"
+    #   "blurpopups,waybar"
+
+    #   "blur,rofi"
+    #   "ignorezero,rofi"
+
+    #   "blur,gtk-layer-shell"
+    # ];
     # window rules
     windowrulev2 = [
       # XWayland screen sharing related
