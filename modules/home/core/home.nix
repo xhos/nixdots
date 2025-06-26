@@ -1,4 +1,3 @@
-# modules/home-pkgs.nix
 {
   inputs,
   pkgs,

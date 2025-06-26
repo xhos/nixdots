@@ -1,10 +1,25 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   config = lib.mkIf (config.default.bar == "waybar") {
-    programs.waybar.settings.main = {
+    programs.waybar.settings.main = let
+      whisper-status-script = pkgs.writeShellScriptBin "whisper-status" ''
+        #!/usr/bin/env bash
+        PIDFILE="/tmp/whisper-dictate/recording.pid"
+
+        # Check if the PID file exists and the process ID inside is still running
+        if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+          # If recording, output JSON for Waybar
+          echo '{"text": "🎙️ REC", "tooltip": "Whisper is recording...", "class": "recording-active"}'
+        else
+          # If not recording, output empty JSON to hide the module
+          echo '{}'
+        fi
+      '';
+    in {
       layer = "top";
       position = "top";
       margin = "5 10 0";
@@ -15,7 +30,9 @@
       "modules-left" = [
         "clock"
         "custom/recording"
+        "custom/whisper"
       ];
+
       "modules-center" = ["hyprland/workspaces"];
       "modules-right" = ["group/custom-group"];
 
@@ -36,7 +53,7 @@
       };
 
       clock = {
-        format = "{:%I:%M %p}";
+        format = "{:%H:%M}";
         "tooltip-format" = "<tt><small>{calendar}</small></tt>";
         calendar = {
           format = {
@@ -95,6 +112,13 @@
         "return-type" = "json";
         "interval" = 1;
         "on-click" = "bash /etc/nixos/modules/home/opt/waybar/scripts/recorder.sh";
+      };
+
+      "custom/whisper" = {
+        "exec" = "${whisper-status-script}/bin/whisper-status";
+        "return-type" = "json";
+        "interval" = 1;
+        "on-click" = "whisper-dictate";
       };
 
       "group/custom-group" = {

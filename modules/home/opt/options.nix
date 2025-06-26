@@ -10,6 +10,11 @@
       secrets.enable = mkEnableOption "Enable secrets management";
     };
 
+    mainMonitor = mkOption {
+      type = types.str;
+      description = "main monitor of the system, used for hyprlock";
+    };
+
     hyprland = {
       hyprspace.enable = mkEnableOption "Enable hyprland overview plugin";
     };
@@ -20,7 +25,7 @@
         default = "none";
       };
       bar = mkOption {
-        type = types.enum ["quickshell" "waybar" "aard" "none"];
+        type = types.enum ["waybar" "aard" "none"];
         default = "none";
       };
       browser = mkOption {

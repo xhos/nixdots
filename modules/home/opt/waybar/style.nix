@@ -90,11 +90,13 @@
       #network,
       #memory,
       #custom-recording,
+      #custom-whisper,
       #bluetooth,
       #workspaces {
         padding: 0px 14px 0px 14px;
       }
 
+      #custom-whisper.recording-active,
       #custom-recording.recording-active {
         color: #fa5252;
         background-color: alpha(@bg, 0.2);
@@ -107,6 +109,7 @@
         animation: pulse 2s infinite;
       }
 
+      #custom-whisper.recording-inactive,
       #custom-recording.recording-inactive {
         color: transparent;
         background-color: transparent;

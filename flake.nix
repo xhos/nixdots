@@ -50,12 +50,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # flexbile QtQuick based desktop shell toolkit
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # priavte secrets repository
     nix-secrets = {
       url = "git+ssh://git@github.com/xhos/nix-secrets?shallow=1&ref=main";

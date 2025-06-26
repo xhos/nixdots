@@ -40,6 +40,12 @@
       ".local/share/caelestia"
       ".local/state/caelestia"
       ".config/caelestia"
+      ".config/nvim"
+
+      ".config/discord"
+      ".config/Vencord"
+
+      ".local/share/zoxide"
 
       "Projects"
       "Documents"
@@ -106,9 +112,11 @@
     ];
 
     monitor = [
-      "HDMI-A-2,1920x1080@144.0,2560x0,0.75"
-      "HDMI-A-2,transform,3"
-      "HDMI-A-1,3840x2160@160.0,0x605,1.5"
+      "desc:Samsung Electric Company LS27AG30x H4PW500403,1920x1080@144.0,2560x0,0.75"
+      "desc:Samsung Electric Company LS27AG30x H4PW500403,transform,3"
+      "desc:Microstep MAG 274UPF E2 0x00000001,3840x2160@160.0,0x605,1.5"
     ];
   };
+
+  mainMonitor = "Microstep MAG 274UPF E2 0x00000001";
 }
