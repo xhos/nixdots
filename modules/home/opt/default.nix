@@ -11,7 +11,6 @@
     ./music
     ./options.nix
     ./prompts
-    # ./quickshell
     ./rofi.nix
     ./secrets.nix
     ./shells
@@ -20,5 +19,6 @@
     ./terminals
     ./waybar
     ./web-apps
+    ./whisper.nix
   ];
 }
