@@ -21,7 +21,6 @@
 
       ".local/share/zed"
       ".config/zed"
-
       ".local/share/JetBrains"
       ".config/JetBrains"
 
@@ -47,6 +46,8 @@
 
       ".local/share/zoxide"
 
+      ".cache/huggingface" # i like my models not in ram
+
       "Projects"
       "Documents"
       "Downloads"
@@ -55,9 +56,9 @@
     ];
 
     files = [
-      ".wakatime.cfg"
-      ".zsh_history"
-      ".config/OpenRGB/config.json"
+      ".wakatime.cfg" # micromanage myself
+      ".zsh_history" # fight amnesia
+      ".config/OpenRGB/config.json" # i love my lights glowing
     ];
 
     allowOther = true;
@@ -68,8 +69,8 @@
   stylix.image =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/o3/wallhaven-o3km89.png";
-      sha256 = "sha256-11Dk/EDBQPH9V/+RnMAkMBsW7wLhFiv8qU4ve72jT8A=";
+      url = "https://w.wallhaven.cc/full/z8/wallhaven-z8lgwg.jpg";
+      sha256 = "sha256-r3f1Wd7SYyJnB55Wp+XD+/YOK4XQCzFDYf9YoPx1Bas=";
     };
 
   modules = {
@@ -94,7 +95,10 @@
     jetbrains.goland
     jetbrains.datagrip
     firefox
+    termius
     go
+    wireguard-tools
+    iptables
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 

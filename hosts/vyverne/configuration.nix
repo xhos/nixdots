@@ -13,11 +13,12 @@
     hideMounts = true;
     directories = [
       "/etc/nixos" # nixos config
-      "/etc/ssh" # ssh keys
+      "/etc/ssh" # ssh keys1
       "/var/lib/nixos" # other nixos state
       "/etc/NetworkManager/system-connections" # wifi
       "/var/lib/bluetooth" # bluetooth
       "/var/lib/libvirt" # virt-manager
+      "/var/lib/private/ollama" # ollama models
       {
         directory = "/home/xhos/.steam";
         user = "xhos";

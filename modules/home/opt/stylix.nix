@@ -1,8 +1,10 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
+  imports = [inputs.stylix.homeModules.stylix];
   stylix = {
     enable = true;
 
@@ -34,6 +36,9 @@
       hyprlock.enable = false;
       mako.enable = false;
       rofi.enable = false;
+      nixcord.enable = false;
+      vencord.enable = false;
+      vesktop.enable = false;
       kde.enable = false;
       waybar.enable = false;
       gtk.extraCss = with config.lib.stylix.colors; ''

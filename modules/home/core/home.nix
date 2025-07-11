@@ -72,6 +72,7 @@
     netcat-gnu
     loupe
     jq
+    gemini-cli
   ];
 
   optionalPkgs = with pkgs; [
