@@ -120,6 +120,16 @@
         min-height: 0;
       }
 
+      #custom-whisper.transcribing-active {
+        color:#f7fa52;
+        background-color: alpha(@bg, 0.2);
+        border-radius: 20px;
+        padding: 0 10px;
+        margin-top: 4px; margin-bottom: 4px; margin-left: 3px;
+        font-weight: bold;
+        animation: pulse 1.5s infinite;
+      }
+
       @keyframes pulse {
         0% {
           opacity: 1;

@@ -1,67 +1,57 @@
-# thanks https://github.com/TLSingh1/dotfiles
 {pkgs, ...}: {
+  nixpkgs.overlays = [
+    (final: prev: {
+      ctranslate2 = prev.ctranslate2.override {
+        withCUDA = true;
+        withCuDNN = true;
+      };
+    })
+  ];
+
   home.packages = with pkgs; [
     (pkgs.writeShellApplication {
-      name = "whisper-dictate";
-      runtimeInputs = with pkgs; [openai-whisper sox wl-clipboard wtype];
+      name = "whspr";
+      runtimeInputs = with pkgs; [whisper-ctranslate2 sox wl-clipboard coreutils];
       text = ''
         #!/usr/bin/env bash
+        set -euo pipefail
 
-        # Whisper dictation script
-        # Records audio and transcribes it using OpenAI whisper
+        DIR="/tmp/whisper-dictate"
+        AUDIO="$DIR/recording.wav"
+        REC_PID="$DIR/recording.pid"
+        TRN_FLAG="$DIR/transcribing.flag"
+        TEXT="$DIR/recording.txt"
+        mkdir -p "$DIR"
 
-        TEMP_DIR="/tmp/whisper-dictate"
-        AUDIO_FILE="$TEMP_DIR/recording.wav"
-        TEXT_FILE="$TEMP_DIR/recording.txt"
-        PIDFILE="$TEMP_DIR/recording.pid"
+        # stop
+        if [[ -f "$REC_PID" && -s "$REC_PID" ]] && kill -0 "$(cat "$REC_PID")" 2>/dev/null; then
+          kill "$(cat "$REC_PID")" && rm -f "$REC_PID"
+          until [[ -s "$AUDIO" ]]; do sleep 0.1; done
 
-        # Create temp directory
-        mkdir -p "$TEMP_DIR"
+          notify-send "Whisper" "Transcribing…" -t 1500
+          touch "$TRN_FLAG"
 
-        # Check if already recording
-        # CORRECTED: Quoted the command substitution to prevent word splitting
-        if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
-            # Stop recording
-            # CORRECTED: Quoted the command substitution
-            kill "$(cat "$PIDFILE")"
-            rm -f "$PIDFILE"
+          whisper-ctranslate2 "$AUDIO" \
+            --model large-v3 --language ru \
+            --device cuda --compute_type float16 \
+            --output_format txt --output_dir "$DIR"
 
-            # Wait for file to be written
-            sleep 0.5
+          if [[ -s "$TEXT" ]]; then
+            wl-copy < "$TEXT"
+            notify-send "Whisper" "Copied to clipboard" -t 2000
+          else
+            notify-send "Whisper" "No speech detected" -t 2000
+          fi
 
-            # Transcribe audio
-            if [ -f "$AUDIO_FILE" ]; then
-                # Send notification
-                notify-send "Whisper" "Transcribing..." -t 2000
-
-                # Run whisper
-                whisper "$AUDIO_FILE" --model base.en --language en --output_format txt --output_dir "$TEMP_DIR" 2>/dev/null
-
-                # Read the transcription
-                if [ -f "$TEXT_FILE" ]; then
-                    # CORRECTED: Used input redirection to avoid useless cat
-                    TEXT=$(tr -d '\n' < "$TEXT_FILE")
-
-                    # Type the text using wtype
-                    if [ -n "$TEXT" ]; then
-                        wtype "$TEXT"
-                        notify-send "Whisper" "Transcription complete" -t 2000
-                    else
-                        notify-send "Whisper" "No text detected" -t 2000
-                    fi
-                else
-                    notify-send "Whisper" "Transcription failed" -t 2000
-                fi
-
-                # Clean up
-                rm -f "$AUDIO_FILE" "$TEXT_FILE"
-            fi
-        else
-            # Start recording
-            notify-send "Whisper" "Recording... Press a key to stop" -t 2000
-            sox -d "$AUDIO_FILE" &
-            echo $! > "$PIDFILE"
+          rm -f "$AUDIO" "$TEXT" "$TRN_FLAG"
+          exit 0
         fi
+
+        # start
+        notify-send "Whisper" "Recording… press hotkey again to stop" -t 1500
+        sox -q -v 0.7 -d -r 16000 -c 1 -b 16 "$AUDIO" &
+        echo $! > "$REC_PID"
+        until [[ -s "$AUDIO" ]]; do sleep 0.05; done
       '';
     })
   ];

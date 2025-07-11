@@ -68,6 +68,7 @@ in {
 
         # Utilities
         "SUPER, Q, exec, ${terminal}" # open terminal
+        "SUPER, R, exec, whspr" # toggle dictation
         "SUPER, B, exec, ${config.default.browser}" # open browser
         "SUPER, L, exec, hyprlock" # lock screen
         # "SUPERSHIFT, T, exec, wl-ocr" # capture text TODO: find a better way to do this

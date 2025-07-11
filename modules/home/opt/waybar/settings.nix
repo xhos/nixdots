@@ -8,16 +8,24 @@
     programs.waybar.settings.main = let
       whisper-status-script = pkgs.writeShellScriptBin "whisper-status" ''
         #!/usr/bin/env bash
-        PIDFILE="/tmp/whisper-dictate/recording.pid"
+        DIR="/tmp/whisper-dictate"
+        REC_PID="$DIR/recording.pid"
+        TRN_FLAG="$DIR/transcribing.flag"
 
-        # Check if the PID file exists and the process ID inside is still running
-        if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
-          # If recording, output JSON for Waybar
-          echo '{"text": "🎙️ REC", "tooltip": "Whisper is recording...", "class": "recording-active"}'
-        else
-          # If not recording, output empty JSON to hide the module
-          echo '{}'
+        # 1) Transcribing? (takes priority)
+        if [[ -f "$TRN_FLAG" ]]; then
+          echo '{"text":"💾 TXT","tooltip":"Transcribing…","class":"transcribing-active"}'
+          exit 0
         fi
+
+        # 2) Recording?
+        if [[ -f "$REC_PID" ]] && kill -0 "$(cat "$REC_PID")" 2>/dev/null; then
+          echo '{"text":"🎙️ REC","tooltip":"Recording…","class":"recording-active"}'
+          exit 0
+        fi
+
+        # 3) Idle → hide
+        echo '{}'
       '';
     in {
       layer = "top";
@@ -118,7 +126,7 @@
         "exec" = "${whisper-status-script}/bin/whisper-status";
         "return-type" = "json";
         "interval" = 1;
-        "on-click" = "whisper-dictate";
+        "on-click" = "whspr";
       };
 
       "group/custom-group" = {
