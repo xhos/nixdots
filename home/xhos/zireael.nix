@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  # https://tinted-theming.github.io/base16-gallery/
-  theme = "tokyo-night-dark";
-
   imports = [../../modules/home];
 
   optPkgs.enable = true;
@@ -9,8 +6,8 @@
   stylix.image =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/o3/wallhaven-o3km89.png";
-      sha256 = "sha256-11Dk/EDBQPH9V/+RnMAkMBsW7wLhFiv8qU4ve72jT8A=";
+      url = "https://w.wallhaven.cc/full/1p/wallhaven-1p63gw.jpg";
+      sha256 = "sha256-qRXdDnh8njU8MCM7JQQ50I2MxhwIAP3lmFhVux1t9uc=";
     };
 
   modules = {
@@ -34,6 +31,8 @@
   ];
 
   services.hypridle.enable = true;
+
+  mainMonitor = "eDP-1";
 
   wayland.windowManager.hyprland.settings = {
     exec-once = [
