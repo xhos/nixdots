@@ -9,8 +9,15 @@ in {
       iwd.enable = true; # use iwd instead of wpa_supplicant
     };
 
-    firewall = {
+    firewall = rec {
       enable = true;
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = allowedTCPPortRanges;
       allowedTCPPorts = [
         sshPort
         5900

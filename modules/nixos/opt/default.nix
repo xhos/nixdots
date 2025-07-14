@@ -4,7 +4,6 @@
     ./audio.nix
     ./bluetooth.nix
     ./boot.nix
-    ./cosmic.nix
     ./gnome.nix
     ./nvidia.nix
     ./obs.nix

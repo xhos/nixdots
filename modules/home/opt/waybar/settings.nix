@@ -35,6 +35,7 @@
       reload_style_on_change = true;
       height = 34;
       width = 500;
+      output = config.mainMonitor;
       "modules-left" = [
         "clock"
         "custom/recording"

@@ -92,7 +92,6 @@
     qbittorrent
     (obsidian.override {commandLineArgs = ["--no-sandbox"];})
     chromium
-    telegram-desktop
   ];
 in {
   home = {

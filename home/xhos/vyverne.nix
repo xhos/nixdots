@@ -10,20 +10,23 @@
 
   home.persistence."/persist/home/xhos" = {
     directories = [
-      ".zen"
-      ".mozilla"
-      ".vscode"
-      ".ssh"
-
+      # telegram
       ".local/share/materialgram/tdata"
-      ".local/share/direnv"
-      ".local/share/PrismLauncher"
+      ".cache/stylix-telegram-theme"
 
+      # zed
       ".local/share/zed"
       ".config/zed"
+
+      # jetbrains
       ".local/share/JetBrains"
       ".config/JetBrains"
 
+      # discord
+      ".config/discord"
+      ".config/Vencord"
+
+      # misc configs
       ".config/pulse"
       ".config/hypr"
       ".config/libreoffice"
@@ -35,18 +38,19 @@
       ".config/chromium"
       ".config/sops"
       ".config/waybar"
-
-      ".local/share/caelestia"
-      ".local/state/caelestia"
-      ".config/caelestia"
       ".config/nvim"
 
-      ".config/discord"
-      ".config/Vencord"
-
-      ".local/share/zoxide"
+      ".local/share/PrismLauncher"
+      ".local/share/direnv"
+      ".local/share/zoxide" # zoxide i lv u, plz don't hv amnesia
 
       ".cache/huggingface" # i like my models not in ram
+      ".cache/Proton" # proton stores their login stuff in cache for some reason
+
+      ".zen"
+      ".mozilla"
+      ".vscode"
+      ".ssh"
 
       "Projects"
       "Documents"
@@ -58,7 +62,7 @@
     files = [
       ".wakatime.cfg" # micromanage myself
       ".zsh_history" # fight amnesia
-      ".config/OpenRGB/config.json" # i love my lights glowing
+      ".config/OpenRGB/config.json" # i lv my lights glowing
     ];
 
     allowOther = true;
@@ -66,12 +70,12 @@
 
   optPkgs.enable = true;
 
-  stylix.image =
-    pkgs.fetchurl
-    {
-      url = "https://w.wallhaven.cc/full/z8/wallhaven-z8lgwg.jpg";
-      sha256 = "sha256-r3f1Wd7SYyJnB55Wp+XD+/YOK4XQCzFDYf9YoPx1Bas=";
-    };
+  stylix.image = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/z8/wallhaven-z8lgwg.jpg";
+    sha256 = "sha256-r3f1Wd7SYyJnB55Wp+XD+/YOK4XQCzFDYf9YoPx1Bas=";
+  };
+
+  services.kdeconnect.enable = true;
 
   modules = {
     rofi.enable = true;
@@ -96,9 +100,9 @@
     jetbrains.datagrip
     firefox
     termius
-    go
-    wireguard-tools
-    iptables
+    # go
+    # wireguard-tools
+    # iptables
     (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
   ];
 

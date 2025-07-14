@@ -5,10 +5,6 @@
   lib,
   ...
 }: {
-  # persist.dir = [
-  #   ".local/share/materialgram"
-  #   ".cache/stylix-telegram-theme"
-  # ];
   home = {
     packages = [
       (pkgs.symlinkJoin {
