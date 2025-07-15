@@ -4,10 +4,11 @@ in {
   services.resolved.enable = true;
   networking.networkmanager.enable = true;
   networking = {
-    wireless = {
-      enable = false; # make sure wpa_supplicant is disabled
-      iwd.enable = true; # use iwd instead of wpa_supplicant
-    };
+    # wireless = {
+    # enable = true; # make sure wpa_supplicant is disabled
+    # networks.Birchmount.psk = "Birchmount8119";
+    # iwd.enable = true; # use iwd instead of wpa_supplicant
+    # };
 
     firewall = rec {
       enable = true;

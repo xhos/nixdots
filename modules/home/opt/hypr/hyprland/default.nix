@@ -10,6 +10,7 @@
     ./rules.nix
     ./hyprspace.nix
     ./pkgs.nix
+    ./osk.nix
   ];
 
   config = lib.mkIf (config.default.de == "hyprland") {

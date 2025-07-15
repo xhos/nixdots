@@ -138,6 +138,8 @@
         "blur,rofi"
         "ignorezero,rofi"
 
+        "blur,wvkbd"
+
         "blur,gtk-layer-shell"
       ];
     };
@@ -190,8 +192,8 @@
     "plugin:touch_gestures" = {
       sensitivity = 5.0;
       workspace_swipe_edge = "";
-      # hyprgrass-bindm = ", longpress:2, movewindow";
-      # hyprgrass-bind = ", edge:d:u, exec, sh /home/xhos/test.sh";
+      hyprgrass-bindm = ", longpress:2, movewindow";
+      hyprgrass-bind = ", edge:d:u, exec, toggle-osk";
     };
 
     group = {

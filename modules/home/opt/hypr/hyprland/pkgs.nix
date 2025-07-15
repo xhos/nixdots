@@ -15,6 +15,8 @@
       clipse # clipboard manager
       swww
 
+      wvkbd
+
       # TODO: this.
       autotiling-rs
       brightnessctl
