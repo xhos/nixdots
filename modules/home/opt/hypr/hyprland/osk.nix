@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with config.lib.stylix.colors; [
-    (writeShellApplication {
+    (pkgs.writeShellApplication {
       name = "toggle-osk";
       runtimeInputs = [pkgs.procps];
       text = ''
@@ -17,7 +17,7 @@
           exec wvkbd-mobintl \
             --fn Hack \
             -L 250 \
-            -R ${config.wayland.windowManager.hyprland.settings.decoration.rounding} \
+            -R ${toString config.wayland.windowManager.hyprland.settings.decoration.rounding} \            
             --bg ${base00} \
             --fg ${base05} \
             --fg-sp ${base0D} \

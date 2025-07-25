@@ -2,6 +2,6 @@
   imports = [
     ./hyprland
     ./hypridle.nix
-    ./hyprlock
+    # ./hyprlock
   ];
 }
