@@ -1,4 +1,9 @@
-{pkgs, lib, config, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   nixpkgs.overlays = [
     (final: prev: {
       ctranslate2 = prev.ctranslate2.override {
