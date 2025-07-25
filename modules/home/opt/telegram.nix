@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  home = {
+  home = lib.mkIf config.modules.telegram.enable {
     packages = [
       (pkgs.symlinkJoin {
         name = "materialgram";

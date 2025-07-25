@@ -8,6 +8,8 @@
       discord.enable = mkEnableOption "Enable discord";
       nvidia.enable = mkEnableOption "Enable nvidia specific patches";
       secrets.enable = mkEnableOption "Enable secrets management";
+      telegram.enable = mkEnableOption "Enable telegram";
+      whisper.enable = mkEnableOption "Enable whisper";
     };
 
     mainMonitor = mkOption {

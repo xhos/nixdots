@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, config, ...}: {
   nixpkgs.overlays = [
     (final: prev: {
       ctranslate2 = prev.ctranslate2.override {
@@ -8,7 +8,7 @@
     })
   ];
 
-  home.packages = with pkgs; [
+  home.packages = lib.mkIf config.modules.whisper.enable [
     (pkgs.writeShellApplication {
       name = "whspr";
       runtimeInputs = with pkgs; [whisper-ctranslate2 sox wl-clipboard coreutils];

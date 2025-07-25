@@ -109,6 +109,15 @@
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
+            home-manager.users."xhos" = ./home/xhos/aevon.nix;
+          }
+          inputs.stylix.nixosModules.stylix
           ./hosts/aevon/configuration.nix
           nixos-wsl.nixosModules.default
         ];
