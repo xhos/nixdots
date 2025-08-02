@@ -135,7 +135,7 @@
             is_wsl() { grep -qi microsoft /proc/sys/kernel/osrelease; }
             need_root() { [ "$(id -u)" -eq 0 ] || exec sudo -E "$0" "$@"; }
 
-            need_root
+            need_root "$@"
             if ! is_wsl; then
               echo "✗ Not running inside WSL. Aborting."
               exit 1
