@@ -6,14 +6,15 @@
   stylix.image =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/1p/wallhaven-1p63gw.jpg";
-      sha256 = "sha256-qRXdDnh8njU8MCM7JQQ50I2MxhwIAP3lmFhVux1t9uc=";
+      url = "https://w.wallhaven.cc/full/vq/wallhaven-vql3j3.png";
+      sha256 = "sha256-lPHq2W5jPl2ph0lzlJwJ0W4WMFU1+YuuR8Mk4TQ1fVI=";
     };
 
   modules = {
     rofi.enable = true;
     firefox.enable = true;
     spicetify.enable = true;
+    telegram.enable = true;
   };
 
   default = {

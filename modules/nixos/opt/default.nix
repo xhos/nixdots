@@ -5,6 +5,7 @@
     ./bluetooth.nix
     ./boot.nix
     ./gnome.nix
+    ./ly.nix
     ./nvidia.nix
     ./obs.nix
     ./options.nix

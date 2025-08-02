@@ -20,7 +20,7 @@
     };
 
     greeter = mkOption {
-      type = types.enum ["regreet" "tuigreet" "sddm" "none"];
+      type = types.enum ["regreet" "tuigreet" "ly" "sddm" "none"];
       default = "none";
     };
   };
