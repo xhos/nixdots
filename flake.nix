@@ -141,22 +141,22 @@
               exit 1
             fi
 
-            echo "→ Cloning $REPO_URL ($BRANCH) into $DEST_DIR …"
-            rm -rf "$DEST_DIR"
-            git clone --branch "$BRANCH" --depth 1 "$REPO_URL" "$DEST_DIR"
+            echo "→ Cloning $REPO_URL ($BRANCH) into ''${DEST_DIR} …"
+            rm -rf "''${DEST_DIR}"
+            git clone --branch "$BRANCH" --depth 1 "$REPO_URL" "''${DEST_DIR}"
 
-            echo "→ chmod -R 777 $DEST_DIR (per your requirement)"
-            chmod -R 777 "$DEST_DIR"
+            echo "→ chmod -R 777 ''${DEST_DIR} (per your requirement)"
+            chmod -R 777 "''${DEST_DIR}"
 
             # sanity: ensure the host exists
-            if [ ! -f "$DEST_DIR/hosts/$FLAKE_HOST/configuration.nix" ]; then
-              echo "✗ $DEST_DIR/hosts/$FLAKE_HOST/configuration.nix not found."
-              echo "  Make sure your repo defines nixosConfigurations.$FLAKE_HOST."
+            if [ ! -f "''${DEST_DIR}/hosts/''${FLAKE_HOST}/configuration.nix" ]; then
+              echo "✗ ''${DEST_DIR}/hosts/''${FLAKE_HOST}/configuration.nix not found."
+              echo "  Make sure your repo defines nixosConfigurations.''${FLAKE_HOST}."
               exit 1
             fi
 
-            echo "→ Building boot generation for $FLAKE_HOST (applies wsl.defaultUser on relog)…"
-            nixos-rebuild boot --flake "$DEST_DIR#$FLAKE_HOST"
+            echo "→ Building boot generation for ''${FLAKE_HOST} (applies wsl.defaultUser on relog)…"
+            nixos-rebuild boot --flake "''${DEST_DIR}#''${FLAKE_HOST}"
 
             cat <<'EOM'
 
