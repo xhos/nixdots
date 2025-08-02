@@ -63,9 +63,6 @@
     pkgs = import nixpkgs { inherit system; };
   in
   {
-    # ------------------------------
-    # NixOS configuration entrypoint
-    # ------------------------------
     nixosConfigurations = {
       zireael = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -114,55 +111,54 @@
       # nix run nixpkgs#nixos-generators -- --format iso --flake .#nyx -o iso
       nyx = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/nyx/configuration.nix
-        ];
+        modules = [ ./hosts/nyx/configuration.nix ];
       };
     };
 
-    # ------------------------------
+    ########################################
     # nix run entrypoint(s)
-    # ------------------------------
-    apps.${system}.aevon-install = let
-      script = pkgs.writeShellApplication {
-        name = "aevon-install";
-        runtimeInputs = [ pkgs.git pkgs.coreutils pkgs.util-linux ];
-        text = ''
-          #!/usr/bin/env bash
-          set -euo pipefail
+    ########################################
+    apps.${system}.aevon-install =
+      let
+        script = pkgs.writeShellApplication {
+          name = "aevon-install";
+          runtimeInputs = [ pkgs.git pkgs.coreutils pkgs.util-linux ];
+          text = ''
+            #!/usr/bin/env bash
+            set -euo pipefail
 
-          REPO_URL="${REPO_URL:-https://github.com/xhos/nixdots.git}"
-          BRANCH="${BRANCH:-main}"
-          DEST_DIR="/etc/nixos"
-          FLAKE_HOST="aevon"
+            REPO_URL="${REPO_URL:-https://github.com/xhos/nixdots.git}"
+            BRANCH="${BRANCH:-main}"
+            DEST_DIR="/etc/nixos"
+            FLAKE_HOST="aevon"
 
-          is_wsl() { grep -qi microsoft /proc/sys/kernel/osrelease; }
-          need_root() { [ "$(id -u)" -eq 0 ] || exec sudo -E "$0" "$@"; }
+            is_wsl() { grep -qi microsoft /proc/sys/kernel/osrelease; }
+            need_root() { [ "$(id -u)" -eq 0 ] || exec sudo -E "$0" "$@"; }
 
-          need_root
-          if ! is_wsl; then
-            echo "✗ Not running inside WSL. Aborting."
-            exit 1
-          fi
+            need_root
+            if ! is_wsl; then
+              echo "✗ Not running inside WSL. Aborting."
+              exit 1
+            fi
 
-          echo "→ Cloning $REPO_URL ($BRANCH) into ${DEST_DIR} …"
-          rm -rf "${DEST_DIR}"
-          git clone --branch "${BRANCH}" --depth 1 "${REPO_URL}" "${DEST_DIR}"
+            echo "→ Cloning $REPO_URL ($BRANCH) into $DEST_DIR …"
+            rm -rf "$DEST_DIR"
+            git clone --branch "$BRANCH" --depth 1 "$REPO_URL" "$DEST_DIR"
 
-          echo "→ chmod -R 777 ${DEST_DIR} (per your requirement)"
-          chmod -R 777 "${DEST_DIR}"
+            echo "→ chmod -R 777 $DEST_DIR (per your requirement)"
+            chmod -R 777 "$DEST_DIR"
 
-          # sanity: ensure the host exists
-          if [ ! -f "${DEST_DIR}/hosts/${FLAKE_HOST}/configuration.nix" ]; then
-            echo "✗ ${DEST_DIR}/hosts/${FLAKE_HOST}/configuration.nix not found."
-            echo "  Make sure your repo defines nixosConfigurations.${FLAKE_HOST}."
-            exit 1
-          fi
+            # sanity: ensure the host exists
+            if [ ! -f "$DEST_DIR/hosts/$FLAKE_HOST/configuration.nix" ]; then
+              echo "✗ $DEST_DIR/hosts/$FLAKE_HOST/configuration.nix not found."
+              echo "  Make sure your repo defines nixosConfigurations.$FLAKE_HOST."
+              exit 1
+            fi
 
-          echo "→ Building boot generation for ${FLAKE_HOST} (applies wsl.defaultUser on relog)…"
-          nixos-rebuild boot --flake "${DEST_DIR}#${FLAKE_HOST}"
+            echo "→ Building boot generation for $FLAKE_HOST (applies wsl.defaultUser on relog)…"
+            nixos-rebuild boot --flake "$DEST_DIR#$FLAKE_HOST"
 
-          cat <<'EOM'
+            cat <<'EOM'
 
 ✓ Boot generation built.
 
@@ -177,16 +173,17 @@ Now apply it (one-time WSL relog sequence):
 Optionally run:
   sudo nixos-rebuild switch --flake /etc/nixos#aevon
 EOM
-        '';
+          '';
+        };
+      in
+      {
+        type = "app";
+        program = "${script}/bin/aevon-install";
       };
-    in {
-      type = "app";
-      program = "${script}/bin/aevon-install";
-    };
 
-    # ------------------------------
-    # Standalone home-manager configs
-    # ------------------------------
+    ########################################
+    # Standalone home-manager configurations
+    ########################################
     homeConfigurations = {
       "xhos@zireael" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -199,10 +196,7 @@ EOM
       };
 
       "xhos@vyverne" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ inputs.aard.overlay ];
-        };
+        pkgs = import nixpkgs { inherit system; overlays = [ inputs.aard.overlay ]; };
         extraSpecialArgs = { inherit inputs system; };
         modules = [
           ./home/xhos/vyverne.nix
