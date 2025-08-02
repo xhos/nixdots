@@ -127,8 +127,8 @@
             #!/usr/bin/env bash
             set -euo pipefail
 
-            REPO_URL="${REPO_URL:-https://github.com/xhos/nixdots.git}"
-            BRANCH="${BRANCH:-main}"
+            REPO_URL="''${REPO_URL:-https://github.com/xhos/nixdots.git}"
+            BRANCH="''${BRANCH:-main}"
             DEST_DIR="/etc/nixos"
             FLAKE_HOST="aevon"
 
