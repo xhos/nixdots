@@ -52,7 +52,7 @@
 
     # private secrets repository
     nix-secrets = {
-      url = "git+ssh://git@github.com/xhos/nix-secrets?shallow=1&ref=main";
+      url = "git+ssh://git@github.com/xhos/nix-secrets?ref=main&allRefs=1";
       flake = false;
     };
   };
