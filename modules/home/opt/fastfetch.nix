@@ -3,114 +3,104 @@
     enable = true;
     settings = {
       logo = {
-        type = "sixel";
-        source = "/etc/nixos/home/shared/images/evanixlogo.png";
-        width = 34;
-        height = 17;
+        height = 20;
         padding = {
           top = 1;
         };
       };
       display = {
-        separator = " -> ";
-        constants = [
-          "──────────────────────────────"
-        ];
+        separator = "";
       };
       modules = [
-        {
-          type = "custom";
-          format = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}";
-        }
-        {
-          type = "custom";
-          format = "┌{$1}{$1}┐";
-          outputColor = "90";
-        }
+        "break"
         {
           type = "os";
-          key = "{icon} OS";
-          keyColor = "yellow";
+          key = "OS   ";
+          keyColor = "31";
         }
         {
           type = "kernel";
-          key = "│ ├";
-          keyColor = "yellow";
+          key = " ├  ";
+          keyColor = "31";
         }
         {
           type = "packages";
-          key = "│ ├󰏖";
-          keyColor = "yellow";
+          format = "{} (nix)";
+          key = " ├ 󰏖 ";
+          keyColor = "31";
         }
         {
           type = "shell";
-          key = "│ └";
-          keyColor = "yellow";
+          key = " └  ";
+          keyColor = "31";
         }
+        "break"
         {
           type = "wm";
-          key = " DE/WM";
-          keyColor = "blue";
+          key = "WM   ";
+          keyColor = "32";
         }
         {
-          type = "lm";
-          key = "│ ├󰧨";
-          keyColor = "blue";
+          type = "wmtheme";
+          key = " ├ 󰉼 ";
+          keyColor = "32";
+        }
+        {
+          type = "icons";
+          key = " ├ 󰀻 ";
+          keyColor = "32";
+        }
+        {
+          type = "cursor";
+          key = " ├  ";
+          keyColor = "32";
         }
         {
           type = "terminal";
-          key = "│ └";
-          keyColor = "blue";
+          key = " ├  ";
+          keyColor = "32";
         }
         {
+          type = "terminalfont";
+          key = " └  ";
+          keyColor = "32";
+        }
+        "break"
+        {
           type = "host";
-          key = "󰌢 PC";
-          keyColor = "green";
+          format = "{5} {1} Type {2}";
+          key = "PC   ";
+          keyColor = "33";
         }
         {
           type = "cpu";
-          key = "│ ├󰻠";
-          keyColor = "green";
+          format = "{1} ({3}) @ {7} GHz";
+          key = " ├  ";
+          keyColor = "33";
         }
         {
           type = "gpu";
-          key = "│ ├󰍛";
-          keyColor = "green";
-        }
-        {
-          type = "disk";
-          key = "│ ├";
-          keyColor = "green";
+          format = "{1} {2} @ {12} GHz";
+          key = " ├ 󰢮 ";
+          keyColor = "33";
         }
         {
           type = "memory";
-          key = "│ └󰑭";
-          keyColor = "green";
+          key = " ├  ";
+          keyColor = "33";
         }
         {
-          type = "sound";
-          key = " SND";
-          keyColor = "cyan";
+          type = "disk";
+          key = " ├ 󰋊 ";
+          keyColor = "33";
         }
         {
-          type = "player";
-          key = "│ ├󰥠";
-          keyColor = "cyan";
+          type = "monitor";
+          key = " └  ";
+          keyColor = "33";
         }
-        {
-          type = "media";
-          key = "│ └󰝚";
-          keyColor = "cyan";
-        }
-        {
-          type = "custom";
-          format = "└{$1}{$1}┘";
-          outputColor = "90";
-        }
-        {
-          type = "custom";
-          format = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}";
-        }
+        "break"
+        "break"
       ];
     };
   };
