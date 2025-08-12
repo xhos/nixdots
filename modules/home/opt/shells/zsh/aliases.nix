@@ -16,7 +16,7 @@
     b64 = "openssl rand -base64 64 | tr -d '\n' | tr -- '+/' '-_' | tr -d '\n=' | wl-copy";
 
     # impermanence
-    imp = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude \"{tmp,etc/passwd,home/xhos/.cache,home/xhos/go,var/lib/systemd/coredump}\"";
+    imp = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude \"{tmp,etc/passwd,home/xhos/.cache,home/xhos/.cargo,home/xhos/go,var/lib/systemd/coredump}\"";
     nimp = "sudo ncdu -x /";
   };
 }

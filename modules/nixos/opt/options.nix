@@ -11,13 +11,7 @@
     nvidia   .enable = mkEnableOption "Enable nvidia support";
     vm       .enable = mkEnableOption "Enable vm support";
     ai       .enable = mkEnableOption "Enable ai support";
-    obs      .enable = mkEnableOption "Enable obs support";
     boot      .enable = mkEnableOption "Enable boot support";
-
-    de = mkOption {
-      type = types.enum ["gnome" "cosmic" "plasma" "xfce" "none"];
-      default = "none";
-    };
 
     greeter = mkOption {
       type = types.enum ["regreet" "tuigreet" "ly" "sddm" "none"];

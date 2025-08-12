@@ -7,7 +7,7 @@
   config = lib.mkIf config.vm.enable {
     programs.dconf.enable = true;
     users.users.xhos.extraGroups = ["libvirtd"];
-    # Install necessary packages
+
     environment.systemPackages = with pkgs; [
       virt-viewer
       spice
@@ -16,8 +16,8 @@
       win-virtio
       win-spice
       adwaita-icon-theme
-      # quickemu
     ];
+
     services.qemuGuest.enable = true;
     programs.virt-manager.enable = true;
     users.groups.libvirtd.members = ["xhos"];
@@ -32,6 +32,18 @@
         };
       };
       spiceUSBRedirection.enable = true;
+
+      vmVariant = {
+        virtualisation = {
+          memorySize = 8192;
+          cores = 4;
+          graphics = true;
+          resolution = {
+            x = 1920;
+            y = 1080;
+          };
+        };
+      };
     };
 
     services.spice-vdagentd.enable = true;

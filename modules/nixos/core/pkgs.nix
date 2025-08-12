@@ -1,14 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  # fonts.packages = [pkgs.hack-font] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # xdg-desktop-portal-wlr
-    # xdg-desktop-portal-gtk
-    # Networking
+    # networking
     nmap
     networkmanagerapplet
     wirelesstools # wireless stuff
@@ -21,13 +13,13 @@
     lm_sensors
     fan2go
 
-    # Nix related
+    # nix related
     nh # nix helper
     home-manager
     nix-prefetch-git
     nix-inspect
 
-    # Audio
+    # audio
     # pulseaudio
     # pamixer # pulseaudio command line mixer
     pavucontrol # pulseaudio controls

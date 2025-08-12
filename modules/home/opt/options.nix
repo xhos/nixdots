@@ -10,6 +10,7 @@
       secrets.enable = mkEnableOption "Enable secrets management";
       telegram.enable = mkEnableOption "Enable telegram";
       whisper.enable = mkEnableOption "Enable whisper";
+      obs.enable = mkEnableOption "Enable obs";
     };
 
     mainMonitor = mkOption {

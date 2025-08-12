@@ -9,6 +9,7 @@
     ./hypr
     ./mako.nix
     ./music
+    ./obs.nix
     ./options.nix
     ./prompts
     ./rofi.nix

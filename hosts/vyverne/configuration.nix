@@ -61,7 +61,6 @@
   nvidia    .enable = true;
   vm        .enable = true;
   ai        .enable = true;
-  obs       .enable = true;
   boot      .enable = true;
 
   greeter = "sddm";

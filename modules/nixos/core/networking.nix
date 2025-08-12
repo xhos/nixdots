@@ -1,8 +1,14 @@
-let
+{
+  lib,
+  config,
+  ...
+}: let
   sshPort = 10022;
 in {
   services.resolved.enable = true;
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = lib.mkIf config.bluetooth.enable true;
+
   networking = {
     # wireless = {
     # enable = true; # make sure wpa_supplicant is disabled

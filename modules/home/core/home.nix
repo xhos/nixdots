@@ -65,6 +65,8 @@
     gnumake
     gum # fancy scripts
     tlrc # better man
+    go
+    claude-code
     dialog
     freerdp3
     iproute2
@@ -72,7 +74,6 @@
     netcat-gnu
     loupe
     jq
-    gemini-cli
   ];
 
   optionalPkgs = with pkgs; [
@@ -81,7 +82,6 @@
     libreoffice
     postman
     gnome-solanum
-    xournalpp
     inputs.zen-browser.packages."${system}".default
     mpv # video player
     ffmpeg-full
@@ -99,15 +99,13 @@ in {
     homeDirectory = "/home/xhos";
     stateVersion = "25.05";
 
-    packages =
-      lib.concatLists
-      [
-        corePkgs
-        (
-          if config.optPkgs.enable
-          then optionalPkgs
-          else []
-        )
-      ];
+    packages = lib.concatLists [
+      corePkgs
+      (
+        if config.optPkgs.enable
+        then optionalPkgs
+        else []
+      )
+    ];
   };
 }

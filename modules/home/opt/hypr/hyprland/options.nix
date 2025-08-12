@@ -2,15 +2,12 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       # daemons
-      # "nm-applet"
       "blueman-applet"
       "clipse -listen"
       "xwaylandvideobridge"
       "wayvnc"
-      # "mako"Q
       "eval $(/run/wrappers/bin/gnome-keyring-daemon --start --daemonize)"
 
-      # misc
       # wp
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
@@ -19,14 +16,6 @@
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "dbus-update-activation-environment --systemd --all"
       "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-      # "systemctl --user import-environment PATH"
-      # "systemctl --user restart xdg-desktop-portal.service"
-      # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1"
-      # "ssh-add /home/xhos/.ssh/github"
-      # ''echo "Xft.dpi: 130" | xrdb -merge''
-      # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 16c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 0.5"
-      # "swww-daemon"
-      # "sleep 5; swww img ${config.wallpaper}"
     ];
 
     #-----------------------------------------------------------------------------------------------------------
@@ -43,12 +32,6 @@
       "col.inactive_border" = "rgba(111111aa)";
       layout = "dwindle";
 
-      # "col.active_border"="rgba(ffffffff) rgba(ffffff00) rgba(ffffffff) rgba(ffffff00) rgba(ffffffff) 45deg";
-      # "col.active_border"="rgb(aaff00) rgba(ffaa00ff) rgba(ffaa00ff) rgba(ffaa00ff) rgb(aaff00) 45deg";
-
-      # "col.inactive_border" = "rgb(A9B1D6)";
-      # "col.active_border" = "rgb(A9B1D6)";
-
       snap = {
         enabled = true;
         window_gap = 10;
@@ -57,20 +40,16 @@
       };
     };
 
-    # not supported yet on Hyprland 47
+    hotedge = [
+      "HDMI-A-1,top,8,100,pkill -SIGUSR2 waybar,pkill -SIGUSR1 waybar,1"
+    ];
+
     "plugin:dynamic-cursors" = {
       enabled = true;
       mode = "stretch";
       threshold = 2;
       stretch = {
-        # controls how much the cursor is stretched
-        # this value controls at which speed (px/s) the full stretch is reached
         limit = 3000;
-
-        # relationship between speed and stretch amount, supports these values:
-        # linear             - a linear function is used
-        # quadratic          - a quadratic function is used
-        # negative_quadratic - negative version of the quadratic one, feels more aggressive
         function = "quadratic";
       };
     };

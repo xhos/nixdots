@@ -21,10 +21,16 @@
       # jetbrains
       ".local/share/JetBrains"
       ".config/JetBrains"
+      ".cache/JetBrains"
+      ".java" # jetbrains for some miraculous reason store auth in ~/.java
 
       # discord
       ".config/discord"
       ".config/Vencord"
+
+      # claude
+      ".claude"
+      ".config/Claude/"
 
       # misc configs
       ".config/pulse"
@@ -51,8 +57,9 @@
       ".mozilla"
       ".vscode"
       ".ssh"
-
+      "work"
       "Projects"
+      "Music"
       "Documents"
       "Downloads"
       "Pictures"
@@ -63,6 +70,7 @@
       ".wakatime.cfg" # micromanage myself
       ".zsh_history" # fight amnesia
       ".config/OpenRGB/config.json" # i lv my lights glowing
+      ".claude.json"
     ];
 
     allowOther = true;
@@ -71,8 +79,8 @@
   optPkgs.enable = true;
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/z8/wallhaven-z8lgwg.jpg";
-    sha256 = "sha256-r3f1Wd7SYyJnB55Wp+XD+/YOK4XQCzFDYf9YoPx1Bas=";
+    url = "https://w.wallhaven.cc/full/7p/wallhaven-7pr53v.jpg";
+    sha256 = "sha256-S3z3kpv9DGQ3zO/2Ra1zm7+SMvJ+duE0jliJlvwv8FM=";
   };
 
   services.kdeconnect.enable = true;
@@ -83,6 +91,8 @@
     firefox.enable = true;
     discord.enable = true;
     secrets.enable = true;
+    telegram.enable = true;
+    obs.enable = true;
   };
 
   default = {
@@ -96,14 +106,21 @@
 
   home.packages = with pkgs; [
     # davinci-resolve
-    jetbrains.goland
-    jetbrains.datagrip
+    # jetbrains.goland
+    # jetbrains.datagrip
     firefox
     termius
+    lollypop
+    inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
     # go
     # wireguard-tools
     # iptables
-    (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+    (vscode.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    })
   ];
 
   hyprland.hyprspace.enable = true;

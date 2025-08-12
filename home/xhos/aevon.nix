@@ -8,7 +8,7 @@
   modules = {
     secrets.enable = false;
   };
-  
+
   default = {
     shell = "zsh";
     prompt = "starship";
