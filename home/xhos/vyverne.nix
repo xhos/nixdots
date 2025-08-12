@@ -3,78 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../../modules/home
-    inputs.impermanence.homeManagerModules.impermanence
-  ];
-
-  home.persistence."/persist/home/xhos" = {
-    directories = [
-      # telegram
-      ".local/share/materialgram/tdata"
-      ".cache/stylix-telegram-theme"
-
-      # zed
-      ".local/share/zed"
-      ".config/zed"
-
-      # jetbrains
-      ".local/share/JetBrains"
-      ".config/JetBrains"
-      ".cache/JetBrains"
-      ".java" # jetbrains for some miraculous reason store auth in ~/.java
-
-      # discord
-      ".config/discord"
-      ".config/Vencord"
-
-      # claude
-      ".claude"
-      ".config/Claude/"
-
-      # misc configs
-      ".config/pulse"
-      ".config/hypr"
-      ".config/libreoffice"
-      ".config/spotify"
-      ".config/vesktop"
-      ".config/clipse"
-      ".config/Code"
-      ".config/obsidian"
-      ".config/chromium"
-      ".config/sops"
-      ".config/waybar"
-      ".config/nvim"
-
-      ".local/share/PrismLauncher"
-      ".local/share/direnv"
-      ".local/share/zoxide" # zoxide i lv u, plz don't hv amnesia
-
-      ".cache/huggingface" # i like my models not in ram
-      ".cache/Proton" # proton stores their login stuff in cache for some reason
-
-      ".zen"
-      ".mozilla"
-      ".vscode"
-      ".ssh"
-      "work"
-      "Projects"
-      "Music"
-      "Documents"
-      "Downloads"
-      "Pictures"
-      "Videos"
-    ];
-
-    files = [
-      ".wakatime.cfg" # micromanage myself
-      ".zsh_history" # fight amnesia
-      ".config/OpenRGB/config.json" # i lv my lights glowing
-      ".claude.json"
-    ];
-
-    allowOther = true;
-  };
+  imports = [../../modules/home];
 
   optPkgs.enable = true;
 
@@ -84,6 +13,8 @@
   };
 
   services.kdeconnect.enable = true;
+
+  impermanence.enable = true;
 
   modules = {
     rofi.enable = true;

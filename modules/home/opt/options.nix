@@ -1,16 +1,18 @@
 {lib, ...}: {
   options = with lib; {
+    impermanence.enable = mkEnableOption "nuke da home folder";
+
     modules = {
-      firefox.enable = mkEnableOption "Enable firefox";
-      mpd.enable = mkEnableOption "Enable mpd";
-      rofi.enable = mkEnableOption "Enable rofi";
-      spicetify.enable = mkEnableOption "Enable spicetify";
-      discord.enable = mkEnableOption "Enable discord";
-      nvidia.enable = mkEnableOption "Enable nvidia specific patches";
-      secrets.enable = mkEnableOption "Enable secrets management";
-      telegram.enable = mkEnableOption "Enable telegram";
-      whisper.enable = mkEnableOption "Enable whisper";
-      obs.enable = mkEnableOption "Enable obs";
+      firefox.enable = mkEnableOption "enable firefox";
+      mpd.enable = mkEnableOption "enable mpd";
+      rofi.enable = mkEnableOption "enable rofi";
+      spicetify.enable = mkEnableOption "enable spicetify";
+      discord.enable = mkEnableOption "enable discord";
+      nvidia.enable = mkEnableOption "enable nvidia specific patches";
+      secrets.enable = mkEnableOption "enable secrets management";
+      telegram.enable = mkEnableOption "enable telegram";
+      whisper.enable = mkEnableOption "enable whisper";
+      obs.enable = mkEnableOption "enable obs";
     };
 
     mainMonitor = mkOption {
@@ -19,12 +21,12 @@
     };
 
     hyprland = {
-      hyprspace.enable = mkEnableOption "Enable hyprland overview plugin";
+      hyprspace.enable = mkEnableOption "enable hyprland overview plugin";
     };
 
     default = {
       de = mkOption {
-        type = types.enum ["hyprland" "plasma" "none"];
+        type = types.enum ["hyprland" "none"];
         default = "none";
       };
       bar = mkOption {

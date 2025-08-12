@@ -1,5 +1,6 @@
 {lib, ...}: {
   options = with lib; {
+    impermanence.enable = mkEnableOption "nuke da pc";
     bluetooth.enable = mkEnableOption "Enable bluetooth";
     rclone   .enable = mkEnableOption "Enable rclone";
     wayland  .enable = mkEnableOption "Enable wayland";

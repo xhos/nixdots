@@ -3,6 +3,7 @@
     ./ai.nix
     ./audio.nix
     ./boot.nix
+    ./impermanence.nix
     ./ly.nix
     ./nvidia.nix
     ./options.nix

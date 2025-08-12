@@ -20,47 +20,47 @@
       jq
 
       (writeShellScriptBin "get-city-coords" ''
-          #!/usr/bin/env bash
+        #!/usr/bin/env bash
 
-          if [ $# -eq 0 ]; then
-            echo "usage: get-city-coords <city-name>"
-            echo "example: get-city-coords \"tokyo\""
-            exit 1
-          fi
+        if [ $# -eq 0 ]; then
+          echo "usage: get-city-coords <city-name>"
+          echo "example: get-city-coords \"tokyo\""
+          exit 1
+        fi
 
-          CITY="$*"
-          echo "looking up coords for: $CITY"
+        CITY="$*"
+        echo "looking up coords for: $CITY"
 
-          RESPONSE=$(curl -s "https://nominatim.openstreetmap.org/search?q=$CITY&format=json&limit=1")
+        RESPONSE=$(curl -s "https://nominatim.openstreetmap.org/search?q=$CITY&format=json&limit=1")
 
-          if [ -z "$RESPONSE" ] || [ "$RESPONSE" = "[]" ]; then
-            echo "err: city not found. try being more specific"
-            exit 1
-          fi
+        if [ -z "$RESPONSE" ] || [ "$RESPONSE" = "[]" ]; then
+          echo "err: city not found. try being more specific"
+          exit 1
+        fi
 
-          LAT=$(echo "$RESPONSE" | jq -r '.[0].lat')
-          LON=$(echo "$RESPONSE" | jq -r '.[0].lon')
-          DISPLAY_NAME=$(echo "$RESPONSE" | jq -r '.[0].display_name')
+        LAT=$(echo "$RESPONSE" | jq -r '.[0].lat')
+        LON=$(echo "$RESPONSE" | jq -r '.[0].lon')
+        DISPLAY_NAME=$(echo "$RESPONSE" | jq -r '.[0].display_name')
 
-          if [ "$LAT" = "null" ] || [ "$LON" = "null" ]; then
-            echo "err: could not parse coordinates"
-            exit 1
-          fi
+        if [ "$LAT" = "null" ] || [ "$LON" = "null" ]; then
+          echo "err: could not parse coordinates"
+          exit 1
+        fi
 
-          echo "found: $DISPLAY_NAME"
-          echo "coordinates: $LAT, $LON"
-          echo ""
+        echo "found: $DISPLAY_NAME"
+        echo "coordinates: $LAT, $LON"
+        echo ""
 
-          CONFIG_TEXT="latitude = \"$LAT\";
-          longitude = \"$LON\";"
+        CONFIG_TEXT="latitude = \"$LAT\";
+        longitude = \"$LON\";"
 
-          echo "config:"
-          echo "$CONFIG_TEXT"
+        echo "config:"
+        echo "$CONFIG_TEXT"
 
-          echo "$CONFIG_TEXT" | wl-copy
+        echo "$CONFIG_TEXT" | wl-copy
 
-          echo ""
-          echo "copied to clipboard"
+        echo ""
+        echo "copied to clipboard"
       '')
     ];
 

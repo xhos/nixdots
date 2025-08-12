@@ -7,6 +7,7 @@
     ./firefox
     ./git.nix
     ./hypr
+    ./impermanence.nix
     ./mako.nix
     ./music
     ./obs.nix
