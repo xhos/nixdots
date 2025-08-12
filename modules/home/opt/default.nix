@@ -7,7 +7,6 @@
     ./firefox
     ./git.nix
     ./hypr
-    ./logi-hypr.nix
     ./mako.nix
     ./music
     ./obs.nix

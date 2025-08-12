@@ -2,16 +2,16 @@
   description = "overcomplicated mess of a system flake that works for some reason";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # nixpkgs unstable
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11"; # nixpkgs stable
-    impermanence.url = "github:nix-community/impermanence"; # ocd godsend
-    disko.url = "github:nix-community/disko"; # declarative disk management
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main"; # use nix powers on windows
-    nixcord.url = "github:kaylorben/nixcord"; # manage vencord plugins nix way
-    zen-browser.url = "github:0xc000022070/zen-browser-flake"; # cool browser
-    hedge.url = "github:KZDKM/Hedge"; # hot edge hyprland plugin
-    logi-hypr.url = "github:xhos/logi-hypr"; # gestures for my mx master 3s
     aard.url = "github:xhos/aard"; # aard, my own astal bar
+    disko.url = "github:nix-community/disko"; # declarative disk management
+    hedge.url = "github:KZDKM/Hedge"; # hot edge hyprland plugin
+    impermanence.url = "github:nix-community/impermanence"; # ocd godsend
+    logi-hypr.url = "github:xhos/logi-hypr"; # gestures for my mx master 3s
+    nixcord.url = "github:kaylorben/nixcord"; # manage vencord plugins nix way
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main"; # use nix powers on windows
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11"; # nixpkgs stable
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # nixpkgs unstable
+    zen-browser.url = "github:0xc000022070/zen-browser-flake"; # cool browser
 
     home-manager = {
       url = "github:nix-community/home-manager"; # home-manager
