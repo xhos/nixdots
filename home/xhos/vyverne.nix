@@ -93,6 +93,7 @@
     secrets.enable = true;
     telegram.enable = true;
     obs.enable = true;
+    whisper.enable = true;
   };
 
   default = {

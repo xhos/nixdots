@@ -41,26 +41,6 @@
         "type": "github"
       }
     },
-    "anifetch": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1753600765,
-        "narHash": "sha256-sFJkfFyYNHl693YbiB4Unbak3OWL0PgrTGAcpbYiHZI=",
-        "owner": "Notenlish",
-        "repo": "anifetch",
-        "rev": "d7d586cb0abf920bae701cbaed4a067dada06f9b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notenlish",
-        "repo": "anifetch",
-        "type": "github"
-      }
-    },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
@@ -1048,7 +1028,6 @@
     "root": {
       "inputs": {
         "aard": "aard",
-        "anifetch": "anifetch",
         "claude-desktop": "claude-desktop",
         "disko": "disko",
         "hedge": "hedge",
