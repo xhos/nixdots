@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -20,6 +21,7 @@
         hyprgrass
         hypr-dynamic-cursors
         hyprsplit
+        inputs.hedge.packages."${pkgs.system}".default
       ];
 
       xwayland.enable = true;

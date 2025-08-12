@@ -10,6 +10,7 @@
         "video"
         "libvirtd"
         "docker"
+        "input"
       ];
     };
     defaultUserShell = pkgs.zsh;
