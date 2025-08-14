@@ -8,7 +8,6 @@
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
   ];
 
-  networking.wireless.enable = true;
   networking.hostName = "nyx";
   nixpkgs.hostPlatform = "x86_64-linux";
 
