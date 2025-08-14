@@ -13,7 +13,11 @@
 
   # ZFS Support
   boot.supportedFilesystems = [ "zfs" ];
-  networking.hostId = "9a199e1d";
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.forceImportAll = false;
+  
+  # Required for ZFS
+  networking.hostId = "12345678"; # Must be 8 hex characters, can be random
 
   nix = {
     settings = {
@@ -40,6 +44,7 @@
     disko
     rsync
     networkmanager
+    # ZFS utilities
     zfs
     (writeShellApplication {
       name = "welcome";
@@ -48,9 +53,10 @@
         echo "🏠 Welcome to NixOS Installer (nyx)"
         echo ""
         echo "Available tools:"
-        echo "  📦 i        - Interactive NixOS installer"
-        echo "  🔧 e        - Mount & enter existing NixOS system"
-        echo "  🌐 nmtui    - Connect to WiFi"
+        echo "  📦 i                    - Interactive NixOS installer"
+        echo "  🔧 nixos-enter-helper   - Mount & enter existing NixOS system"
+        echo "  🌐 nmtui                - Connect to WiFi"
+        echo "  📋 lsblk -f             - List partitions and filesystems"
         echo ""
         echo "Quick start: Run 'nmtui' to connect to WiFi, then 'i' to install NixOS"
       '';
@@ -107,11 +113,11 @@
         # Install NixOS
         nixos-install --root /mnt --flake /mnt/etc/nixos#"$HOST" --no-root-passwd
 
-        echo "✅ Done. Reboot or run 'e' to enter the installed system."
+        echo "✅ Done. Reboot or run 'nixos-enter-helper' to enter the installed system."
       '';
     })
     (writeShellApplication {
-      name = "e";
+      name = "nixos-enter-helper";
       text = ''
         #!/usr/bin/env bash
         set -euo pipefail
@@ -163,21 +169,18 @@
         # Get partition information with details
         info "Scanning for partitions..."
         
-        # Create a formatted list of partitions with details
-        partition_list=$(lsblk -no NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL,UUID | \
-          grep -E "^[[:space:]]*[a-z]+[0-9]+" | \
-          while read -r name size fstype mountpoint label uuid; do
-            # Clean up the name (remove leading spaces and tree characters)
-            clean_name=$(echo "$name" | sed 's/^[[:space:]]*[├└│─]*//g')
-            
+        # Create a formatted list of partitions with details (avoid tree characters)
+        partition_list=$(lsblk -lno NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL | \
+          grep -E "^[a-z]+[0-9]+" | \
+          while read -r name size fstype mountpoint label _; do
             # Format display string with proper spacing
-            display="$clean_name"
+            display="$name"
             [[ -n "$size" ]] && display="$display ($size)"
             [[ -n "$fstype" ]] && display="$display [$fstype]"
             [[ -n "$label" ]] && display="$display {$label}"
             [[ -n "$mountpoint" ]] && display="$display -> $mountpoint"
             
-            echo "/dev/$clean_name|$display"
+            echo "/dev/$name|$display"
           done)
 
         if [[ -z "$partition_list" ]]; then
@@ -314,6 +317,7 @@
 
   services.getty.autologinUser = lib.mkForce "root";
   
+  # Show welcome message on login
   environment.loginShellInit = ''
     welcome
   '';
