@@ -24,6 +24,10 @@
   services.hardware.openrgb.enable = true;
   programs.adb.enable = true;
 
+  systemd.tmpfiles.rules = [
+    "d /games 0755 xhos users - -"
+  ];
+
   boot.kernelParams = ["hid_apple.fnmode=2"];
   boot.supportedFilesystems = ["zfs"];
   services.gvfs.enable = true;

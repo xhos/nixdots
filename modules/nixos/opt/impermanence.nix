@@ -67,10 +67,6 @@ in {
       options = ["defaults" "size=25%" "mode=755"];
     };
 
-    systemd.tmpfiles.rules = [
-      "d /games 0755 xhos users - -"
-    ];
-
     fileSystems."/nix".neededForBoot = true;
     fileSystems."/persist".neededForBoot = true;
   };

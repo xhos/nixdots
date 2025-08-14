@@ -23,7 +23,7 @@
   greetd    .enable = true;
   boot      .enable = true;
 
-  greeter = "ly";
+  greeter = "sddm";
 
   hardware.sensor.iio.enable = true; # enables sensors needed for iio-hyprland (screen rotation)
 

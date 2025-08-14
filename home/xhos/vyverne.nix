@@ -44,9 +44,6 @@
     termius
     lollypop
     inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
-    # go
-    # wireguard-tools
-    # iptables
     (vscode.override {
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
