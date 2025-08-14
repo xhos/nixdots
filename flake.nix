@@ -60,9 +60,11 @@
         specialArgs = {inherit inputs;} // extraSpecialArgs;
         modules =
           [
+            ./hosts/${hostname}/configuration.nix
+          ]
+          ++ (if homeUser != null then [
             home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
-
             {
               home-manager.extraSpecialArgs = {
                 inherit inputs;
@@ -70,9 +72,9 @@
               };
               home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
             }
-
-            ./hosts/${hostname}/configuration.nix
-          ]
+          ] else [
+            inputs.stylix.nixosModules.stylix
+          ])
           ++ modules;
       };
   in {
@@ -95,9 +97,9 @@
         modules = [inputs.nixos-wsl.nixosModules.default];
       };
 
-      nyx = nixpkgs.lib.nixosSystem {
+      nyx = mkNixosSystem {
         hostname = "nyx";
-        homeUser = null;
+        homeUser = null; 
       };
     };
   };

@@ -16,9 +16,22 @@
         host = "kaminari";
         hostname = "40.233.72.203";
         user = "ubuntu";
-
         identitiesOnly = true;
         identityFile = "~/.ssh/kaminari.key";
+      };
+      "kaminari-2" = {
+        host = "kaminari-2";
+        hostname = "140.238.143.172";
+        user = "ubuntu";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/kaminari-2.key";
+      };
+      "new-arm" = {
+        host = "new-arm";
+        hostname = "140.238.145.169";
+        user = "ubuntu";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/new-arm.key";
       };
     };
   };
