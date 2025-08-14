@@ -68,6 +68,7 @@
             then [
               home-manager.nixosModules.home-manager
               inputs.stylix.nixosModules.stylix
+              inputs.impermanence.nixosModules.impermanence
               {
                 home-manager.extraSpecialArgs = {
                   inherit inputs;
@@ -88,7 +89,6 @@
         hostname = "zireael";
         modules = [
           inputs.disko.nixosModules.disko
-          inputs.impermanence.nixosModules.impermanence
           inputs.sops-nix.nixosModules.sops
         ];
       };
@@ -97,7 +97,6 @@
         hostname = "vyverne";
         modules = [
           inputs.disko.nixosModules.disko
-          inputs.impermanence.nixosModules.impermanence
           inputs.sops-nix.nixosModules.sops
         ];
       };
