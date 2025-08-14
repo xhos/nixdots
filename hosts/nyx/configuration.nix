@@ -35,6 +35,7 @@
     gum
     disko
     rsync
+    networkmanager
     (writeShellApplication {
       name = "i";
       text = ''
