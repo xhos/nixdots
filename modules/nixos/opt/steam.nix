@@ -2,10 +2,12 @@
   pkgs,
   config,
   lib,
+  npins,
   ...
 }: {
   config = lib.mkIf config.steam.enable {
-    # environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
+      (callPackage npins.creamlinux {})
     #   gamescope
     #   heroic
     #   lutris
@@ -13,7 +15,7 @@
     #   prismlauncher
     #   protonup-qt
     #   protonup
-    # ];
+    ];
 
     # nixpkgs.config.packageOverrides = pkgs: {
     #   steam = pkgs.steam.override {

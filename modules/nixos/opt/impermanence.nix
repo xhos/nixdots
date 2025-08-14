@@ -4,7 +4,7 @@
   ...
 }: let
   persistIf = condition: persistConfig: lib.mkIf condition persistConfig;
-  
+
   userDir = path: {
     directory = "/home/xhos/${path}";
     user = "xhos";
@@ -14,7 +14,7 @@
 in {
   config = lib.mkIf config.impermanence.enable {
     programs.fuse.userAllowOther = true;
-    
+
     environment.persistence."/persist" = lib.mkMerge [
       {
         hideMounts = true;

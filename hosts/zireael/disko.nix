@@ -17,7 +17,7 @@
               mountOptions = ["umask=0077"];
             };
           };
-          
+
           zpool = {
             size = "100%";
             content = {

@@ -14,6 +14,7 @@
     fan2go
 
     # nix related
+    npins
     nh # nix helper
     home-manager
     nix-prefetch-git

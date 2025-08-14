@@ -50,6 +50,7 @@
     home-manager,
     ...
   } @ inputs: let
+    npins = import ./npins;
     mkNixosSystem = {
       hostname,
       modules ? [],
@@ -57,24 +58,28 @@
       extraSpecialArgs ? {},
     }:
       nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;} // extraSpecialArgs;
+        specialArgs = {inherit inputs npins;} // extraSpecialArgs;
         modules =
           [
             ./hosts/${hostname}/configuration.nix
           ]
-          ++ (if homeUser != null then [
-            home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            {
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                system = "x86_64-linux";
-              };
-              home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
-            }
-          ] else [
-            inputs.stylix.nixosModules.stylix
-          ])
+          ++ (
+            if homeUser != null
+            then [
+              home-manager.nixosModules.home-manager
+              inputs.stylix.nixosModules.stylix
+              {
+                home-manager.extraSpecialArgs = {
+                  inherit inputs;
+                  system = "x86_64-linux";
+                };
+                home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
+              }
+            ]
+            else [
+              inputs.stylix.nixosModules.stylix
+            ]
+          )
           ++ modules;
       };
   in {
@@ -104,7 +109,7 @@
 
       nyx = mkNixosSystem {
         hostname = "nyx";
-        homeUser = null; 
+        homeUser = null;
       };
     };
   };
