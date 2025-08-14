@@ -6,9 +6,14 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
+    ./disko.nix
   ];
 
   networking.hostName = "zireael";
+
+  networking.hostId = "5ca416d5";
+  boot.supportedFilesystems = ["zfs"];
+  impermanence.enable = true;
 
   users.users.xhos.openssh.authorizedKeys.keyFiles = [./zireael.pub];
 

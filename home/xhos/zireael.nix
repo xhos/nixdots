@@ -10,6 +10,8 @@
       sha256 = "sha256-lPHq2W5jPl2ph0lzlJwJ0W4WMFU1+YuuR8Mk4TQ1fVI=";
     };
 
+  impermanence.enable = true;
+
   modules = {
     rofi.enable = true;
     firefox.enable = true;

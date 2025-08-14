@@ -81,6 +81,11 @@
     nixosConfigurations = {
       zireael = mkNixosSystem {
         hostname = "zireael";
+        modules = [
+          inputs.disko.nixosModules.disko
+          inputs.impermanence.nixosModules.impermanence
+          inputs.sops-nix.nixosModules.sops
+        ];
       };
 
       vyverne = mkNixosSystem {
