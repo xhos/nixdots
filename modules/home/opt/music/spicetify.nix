@@ -12,10 +12,11 @@
   in
     lib.mkIf config.modules.spicetify.enable {
       enable = true;
-      theme = spicePkgs.themes.text;
+      theme = spicePkgs.themes.lucid;
       enabledExtensions = with spicePkgs.extensions; [
         shuffle
-        beautifulLyrics
+        hidePodcasts
+        allOfArtist
       ];
     };
 }
