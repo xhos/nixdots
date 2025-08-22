@@ -12,10 +12,10 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   # ZFS Support
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = ["zfs"];
   boot.zfs.forceImportRoot = false;
   boot.zfs.forceImportAll = false;
-  
+
   # Required for ZFS
   networking.hostId = "12345678"; # Must be 8 hex characters, can be random
 
@@ -130,21 +130,21 @@
         PURPLE='\033[0;35m'
         NC='\033[0m' # No Color
 
-        fail() { 
+        fail() {
           echo -e "''${RED}❌ Error:''${NC} $*" >&2
-          exit 1 
+          exit 1
         }
 
-        info() { 
-          echo -e "''${BLUE}ℹ️ ''${NC} $*" 
+        info() {
+          echo -e "''${BLUE}ℹ️ ''${NC} $*"
         }
 
-        success() { 
-          echo -e "''${GREEN}✅''${NC} $*" 
+        success() {
+          echo -e "''${GREEN}✅''${NC} $*"
         }
 
-        warn() { 
-          echo -e "''${YELLOW}⚠️ ''${NC} $*" 
+        warn() {
+          echo -e "''${YELLOW}⚠️ ''${NC} $*"
         }
 
         # Check if we're running as root
@@ -168,7 +168,7 @@
 
         # Get partition information with details
         info "Scanning for partitions..."
-        
+
         # Create a formatted list of partitions with details (avoid tree characters)
         partition_list=$(lsblk -lno NAME,SIZE,FSTYPE,MOUNTPOINT,LABEL | \
           grep -E "^[a-z]+[0-9]+" | \
@@ -179,7 +179,7 @@
             [[ -n "$fstype" ]] && display="$display [$fstype]"
             [[ -n "$label" ]] && display="$display {$label}"
             [[ -n "$mountpoint" ]] && display="$display -> $mountpoint"
-            
+
             echo "/dev/$name|$display"
           done)
 
@@ -234,23 +234,23 @@
         # Special handling for ZFS
         if [[ "$ROOT_FSTYPE" == "zfs_member" ]]; then
           info "Detected ZFS filesystem. Importing ZFS pools..."
-          
+
           # List available pools
           available_pools=$(sudo zpool import 2>/dev/null | grep "pool:" | awk '{print $2}' || echo "")
-          
+
           if [[ -n "$available_pools" ]]; then
             POOL=$(echo "$available_pools" | gum choose --header "📦 Select ZFS pool to import:")
             [[ -n "$POOL" ]] || fail "No ZFS pool selected"
-            
+
             info "Importing ZFS pool: $POOL"
             sudo zpool import -f "$POOL" || fail "Failed to import ZFS pool"
-            
+
             # List datasets in the pool
             datasets=$(sudo zfs list -H -o name | grep "^$POOL" || echo "")
             if [[ -n "$datasets" ]]; then
               ROOT_DATASET=$(echo "$datasets" | gum choose --header "🗃️  Select root dataset:")
               [[ -n "$ROOT_DATASET" ]] || fail "No root dataset selected"
-              
+
               info "Mounting ZFS dataset: $ROOT_DATASET"
               sudo zfs set mountpoint=/mnt "$ROOT_DATASET" || fail "Failed to set ZFS mountpoint"
               sudo zfs mount "$ROOT_DATASET" || fail "Failed to mount ZFS dataset"
@@ -304,7 +304,7 @@
         info "Entering NixOS system..."
         echo "💡 Inside the chroot you can:"
         echo "   • Run: nixos-rebuild switch"
-        echo "   • Edit: /etc/nixos/configuration.nix" 
+        echo "   • Edit: /etc/nixos/configuration.nix"
         echo "   • Install bootloader: NIXOS_INSTALL_BOOTLOADER=1 /nix/var/nix/profiles/system/bin/switch-to-configuration boot"
         echo "   • Exit with: exit"
         echo ""
@@ -316,7 +316,7 @@
   ];
 
   services.getty.autologinUser = lib.mkForce "root";
-  
+
   # Show welcome message on login
   environment.loginShellInit = ''
     welcome

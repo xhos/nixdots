@@ -46,6 +46,10 @@ in {
         ".cache/huggingface" # i like my models not in ram
         ".cache/Proton" # proton stores their login stuff in cache for some reason
 
+        # should techically be only enabled when steam is but oh well
+        ".config/r2modmanPlus-local"
+        ".config/r2modman"
+
         ".zen"
         ".mozilla"
         ".vscode"

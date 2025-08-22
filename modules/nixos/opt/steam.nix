@@ -8,13 +8,14 @@
   config = lib.mkIf config.steam.enable {
     environment.systemPackages = with pkgs; [
       (callPackage npins.creamlinux {})
-    #   gamescope
-    #   heroic
-    #   lutris
-    #   protontricks
-    #   prismlauncher
-    #   protonup-qt
-    #   protonup
+      r2modman
+      #   gamescope
+      #   heroic
+      #   lutris
+      #   protontricks
+      #   prismlauncher
+      #   protonup-qt
+      #   protonup
     ];
 
     # nixpkgs.config.packageOverrides = pkgs: {
