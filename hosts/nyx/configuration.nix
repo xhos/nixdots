@@ -67,15 +67,20 @@
         #!/usr/bin/env bash
         set -euo pipefail
 
+        log() { printf "\033[1;34m[INFO]\033[0m %s\n" "$*"; }
         fail() { echo "$*" >&2; exit 1; }
 
         WORKDIR=/tmp/nixdots
+        REPO_URL="https://github.com/xhos/nixdots.git"
 
         # Clone or update repository
         if [ -d "$WORKDIR/.git" ]; then
-          git -C "$WORKDIR" pull --ff-only
+          log "Updating repo in $WORKDIR"
+          git -C "$WORKDIR" fetch --prune --quiet
+          git -C "$WORKDIR" reset --hard origin/HEAD --quiet
         else
-          git clone https://github.com/xhos/nixdots.git "$WORKDIR"
+          log "Cloning $REPO_URL"
+          git clone --depth=1 "$REPO_URL" "$WORKDIR"
         fi
 
         # Select host
@@ -84,38 +89,40 @@
                 | gum choose --header "Select machine")
         [ -n "$HOST" ] || fail "No host selected"
 
+        HOST_DIR="$WORKDIR/hosts/$HOST"
+        [ -d "$HOST_DIR" ] || fail "Missing host directory: $HOST_DIR"
+
         # Select disk
         DISK=$(lsblk -dpno NAME,SIZE \
                 | gum choose --header "Select target disk for \"$HOST\"" \
                 | awk '{print $1}')
         [ -b "$DISK" ] || fail "Invalid disk selected"
 
-        gum confirm "⚠️  Wipe $DISK? Continue?" || exit 1
+        gum confirm "⚠️  This will WIPE $DISK. Continue?" || exit 1
 
         # Run disko
-        CONFIG="$WORKDIR/hosts/$HOST/disko.nix"
-        ls -l "$CONFIG" || fail "disko.nix missing"
+        CONFIG="$HOST_DIR/disko.nix"
+        [ -f "$CONFIG" ] || fail "disko.nix missing"
+        log "Running disko on $DISK"
+        disko --mode zap_create_mount --argstr disk "$DISK" "$CONFIG"
 
-        disko --mode zap_create_mount \
-          --argstr disk "$DISK" \
-          "$CONFIG" || fail "disko failed"
-
-        # Generate hardware config
+        # Generate hardware config (always overwrite)
+        log "Generating hardware-configuration.nix"
         nixos-generate-config --root /mnt --no-filesystems
+        cp -f /mnt/etc/nixos/hardware-configuration.nix "$HOST_DIR/hardware-configuration.nix"
 
-        # Move hardware config
-        mv /mnt/etc/nixos/hardware-configuration.nix \
-           "$WORKDIR/hosts/$HOST/"
-
-        # Sync repository
+        # Sync repository into /mnt
+        log "Syncing repo into /mnt/etc/nixos"
         rsync -a --delete "$WORKDIR/" /mnt/etc/nixos/
 
-        # Install NixOS
-        nixos-install --root /mnt --flake /mnt/etc/nixos#"$HOST" --no-root-passwd
+        # Install from path flake (works even if not committed)
+        log "Installing NixOS for $HOST"
+        nixos-install --root /mnt --flake "path:/mnt/etc/nixos#''${HOST}" --no-root-passwd
 
         echo "✅ Done. Reboot or run 'nixos-enter-helper' to enter the installed system."
       '';
     })
+
     (writeShellApplication {
       name = "nixos-enter-helper";
       text = ''
