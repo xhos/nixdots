@@ -12,6 +12,12 @@
   headless = true;
 
   boot.supportedFilesystems = ["zfs"];
+  
+  boot.zfs = {
+    forceImportRoot = false;  
+    extraPools = ["storage"];
+  };
+  
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
