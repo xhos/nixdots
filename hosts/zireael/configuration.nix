@@ -22,7 +22,7 @@
   greeter = "sddm";
 
   hardware.sensor.iio.enable = true; # enables sensors needed for iio-hyprland (screen rotation)
-  boot.kernelPackages = pkgs.linuxPackages_latest; # my laptop drivers were added in 6.15
+  boot.kernelPackages = pkgs.linuxPackages_6_15; # my laptop drivers were added in 6.15
 
   # TODO: possibly dont need all this stuff anymore?
   # boot = {

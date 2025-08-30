@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   imports = [../../modules/home];
 
-  optPkgs.enable = true;
-
   stylix.image =
     pkgs.fetchurl
     {
