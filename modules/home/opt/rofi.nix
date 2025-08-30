@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  programs.rofi = {
+  programs.rofi = lib.mkIf config.modules.rofi.enable {
     enable = true;
     package = pkgs.rofi-wayland;
     theme = let

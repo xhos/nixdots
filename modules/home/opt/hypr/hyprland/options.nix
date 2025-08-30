@@ -1,5 +1,9 @@
-{config, ...}: {
-  wayland.windowManager.hyprland.settings = {
+{
+  config,
+  lib,
+  ...
+}: {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.default.de == "hyprland") {
     exec-once = [
       # daemons
       "blueman-applet"

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
@@ -14,7 +15,7 @@
 
   terminal = config.home.sessionVariables.TERMINAL;
 in {
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.default.de == "hyprland") {
     # https://wiki.hyprland.org/Configuring/Binds/#bind-flags
     bind =
       [

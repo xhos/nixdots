@@ -1,5 +1,9 @@
-{config, ...}: {
-  services.mako = {
+{
+  config,
+  lib,
+  ...
+}: {
+  services.mako = lib.mkIf (config.headless != true) {
     enable = true;
     settings = {
       font = "Hack 12";

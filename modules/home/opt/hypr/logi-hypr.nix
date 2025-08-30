@@ -29,11 +29,6 @@
             "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
           ];
         }
-        {
-          window = "firefox|chrome|chromium|zen";
-          scrollRightCommands = ["wtype -M ctrl -k Tab"];
-          scrollLeftCommands = ["wtype -M ctrl -M shift -k Tab"];
-        }
       ];
     };
   };

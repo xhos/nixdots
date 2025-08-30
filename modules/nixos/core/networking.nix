@@ -6,44 +6,36 @@
   sshPort = 10022;
 in {
   services.resolved.enable = true;
-  networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = lib.mkIf config.bluetooth.enable true;
-
-  networking = {
-    # wireless = {
-    # enable = true; # make sure wpa_supplicant is disabled
-    # networks.Birchmount.psk = "Birchmount8119";
-    # iwd.enable = true; # use iwd instead of wpa_supplicant
-    # };
-
-    firewall = rec {
-      enable = true;
-      allowedTCPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-      ];
-      allowedUDPPortRanges = allowedTCPPortRanges;
-      allowedTCPPorts = [
-        sshPort
-        5900
-      ];
-    };
-  };
 
   services.fail2ban.enable = true;
-
-  # actully this needs to be enabled for sops to get the key
-  # so, TODO: a better way to disable ssh
   services.openssh = {
     enable = true;
     ports = [sshPort];
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
-      StreamLocalBindUnlink = "yes"; # Automatically remove stale sockets
-      GatewayPorts = "clientspecified"; # Allow forwarding ports to everywhere
+      StreamLocalBindUnlink = "yes"; # automatically remove stale sockets
+      GatewayPorts = "clientspecified"; # allow forwarding ports to everywhere
     };
   };
+
+  networking = {
+    networkmanager.enable = lib.mkIf (config.headless != true) true;
+
+    firewall = rec {
+      enable = true;
+      allowedTCPPorts = [sshPort];
+
+      allowedTCPPortRanges = lib.optionals (config.headless != true) [
+        {
+          # KDE Connect ports
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = allowedTCPPortRanges;
+    };
+  };
+
+  hardware.bluetooth.enable = lib.mkIf (config.headless != true && config.bluetooth.enable) true;
 }

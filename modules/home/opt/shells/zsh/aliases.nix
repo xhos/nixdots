@@ -1,5 +1,9 @@
 {
-  programs.zsh.shellAliases = {
+  config,
+  lib,
+  ...
+}: {
+  programs.zsh.shellAliases = lib.mkIf (config.default.shell == "zsh") {
     ns = "nix-shell -p";
     ff = "fastfetch";
     gcl = "git clone";

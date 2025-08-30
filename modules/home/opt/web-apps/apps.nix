@@ -1,6 +1,10 @@
-{pkgs, ...}: let
-  webAppIcons = import ./icons.nix {inherit pkgs;};
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  webAppIcons = import ./icons.nix {inherit config lib pkgs;};
   mkWebApp = {
     name,
     url,
@@ -18,29 +22,28 @@
     categories = ["Application"];
   };
 in {
-  xdg.desktopEntries = {
-    notion-calendar = mkWebApp {
-      name = "Notion Calendar";
-      url = "https://calendar.notion.so";
-      iconName = "notion-calendar";
-    };
-
-    notion = mkWebApp {
-      name = "Notion";
-      url = "https://notion.so";
-      iconName = "notion";
-    };
-
-    chatgpt = mkWebApp {
-      name = "ChatGPT";
-      url = "https://chatgpt.com";
-      iconName = "chatgpt";
-    };
-
-    yandex-music = mkWebApp {
-      name = "Yandex Music";
-      url = "https://next.music.yandex.ru";
-      iconName = "yandex-music";
+  config = lib.mkIf (config.headless != true) {
+    xdg.desktopEntries = {
+      notion-calendar = mkWebApp {
+        name = "Notion Calendar";
+        url = "https://calendar.notion.so";
+        iconName = "notion-calendar";
+      };
+      notion = mkWebApp {
+        name = "Notion";
+        url = "https://notion.so";
+        iconName = "notion";
+      };
+      chatgpt = mkWebApp {
+        name = "ChatGPT";
+        url = "https://chatgpt.com";
+        iconName = "chatgpt";
+      };
+      yandex-music = mkWebApp {
+        name = "Yandex Music";
+        url = "https://next.music.yandex.ru";
+        iconName = "yandex-music";
+      };
     };
   };
 }

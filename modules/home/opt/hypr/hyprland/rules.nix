@@ -1,5 +1,9 @@
 {
-  wayland.windowManager.hyprland.settings = {
+  lib,
+  config,
+  ...
+}: {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.default.de == "hyprland") {
     # layer rules
     # layerrule = [
     #   "blur,waybar"

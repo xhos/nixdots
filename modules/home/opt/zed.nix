@@ -1,5 +1,10 @@
 {
-  programs.zed-editor = {
+  lib,
+  config,
+  ...
+}: {
+  programs.zed-editor = lib.mkIf (config.headless
+    != true) {
     enable = true;
     extensions = ["nix"];
     # // Zed settings

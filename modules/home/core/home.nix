@@ -6,54 +6,15 @@
   config,
   ...
 }: let
-  corePkgs = with pkgs; [
-    firefox
-    font-manager
+  # CLI packages that work on both headless and desktop systems
+  cliPkgs = with pkgs; [
+    # Development tools
     nil # nix lsp
     delve
-    rnote
     fd
-    egl-wayland # needed for a firefox fix
     gdb
-    wayvnc
     lazygit
     cling
-    wvkbd # on-screen keyboard
-    figlet # cool text gen
-    nwg-displays
-
-    # cli
-    fastfetch
-    hyprshot
-    wev # for keybindings
-    scrcpy # android screen mirroring
-    yazi # cli explorer
-    colordiff # file diff
-    lz4
-    swayimg # image viewer
-    gitmoji-cli # emoji for commits
-    glow # cli markdown renderer
-    imagemagick
-    onefetch # git repo summary
-    openvpn
-    pfetch-rs # system info
-    playerctl # media controls
-    rcon # remote console
-    sherlock
-    skim # fzf in rust
-    devenv
-    sshs
-
-    # shells & prompts
-    starship
-    oh-my-posh
-    nushell
-    fish
-    zsh
-    grc
-    wireplumber # PipeWire session manager
-
-    # Dev
     rustup
     python3
     alejandra # nix code formatter
@@ -61,28 +22,73 @@
     docker-compose
     gcc
     gh # GitHub CLI
-    viddy # modern "watch"
     gnumake
-    gum # fancy scripts
-    tlrc # better man
     go
     claude-code
+
+    # CLI utilities
+    fastfetch
+    figlet # cool text gen
+    yazi # cli explorer
+    colordiff # file diff
+    lz4
+    gitmoji-cli # emoji for commits
+    glow # cli markdown renderer
+    imagemagick
+    onefetch # git repo summary
+    openvpn
+    pfetch-rs # system info
+    rcon # remote console
+    sherlock
+    skim # fzf in rust
+    devenv
+    sshs
+    viddy # modern "watch"
+    gum # fancy scripts
+    tlrc # better man
     dialog
     freerdp3
     iproute2
-    libnotify
     netcat-gnu
-    loupe
     jq
+
+    # Shells & prompts
+    starship
+    oh-my-posh
+    nushell
+    fish
+    zsh
+    grc
   ];
 
-  optionalPkgs = with pkgs; [
-    # heavy GUI / multimedia / browsers
+  # GUI packages for desktop systems
+  guiPkgs = with pkgs; [
+    # Browsers and web
+    firefox
+    chromium
+    inputs.zen-browser.packages."${system}".default
+
+    # Desktop utilities
+    font-manager
+    rnote
+    egl-wayland # needed for firefox wayland fix
+    wayvnc
+    wvkbd # on-screen keyboard
+    nwg-displays
+    hyprshot
+    wev # for keybindings
+    scrcpy # android screen mirroring
+    swayimg # image viewer
+    playerctl # media controls
+    libnotify
+    loupe
+    wireplumber # PipeWire session manager
+
+    # Heavy GUI applications
     krita
     libreoffice
     postman
     gnome-solanum
-    inputs.zen-browser.packages."${system}".default
     mpv # video player
     ffmpeg-full
     protonvpn-gui
@@ -91,21 +97,15 @@
     nautilus
     qbittorrent
     (obsidian.override {commandLineArgs = ["--no-sandbox"];})
-    chromium
   ];
 in {
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";
     stateVersion = "25.05";
-
     packages = lib.concatLists [
-      corePkgs
-      (
-        if config.optPkgs.enable
-        then optionalPkgs
-        else []
-      )
+      cliPkgs
+      (lib.optionals (config.headless != true) guiPkgs)
     ];
   };
 }

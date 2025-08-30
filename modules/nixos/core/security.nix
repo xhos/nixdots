@@ -1,18 +1,19 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   security = {
-    rtkit.enable = true;
     polkit.enable = true;
 
-    sudo.extraConfig = ''
-      Defaults:xhos lecture = never
-    '';
+    sudo.extraConfig = "Defaults:xhos lecture = never";
 
-    pam.services = {
+    pam.services = lib.mkIf (config.headless != true) {
       greetd = {
         gnupg.enable = true;
         enableGnomeKeyring = true;
       };
-
       login = {
         enableGnomeKeyring = true;
         gnupg = {
@@ -24,7 +25,7 @@
     };
   };
 
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+  systemd.user.services.polkit-gnome-authentication-agent-1 = lib.mkIf (config.headless != true) {
     description = "polkit-gnome-authentication-agent-1";
     wantedBy = ["graphical-session.target"];
     wants = ["graphical-session.target"];

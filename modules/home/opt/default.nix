@@ -22,5 +22,8 @@
     ./waybar
     ./web-apps
     ./whisper.nix
+    ./zed.nix
+    ./fonts
+    ./xdg.nix
   ];
 }

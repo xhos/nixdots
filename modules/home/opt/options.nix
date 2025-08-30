@@ -13,11 +13,19 @@
       telegram.enable = mkEnableOption "enable telegram";
       whisper.enable = mkEnableOption "enable whisper";
       obs.enable = mkEnableOption "enable obs";
+      fonts.enable = mkEnableOption "enable fonts";
+    };
+
+    headless = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "disable all gui related stuff";
     };
 
     mainMonitor = mkOption {
       type = types.str;
       description = "main monitor of the system, used for hyprlock";
+      default = "";
     };
 
     hyprland = {
@@ -38,11 +46,11 @@
         default = "none";
       };
       terminal = mkOption {
-        type = types.enum ["wezterm" "foot" "kitty" "alacritty" "none"];
-        default = "kitty";
+        type = types.enum ["wezterm" "foot" "ghostty" "none"];
+        default = "none";
       };
       prompt = mkOption {
-        type = types.enum ["starship" "oh-my-posh"];
+        type = types.enum ["starship" "oh-my-posh" "none"];
         default = "starship";
       };
       shell = mkOption {

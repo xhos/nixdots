@@ -50,6 +50,8 @@ in {
         ".config/r2modmanPlus-local"
         ".config/r2modman"
 
+        ".config/rclone" # rclone configs
+
         ".zen"
         ".mozilla"
         ".vscode"

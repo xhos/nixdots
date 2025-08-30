@@ -1,7 +1,5 @@
 {lib, ...}:
 with lib; {
-  options.optPkgs.enable = mkEnableOption "Enable optPkgs";
-
   options.accent = mkOption {
     type = types.str;
     default = "";

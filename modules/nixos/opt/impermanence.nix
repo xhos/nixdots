@@ -54,6 +54,13 @@ in {
         ];
       })
 
+      (persistIf config.rclone.enable {
+        directories = [
+          "/home/xhos/onedrive"
+          "/home/xhos/protondrive"
+        ];
+      })
+
       (persistIf (config.greetd.enable && config.greeter == "tuigreet") {
         files = [
           "/var/cache/tuigreet/lastuser"

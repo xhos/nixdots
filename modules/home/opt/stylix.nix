@@ -2,10 +2,11 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [inputs.stylix.homeModules.stylix];
-  stylix = {
+  stylix = lib.mkIf (config.headless != true) {
     enable = true;
 
     polarity = "dark";
