@@ -71,7 +71,7 @@ pkgs.writeShellApplication {
 
     # Install
     log "Installing NixOS for $HOST from $FLAKE_PATH"
-    nixos-install --root /mnt --flake "path:$FLAKE_PATH#$HOST" --no-root-passwd
+    nixos-install --root /mnt --flake "path:$FLAKE_PATH#$HOST"
 
     echo "✅ Done. Reboot or run 'nix run github:xhos/nixdots#nixos-enter-helper' to enter."
   '';

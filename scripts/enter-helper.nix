@@ -1,30 +1,30 @@
 {pkgs}:
 pkgs.writeShellApplication {
   name = "enter-helper";
-    runtimeInputs = with pkgs; [
+  runtimeInputs = with pkgs; [
     # Core utilities
-    gum 
-    util-linux 
+    gum
+    util-linux
     zfs
-    
+
     # Additional useful tools you might want
-    coreutils    # Basic utilities (cp, mv, ls, etc.)
-    findutils    # find, xargs
-    gnugrep      # grep
-    gnused       # sed
-    gawk         # awk
-    bash         # Ensure bash is available
-    ncurses      # For terminal capabilities
-    
+    coreutils # Basic utilities (cp, mv, ls, etc.)
+    findutils # find, xargs
+    gnugrep # grep
+    gnused # sed
+    gawk # awk
+    bash # Ensure bash is available
+    ncurses # For terminal capabilities
+
     # System tools
-    psmisc       # pstree, killall
-    procps       # ps, top, kill
-    systemd      # systemctl, journalctl
-    
+    psmisc # pstree, killall
+    procps # ps, top, kill
+    systemd # systemctl, journalctl
+
     # Network tools (if needed)
     # iproute2   # ip command
     # nettools   # ifconfig, netstat
-    
+
     # Text editors (uncomment if desired)
     # nano
     # vim
