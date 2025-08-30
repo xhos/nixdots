@@ -5,6 +5,7 @@ pkgs.writeShellApplication {
   text = ''
     #!/usr/bin/env bash
     set -euo pipefail
+
     log() { printf "\033[1;34m[INFO]\033[0m %s\n" "$*"; }
     fail() { echo "$*" >&2; exit 1; }
 
@@ -29,6 +30,7 @@ pkgs.writeShellApplication {
 
     HOST_DIR="$WORKDIR/hosts/$HOST"
     [ -d "$HOST_DIR" ] || fail "Missing host directory: $HOST_DIR"
+
     CONFIG="$HOST_DIR/disko.nix"
     [ -f "$CONFIG" ] || fail "disko.nix missing"
 
@@ -60,14 +62,16 @@ pkgs.writeShellApplication {
       log "Detected impermanence - syncing to /mnt/persist/etc/nixos"
       mkdir -p /mnt/persist/etc/nixos
       rsync -a --delete "$WORKDIR/" /mnt/persist/etc/nixos/
+      FLAKE_PATH="/mnt/persist/etc/nixos"
     else
       log "Syncing repo into /mnt/etc/nixos"
       rsync -a --delete "$WORKDIR/" /mnt/etc/nixos/
+      FLAKE_PATH="/mnt/etc/nixos"
     fi
 
     # Install
-    log "Installing NixOS for $HOST"
-    nixos-install --root /mnt --flake "path:/mnt/etc/nixos#$HOST" --no-root-passwd
+    log "Installing NixOS for $HOST from $FLAKE_PATH"
+    nixos-install --root /mnt --flake "path:$FLAKE_PATH#$HOST" --no-root-passwd
 
     echo "✅ Done. Reboot or run 'nix run github:xhos/nixdots#nixos-enter-helper' to enter."
   '';

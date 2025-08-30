@@ -128,10 +128,12 @@
       pkgs = nixpkgs.legacyPackages.${system};
       enterHelper = import ./scripts/enter-helper.nix {inherit pkgs;};
       installer = import ./scripts/installer.nix {inherit pkgs;};
+      iso-to-usb = import ./scripts/iso-to-usb.nix {inherit pkgs;};
     in {
       default = installer;
       enter-helper = enterHelper;
       installer = installer;
+      iso-to-usb = iso-to-usb;
     });
   };
 }
