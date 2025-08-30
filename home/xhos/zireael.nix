@@ -18,6 +18,7 @@
     discord.enable = true;
     spicetify.enable = true;
     telegram.enable = true;
+    fonts.enable = true;
   };
 
   default = {

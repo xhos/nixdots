@@ -83,6 +83,11 @@
           )
           ++ modules;
       };
+    # Define systems to build packages for
+    systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+
+    # Generate packages for each system
+    forEachSystem = nixpkgs.lib.genAttrs systems;
   in {
     nixosConfigurations = {
       zireael = mkNixosSystem {
@@ -110,6 +115,23 @@
         hostname = "nyx";
         homeUser = null;
       };
+
+      enrai = mkNixosSystem {
+        hostname = "enrai";
+        modules = [
+          inputs.disko.nixosModules.disko
+        ];
+      };
     };
+
+    packages = forEachSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+      enterHelper = import ./scripts/enter-helper.nix {inherit pkgs;};
+      installer = import ./scripts/installer.nix {inherit pkgs;};
+    in {
+      default = installer;
+      enter-helper = enterHelper;
+      installer = installer;
+    });
   };
 }

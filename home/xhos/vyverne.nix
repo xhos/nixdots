@@ -5,8 +5,6 @@
 }: {
   imports = [../../modules/home];
 
-  optPkgs.enable = true;
-
   stylix.image = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/7p/wallhaven-7pr53v.jpg";
     sha256 = "sha256-S3z3kpv9DGQ3zO/2Ra1zm7+SMvJ+duE0jliJlvwv8FM=";
@@ -25,6 +23,7 @@
     telegram.enable = true;
     obs.enable = true;
     whisper.enable = true;
+    fonts.enable = true;
   };
 
   default = {
