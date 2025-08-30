@@ -13,10 +13,7 @@
 
   boot.supportedFilesystems = ["zfs"];
   
-  boot.zfs = {
-    forceImportRoot = false;  
-    extraPools = ["storage"];
-  };
+  boot.zfs.extraPools = ["storage"];
   
   services.gvfs.enable = true;
   services.udisks2.enable = true;
