@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos
     ./disko.nix
+    ./jellyfin.nix
   ];
 
   networking.hostName = "vyverne";

@@ -33,6 +33,14 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/new-arm.key";
       };
+      "enrai" = {
+        host = "enrai";
+        hostname = "10.0.0.10";
+        user = "xhos";
+        port = 10022;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/enrai";
+      };
     };
   };
 }

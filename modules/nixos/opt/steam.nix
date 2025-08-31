@@ -13,7 +13,7 @@
       #   heroic
       #   lutris
       #   protontricks
-      #   prismlauncher
+      prismlauncher
       #   protonup-qt
       #   protonup
     ];

@@ -2,6 +2,7 @@
   imports = [
     ../../modules/nixos
     ./disko.nix
+    ./jellyfin.nix
   ];
 
   networking.hostName = "enrai";
