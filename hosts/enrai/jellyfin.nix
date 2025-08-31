@@ -15,8 +15,11 @@
     ];
   };
 
-  users.groups.media = {};
-
-  users.users.jellyfin.extraGroups = ["video" "media"];
-  users.users.xhos.extraGroups = ["media"];
+  users = {
+    groups.media = {};
+    users = {
+      jellyfin.extraGroups = ["video" "media"];
+      xhos.extraGroups = ["media"];
+    };
+  };
 }

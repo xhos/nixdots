@@ -12,6 +12,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11"; # nixpkgs stable
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # nixpkgs unstable
     zen-browser.url = "github:0xc000022070/zen-browser-flake"; # cool browser
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
 
     home-manager = {
       url = "github:nix-community/home-manager"; # home-manager
@@ -119,6 +120,7 @@
       enrai = mkNixosSystem {
         hostname = "enrai";
         modules = [
+          inputs.vpn-confinement.nixosModules.default
           inputs.disko.nixosModules.disko
         ];
       };

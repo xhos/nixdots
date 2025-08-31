@@ -22,5 +22,7 @@
     # impermanence
     imp = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude \"{tmp,etc/passwd,home/xhos/.cache,home/xhos/.cargo,home/xhos/go,var/lib/systemd/coredump}\"";
     nimp = "sudo ncdu -x /";
+
+    enos = "cd /etc/nixos && nixos-rebuild switch --flake .#enrai --target-host enrai --sudo --ask-sudo-password";
   };
 }

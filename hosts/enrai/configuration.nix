@@ -3,6 +3,9 @@
     ../../modules/nixos
     ./disko.nix
     ./jellyfin.nix
+    ./arr.nix
+    ./glance.nix
+    ./proton-vpn.nix
   ];
 
   networking.hostName = "enrai";
@@ -14,26 +17,13 @@
 
   boot.supportedFilesystems = ["zfs"];
 
-  # Fix: Explicitly configure ZFS pool imports
   boot.zfs = {
-    forceImportRoot = true; # Force import for first boot after disko
-    forceImportAll = true; # Force import ALL pools on first boot
-    extraPools = ["storage"]; # Explicitly import the storage pool
+    forceImportRoot = true;
+    forceImportAll = true;
+    extraPools = ["storage"];
   };
 
-  # CRITICAL: Set a root password so you can login
   users.users.root.initialPassword = "temp";
-
-  # Alternative fix if above doesn't work:
-  # boot.zfs.requestEncryptionCredentials = false;
-  # systemd.services.zfs-import-storage = {
-  #   wantedBy = ["zfs-import.target"];
-  #   after = ["zfs-import.target"];
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     ExecStart = "${pkgs.zfs}/bin/zpool import storage";
-  #   };
-  # };
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;

@@ -66,6 +66,16 @@ in {
           "/var/cache/tuigreet/lastuser"
         ];
       })
+
+      (persistIf config.headless {
+        directories = [
+          "/var/lib/jellyfin"
+          "/var/lib/bazarr"
+          "/var/lib/sonarr"
+          "/var/lib/private/prowlarr"
+          "/var/lib/qBittorrent"
+        ];
+      })
     ];
 
     fileSystems."/" = {
