@@ -88,5 +88,10 @@ in {
         ".config/Vencord"
       ];
     })
+    (persistIf config.headless {
+      directories = [
+        ".cloudflared"
+      ];
+    })
   ]);
 }

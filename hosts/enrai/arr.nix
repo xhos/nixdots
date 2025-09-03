@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   services = {
     qbittorrent = {
       enable = true;
@@ -22,9 +22,16 @@
     };
   };
 
-  users.users.sonarr.extraGroups = ["media"];
-  users.users.bazarr.extraGroups = ["media"];
-  users.users.qbittorrent.extraGroups = ["media"];
+  users = let
+    mediaServices = ["sonarr" "bazarr" "prowlarr"];
+  in {
+    users = lib.genAttrs mediaServices (name: {
+      isSystemUser = true;
+      group = name;
+      extraGroups = ["media"];
+    });
+    groups = lib.genAttrs (mediaServices ++ ["media"]) (_: {});
+  };
 
   systemd.tmpfiles.rules = [
     "d /storage/media 0775 root media -"

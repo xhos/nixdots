@@ -72,6 +72,7 @@ in {
           "/var/lib/jellyfin"
           "/var/lib/bazarr"
           "/var/lib/sonarr"
+          "/var/cache/jellyfin"
           "/var/lib/private/prowlarr"
           "/var/lib/qBittorrent"
         ];

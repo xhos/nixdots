@@ -6,8 +6,8 @@
   sshPort = 10022;
 in {
   services.resolved.enable = true;
-
   services.fail2ban.enable = true;
+
   services.openssh = {
     enable = true;
     ports = [sshPort];

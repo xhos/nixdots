@@ -17,6 +17,7 @@
     cling
     rustup
     python3
+    nodejs
     alejandra # nix code formatter
     nixd
     docker-compose
