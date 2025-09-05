@@ -1,69 +1,53 @@
 {pkgs, ...}: {
-  services.nginx = {
+  networking.firewall = {
     enable = true;
-    virtualHosts."_" = {
-      listen = [
+    trustedInterfaces = ["docker0" "wg0"];
+    allowedTCPPorts = [8081];
+    allowedUDPPorts = [55055];
+  };
+
+  # virtualisation.docker.enable = true;
+  #
+  # users.users.xhos = {
+  #   extraGroups = ["docker"];
+  # };
+
+  networking.wireguard.interfaces = {
+    wg0 = {
+      mtu = 1408;
+      ips = ["10.100.0.2/24"];
+      privateKeyFile = "/var/lib/wireguard/private.key";
+      generatePrivateKeyFile = true;
+      peers = [
         {
-          addr = "10.0.0.2"; # Listen on WireGuard tunnel IP
-          port = 80;
+          publicKey = "2s3JqlwOOOjP+pNdTxObat6iBo11tFMFaB7uAKn6xXo=";
+          endpoint = "192.18.152.177:55055";
+          allowedIPs = ["10.100.0.1/32"];
+          persistentKeepalive = 25;
         }
       ];
-      root = pkgs.writeTextDir "index.html" ''
-        <!DOCTYPE html>
-        <html>
-        <head><title>Home Server</title></head>
-        <body>
-          <h1>Hello from Home Server!</h1>
-          <p>This page is served through WireGuard tunnel.</p>
-          <p>If you can see this, the proxy is working!</p>
-        </body>
-        </html>
-      '';
     };
   };
 
-  # WireGuard client configuration
-  networking.wireguard.interfaces.wg0 = {
-    ips = ["10.0.0.2/24"];
-    privateKeyFile = "/etc/wireguard/private.key";
-
-    peers = [
-      {
-        # VPS public key - replace with actual key after VPS setup
-        publicKey = "YOUR_VPS_PUBLIC_KEY_HERE";
-
-        # Route all traffic through VPS
-        allowedIPs = ["0.0.0.0/0"];
-
-        # VPS endpoint - replace with actual VPS IP
-        endpoint = "YOUR_VPS_IP:51820";
-
-        # Keep connection alive through NAT
-        persistentKeepalive = 25;
-      }
-    ];
+  services.caddy = {
+    enable = true;
+    globalConfig = ''
+      auto_https off
+      admin off
+    '';
+    # Bind only on the WG IP (10.100.0.2)
+    virtualHosts."10.100.0.2:8081".extraConfig = ''
+      respond "Hello World" 200
+    '';
   };
 
-  # Firewall configuration for WireGuard
-  networking.firewall = {
-    allowedUDPPorts = [51820]; # WireGuard port
-    trustedInterfaces = ["wg0"]; # Trust tunnel traffic
-  };
-
-  # Auto-generate WireGuard keys on first boot
-  system.activationScripts.wireguard-setup = ''
-    mkdir -p /etc/wireguard
-    chmod 700 /etc/wireguard
-
-    if [ ! -f /etc/wireguard/private.key ]; then
-      echo "Generating WireGuard private key..."
-      ${pkgs.wireguard-tools}/bin/wg genkey > /etc/wireguard/private.key
-      chmod 600 /etc/wireguard/private.key
-
-      echo "=== WireGuard Public Key ==="
-      ${pkgs.wireguard-tools}/bin/wg pubkey < /etc/wireguard/private.key
-      echo "Add this key to your VPS configuration"
-      echo "=========================="
-    fi
-  '';
+  environment.systemPackages = with pkgs; [
+    vim
+    htop
+    docker-compose
+    wireguard-tools
+    tcpdump
+    netcat
+    curl
+  ];
 }

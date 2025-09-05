@@ -6,7 +6,7 @@
     ./arr.nix
     ./glance.nix
     ./proton-vpn.nix
-    # ./proxy.nix
+    ./proxy.nix
   ];
 
   networking.hostName = "enrai";
@@ -23,8 +23,6 @@
     forceImportAll = true;
     extraPools = ["storage"];
   };
-
-  users.users.root.initialPassword = "temp";
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;

@@ -38,8 +38,4 @@
     "d /storage/media/cache 0755 root root -"
     "d /storage/media/cache/jellyfin 0755 jellyfin jellyfin -"
   ];
-
-  systemd.services.jellyfin.environment = {
-    JELLYFIN_CACHE_DIR = "/storage/cache/jellyfin";
-  };
 }

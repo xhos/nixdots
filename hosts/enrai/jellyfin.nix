@@ -2,6 +2,7 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
+    cacheDir = "/storage/media/cache/jellyfin";
   };
 
   systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
