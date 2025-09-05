@@ -4,6 +4,7 @@
   ...
 }: {
   programs.zsh.shellAliases = lib.mkIf (config.default.shell == "zsh") {
+    v = "nvim";
     ns = "nix-shell -p";
     ff = "fastfetch";
     gcl = "git clone";

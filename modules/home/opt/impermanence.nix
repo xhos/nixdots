@@ -51,7 +51,7 @@ in {
         ".config/r2modman"
 
         ".config/rclone" # rclone configs
-
+        ".local/share/nvim"
         ".zen"
         ".mozilla"
         ".vscode"

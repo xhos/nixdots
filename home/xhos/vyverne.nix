@@ -6,8 +6,8 @@
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/7p/wallhaven-7pr53v.jpg";
-    sha256 = "sha256-S3z3kpv9DGQ3zO/2Ra1zm7+SMvJ+duE0jliJlvwv8FM=";
+    url = "https://w.wallhaven.cc/full/ex/wallhaven-exkqk8.jpg";
+    sha256 = "sha256-HATmU/6OrfgeoPIeUca/QFk3lzKD9NcpJenXQjMgMlU=";
   };
 
   services.kdeconnect.enable = true;
@@ -36,9 +36,40 @@
   };
 
   home.packages = with pkgs; [
+    (python3Packages.buildPythonApplication {
+      pname = "img2art";
+      version = "0.1.0";
+
+      src = fetchFromGitHub {
+        owner = "Asthestarsfalll";
+        repo = "img2art";
+        rev = "a841044ccbd89b57553186a11d8de35371089142";
+        sha256 = "sha256-HUGEurYwkJgcJ2r2ty8sWjK1oKpXAcSO2AtfLfd6LR4=";
+      };
+
+      format = "pyproject";
+
+      nativeBuildInputs = with python3Packages; [
+        poetry-core
+      ];
+
+      propagatedBuildInputs = with python3Packages; [
+        typer
+        opencv-python
+        numpy
+      ];
+
+      meta = with lib; {
+        description = "Convert images, GIFs, and videos to ASCII art";
+        homepage = "https://github.com/Asthestarsfalll/img2art";
+        license = licenses.mit;
+        maintainers = [];
+      };
+    })
     # davinci-resolve
     # jetbrains.goland
     # jetbrains.datagrip
+    oci-cli
     firefox
     termius
     lollypop
