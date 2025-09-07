@@ -13,7 +13,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # nixpkgs unstable
     zen-browser.url = "github:0xc000022070/zen-browser-flake"; # cool browser
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
-
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
     home-manager = {
       url = "github:nix-community/home-manager"; # home-manager
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,6 +75,7 @@
                   inherit inputs;
                   system = "x86_64-linux";
                 };
+                home-manager.backupFileExtension = ".b";
                 home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
               }
             ]
@@ -84,10 +85,7 @@
           )
           ++ modules;
       };
-    # Define systems to build packages for
     systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
-
-    # Generate packages for each system
     forEachSystem = nixpkgs.lib.genAttrs systems;
   in {
     nixosConfigurations = {
@@ -122,6 +120,7 @@
         modules = [
           inputs.vpn-confinement.nixosModules.default
           inputs.disko.nixosModules.disko
+          inputs.vscode-server.nixosModules.default
         ];
       };
     };

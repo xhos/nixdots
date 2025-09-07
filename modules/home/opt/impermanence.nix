@@ -49,7 +49,6 @@ in {
         # should techically be only enabled when steam is but oh well
         ".config/r2modmanPlus-local"
         ".config/r2modman"
-
         ".config/rclone" # rclone configs
         ".local/share/nvim"
         ".zen"
@@ -91,6 +90,7 @@ in {
     (persistIf config.headless {
       directories = [
         ".cloudflared"
+        ".vscode-server"
       ];
     })
   ]);

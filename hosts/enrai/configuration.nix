@@ -7,6 +7,7 @@
     ./glance.nix
     ./proton-vpn.nix
     ./proxy.nix
+    ./incus.nix
   ];
 
   networking.hostName = "enrai";
@@ -26,6 +27,7 @@
 
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  services.vscode-server.enable = true;
 
   users.users.xhos.openssh.authorizedKeys.keyFiles = [./enrai.pub];
 

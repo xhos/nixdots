@@ -52,6 +52,7 @@
     iproute2
     netcat-gnu
     jq
+    wl-clipboard
 
     # Shells & prompts
     starship

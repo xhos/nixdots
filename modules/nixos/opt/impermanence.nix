@@ -75,6 +75,7 @@ in {
           "/var/cache/jellyfin"
           "/var/lib/private/prowlarr"
           "/var/lib/qBittorrent"
+          "/var/lib/incus"
         ];
       })
     ];
