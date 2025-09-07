@@ -7,7 +7,7 @@
     ./glance.nix
     ./proton-vpn.nix
     ./proxy.nix
-    ./incus.nix
+    ./virtualisation.nix
   ];
 
   networking.hostName = "enrai";
