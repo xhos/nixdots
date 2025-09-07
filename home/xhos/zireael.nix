@@ -4,8 +4,8 @@
   stylix.image =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/we/wallhaven-we532q.jpg";
-      sha256 = "sha256-BMxraF2UhLuluMoafqHRtzpi1Fqb6b30mDb/7SH81/g=";
+      url = "https://w.wallhaven.cc/full/6l/wallhaven-6lkyeq.png";
+      sha256 = "sha256-YRcxOcDVHaEZNgQ+suCitgy2WSZIq0tH6T8sOB7J4EU=";
     };
 
   impermanence.enable = true;

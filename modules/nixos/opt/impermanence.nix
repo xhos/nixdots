@@ -23,6 +23,7 @@ in {
           "/etc/ssh"
           "/var/lib/nixos"
           "/etc/NetworkManager/system-connections"
+          "/var/lib/fprint"
         ];
         files = [
           "/etc/machine-id"

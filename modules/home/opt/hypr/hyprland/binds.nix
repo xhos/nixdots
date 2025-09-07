@@ -87,13 +87,13 @@ in {
     # will repeat while held
     binde = [
       # Audio
-      ",XF86AudioRaiseVolume, exec, volumectl up 5"
-      ",XF86AudioLowerVolume, exec, volumectl down 5"
-      ",XF86AudioMute, exec, volumectl toggle-mute"
+      ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
       # Brightness
-      ",XF86MonBrightnessUp, exec, lightctl up 5"
-      ",XF86MonBrightnessDown, exec, lightctl down 5"
+      ",XF86MonBrightnessUp, exec, brightnessctl set +5%"
+      ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
     ];
 
     # mouse bindings
