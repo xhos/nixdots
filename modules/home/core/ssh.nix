@@ -34,6 +34,15 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/enrai";
       };
+      "enrai-t" = {
+        host = "enrai-t";
+        hostname = "ssh.xhos.dev";
+        user = "xhos";
+        port = 10022;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/enrai";
+        proxyCommand = "cloudflared access ssh --hostname %h";
+      };
     };
   };
 }

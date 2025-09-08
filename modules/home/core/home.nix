@@ -26,6 +26,7 @@
     gnumake
     go
     claude-code
+    cloudflared
 
     # CLI utilities
     fastfetch
