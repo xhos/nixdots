@@ -99,6 +99,7 @@
     kitty # fallback terminal
     nautilus
     qbittorrent
+    calibre
     (obsidian.override {commandLineArgs = ["--no-sandbox"];})
   ];
 in {
