@@ -70,7 +70,9 @@ in {
 
       (persistIf config.headless {
         directories = [
+          "/var/lib/docker"
           "/var/lib/jellyfin"
+          "/var/lib/readarr/"
           "/var/lib/bazarr"
           "/var/lib/sonarr"
           "/var/cache/jellyfin"

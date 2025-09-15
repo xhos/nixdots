@@ -63,6 +63,10 @@ in {
         "Downloads"
         "Pictures"
         "Videos"
+
+        # big dev caches
+        ".cache/go-build"
+        ".cache/.bun"
       ];
 
       files = [
