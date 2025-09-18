@@ -3,6 +3,13 @@
     enable = true;
     userName = "xhos";
     userEmail = "60789741+xhos@users.noreply.github.com";
+
+    signing = {
+      format = "ssh";
+      key = "~/.ssh/github-auth-key.pub";
+      signByDefault = true;
+    };
+
     extraConfig = {
       url = {
         "https://github.com/" = {
