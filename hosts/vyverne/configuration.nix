@@ -18,7 +18,7 @@
   vm          .enable = true;
   ai          .enable = true;
   boot        .enable = true;
-  rclone      .enable = true;
+  # rclone      .enable = true;
 
   greeter = "sddm";
 

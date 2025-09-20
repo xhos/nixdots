@@ -188,7 +188,7 @@
 
     input = {
       kb_layout = "us, ru";
-      kb_options = "grp:alt_shift_toggle";
+      kb_options = "caps:escape,grp:alt_shift_toggle";
 
       accel_profile = "adaptive";
       follow_mouse = 1;
