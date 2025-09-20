@@ -12,16 +12,16 @@ in {
   home.persistence."/persist/home/xhos" = lib.mkIf config.impermanence.enable (lib.mkMerge [
     {
       directories = [
-        ".config/calibre"
         # zed
         ".local/share/zed"
         ".config/zed"
+        ".zed_server"
 
         # jetbrains
         ".local/share/JetBrains"
         ".config/JetBrains"
         ".cache/JetBrains"
-        ".java" # jetbrains for some miraculous reason store auth in ~/.java
+        ".java" # jetbrains for some miraculous reason stores auth here
 
         # claude
         ".claude"
@@ -32,6 +32,7 @@ in {
         ".config/hypr"
         ".config/libreoffice"
         ".config/spotify"
+        ".config/calibre"
         ".config/clipse"
         ".config/Code"
         ".config/obsidian"
@@ -50,6 +51,7 @@ in {
         # should techically be only enabled when steam is but oh well
         ".config/r2modmanPlus-local"
         ".config/r2modman"
+
         ".config/rclone" # rclone configs
         ".local/share/nvim"
         ".zen"

@@ -29,6 +29,8 @@
     "d /games 0755 xhos users - -"
   ];
 
+  networking.interfaces.enp4s0.wakeOnLan.enable = true;
+
   boot.kernelParams = ["hid_apple.fnmode=2"];
   boot.supportedFilesystems = ["zfs"];
   services.gvfs.enable = true;
