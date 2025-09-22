@@ -1,5 +1,5 @@
 let
-  serverIP = "${serverIP}";
+  serverIP = "10.0.0.10";
 in {
   services.glance = {
     enable = true;
