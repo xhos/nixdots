@@ -10,6 +10,8 @@
   cliPkgs = with pkgs; [
     # Development tools
     nil # nix lsp
+    stylua
+    prettier
     delve
     fd
     gdb
