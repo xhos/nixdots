@@ -82,5 +82,6 @@ fonts used are:
 ## 💡 acknowledgments
 
 - [@joshuagrisham](https://github.com/joshuagrisham) for his magnificent work on [the galaxy book driver](https://github.com/joshuagrisham/samsung-galaxybook-extras)
-- [@itzderock](https://github.com/ItzDerock) for sharing his [nix derivation](https://github.com/joshuagrisham/samsung-galaxybook-extras/issues/14#issue-2328871732) for that driver
+- [@itzderock](https://github.com/ItzDerock) for sharing his [nix derivation](https://github.com/joshuagrisham/samsung-galaxybook-extras/issues/14#issue-2328871732) for that driver (now irrelevant since it was merged upstream)
 - [@elyth](https://github.com/elythh), my config started as a fork of his [flake](https://github.com/elythh/flake)
+- [hyprstellar](https://github.com/xeji01/hyprstellar/tree/main) for waybar config and general style inspiration

@@ -12,7 +12,7 @@
       default-timeout = 3000;
       height = 150;
       width = 300;
-      border-radius = 5;
+      border-radius = config.wayland.windowManager.hyprland.settings.decoration.rounding;
       icons = true;
       text-color = "#f8f8f2";
       layer = "overlay";

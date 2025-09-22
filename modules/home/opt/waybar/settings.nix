@@ -6,27 +6,27 @@
 }: {
   config = lib.mkIf (config.default.bar == "waybar") {
     programs.waybar.settings.main = let
+      iconPath = "/etc/nixos/modules/home/opt/waybar/icons";
+      
       whisper-status-script = pkgs.writeShellScriptBin "whisper-status" ''
         #!/usr/bin/env bash
         DIR="/tmp/whisper-dictate"
         REC_PID="$DIR/recording.pid"
         TRN_FLAG="$DIR/transcribing.flag"
 
-        # 1) Transcribing? (takes priority)
         if [[ -f "$TRN_FLAG" ]]; then
           echo '{"text":"💾 TXT","tooltip":"Transcribing…","class":"transcribing-active"}'
           exit 0
         fi
 
-        # 2) Recording?
         if [[ -f "$REC_PID" ]] && kill -0 "$(cat "$REC_PID")" 2>/dev/null; then
           echo '{"text":"🎙️ REC","tooltip":"Recording…","class":"recording-active"}'
           exit 0
         fi
 
-        # 3) Idle → hide
         echo '{}'
       '';
+
       recording-status-script = pkgs.writeShellScriptBin "recording-status" ''
         #!/usr/bin/env bash
 
@@ -40,111 +40,64 @@
       recorder-script = pkgs.writeShellScriptBin "recorder" ''
         #!/usr/bin/env bash
 
-        # Path to the icons for notifications
-        ICON_PATH="/etc/nixos/modules/home/opt/waybar/icons"
-
-        # Directory where screen recordings will be saved
+        ICON_PATH="${iconPath}"
         DIRECTORY="$HOME/screenrecord"
 
-        # Check if the directory exists
         if [ ! -d "$DIRECTORY" ]; then
             mkdir -p "$DIRECTORY"
         fi
 
-        # Check if wf-recorder is running
         if pgrep -x "wf-recorder" > /dev/null; then
-            # Gracefully stop wf-recorder by sending an interrupt signal
             pkill -INT -x wf-recorder
             notify-send -i "$ICON_PATH/recording-stop.png" -h string:wf-recorder:record -t 2500 "Finished Recording" "Saved at $DIRECTORY"
-            
-            # Update Waybar status using the correct Hyprland command
             hyprctl dispatch exec ${recording-status-script}/bin/recording-status
-            
             exit 0
         fi
 
-        # Get the list of available monitor names using hyprctl
         MONITORS=$(hyprctl monitors | grep "^Monitor " | awk '{print $2}')
-
-        # Present the monitor list in rofi
         SELECTED_MONITOR=$(echo "$MONITORS" | rofi -dmenu -p "Record Monitor:")
 
-        # Check if a monitor was selected
         if [ -n "$SELECTED_MONITOR" ]; then
-            # Get the current date and time for the filename
             dateTime=$(date +%a-%b-%d-%y-%H-%M-%S)
-
-            # Notify the user that recording will start on the selected monitor
             notify-send -i "$ICON_PATH/recording.png" -h string:wf-recorder:record -t 1500 "Recording Monitor" "Starting recording on: $SELECTED_MONITOR"
-
-            # Start the screen recording on the selected output
-            # The --bframes option is specific to certain ffmpeg encoders; may need adjustment
             wf-recorder -o "$SELECTED_MONITOR" -f "$DIRECTORY/$dateTime.mp4" &
-
         elif [ -z "$SELECTED_MONITOR" ]; then
-            # User cancelled the rofi menu
             exit 0
         else
             notify-send -i "$ICON_PATH/recording.png" "Error" "No monitor selected."
             exit 1
         fi
       '';
+
+      camera-cover-script = pkgs.writeShellScriptBin "camera-cover-status" ''
+        #!/usr/bin/env bash
+        ATTR_FILE="/sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value"
+        CACHE_FILE="/tmp/.camera_cover_unavailable"
+
+        if [ -f "$CACHE_FILE" ]; then
+            echo '{}'
+            exit 0
+        fi
+
+        if [ ! -f "$ATTR_FILE" ]; then
+            touch "$CACHE_FILE"
+            echo '{}'
+            exit 0
+        fi
+
+        value=$(cat "$ATTR_FILE" 2>/dev/null)
+
+        if [ "$value" = "0" ]; then
+            echo '{"text": "🔴", "tooltip": "Camera cover open", "class": "camera-open"}'
+        else
+            echo '{"text": "", "tooltip": "Camera cover closed", "class": "camera-closed"}'
+        fi
+      '';
     in {
-      layer = "top";
-      position = "top";
-      margin = "5 10 0";
-      "fixed center" = true;
-      reload_style_on_change = true;
-      height = 34;
-      width = 500;
-      output = config.mainMonitor;
-      "modules-left" = [
-        "clock"
-        "custom/recording"
-        "custom/whisper"
-      ];
-
-      "modules-center" = ["hyprland/workspaces"];
-      "modules-right" = ["group/custom-group"];
-
-      "hyprland/workspaces" = {
-        "active-only" = false;
-        "all-outputs" = false;
-        format = "{icon}";
-        "format-icons" = {
-          active = "󰫢 ";
-          default = "󰫣 ";
-        };
-        "on-click" = "activate";
-        "on-scroll-down" = "hyprctl dispatch workspace e-1";
-        "on-scroll-up" = "hyprctl dispatch workspace e+1";
-        "show-special" = false;
-        "sort-by-number" = true;
-        "window-rewrite" = {};
-      };
-
-      clock = {
-        format = "{:%H:%M}";
-        "tooltip-format" = "<tt><small>{calendar}</small></tt>";
-        calendar = {
-          format = {
-            months = "<span color='#ffead3'><b>{}</b></span>";
-            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-            today = "<span color='#ffcc66'><b><u>{}</u></b></span>";
-          };
-        };
-      };
-
-      battery = {
-        states = {
-          good = 95;
-          warning = 30;
-          critical = 20;
-        };
-        format = "{icon}   {capacity}";
-        "format-charging" = "󰋠   {capacity}";
-        "format-plugged" = "󰋠    {capacity}";
+      "battery" = {
+        "format" = "{icon}   {capacity}";
         "format-alt" = "{time}   {icon}";
+        "format-charging" = "󰋠   {capacity}";
         "format-icons" = [
           "󱢠 󱢠 󱢠 "
           "󱢠 󱢠 󰛞 "
@@ -157,49 +110,109 @@
           "󰛞 󰋑 󰋑 "
           "󰋑 󰋑 󰋑 "
         ];
+        "format-plugged" = "󰋠    {capacity}";
+        "states" = {
+          "critical" = 20;
+          "good" = 95;
+          "warning" = 30;
+        };
       };
-
-      network = {
-        "format-wifi" = "    {signalStrength}%";
+      "bluetooth" = {
+        "format" = "󰂯    {status}";
+        "format-connected" = " {num_connections}";
+        "format-disabled" = " off";
+        "on-click" = "kitty -e bluetui";
+        "tooltip-format" = "{device_alias}";
+        "tooltip-format-connected" = " {device_enumerate}";
+        "tooltip-format-enumerate-connected" = "{device_alias}";
+      };
+      "clock" = {
+        "calendar" = {
+          "format" = {
+            "months" = "<span color='#ffead3'><b>{}</b></span>";
+            "today" = "<span color='#ffcc66'><b><u>{}</u></b></span>";
+            "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+          };
+        };
+        "format" = "{:%H:%M}";
+        "tooltip-format" = "<tt><small>{calendar}</small></tt>";
+      };
+      "custom/recording" = {
+        "exec" = "${recording-status-script}/bin/recording-status";
+        "interval" = 1;
+        "on-click" = "${recorder-script}/bin/recorder";
+        "return-type" = "json";
+      };
+      "custom/whisper" = {
+        "exec" = "${whisper-status-script}/bin/whisper-status";
+        "interval" = 1;
+        "on-click" = "whspr";
+        "return-type" = "json";
+      };
+      "custom/camera-cover" = {
+        "exec" = "${camera-cover-script}/bin/camera-cover-status";
+        "interval" = 1;
+        "return-type" = "json";
+      };
+      "group/clock-connectivity" = {
+        "drawer" = {
+          "transition-duration" = 500;
+          "transition-left-to-right" = true;
+        };
+        "modules" = [
+          "clock"
+          "bluetooth"
+          "network"
+        ];
+        "orientation" = "inherit";
+      };
+      "fixed center" = true;
+      "height" = 34;
+      "hyprland/workspaces" = {
+        "active-only" = false;
+        "all-outputs" = false;
+        "format" = "{icon}";
+        "format-icons" = {
+          "active" = "󰫢 ";
+          "default" = "󰫣 ";
+        };
+        "on-click" = "activate";
+        "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        "on-scroll-up" = "hyprctl dispatch workspace e+1";
+        "show-special" = false;
+        "sort-by-number" = true;
+        "window-rewrite" = {};
+      };
+      "layer" = "top";
+      "margin" = "5 10 0";
+      "modules-center" = [
+        "hyprland/workspaces"
+      ];
+      "modules-left" = [
+        "group/clock-connectivity"
+        "custom/recording"
+        "custom/whisper"
+        "custom/camera-cover"
+      ];
+      "modules-right" = [
+        "tray"
+      ];
+      "network" = {
+        "format-disconnected" = "󰖪 ";
         "format-ethernet" = "{ipaddr}/{cidr}";
         "format-linked" = "{ifname} (No IP)";
-        "format-disconnected" = "󰖪 ";
+        "format-wifi" = "    {signalStrength}%";
         "on-click" = "exec ~/.config/rofi/assets/wifimenu --rofi -s";
         "tooltip-format" = "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({bandwidthDownBytes})</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>";
       };
-
-      bluetooth = {
-        format = "󰂯    {status}";
-        "format-disabled" = " off";
-        "format-connected" = " {num_connections}";
-        "tooltip-format" = "{device_alias}";
-        "tooltip-format-connected" = " {device_enumerate}";
-        "tooltip-format-enumerate-connected" = "{device_alias}";
-        "on-click" = "kitty -e bluetui";
+      "tray" = {
+        "icon-size" = 18;
+        "spacing" = 5;
       };
-
-      "custom/recording" = {
-        "exec" = "${recording-status-script}/bin/recording-status";
-        "return-type" = "json";
-        "interval" = 1;
-        "on-click" = "${recorder-script}/bin/recorder";
-      };
-
-      "custom/whisper" = {
-        "exec" = "${whisper-status-script}/bin/whisper-status";
-        "return-type" = "json";
-        "interval" = 1;
-        "on-click" = "whspr";
-      };
-
-      "group/custom-group" = {
-        orientation = "inherit";
-        drawer = {
-          "transition-duration" = 500;
-          "transition-left-to-right" = false;
-        };
-        modules = ["battery" "bluetooth" "network"];
-      };
+      "output" = config.mainMonitor;
+      "position" = "top";
+      "reload_style_on_change" = true;
+      "width" = 500;
     };
   };
 }

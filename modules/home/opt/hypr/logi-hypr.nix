@@ -23,10 +23,10 @@
         {
           window = "Spotify";
           scrollRightCommands = [
-            "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+            "volume-script --inc"
           ];
           scrollLeftCommands = [
-            "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            "volume-script --dec"
           ];
         }
       ];

@@ -79,7 +79,7 @@ in {
         "SUPERSHIFT, N, exec, ${terminal} -a impala impala" # network manager
         "SUPERSHIFT, A, exec, ${terminal} -a pulsemixer pulsemixer" # network manager
         "SUPERSHIFT, e, exec, bemoji" # emoji picker
-        ",insert, exec, ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute" # toggle mic mute
+        ",insert, exec, volume-script --toggle-mic" # toggle mic mute
         "ALT, code:65, exec, rofi -show drun" # rofi drun
       ]
       ++ workspaces;
@@ -87,13 +87,13 @@ in {
     # will repeat while held
     binde = [
       # Audio
-      ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ",XF86AudioRaiseVolume, exec, volume-script --inc"
+      ",XF86AudioLowerVolume, exec, volume-script --dec"
+      ",XF86AudioMute, exec, volume-script --toggle"
 
       # Brightness
-      ",XF86MonBrightnessUp, exec, brightnessctl set +5%"
-      ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+      ",XF86MonBrightnessUp, exec, brightness-script --inc"
+      ",XF86MonBrightnessDown, exec, brightness-script --dec"
     ];
 
     # mouse bindings
