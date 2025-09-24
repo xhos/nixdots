@@ -161,11 +161,11 @@
       }
     ];
 
-    gestures = {
-      workspace_swipe = true;
-      workspace_swipe_cancel_ratio = 0.01;
-      workspace_swipe_forever = true;
-    };
+    # gestures = { #FIXME says it doesnt exist
+    #   workspace_swipe = true;
+    #   workspace_swipe_cancel_ratio = 0.01;
+    #   workspace_swipe_forever = true;
+    # };
 
     # plugin.hyprsplit = {
     # num_workspaces = 10;          # how many workspaces per monitor

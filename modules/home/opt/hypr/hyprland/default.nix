@@ -17,10 +17,11 @@
   config = lib.mkIf (config.default.de == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
+      package =inputs.hyprland.packages.${pkgs.system}.hyprland;
       plugins = with pkgs.hyprlandPlugins; [
-        hyprgrass
+        inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
         hypr-dynamic-cursors
-        hyprsplit
+        inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
         inputs.hedge.packages."${pkgs.system}".default
       ];
 
@@ -33,7 +34,7 @@
       enable = true;
       xdgOpenUsePortal = true;
       configPackages = with pkgs; [
-        xdg-desktop-portal-hyprland
+        # xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
       ];
     };

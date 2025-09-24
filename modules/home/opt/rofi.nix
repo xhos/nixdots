@@ -6,7 +6,6 @@
 }: {
   programs.rofi = lib.mkIf config.modules.rofi.enable {
     enable = true;
-    package = pkgs.rofi-wayland;
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
       mkl = mkLiteral;

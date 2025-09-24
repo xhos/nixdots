@@ -69,6 +69,7 @@
   # GUI packages for desktop systems
   guiPkgs = with pkgs; [
     # Browsers and web
+    equicord
     firefox
     chromium
     inputs.zen-browser.packages."${system}".default

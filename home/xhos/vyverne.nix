@@ -36,42 +36,12 @@
   };
 
   home.packages = with pkgs; [
-    (python3Packages.buildPythonApplication {
-      pname = "img2art";
-      version = "0.1.0";
-
-      src = fetchFromGitHub {
-        owner = "Asthestarsfalll";
-        repo = "img2art";
-        rev = "a841044ccbd89b57553186a11d8de35371089142";
-        sha256 = "sha256-HUGEurYwkJgcJ2r2ty8sWjK1oKpXAcSO2AtfLfd6LR4=";
-      };
-
-      format = "pyproject";
-
-      nativeBuildInputs = with python3Packages; [
-        poetry-core
-      ];
-
-      propagatedBuildInputs = with python3Packages; [
-        typer
-        opencv-python
-        numpy
-      ];
-
-      meta = with lib; {
-        description = "Convert images, GIFs, and videos to ASCII art";
-        homepage = "https://github.com/Asthestarsfalll/img2art";
-        license = licenses.mit;
-        maintainers = [];
-      };
-    })
     # davinci-resolve
     # jetbrains.goland
     # jetbrains.datagrip
-    oci-cli
+    # oci-cli
     firefox
-    termius
+    # termius
     lollypop
     inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
     (vscode.override {
@@ -82,7 +52,7 @@
     })
   ];
 
-  hyprland.hyprspace.enable = true;
+  # hyprland.hyprspace.enable = true; # FIXME currently broken https://github.com/nixos/nixpkgs/issues/443989
 
   wayland.windowManager.hyprland.settings = {
     debug.damage_tracking = 0;

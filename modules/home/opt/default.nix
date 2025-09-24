@@ -2,7 +2,7 @@
   imports = [
     ./aard.nix
     ./clipse.nix
-    ./discord.nix
+    # ./discord.nix
     ./fastfetch.nix
     ./firefox
     ./git.nix

@@ -13,9 +13,13 @@
     upower.enable = true;
 
     logind = {
-      powerKey = "poweroff";
-      lidSwitch = "suspend";
-      lidSwitchExternalPower = "lock";
+      settings = {
+        Login = {
+          HandlePowerKey = "poweroff";
+          HandleLidSwitch = "suspend";
+          HandleLidSwitchExternalPower = "lock";
+        };
+      };
     };
 
     xserver.xkb = {
