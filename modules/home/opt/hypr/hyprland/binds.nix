@@ -73,7 +73,7 @@ in {
         "SUPER, B, exec, ${config.default.browser}" # open browser
         "SUPER, L, exec, hyprlock" # lock screen
         # "SUPERSHIFT, T, exec, wl-ocr" # capture text TODO: find a better way to do this
-        "SUPERSHIFT, S ,exec, hyprshot -m region --clipboard-only" # screenshot
+        "SUPERSHIFT, S ,exec, hyprshot -z -m region --clipboard-only" # screenshot
         "SUPER, V, exec, ${terminal} -a clipse clipse" # clipboard manager
         "SUPERSHIFT, B, exec, ${terminal} -a bluetui bluetui" # bluetooth manager
         "SUPERSHIFT, N, exec, ${terminal} -a impala impala" # network manager

@@ -15,13 +15,11 @@
     } ''
       import cv2
       import sys
-      BLUR_SIZE = ${toString blur.size}
-      PASSES = ${toString blur.passes}
       img = cv2.imread(sys.argv[1])
       h, w = img.shape[:2]
       roi = img[:, :w // 4]
-      for _ in range(PASSES):
-          roi = cv2.GaussianBlur(roi, (0, 0), BLUR_SIZE)
+      for _ in range(${toString blur.passes}):
+          roi = cv2.GaussianBlur(roi, (0, 0), ${toString blur.size})
       img[:, :w // 4] = roi
       cv2.imwrite(sys.argv[2], img)
     '';
@@ -30,7 +28,7 @@
     song_info=$(playerctl metadata --format '󰝚    {{title}} - {{artist}}')
     echo "$song_info" | tr '[:lower:]' '[:upper:]'
   '';
-in {
+in lib.mkIf (config.default.de == "hyprland") {
   home.packages = [wp-blur song-detail];
 
   home.activation.generateHyprlockBg = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -75,7 +73,7 @@ in {
           rotate = 0
           reload_time = -1
           reload_cmd =
-          position = 320, 120
+          position = 250, 120
           halign = left
           valign = center
       }
@@ -88,7 +86,7 @@ in {
           outline_thickness = 0
           font_size = 22
           font_family = $regular_font
-          position = 420, -80
+          position = 350, -80
           halign = left
           valign = center
       }
@@ -108,7 +106,7 @@ in {
           font_family = $regular_font
           placeholder_text = pswd
           hide_input = false
-          position = 320, -150
+          position = 250, -150
           halign = left
           valign = center
       }

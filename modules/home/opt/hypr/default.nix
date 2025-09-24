@@ -4,6 +4,6 @@
     ./hypridle.nix
     ./logi-hypr.nix
     ./hyprsunset.nix
-    # ./hyprlock
+    ./hyprlock
   ];
 }
