@@ -7,7 +7,7 @@
   config = lib.mkIf (config.default.bar == "waybar") {
     programs.waybar.settings.main = let
       iconPath = "/etc/nixos/modules/home/opt/waybar/icons";
-      
+
       whisper-status-script = pkgs.writeShellScriptBin "whisper-status" ''
         #!/usr/bin/env bash
         DIR="/tmp/whisper-dictate"

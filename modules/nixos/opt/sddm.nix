@@ -25,7 +25,7 @@
 
     environment.systemPackages = [
       (pkgs.callPackage ../../../derivs/sddm-astronaut-theme.nix {
-        theme = "hyprland_kath";
+        theme = "japanese_aesthetic";
       })
     ];
   };

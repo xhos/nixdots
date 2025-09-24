@@ -5,7 +5,7 @@
   ...
 }: let
   iconDir = "/etc/nixos/modules/home/opt/hypr/hyprland/icons";
-  
+
   brightness-script = pkgs.writeShellScriptBin "brightness-script" ''
     #!/bin/bash
     iDIR="${iconDir}"
@@ -61,7 +61,7 @@
     get_volume() {
         volume_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
         volume=$(echo "$volume_info" | awk '{print int($2 * 100)}')
-        
+
         if echo "$volume_info" | grep -q "MUTED"; then
             echo "Muted"
         else
@@ -124,7 +124,7 @@
     get_mic_volume() {
         mic_info=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
         volume=$(echo "$mic_info" | awk '{print int($2 * 100)}')
-        
+
         if echo "$mic_info" | grep -q "MUTED"; then
             echo "Muted"
         else
