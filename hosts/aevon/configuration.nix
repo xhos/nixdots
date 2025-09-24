@@ -3,6 +3,8 @@
 
   vm.enable = true;
 
+  headless = true;
+
   wsl.enable = true;
   wsl.defaultUser = "xhos";
 
