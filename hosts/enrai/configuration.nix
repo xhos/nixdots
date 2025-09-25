@@ -8,6 +8,7 @@
     ./proton-vpn.nix
     ./proxy.nix
     ./virtualisation.nix
+    ./home-assistant
   ];
 
   networking.hostName = "enrai";

@@ -5,7 +5,7 @@
   headless = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
 
-  modules.secrets.enable = false;
+  modules.secrets.enable = true;
 
   default = {
     shell = "zsh";

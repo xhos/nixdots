@@ -2,7 +2,6 @@
   networking.firewall = {
     enable = true;
     trustedInterfaces = ["docker0" "wg0"];
-    allowedTCPPorts = [8081];
     allowedUDPPorts = [55055];
   };
 
