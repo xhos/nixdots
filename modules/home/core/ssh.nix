@@ -20,12 +20,12 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/proxy.key";
       };
-      "new-arm" = {
-        host = "new-arm";
+      "arm" = {
+        host = "arm";
         hostname = "140.238.145.169";
         user = "ubuntu";
         identitiesOnly = true;
-        identityFile = "~/.ssh/new-arm.key";
+        identityFile = "~/.ssh/arm.key";
       };
       "enrai" = {
         host = "enrai";
@@ -33,7 +33,15 @@
         user = "xhos";
         port = 10022;
         identitiesOnly = true;
-        identityFile = "~/.ssh/enrai";
+        identityFile = "~/.ssh/enrai.key";
+      };
+      "vyverne" = {
+        host = "vyverne";
+        hostname = "10.0.0.11";
+        user = "xhos";
+        port = 10022;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/vyverne.key";
       };
       "enrai-t" = {
         host = "enrai-t";
@@ -41,7 +49,7 @@
         user = "xhos";
         port = 10022;
         identitiesOnly = true;
-        identityFile = "~/.ssh/enrai";
+        identityFile = "~/.ssh/enrai.key";
         proxyCommand = "cloudflared access ssh --hostname %h";
       };
     };
