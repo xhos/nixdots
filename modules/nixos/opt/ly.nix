@@ -19,7 +19,7 @@
         })
       )
     ];
-# https://github.com/fairyglade/ly/blob/v1.0.2/res/config.ini
+    # https://github.com/fairyglade/ly/blob/v1.0.2/res/config.ini
     services.displayManager.ly = {
       enable = true;
       settings = {
