@@ -92,6 +92,7 @@ in {
       directories = [
         ".config/discord"
         ".config/Vencord"
+        ".config/equibop"
       ];
     })
     (persistIf config.headless {

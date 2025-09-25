@@ -21,6 +21,8 @@
 
   greeter = "sddm";
 
+  users.users.xhos.openssh.authorizedKeys.keyFiles = [./vyverne.pub];
+
   services.hardware.openrgb.enable = true;
   programs.adb.enable = true;
 

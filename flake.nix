@@ -15,33 +15,34 @@
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     home-manager = {
-      url = "github:nix-community/home-manager"; # home-manager
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
-      url = "github:danth/stylix"; # style manager
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix"; # secrets management
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix"; # spotify theming tool
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-secrets = {
-      url = "git+ssh://git@github.com/xhos/nix-secrets?ref=main&allRefs=1"; # private secrets repository
-      flake = false;
     };
 
     claude-desktop = {
-      url = "github:k3d3/claude-desktop-linux-flake"; # i need my mcp's
+      url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # private secrets repository
+    nix-secrets = {
+      url = "git+ssh://git@github.com/xhos/nix-secrets?ref=main&allRefs=1";
+      flake = false;
     };
 
     hyprland = {
