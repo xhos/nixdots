@@ -43,6 +43,13 @@
     groups = lib.genAttrs (mediaServices ++ ["media"]) (_: {});
   };
 
+  # unset dynamic user stuff which makes it difficult to persist
+  systemd.services.prowlarr.serviceConfig = {
+    DynamicUser = lib.mkForce false;
+    User = "prowlarr";
+    Group = "prowlarr";
+  };
+
   systemd.tmpfiles.rules = [
     "d /storage/media 0775 root media -"
     "d /storage/media/cache 0755 root root -"

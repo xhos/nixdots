@@ -1,15 +1,10 @@
-{pkgs, ...}: {
+{
   networking.firewall = {
     enable = true;
     trustedInterfaces = ["docker0" "wg0"];
+    allowedTCPPorts = [443 80];
     allowedUDPPorts = [55055];
   };
-
-  # virtualisation.docker.enable = true;
-  #
-  # users.users.xhos = {
-  #   extraGroups = ["docker"];
-  # };
 
   networking.wireguard.interfaces = {
     wg0 = {
@@ -27,26 +22,4 @@
       ];
     };
   };
-
-  services.caddy = {
-    enable = true;
-    globalConfig = ''
-      auto_https off
-      admin off
-    '';
-    # Bind only on the WG IP (10.100.0.2)
-    virtualHosts."10.100.0.2:8081".extraConfig = ''
-      respond "Hello World" 200
-    '';
-  };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    htop
-    docker-compose
-    wireguard-tools
-    tcpdump
-    netcat
-    curl
-  ];
 }

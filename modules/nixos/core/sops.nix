@@ -13,10 +13,5 @@ in {
       # genrete new key if above does not exist
       generateKey = true;
     };
-    # secrets = {
-    # "api_keys/openai" = {};
-    # "api_keys/gemeni" = {};
-    # "api_keys/anthropic" = {};
-    # };
   };
 }

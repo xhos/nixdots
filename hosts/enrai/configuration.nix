@@ -2,13 +2,13 @@
   imports = [
     ../../modules/nixos
     ./disko.nix
-    ./jellyfin.nix
-    ./arr.nix
+    ./media
     ./glance.nix
-    ./proton-vpn.nix
     ./proxy.nix
     ./virtualisation.nix
     ./home-assistant
+    ./wakapi.nix
+    ./caddy.nix
   ];
 
   networking.hostName = "enrai";

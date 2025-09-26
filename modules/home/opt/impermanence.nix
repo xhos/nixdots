@@ -72,7 +72,6 @@ in {
       ];
 
       files = [
-        ".wakatime.cfg" # micromanage myself
         # ".zsh_history" # fight amnesia
         ".config/OpenRGB/config.json" # i lv my lights glowing
         ".claude.json"

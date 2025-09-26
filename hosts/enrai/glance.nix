@@ -1,11 +1,25 @@
-let
-  serverIP = "10.0.0.10";
-in {
+{lib, ...}: {
+  # unset dynamic user stuff which makes it difficult to persist
+  systemd.services.glance.serviceConfig = {
+    StateDirectory = lib.mkForce null;
+    DynamicUser = lib.mkForce false;
+    User = "glance";
+    Group = "glance";
+  };
+
+  users.users.glance = {
+    isSystemUser = true;
+    group = "glance";
+  };
+  users.groups.glance = {};
+
   services.glance = {
     enable = true;
     openFirewall = true;
 
-    settings = {
+    settings = let
+      serverIP = "10.0.0.10";
+    in {
       pages = [
         {
           name = "Home";
@@ -104,6 +118,16 @@ in {
                           title = "sonarr";
                           url = "http://${serverIP}:8989";
                           icon = "/assets/sonarr.png";
+                        }
+                        {
+                          title = "wakapi";
+                          url = "https://wakapi.xhos.dev";
+                          icon = "/assets/wakapi.png";
+                        }
+                        {
+                          title = "home assistant";
+                          url = "http://${serverIP}:8123";
+                          icon = "/assets/home-assistant.png";
                         }
                       ];
                     }
@@ -220,6 +244,14 @@ in {
                     {
                       title = "flaresolverr";
                       url = "http://${serverIP}:8191";
+                    }
+                    {
+                      title = "home assistant";
+                      url = "http://${serverIP}:8123";
+                    }
+                    {
+                      title = "wakapi";
+                      url = "https://wakapi.xhos.dev";
                     }
                   ];
                 }

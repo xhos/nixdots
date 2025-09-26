@@ -25,5 +25,6 @@
     ./zed.nix
     ./fonts
     ./xdg.nix
+    ./wakatime.nix
   ];
 }

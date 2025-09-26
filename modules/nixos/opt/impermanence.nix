@@ -22,6 +22,7 @@ in {
           "/etc/nixos"
           "/etc/ssh"
           "/var/lib/nixos"
+          "/var/lib/systemd/"
           "/etc/NetworkManager/system-connections"
           "/var/lib/fprint"
         ];
@@ -70,15 +71,18 @@ in {
 
       (persistIf config.headless {
         directories = [
+          "/var/lib/postgresql" # wakapi creates it there
           "/var/lib/docker"
           "/var/lib/jellyfin"
           "/var/lib/readarr/"
           "/var/lib/bazarr"
           "/var/lib/sonarr"
-          "/var/cache/jellyfin"
-          "/var/lib/private/prowlarr"
+          "/var/lib/glance"
           "/var/lib/qBittorrent"
           "/var/lib/incus"
+          "/var/lib/hass"
+          "/var/lib/wakapi"
+          "/var/cache/jellyfin"
         ];
       })
     ];

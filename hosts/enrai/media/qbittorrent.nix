@@ -1,24 +1,4 @@
 {
-  vpnNamespaces.proton = {
-    enable = true;
-    wireguardConfigFile = "/home/xhos/Documents/protonvpn.conf";
-    accessibleFrom = ["10.0.0.0/24"];
-    portMappings = [
-      {
-        # qBittorrent web UI port
-        from = 8080;
-        to = 8080;
-      }
-    ];
-
-    openVPNPorts = [
-      {
-        port = 6881;
-        protocol = "both";
-      } # default torrent port
-    ];
-  };
-
   systemd.services.qbittorrent.vpnConfinement = {
     enable = true;
     vpnNamespace = "proton";
