@@ -17,6 +17,10 @@ in {
       validateSopsFiles = false;
 
       secrets = {
+        "wakatime" = {
+          path = "${homeDirectory}/.config/wakatime/.wakatime.cfg";
+          mode = "0444";
+        };
         "ssh/proxy" = {
           path = "${homeDirectory}/.ssh/proxy.key";
           mode = "0600";

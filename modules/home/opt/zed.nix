@@ -1,12 +1,18 @@
 {
   lib,
   config,
+  inputs,
+  pkgs,
   ...
-}: {
-  programs.zed-editor = lib.mkIf (config.headless
-    != true) {
+}:
+{
+  programs.zed-editor = lib.mkIf (config.headless != true) {
     enable = true;
-    extensions = ["nix"];
+    extensions = [
+      "nix"
+      "wakatime"
+    ];
+    extraPackages = [ inputs.tsutsumi.packages.${pkgs.system}.wakatime-ls ];
     # // Zed settings
     # //
     # // For information on how to configure Zed, see the Zed

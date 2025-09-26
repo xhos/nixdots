@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tsutsumi = {
+      url = "github:Fuwn/tsutsumi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,96 +71,112 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    npins = import ./npins;
-    mkNixosSystem = {
-      hostname,
-      modules ? [],
-      homeUser ? "xhos",
-      extraSpecialArgs ? {},
-    }:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs npins;} // extraSpecialArgs;
-        modules =
-          [
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      npins = import ./npins;
+      mkNixosSystem =
+        {
+          hostname,
+          modules ? [ ],
+          homeUser ? "xhos",
+          extraSpecialArgs ? { },
+        }:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs npins;
+          }
+          // extraSpecialArgs;
+          modules = [
             ./hosts/${hostname}/configuration.nix
           ]
           ++ (
-            if homeUser != null
-            then [
-              home-manager.nixosModules.home-manager
-              inputs.stylix.nixosModules.stylix
-              inputs.impermanence.nixosModules.impermanence
-              {
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  system = "x86_64-linux";
-                };
-                home-manager.backupFileExtension = ".b";
-                home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
-              }
-            ]
-            else [
-              inputs.stylix.nixosModules.stylix
-            ]
+            if homeUser != null then
+              [
+                home-manager.nixosModules.home-manager
+                inputs.stylix.nixosModules.stylix
+                inputs.impermanence.nixosModules.impermanence
+                {
+                  home-manager.extraSpecialArgs = {
+                    inherit inputs;
+                    system = "x86_64-linux";
+                  };
+                  home-manager.backupFileExtension = ".b";
+                  home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
+                }
+              ]
+            else
+              [
+                inputs.stylix.nixosModules.stylix
+              ]
           )
           ++ modules;
-      };
-    systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
-    forEachSystem = nixpkgs.lib.genAttrs systems;
-  in {
-    nixosConfigurations = {
-      zireael = mkNixosSystem {
-        hostname = "zireael";
-        modules = [
-          inputs.disko.nixosModules.disko
-          inputs.sops-nix.nixosModules.sops
-        ];
+        };
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forEachSystem = nixpkgs.lib.genAttrs systems;
+    in
+    {
+      nixosConfigurations = {
+        zireael = mkNixosSystem {
+          hostname = "zireael";
+          modules = [
+            inputs.disko.nixosModules.disko
+            inputs.sops-nix.nixosModules.sops
+          ];
+        };
+
+        vyverne = mkNixosSystem {
+          hostname = "vyverne";
+          modules = [
+            inputs.disko.nixosModules.disko
+            inputs.sops-nix.nixosModules.sops
+          ];
+        };
+
+        aevon = mkNixosSystem {
+          hostname = "aevon";
+          modules = [ inputs.nixos-wsl.nixosModules.default ];
+        };
+
+        nyx = mkNixosSystem {
+          hostname = "nyx";
+          homeUser = null;
+        };
+
+        enrai = mkNixosSystem {
+          hostname = "enrai";
+          modules = [
+            inputs.vpn-confinement.nixosModules.default
+            inputs.disko.nixosModules.disko
+            inputs.vscode-server.nixosModules.default
+          ];
+        };
       };
 
-      vyverne = mkNixosSystem {
-        hostname = "vyverne";
-        modules = [
-          inputs.disko.nixosModules.disko
-          inputs.sops-nix.nixosModules.sops
-        ];
-      };
-
-      aevon = mkNixosSystem {
-        hostname = "aevon";
-        modules = [inputs.nixos-wsl.nixosModules.default];
-      };
-
-      nyx = mkNixosSystem {
-        hostname = "nyx";
-        homeUser = null;
-      };
-
-      enrai = mkNixosSystem {
-        hostname = "enrai";
-        modules = [
-          inputs.vpn-confinement.nixosModules.default
-          inputs.disko.nixosModules.disko
-          inputs.vscode-server.nixosModules.default
-        ];
-      };
+      packages = forEachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          enterHelper = import ./scripts/enter-helper.nix { inherit pkgs; };
+          installer = import ./scripts/installer.nix { inherit pkgs; };
+          iso-to-usb = import ./scripts/iso-to-usb.nix { inherit pkgs; };
+        in
+        {
+          default = installer;
+          enter-helper = enterHelper;
+          installer = installer;
+          iso-to-usb = iso-to-usb;
+        }
+      );
     };
-
-    packages = forEachSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-      enterHelper = import ./scripts/enter-helper.nix {inherit pkgs;};
-      installer = import ./scripts/installer.nix {inherit pkgs;};
-      iso-to-usb = import ./scripts/iso-to-usb.nix {inherit pkgs;};
-    in {
-      default = installer;
-      enter-helper = enterHelper;
-      installer = installer;
-      iso-to-usb = iso-to-usb;
-    });
-  };
 }
