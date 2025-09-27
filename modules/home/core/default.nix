@@ -6,6 +6,7 @@
     ./programs.nix
     ./ssh.nix
     ./zellij.nix
+    ./env.nix
   ];
 
   programs.home-manager.enable = true;
