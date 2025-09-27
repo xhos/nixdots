@@ -2,9 +2,8 @@
   inputs,
   pkgs,
   ...
-}:
-{
-  imports = [ ../../modules/home ];
+}: {
+  imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/9o/wallhaven-9oxg98.jpg";

@@ -5,8 +5,7 @@
   system,
   config,
   ...
-}:
-let
+}: let
   # CLI packages that work on both headless and desktop systems
   cliPkgs = with pkgs; [
     # Development tools
@@ -105,10 +104,9 @@ let
     nautilus
     qbittorrent
     calibre
-    (obsidian.override { commandLineArgs = [ "--no-sandbox" ]; })
+    (obsidian.override {commandLineArgs = ["--no-sandbox"];})
   ];
-in
-{
+in {
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";

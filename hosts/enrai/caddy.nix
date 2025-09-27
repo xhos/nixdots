@@ -1,4 +1,6 @@
 {config, ...}: {
+  sops.secrets."api/cloudflare" = {};
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "lets-encrypt@xhos.dev";
@@ -17,6 +19,4 @@
     email = "lets-encrypt@xhos.dev";
     globalConfig = "admin off";
   };
-
-  sops.secrets."api/cloudflare" = {};
 }

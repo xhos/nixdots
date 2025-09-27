@@ -71,10 +71,13 @@ in {
 
       (persistIf config.headless {
         directories = [
-          "/var/lib/postgresql" # wakapi creates it there
+          "/var/lib/postgresql"
           "/var/lib/docker"
           "/var/lib/jellyfin"
-          "/var/lib/readarr/"
+          "/var/lib/readarr"
+          "/var/lib/prowlarr"
+          "/var/lib/acme"
+          "/var/lib/caddy"
           "/var/lib/bazarr"
           "/var/lib/sonarr"
           "/var/lib/glance"
@@ -90,7 +93,11 @@ in {
     fileSystems."/" = {
       device = "none";
       fsType = "tmpfs";
-      options = ["defaults" "size=25%" "mode=755"];
+      options = [
+        "defaults"
+        "size=25%"
+        "mode=755"
+      ];
     };
 
     fileSystems."/nix".neededForBoot = true;
