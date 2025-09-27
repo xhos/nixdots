@@ -2,8 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
-  imports = [../../modules/home];
+}:
+{
+  imports = [ ../../modules/home ];
 
   stylix.image = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/9o/wallhaven-9oxg98.jpg";
@@ -59,10 +60,14 @@
 
     exec-once = [
       "[workspace special silent] spotify"
+      "[workspace 10 silent] materialgram"
+      "[workspace 10 silent] equibop"
     ];
 
     windowrulev2 = [
       "workspace special silent, initialClass: spotify"
+      "workspace 10 silent, initialClass: equibop"
+      "workspace 10 silent, initialTitle: materialgram"
     ];
 
     monitor = [

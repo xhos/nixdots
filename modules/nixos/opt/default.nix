@@ -14,5 +14,6 @@
     ./tuigreet.nix
     ./virtualisation.nix
     ./wayland.nix
+    ./autologin.nix
   ];
 }
