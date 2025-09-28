@@ -9,7 +9,6 @@
   networking.hostId = "9a7bef04";
 
   impermanence.enable = true;
-  wayland     .enable = true;
   audio       .enable = true;
   bluetooth   .enable = true;
   steam       .enable = true;
@@ -26,11 +25,6 @@
   services.hardware.openrgb.enable = true;
   programs.adb.enable = true;
 
-  security.sudo.extraConfig = ''
-    xhos ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/shutdown, /run/current-system/sw/bin/poweroff, /run/current-system/sw/bin/reboot
-    xhos ALL=(ALL) NOPASSWD: /usr/bin/shutdown, /usr/bin/poweroff, /usr/bin/reboot
-    xhos ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/poweroff, /sbin/reboot
-  '';
   systemd.tmpfiles.rules = [
     "d /games 0755 xhos users - -"
   ];

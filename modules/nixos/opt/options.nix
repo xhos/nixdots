@@ -3,7 +3,6 @@
     impermanence.enable = mkEnableOption "nuke da pc";
     bluetooth.enable = mkEnableOption "Enable bluetooth";
     rclone   .enable = mkEnableOption "Enable rclone";
-    wayland  .enable = mkEnableOption "Enable wayland";
     audio    .enable = mkEnableOption "Enable audio";
     sops     .enable = mkEnableOption "Enable sops";
     steam    .enable = mkEnableOption "Enable steam";

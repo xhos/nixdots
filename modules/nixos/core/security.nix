@@ -7,7 +7,12 @@
   security = {
     polkit.enable = true;
 
-    sudo.extraConfig = "Defaults:xhos lecture = never";
+    sudo.extraConfig = ''
+      Defaults:xhos lecture = never
+      xhos ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/shutdown, /run/current-system/sw/bin/poweroff, /run/current-system/sw/bin/reboot
+      xhos ALL=(ALL) NOPASSWD: /usr/bin/shutdown, /usr/bin/poweroff, /usr/bin/reboot
+      xhos ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/poweroff, /sbin/reboot
+    '';
 
     pam.services = lib.mkIf (config.headless != true) {
       greetd = {

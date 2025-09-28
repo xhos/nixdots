@@ -4,16 +4,11 @@
     ./audio.nix
     ./boot.nix
     ./impermanence.nix
-    ./ly.nix
     ./nvidia.nix
     ./options.nix
     ./rclone.nix
-    ./regreet.nix
-    ./sddm.nix
     ./steam.nix
-    ./tuigreet.nix
     ./virtualisation.nix
-    ./wayland.nix
-    ./autologin.nix
+    ./greeters
   ];
 }

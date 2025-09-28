@@ -29,6 +29,7 @@
     go
     claude-code
     cloudflared
+    wakatime-cli
 
     # CLI utilities
     fastfetch

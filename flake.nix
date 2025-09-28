@@ -71,113 +71,108 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      npins = import ./npins;
-      mkNixosSystem =
-        {
-          hostname,
-          modules ? [ ],
-          homeUser ? "xhos",
-          extraSpecialArgs ? { },
-        }:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    npins = import ./npins;
+    mkNixosSystem = {
+      hostname,
+      modules ? [],
+      homeUser ? "xhos",
+      extraSpecialArgs ? {},
+    }:
+      nixpkgs.lib.nixosSystem {
+        specialArgs =
+          {
             inherit inputs npins;
           }
           // extraSpecialArgs;
-          modules = [
+        modules =
+          [
             ./hosts/${hostname}/configuration.nix
           ]
           ++ (
-            if homeUser != null then
-              [
-                home-manager.nixosModules.home-manager
-                inputs.stylix.nixosModules.stylix
-                inputs.impermanence.nixosModules.impermanence
-                {
-                  home-manager.extraSpecialArgs = {
-                    inherit inputs;
-                    system = "x86_64-linux";
-                  };
-                  home-manager.backupFileExtension = ".b";
-                  home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
-                }
-              ]
-            else
-              [
-                inputs.stylix.nixosModules.stylix
-              ]
+            if homeUser != null
+            then [
+              home-manager.nixosModules.home-manager
+              inputs.stylix.nixosModules.stylix
+              inputs.impermanence.nixosModules.impermanence
+              {
+                home-manager.extraSpecialArgs = {
+                  inherit inputs;
+                  system = "x86_64-linux";
+                };
+                home-manager.backupFileExtension = ".b";
+                home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
+              }
+            ]
+            else [
+              inputs.stylix.nixosModules.stylix
+            ]
           )
           ++ modules;
-        };
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forEachSystem = nixpkgs.lib.genAttrs systems;
-    in
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-      nixosConfigurations = {
-        zireael = mkNixosSystem {
-          hostname = "zireael";
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.sops-nix.nixosModules.sops
-          ];
-        };
-
-        vyverne = mkNixosSystem {
-          hostname = "vyverne";
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.sops-nix.nixosModules.sops
-          ];
-        };
-
-        aevon = mkNixosSystem {
-          hostname = "aevon";
-          modules = [ inputs.nixos-wsl.nixosModules.default ];
-        };
-
-        nyx = mkNixosSystem {
-          hostname = "nyx";
-          homeUser = null;
-        };
-
-        enrai = mkNixosSystem {
-          hostname = "enrai";
-          modules = [
-            inputs.vpn-confinement.nixosModules.default
-            inputs.disko.nixosModules.disko
-            inputs.vscode-server.nixosModules.default
-          ];
-        };
+      };
+    systems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
+    forEachSystem = nixpkgs.lib.genAttrs systems;
+  in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    nixosConfigurations = {
+      zireael = mkNixosSystem {
+        hostname = "zireael";
+        modules = [
+          inputs.disko.nixosModules.disko
+          inputs.sops-nix.nixosModules.sops
+        ];
       };
 
-      packages = forEachSystem (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-          enterHelper = import ./scripts/enter-helper.nix { inherit pkgs; };
-          installer = import ./scripts/installer.nix { inherit pkgs; };
-          iso-to-usb = import ./scripts/iso-to-usb.nix { inherit pkgs; };
-        in
-        {
-          default = installer;
-          enter-helper = enterHelper;
-          installer = installer;
-          iso-to-usb = iso-to-usb;
-        }
-      );
+      vyverne = mkNixosSystem {
+        hostname = "vyverne";
+        modules = [
+          inputs.disko.nixosModules.disko
+          inputs.sops-nix.nixosModules.sops
+        ];
+      };
+
+      aevon = mkNixosSystem {
+        hostname = "aevon";
+        modules = [inputs.nixos-wsl.nixosModules.default];
+      };
+
+      nyx = mkNixosSystem {
+        hostname = "nyx";
+        homeUser = null;
+      };
+
+      enrai = mkNixosSystem {
+        hostname = "enrai";
+        modules = [
+          inputs.vpn-confinement.nixosModules.default
+          inputs.disko.nixosModules.disko
+          inputs.vscode-server.nixosModules.default
+        ];
+      };
     };
+
+    packages = forEachSystem (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        enterHelper = import ./scripts/enter-helper.nix {inherit pkgs;};
+        installer = import ./scripts/installer.nix {inherit pkgs;};
+        iso-to-usb = import ./scripts/iso-to-usb.nix {inherit pkgs;};
+      in {
+        default = installer;
+        enter-helper = enterHelper;
+        installer = installer;
+        iso-to-usb = iso-to-usb;
+      }
+    );
+  };
 }
