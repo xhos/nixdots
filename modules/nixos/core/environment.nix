@@ -5,5 +5,6 @@
     variables.EDITOR = "nvim";
     variables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
     variables.WAKATIME_HOME = "/home/xhos/.config/wakatime";
+    variables.HISTFILE = "/home/xhos/.config/zsh";
   };
 }
