@@ -4,8 +4,8 @@
   stylix.image =
     pkgs.fetchurl
     {
-      url = "https://w.wallhaven.cc/full/6l/wallhaven-6lkyeq.png";
-      sha256 = "sha256-YRcxOcDVHaEZNgQ+suCitgy2WSZIq0tH6T8sOB7J4EU=";
+      url = "https://w.wallhaven.cc/full/je/wallhaven-je335m.png";
+      sha256 = "sha256-X4LnmsHMstA0sUwmWR2uxwULT1qBstwsXZ0P6ghxgxg=";
     };
 
   impermanence.enable = true;
@@ -40,6 +40,9 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "iio-hyprland"
+
+      # close camera shut on boot
+      "echo 1 > /sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value"
     ];
 
     monitor = [
