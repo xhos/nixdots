@@ -121,7 +121,7 @@
         "format" = "󰂯    {status}";
         "format-connected" = " {num_connections}";
         "format-disabled" = " off";
-        "on-click" = "kitty -e bluetui";
+        "on-click" = "foot -a bluetui bluetui";
         "tooltip-format" = "{device_alias}";
         "tooltip-format-connected" = " {device_enumerate}";
         "tooltip-format-enumerate-connected" = "{device_alias}";
@@ -196,6 +196,7 @@
       ];
       "modules-right" = [
         "tray"
+        "battery"
       ];
       "network" = {
         "format-disconnected" = "󰖪 ";

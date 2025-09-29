@@ -24,7 +24,7 @@
     programs.hyprland.enable = true;
 
     environment.systemPackages = [
-      (pkgs.callPackage ../../../derivs/sddm-astronaut-theme.nix {
+      (pkgs.callPackage ../../../../derivs/sddm-astronaut-theme.nix {
         theme = "japanese_aesthetic";
       })
     ];
