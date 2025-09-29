@@ -69,12 +69,8 @@ in {
         # big dev caches
         ".cache/go-build"
         ".cache/.bun"
-      ];
-
-      files = [
-        # ".zsh_history" # fight amnesia
-        ".config/OpenRGB/config.json" # i lv my lights glowing
-        ".claude.json"
+        ".config/zsh"
+        ".config/OpenRGB"
       ];
 
       allowOther = true;

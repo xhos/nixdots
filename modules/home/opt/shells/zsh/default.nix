@@ -13,7 +13,7 @@
     programs.zoxide.enableZshIntegration = true;
     programs.zsh = {
       enable = true;
-
+      history.path = "${config.xdg.dataHome}/zsh/zsh_history";
       plugins = [
         {
           name = pkgs.zsh-autosuggestions.pname;
