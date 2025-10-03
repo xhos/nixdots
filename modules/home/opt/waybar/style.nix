@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf (config.default.bar == "waybar") {
+  config = lib.mkIf (config.bar == "waybar") {
     programs.waybar.style = with config.lib.stylix.colors; ''
       @define-color bg #${base00};
       @define-color fg #${base05};

@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  programs.zsh.shellAliases = lib.mkIf (config.default.shell == "zsh") {
+  programs.zsh.shellAliases = lib.mkIf (config.shell == "zsh") {
     v = "nvim";
     ze = "zellij";
 

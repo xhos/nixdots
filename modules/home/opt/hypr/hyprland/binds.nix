@@ -11,17 +11,24 @@
   #     "SUPERSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
   #   ])
   #   10);
-  workspaces = builtins.concatLists (builtins.genList (x: let
-      ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
-    in [
-      "SUPER, ${ws}, split:workspace, ${toString (x + 1)}"
-      "SUPERSHIFT, ${ws}, split:movetoworkspace, ${toString (x + 1)}"
-    ])
-    10);
+  workspaces = builtins.concatLists (
+    builtins.genList (
+      x: let
+        ws = let
+          c = (x + 1) / 10;
+        in
+          builtins.toString (x + 1 - (c * 10));
+      in [
+        "SUPER, ${ws}, split:workspace, ${toString (x + 1)}"
+        "SUPERSHIFT, ${ws}, split:movetoworkspace, ${toString (x + 1)}"
+      ]
+    )
+    10
+  );
 
   terminal = config.home.sessionVariables.TERMINAL;
 in {
-  wayland.windowManager.hyprland.settings = lib.mkIf (config.default.de == "hyprland") {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.de == "hyprland") {
     # https://wiki.hyprland.org/Configuring/Binds/#bind-flags
     bind =
       [
@@ -83,7 +90,7 @@ in {
         # Utilities
         "SUPER, Q, exec, ${terminal}" # open terminal
         "SUPER, R, exec, whspr" # toggle dictation
-        "SUPER, B, exec, ${config.default.browser}" # open browser
+        "SUPER, B, exec, ${config.browser}" # open browser
         "SUPER, L, exec, hyprlock" # lock screen
         # "SUPERSHIFT, T, exec, wl-ocr" # capture text TODO: find a better way to do this
         "SUPERSHIFT, S ,exec, hyprshot -z -m region --clipboard-only" # screenshot

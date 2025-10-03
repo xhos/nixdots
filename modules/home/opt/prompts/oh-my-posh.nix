@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.default.prompt == "oh-my-posh") {
+  config = lib.mkIf (config.prompt == "oh-my-posh") {
     programs.oh-my-posh = {
       enable = true;
 

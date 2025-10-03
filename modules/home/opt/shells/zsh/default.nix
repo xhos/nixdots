@@ -8,7 +8,7 @@
     ./aliases.nix
   ];
 
-  config = lib.mkIf (config.default.shell == "zsh") {
+  config = lib.mkIf (config.shell == "zsh") {
     programs.zoxide.enable = true;
     programs.zoxide.enableZshIntegration = true;
     programs.zsh = {

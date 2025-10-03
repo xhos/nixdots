@@ -7,8 +7,6 @@
 
   modules.secrets.enable = true;
 
-  default = {
-    shell = "zsh";
-    prompt = "starship";
-  };
+  shell = "zsh";
+  prompt = "starship";
 }

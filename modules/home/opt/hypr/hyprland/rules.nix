@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  wayland.windowManager.hyprland.settings = lib.mkIf (config.default.de == "hyprland") {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.de == "hyprland") {
     # layer rules
     # layerrule = [
     #   "blur,waybar"

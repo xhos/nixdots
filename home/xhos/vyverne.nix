@@ -6,8 +6,8 @@
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/9o/wallhaven-9oxg98.jpg";
-    sha256 = "sha256-4LVMu7JEJL61s3DfOnE9yWrNj6xPNZ026HR8POKXulw=";
+    url = "https://w.wallhaven.cc/full/z8/wallhaven-z8lgwg.jpg";
+    sha256 = "sha256-r3f1Wd7SYyJnB55Wp+XD+/YOK4XQCzFDYf9YoPx1Bas=";
   };
 
   services.kdeconnect.enable = true;
@@ -26,14 +26,12 @@
     fonts.enable = true;
   };
 
-  default = {
-    de = "hyprland";
-    bar = "waybar";
-    shell = "zsh";
-    prompt = "starship";
-    browser = "zen";
-    terminal = "foot";
-  };
+  de = "hyprland";
+  bar = "dankshell";
+  shell = "zsh";
+  prompt = "starship";
+  browser = "zen";
+  terminal = "foot";
 
   home.packages = with pkgs; [
     # davinci-resolve
@@ -54,9 +52,9 @@
 
   # hyprland.hyprspace.enable = true; # FIXME currently broken https://github.com/nixos/nixpkgs/issues/443989
 
-  wayland.windowManager.hyprland.settings = {
-    debug.damage_tracking = 0;
+  mainMonitor = "Microstep MAG 274UPF E2 0x00000001";
 
+  wayland.windowManager.hyprland.settings = {
     exec-once = [
       "[workspace special silent] spotify"
       "[workspace 10 silent] materialgram"
@@ -75,6 +73,4 @@
       "desc:Microstep MAG 274UPF E2 0x00000001,3840x2160@160.0,0x605,1.5"
     ];
   };
-
-  mainMonitor = "Microstep MAG 274UPF E2 0x00000001";
 }

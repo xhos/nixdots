@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.default.bar == "waybar") {
+  config = lib.mkIf (config.bar == "waybar") {
     programs.waybar.settings.main = let
       iconPath = "/etc/nixos/modules/home/opt/waybar/icons";
 

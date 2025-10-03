@@ -173,7 +173,7 @@
     fi
   '';
 in {
-  config = lib.mkIf (config.default.de == "hyprland") {
+  config = lib.mkIf (config.de == "hyprland") {
     home.packages = with pkgs; [
       brightness-script
       volume-script

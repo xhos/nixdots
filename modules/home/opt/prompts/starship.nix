@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.default.prompt == "starship") {
+  config = lib.mkIf (config.prompt == "starship") {
     programs.starship = with config.lib.stylix.colors; {
       enable = true;
       enableTransience = true;

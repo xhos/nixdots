@@ -14,7 +14,7 @@
     # ./osk.nix
   ];
 
-  config = lib.mkIf (config.default.de == "hyprland") {
+  config = lib.mkIf (config.de == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -28,7 +28,7 @@
       xwayland.enable = true;
     };
 
-    services.hyprpaper.enable = true;
+    # services.hyprpaper.enable = true;
 
     xdg.portal = {
       enable = true;

@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  wayland.windowManager.hyprland.settings = lib.mkIf (config.default.de == "hyprland") {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.de == "hyprland") {
     exec-once = [
       # daemons
       "blueman-applet"
@@ -202,7 +202,7 @@
 
     misc = {
       enable_swallow = true; # hide windows that spawn other windows
-      swallow_regex = config.default.terminal; # windows for which swallow is applied
+      swallow_regex = config.terminal; # windows for which swallow is applied
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       focus_on_activate = true; # whether Hyprland should focus an app that requests to be focused (an activate request)

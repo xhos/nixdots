@@ -3,7 +3,7 @@
   lib,
   ...
 }:
-lib.mkIf (config.default.terminal == "foot") {
+lib.mkIf (config.terminal == "foot") {
   home.sessionVariables.TERMINAL = "foot";
 
   # https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
@@ -12,7 +12,7 @@ lib.mkIf (config.default.terminal == "foot") {
     server.enable = false;
     settings = {
       main = {
-        shell = config.default.shell;
+        shell = config.shell;
         app-id = "foot";
         title = "foot";
         locked-title = "no";

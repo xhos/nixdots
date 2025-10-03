@@ -1,12 +1,10 @@
 {pkgs, ...}: {
   imports = [../../modules/home];
 
-  stylix.image =
-    pkgs.fetchurl
-    {
-      url = "https://w.wallhaven.cc/full/je/wallhaven-je335m.png";
-      sha256 = "sha256-X4LnmsHMstA0sUwmWR2uxwULT1qBstwsXZ0P6ghxgxg=";
-    };
+  stylix.image = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/je/wallhaven-je335m.png";
+    sha256 = "sha256-X4LnmsHMstA0sUwmWR2uxwULT1qBstwsXZ0P6ghxgxg=";
+  };
 
   impermanence.enable = true;
 
@@ -19,18 +17,21 @@
     fonts.enable = true;
   };
 
-  default = {
-    de = "hyprland";
-    bar = "waybar";
-    shell = "zsh";
-    prompt = "starship";
-    browser = "zen";
-    terminal = "foot";
-  };
+  de = "hyprland";
+  bar = "waybar";
+  shell = "zsh";
+  prompt = "starship";
+  browser = "zen";
+  terminal = "foot";
 
   home.packages = with pkgs; [
     iio-hyprland
-    (vscode.override {commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];})
+    (vscode.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    })
   ];
 
   services.hypridle.enable = true;

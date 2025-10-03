@@ -3,7 +3,7 @@
   lib,
   ...
 }:
-lib.mkIf (config.default.terminal == "wezterm") {
+lib.mkIf (config.terminal == "wezterm") {
   home.sessionVariables.TERMINAL = "wezterm";
   programs.wezterm = {
     enable = true;
@@ -46,7 +46,7 @@ lib.mkIf (config.default.terminal == "wezterm") {
     extraConfig = ''
       local wez = require('wezterm')
       return {
-        default_prog     = { '${config.default.shell}' },
+        default_prog     = { '${config.shell}' },
         -- cell_width = 0.85,
 
         -- Performance

@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  programs.fish = lib.mkIf (config.default.shell == "fish") {
+  programs.fish = lib.mkIf (config.shell == "fish") {
     enable = true;
 
     interactiveShellInit = ''

@@ -10,9 +10,14 @@
   blur = config.wayland.windowManager.hyprland.settings.decoration.blur;
 
   wp-blur =
-    pkgs.writers.writePython3Bin "wp-blur" {
-      libraries = with pkgs.python3Packages; [opencv4 numpy];
-    } ''
+    pkgs.writers.writePython3Bin "wp-blur"
+    {
+      libraries = with pkgs.python3Packages; [
+        opencv4
+        numpy
+      ];
+    }
+    ''
       import cv2
       import sys
       img = cv2.imread(sys.argv[1])
@@ -29,8 +34,11 @@
     echo "$song_info" | tr '[:lower:]' '[:upper:]'
   '';
 in
-  lib.mkIf (config.default.de == "hyprland") {
-    home.packages = [wp-blur song-detail];
+  lib.mkIf (config.de == "hyprland") {
+    home.packages = [
+      wp-blur
+      song-detail
+    ];
 
     home.activation.generateHyprlockBg = lib.hm.dag.entryAfter ["writeBoundary"] ''
       mkdir -p "$(dirname ${lockBgPath})"

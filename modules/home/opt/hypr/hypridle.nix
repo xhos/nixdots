@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  services.hypridle = lib.mkIf (config.default.de == "hyprland") {
+  services.hypridle = lib.mkIf (config.de == "hyprland") {
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";

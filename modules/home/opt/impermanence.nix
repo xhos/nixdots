@@ -17,6 +17,7 @@ in {
         ".config/zed"
         ".zed_server"
 
+        ".config/DankMaterialShell"
         # jetbrains
         ".local/share/JetBrains"
         ".config/JetBrains"

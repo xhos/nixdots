@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = with config.lib.stylix.colors;
-    lib.mkIf (config.default.de == "hyprland") [
+    lib.mkIf (config.de == "hyprland") [
       (pkgs.writeShellApplication {
         name = "toggle-osk";
         runtimeInputs = [pkgs.procps];

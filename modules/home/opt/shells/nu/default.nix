@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.default.shell == "nu") {
+  config = lib.mkIf (config.shell == "nu") {
     programs.nushell = {
       enable = true;
 

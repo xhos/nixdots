@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.default.de == "hyprland") {
+  config = lib.mkIf (config.de == "hyprland") {
     services.wlsunset = {
       enable = true;
 
