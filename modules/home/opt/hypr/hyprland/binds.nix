@@ -58,36 +58,38 @@ in {
         "SUPER, right, movewindow, r"
         "SUPER, up, movewindow, u"
         "SUPER, down, movewindow, d"
+        "SUPER, h, movewindow, l"
+        "SUPER, l, movewindow, r"
+        "SUPER, k, movewindow, u"
+        "SUPER, j, movewindow, d"
 
         # Resize windows
         "SUPERSHIFT, right, resizeactive, 200 0"
         "SUPERSHIFT, left, resizeactive, -200 0"
         "SUPERSHIFT, up, resizeactive, 0 -200"
         "SUPERSHIFT, down, resizeactive, 0 200"
+        "SUPERSHIFT, l, resizeactive, 200 0"
+        "SUPERSHIFT, h, resizeactive, -200 0"
+        "SUPERSHIFT, k, resizeactive, 0 -200"
+        "SUPERSHIFT, j, resizeactive, 0 200"
 
         # Special workspaces
         "SUPERSHIFT, grave, movetoworkspace, special"
         "SUPER, grave, togglespecialworkspace"
 
-        # Cycle through workspaces
+        # cycle through workspaces
         "SUPERALT, up, split:workspace, m-1"
         "SUPERALT, down, split:workspace, m+1"
+        "SUPERALT, k, split:workspace, m-1"
+        "SUPERALT, j, split:workspace, m+1"
         "SUPER, mouse_down, split:workspace, e-1"
         "SUPER, mouse_up, split:workspace, e+1"
-        # "SUPERALT, up, workspace, m-1"
-        # "SUPERALT, down, workspace, m+1"
-        # "SUPER, mouse_down, workspace, e-1"
-        # "SUPER, mouse_up, workspace, e+1"
 
         # swap all windows between monitors
         "SUPERSHIFT, G, split:swapactiveworkspaces, current +1"
-        # bring any “rogue” windows back to this ws
         "SUPERSHIFT, R, split:grabroguewindows"
 
-        # swap all windows between monitors
-        # "SUPERSHIFT, G, swapactiveworkspaces, current +1"
-
-        # Utilities
+        # utilities
         "SUPER, Q, exec, ${terminal}" # open terminal
         "SUPER, R, exec, whspr" # toggle dictation
         "SUPER, B, exec, ${config.browser}" # open browser
@@ -106,12 +108,10 @@ in {
 
     # will repeat while held
     binde = [
-      # Audio
       ",XF86AudioRaiseVolume, exec, volume-script --inc"
       ",XF86AudioLowerVolume, exec, volume-script --dec"
       ",XF86AudioMute, exec, volume-script --toggle"
 
-      # Brightness
       ",XF86MonBrightnessUp, exec, brightness-script --inc"
       ",XF86MonBrightnessDown, exec, brightness-script --dec"
     ];
