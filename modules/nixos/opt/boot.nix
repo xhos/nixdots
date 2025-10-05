@@ -13,27 +13,25 @@
       })
     ];
 
-    boot.loader = {
-      systemd-boot.enable = false;
-
-      grub = {
-        enable = true;
-        theme = "${pkgs.yorha-grub-theme}/yorha-1920x1080";
-        device = "nodev";
-        useOSProber = true;
-        efiSupport = true;
-      };
-
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+    boot = {
+      plymouth.enable = true;
+      loader = {
+        systemd-boot.enable = false;
+        efi.canTouchEfiVariables = true;
+        grub = {
+          enable = true;
+          device = "nodev";
+          backgroundColor = "#000";
+          theme = pkgs.minimal-grub-theme;
+          useOSProber = true;
+          efiSupport = true;
+        };
       };
     };
-
-    lib.mkDefault.console = {
-      enable = true;
-      font = "Lat2-Terminus16";
-      useXkbConfig = true;
-    };
+    # lib.mkDefault.console = {
+    #   enable = true;
+    #   font = "Lat2-Terminus16";
+    #   useXkbConfig = true;
+    # };
   };
 }

@@ -5,27 +5,24 @@
   ...
 }: {
   config = lib.mkIf (config.greeter == "sddm") {
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
-      theme = "sddm-astronaut-theme";
-
-      extraPackages = with pkgs; [
-        kdePackages.qtmultimedia
-        kdePackages.qtsvg
-        kdePackages.qtvirtualkeyboard
-      ];
+    services.displayManager = {
+      defaultSession = "hyprland";
+      sessionPackages = [pkgs.hyprland];
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        theme = "where_is_my_sddm_theme";
+      };
     };
 
-    # TODO: figure out how to enable hyprlands session without
-    # enabling it on os level. for now idc this has been
-    # annoying enough to deal with as it is
-    programs.hyprland.enable = true;
-
-    environment.systemPackages = [
-      (pkgs.callPackage ../../../../derivs/sddm-astronaut-theme.nix {
-        theme = "japanese_aesthetic";
+    environment.systemPackages = with pkgs; [
+      (callPackage ../../../../derivs/where-is-my-sddm-theme.nix {
+        qtgraphicaleffects = pkgs.libsForQt5.qt5.qtgraphicaleffects;
+        themeConfig.General = {
+          passwordAllowEmpty = true;
+          passwordCursorColor = "#fff";
+          passwordFontSize = 32;
+        };
       })
     ];
   };

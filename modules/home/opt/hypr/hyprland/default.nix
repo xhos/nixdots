@@ -28,7 +28,7 @@
       xwayland.enable = true;
     };
 
-    # services.hyprpaper.enable = true;
+    services.hyprpaper.enable = true;
 
     xdg.portal = {
       enable = true;
