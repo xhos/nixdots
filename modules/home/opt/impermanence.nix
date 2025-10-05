@@ -12,6 +12,8 @@ in {
   home.persistence."/persist/home/xhos" = lib.mkIf config.impermanence.enable (lib.mkMerge [
     {
       directories = [
+        ".config/claude"
+        ".local/state/wireplumber"
         # zed
         ".local/share/zed"
         ".config/zed"

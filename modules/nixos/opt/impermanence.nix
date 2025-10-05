@@ -40,6 +40,7 @@ in {
       (persistIf config.vm.enable {
         directories = [
           "/var/lib/libvirt"
+          "/var/lib/docker"
         ];
       })
 
