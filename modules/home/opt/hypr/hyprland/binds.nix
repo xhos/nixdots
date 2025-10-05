@@ -93,7 +93,7 @@ in {
         "SUPER, Q, exec, ${terminal}" # open terminal
         "SUPER, R, exec, whspr" # toggle dictation
         "SUPER, B, exec, ${config.browser}" # open browser
-        "SUPER, L, exec, hyprlock" # lock screen
+        "SUPERSHIFTALT, L, exec, hyprlock" # lock screen
         # "SUPERSHIFT, T, exec, wl-ocr" # capture text TODO: find a better way to do this
         "SUPERSHIFT, S ,exec, hyprshot -z -m region --clipboard-only" # screenshot
         "SUPER, V, exec, ${terminal} -a clipse clipse" # clipboard manager

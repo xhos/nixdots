@@ -16,7 +16,12 @@
   home.packages = lib.mkIf config.modules.whisper.enable [
     (pkgs.writeShellApplication {
       name = "whspr";
-      runtimeInputs = with pkgs; [whisper-ctranslate2 sox wl-clipboard coreutils];
+      runtimeInputs = with pkgs; [
+        whisper-ctranslate2
+        sox
+        wl-clipboard
+        coreutils
+      ];
       text = ''
         #!/usr/bin/env bash
         set -euo pipefail
@@ -33,27 +38,26 @@
           kill "$(cat "$REC_PID")" && rm -f "$REC_PID"
           until [[ -s "$AUDIO" ]]; do sleep 0.1; done
 
-          notify-send "Whisper" "Transcribing…" -t 1500
+          notify-send "whisper" "transcribing..." -t 1500
           touch "$TRN_FLAG"
 
           whisper-ctranslate2 "$AUDIO" \
-            --model large-v3 --language ru \
+            --model large-v3 \
             --device cuda --compute_type float16 \
             --output_format txt --output_dir "$DIR"
 
           if [[ -s "$TEXT" ]]; then
             wl-copy < "$TEXT"
-            notify-send "Whisper" "Copied to clipboard" -t 2000
+            notify-send "whisper" "copied to clipboard" -t 2000
           else
-            notify-send "Whisper" "No speech detected" -t 2000
+            notify-send "whisper" "no speech detected" -t 2000
           fi
 
           rm -f "$AUDIO" "$TEXT" "$TRN_FLAG"
           exit 0
         fi
 
-        # start
-        notify-send "Whisper" "Recording… press hotkey again to stop" -t 1500
+        notify-send "whisper" "recording..." -t 1500
         sox -q -v 0.7 -d -r 16000 -c 1 -b 16 "$AUDIO" &
         echo $! > "$REC_PID"
         until [[ -s "$AUDIO" ]]; do sleep 0.05; done
