@@ -27,7 +27,7 @@
   };
 
   de = "hyprland";
-  bar = "dankshell";
+  bar = "waybar";
   shell = "zsh";
   prompt = "starship";
   browser = "zen";
