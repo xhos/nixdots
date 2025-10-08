@@ -72,7 +72,9 @@ in {
         # big dev caches
         ".cache/go-build"
         ".cache/.bun"
+
         ".config/zsh"
+        ".local/share/zsh"
         ".config/OpenRGB"
       ];
 

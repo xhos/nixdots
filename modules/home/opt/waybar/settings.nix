@@ -94,6 +94,15 @@
         fi
       '';
     in {
+      "output" = config.mainMonitor;
+      "position" = "top";
+      "reload_style_on_change" = true;
+      "width" = 500;
+      "fixed center" = true;
+      "height" = 34;
+      "layer" = "top";
+      "margin" = "5 10 0";
+
       "battery" = {
         "format" = "{icon}   {capacity}";
         "format-alt" = "{time}   {icon}";
@@ -117,6 +126,7 @@
           "warning" = 30;
         };
       };
+
       "bluetooth" = {
         "format" = "󰂯    {status}";
         "format-connected" = " {num_connections}";
@@ -126,6 +136,7 @@
         "tooltip-format-connected" = " {device_enumerate}";
         "tooltip-format-enumerate-connected" = "{device_alias}";
       };
+
       "clock" = {
         "calendar" = {
           "format" = {
@@ -137,23 +148,27 @@
         "format" = "{:%H:%M}";
         "tooltip-format" = "<tt><small>{calendar}</small></tt>";
       };
+
       "custom/recording" = {
         "exec" = "${recording-status-script}/bin/recording-status";
         "interval" = 1;
         "on-click" = "${recorder-script}/bin/recorder";
         "return-type" = "json";
       };
+
       "custom/whisper" = {
         "exec" = "${whisper-status-script}/bin/whisper-status";
         "interval" = 1;
         "on-click" = "whspr";
         "return-type" = "json";
       };
+
       "custom/camera-cover" = {
         "exec" = "${camera-cover-script}/bin/camera-cover-status";
         "interval" = 1;
         "return-type" = "json";
       };
+
       "group/clock-connectivity" = {
         "drawer" = {
           "transition-duration" = 500;
@@ -166,8 +181,7 @@
         ];
         "orientation" = "inherit";
       };
-      "fixed center" = true;
-      "height" = 34;
+
       "hyprland/workspaces" = {
         "active-only" = false;
         "all-outputs" = false;
@@ -183,21 +197,23 @@
         "sort-by-number" = true;
         "window-rewrite" = {};
       };
-      "layer" = "top";
-      "margin" = "5 10 0";
+
       "modules-center" = [
         "hyprland/workspaces"
       ];
+
       "modules-left" = [
         "group/clock-connectivity"
         "custom/recording"
         "custom/whisper"
         "custom/camera-cover"
       ];
+
       "modules-right" = [
         "tray"
         "battery"
       ];
+
       "network" = {
         "format-disconnected" = "󰖪 ";
         "format-ethernet" = "{ipaddr}/{cidr}";
@@ -206,14 +222,11 @@
         "on-click" = "exec ~/.config/rofi/assets/wifimenu --rofi -s";
         "tooltip-format" = "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({bandwidthDownBytes})</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>";
       };
+
       "tray" = {
         "icon-size" = 18;
         "spacing" = 5;
       };
-      "output" = config.mainMonitor;
-      "position" = "top";
-      "reload_style_on_change" = true;
-      "width" = 500;
     };
   };
 }

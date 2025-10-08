@@ -178,7 +178,7 @@ in {
       brightness-script
       volume-script
       # TUI control tools
-      pulsemixer # audio mixer
+      wiremix # audio mixer
       bluetui # bluetooth manager
       impala # network manager
 

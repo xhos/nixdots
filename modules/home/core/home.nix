@@ -27,6 +27,7 @@
     gh # GitHub CLI
     gnumake
     go
+    clojure
     claude-code
     cloudflared
     wakatime-cli

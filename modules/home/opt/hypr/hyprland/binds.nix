@@ -99,7 +99,7 @@ in {
         "SUPER, V, exec, ${terminal} -a clipse clipse" # clipboard manager
         "SUPERSHIFT, B, exec, ${terminal} -a bluetui bluetui" # bluetooth manager
         "SUPERSHIFT, N, exec, ${terminal} -a impala impala" # network manager
-        "SUPERSHIFT, A, exec, ${terminal} -a pulsemixer pulsemixer" # network manager
+        "SUPERSHIFT, A, exec, ${terminal} -a wiremix wiremix" # audio manager
         "SUPERSHIFT, e, exec, bemoji" # emoji picker
         ",insert, exec, volume-script --toggle-mic" # toggle mic mute
         "ALT, code:65, exec, rofi -show drun" # rofi drun

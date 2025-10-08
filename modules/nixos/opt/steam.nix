@@ -11,7 +11,7 @@
       r2modman
       #   gamescope
       #   heroic
-      #   lutris
+      lutris
       #   protontricks
       prismlauncher
       #   protonup-qt
