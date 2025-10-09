@@ -32,7 +32,7 @@ in {
 
         # misc configs
         ".config/pulse"
-        ".config/hypr"
+        # ".config/hypr"
         ".config/libreoffice"
         ".config/spotify"
         ".config/calibre"
@@ -41,7 +41,7 @@ in {
         ".config/obsidian"
         ".config/chromium"
         ".config/sops"
-        ".config/waybar"
+        # ".config/waybar"
         ".config/nvim"
 
         ".local/share/PrismLauncher"

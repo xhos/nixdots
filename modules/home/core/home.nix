@@ -5,7 +5,8 @@
   system,
   config,
   ...
-}: let
+}:
+let
   # CLI packages that work on both headless and desktop systems
   cliPkgs = with pkgs; [
     # Development tools
@@ -72,7 +73,15 @@
   # GUI packages for desktop systems
   guiPkgs = with pkgs; [
     # Browsers and web
-    equibop
+    (pkgs.symlinkJoin {
+      name = "vesktop";
+      paths = [ pkgs.vesktop ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/vesktop \
+          --set ELECTRON_OZONE_PLATFORM_HINT x11
+      '';
+    })
     firefox
     chromium
     inputs.zen-browser.packages."${system}".default
@@ -106,9 +115,10 @@
     nautilus
     qbittorrent
     calibre
-    (obsidian.override {commandLineArgs = ["--no-sandbox"];})
+    (obsidian.override { commandLineArgs = [ "--no-sandbox" ]; })
   ];
-in {
+in
+{
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";

@@ -22,7 +22,6 @@
         inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
         inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
         inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
-        inputs.hedge.packages."${pkgs.system}".default
       ];
 
       xwayland.enable = true;

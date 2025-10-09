@@ -85,3 +85,7 @@ fonts used are:
 - [@itzderock](https://github.com/ItzDerock) for sharing his [nix derivation](https://github.com/joshuagrisham/samsung-galaxybook-extras/issues/14#issue-2328871732) for that driver (now irrelevant since it was merged upstream)
 - [@elyth](https://github.com/elythh), my config started as a fork of his [flake](https://github.com/elythh/flake)
 - [hyprstellar](https://github.com/xeji01/hyprstellar/tree/main) for waybar config and general style inspiration
+
+---
+
+**honorable mention:** fuck electron. it's 2025 and i still can't use wayland properly with mixed dpi monitors. you have to force x11 just to make discord not look like ass. without it its either blurry or comically tiny.

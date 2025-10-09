@@ -44,10 +44,6 @@
       };
     };
 
-    hotedge = [
-      "HDMI-A-1,top,8,100,pkill -SIGUSR2 waybar,pkill -SIGUSR1 waybar,1"
-    ];
-
     "plugin:dynamic-cursors" = {
       enabled = true;
       mode = "stretch";

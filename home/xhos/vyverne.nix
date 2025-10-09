@@ -6,8 +6,8 @@
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/z8/wallhaven-z8lgwg.jpg";
-    sha256 = "sha256-r3f1Wd7SYyJnB55Wp+XD+/YOK4XQCzFDYf9YoPx1Bas=";
+    url = "https://w.wallhaven.cc/full/vp/wallhaven-vpx8ep.jpg";
+    sha256 = "sha256-i+0TkkHygoQ6Ektv4c3ok0JDTQ6BEPf5a8I2AicxZOc=";
   };
 
   services.kdeconnect.enable = true;

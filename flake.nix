@@ -4,7 +4,6 @@
   inputs = {
     aard.url = "github:xhos/aard"; # aard, my own astal bar
     disko.url = "github:nix-community/disko"; # declarative disk management
-    hedge.url = "github:KZDKM/Hedge"; # hot edge hyprland plugin
     impermanence.url = "github:nix-community/impermanence"; # ocd godsend
     logi-hypr.url = "github:xhos/logi-hypr"; # gestures for my mx master 3s
     nixcord.url = "github:kaylorben/nixcord"; # manage vencord plugins nix way
