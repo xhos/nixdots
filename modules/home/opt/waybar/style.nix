@@ -5,180 +5,99 @@
 }: {
   config = lib.mkIf (config.bar == "waybar") {
     programs.waybar.style = with config.lib.stylix.colors; ''
-      @define-color bg #${base00};
-      @define-color fg #${base05};
-      @define-color accent #${base0D};
-      @define-color recording #${base08};
-      @define-color urgent #${base0E};
+      @define-color background #000000;
+      @define-color foreground #${base08};
+      @define-color text #${base05};
+
+      @define-color color0 #${base00};
+      @define-color color1 #${base01};
+      @define-color color2 #${base02};
+      @define-color color3 #${base03};
+      @define-color color4 #${base04};
+      @define-color color5 #${base05};
+      @define-color color6 #${base06};
+      @define-color color7 #${base07};
+      @define-color color8 #${base0D};
+      @define-color color9 #${base05};
+      @define-color color10 #${base0C};
+      @define-color color11 #${base0B};
+      @define-color color12 #${base0C};
+      @define-color color13 #${base0C};
+      @define-color color14 #${base0E};
+      @define-color color15 #${base08};
+      @define-color active #${base0C};
+      @define-color inactive #${base03};
 
       * {
+        font-family: "JetBrainsMono Nerd Font";
+        font-size: 13px;
         border: none;
-        border-radius: 0px;
-        font-family: 'Ndot55, DepartureMono Nerd Font';
-        font-weight: bold;
-        font-size: 15px;
         min-height: 0;
       }
 
       window#waybar {
-        border-radius: 20px;
-        background: alpha(@bg, 0.05);
+        background: @background;
+        color: @text;
       }
 
-      tooltip {
-        background: alpha(@bg, 0.3);
-        border-radius: 10px;
-        border: 2px solid alpha(lighter(@accent), 0.3);
-      }
-
-      tooltip label {
-        color: @foreground;
-      }
-
-      #workspaces {
-        background: alpha(@bg, 0.2);
-        border-radius: 20px;
-        margin-top: 4px;
-        margin-bottom: 4px;
+      #cpu,
+      #clock,
+      #disk,
+      #mpris,
+      #network,
+      #custom-zfs,
+      #bluetooth,
+      #pulseaudio,
+      #pulseaudio.microphone,
+      #backlight,
+      #battery,
+      #custom-recording,
+      #custom-whisper,
+      #custom-camera-cover {
+        padding: 0 8px;
+        margin: 0 2px;
+        color: @text;
       }
 
       #workspaces button {
-        padding: 0px;
-        color: alpha(@foreground, 0.5);
-        background: transparent;
-        border-radius: 10px;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        padding-left: 3px;
-        padding-right: 3px;
-        animation: gradient_f 20s ease-in infinite;
-        transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+        color: @inactive;
+        padding: 0 4px;
       }
 
       #workspaces button.active {
-        background: alpha(@bg, 0.2);
-        color: lighter(@accent);
-        border-radius: 20px;
-        transition: color 0.5s;
-        margin-left: 3px;
-        padding-left: 15px;
-        padding-right: 15px;
-        border-bottom: 2px solid @fg;
-        margin-right: 3px;
-        animation: gradient_f 20s ease-in infinite;
-        transition: all 0.8s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+        color: #${base07};
       }
 
-      #workspaces button.focused {
-        color: @fg;
-        background: transparent;
-      }
+      #mpris.playing { color: @color11; }
+      #mpris.paused { color: #${base0A}; }
+      #mpris.stopped { color: @inactive; }
 
-      #workspaces button.urgent {
-        color: @fg;
-        background: transparent;
-      }
+      #network.disabled { color: @inactive; }
 
-      #workspaces button:hover {
-        background: transparent;
-        color: @fg;
-      }
+      #bluetooth.disabled { color: @inactive; }
 
-      #window,
-      #clock,
-      #battery,
-      #network,
-      #memory,
-      #custom-recording,
-      #custom-whisper,
-      #bluetooth,
-      #workspaces {
-        padding: 0px 14px 0px 14px;
-      }
+      #pulseaudio.sink-muted:not(.microphone) { color: #${base08}; }
+      #pulseaudio.microphone.source-muted { color: @inactive; }
 
-      #custom-whisper.recording-active,
-      #custom-recording.recording-active {
-        color: #fa5252;
-        background-color: alpha(@bg, 0.2);
-        border-radius: 20px;
-        padding: 0 10px;
-        margin-top: 4px;
-        margin-bottom: 4px;
-        margin-left: 3px;
-        font-weight: bold;
-        animation: pulse 2s infinite;
-      }
+      #battery.plugged,
+      #battery.full { color: @color11; }
+      #battery.charging { color: @color11; }
+      #battery.warning { color: #${base0A}; }
+      #battery.critical { color: #${base08}; }
 
-      #custom-whisper.recording-inactive,
-      #custom-recording.recording-inactive {
-        color: transparent;
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        margin: 0;
-        min-width: 0;
-        min-height: 0;
+      #custom-recording.recording-active,
+      #custom-whisper.recording-active {
+        color: #${base08};
       }
 
       #custom-whisper.transcribing-active {
-        color:#f7fa52;
-        background-color: alpha(@bg, 0.2);
-        border-radius: 20px;
-        padding: 0 10px;
-        margin-top: 4px; margin-bottom: 4px; margin-left: 3px;
-        font-weight: bold;
-        animation: pulse 1.5s infinite;
+        color: #${base0A};
       }
 
-      @keyframes pulse {
-        0% {
-          opacity: 1;
-        }
-
-        50% {
-          opacity: 0.7;
-        }
-
-        100% {
-          opacity: 1;
-        }
-      }
-
-      #window {
-        margin-left: 60px;
-        margin-right: 60px;
-        background: alpha(@bg, 0.3);
-        border-radius: 10px;
-        color: lighter(@accent);
-      }
-
-      #clock {
-        color: lighter(@accent);
-        background: transparent;
-      }
-
-      #network {
-        color: lighter(@accent);
-        background: transparent;
-      }
-
-      #bluetooth {
-        color: lighter(@accent);
-        background: transparent;
-      }
-
-      #battery {
-        color: lighter(@accent);
-        background: transparent;
-      }
-
-      #memory {
-        color: lighter(@accent);
-        background: transparent;
-      }
-
-      #calendar {
-        font-family: 'Ndot55, DepartureMono Nerd Font';
+      tooltip {
+        background: @background;
+        color: @text;
+        border: 1px solid #${base02};
       }
     '';
   };
