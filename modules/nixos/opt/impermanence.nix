@@ -73,6 +73,7 @@ in {
       (persistIf config.headless {
         directories = [
           "/var/lib/postgresql"
+          "/var/lib/wireguard" # wg proxy private key
           "/var/lib/docker"
           "/var/lib/jellyfin"
           "/var/lib/readarr"
