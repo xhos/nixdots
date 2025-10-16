@@ -5,8 +5,7 @@
   system,
   config,
   ...
-}:
-let
+}: let
   # CLI packages that work on both headless and desktop systems
   cliPkgs = with pkgs; [
     # Development tools
@@ -45,7 +44,7 @@ let
     onefetch # git repo summary
     openvpn
     pfetch-rs # system info
-    rcon # remote console
+    # rcon # remote console
     sherlock
     skim # fzf in rust
     devenv
@@ -75,8 +74,8 @@ let
     # Browsers and web
     (pkgs.symlinkJoin {
       name = "vesktop";
-      paths = [ pkgs.vesktop ];
-      buildInputs = [ pkgs.makeWrapper ];
+      paths = [pkgs.vesktop];
+      buildInputs = [pkgs.makeWrapper];
       postBuild = ''
         wrapProgram $out/bin/vesktop \
           --set ELECTRON_OZONE_PLATFORM_HINT x11
@@ -115,10 +114,9 @@ let
     nautilus
     qbittorrent
     calibre
-    (obsidian.override { commandLineArgs = [ "--no-sandbox" ]; })
+    (obsidian.override {commandLineArgs = ["--no-sandbox"];})
   ];
-in
-{
+in {
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";

@@ -7,6 +7,8 @@
   <img src="./ss4.png" width="400" />
 </p>
 
+all wallpapers can can be found [here](https://pics.xhos.dev/folder/cmgs64vh4000amzfs6t7oqy3f)
+
 ## 🌌 main features
 
 - modular setup, everything is toggleable and switchable

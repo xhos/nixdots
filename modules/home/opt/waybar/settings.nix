@@ -6,316 +6,316 @@
 }: {
   config = lib.mkIf (config.bar == "waybar") {
     programs.waybar.settings.main = let
-lyrics-script = pkgs.writeShellApplication {
-  name = "lyrics-line";
-  runtimeInputs = with pkgs; [
-    dejsonlz4
-    jq
-    playerctl
-    curl
-    perl
-    coreutils
-    (python3.withPackages (ps: [ ps.youtube-transcript-api ]))
-  ];
-  text = ''
-    PLAYER="''${1:-spotify}"
-    FIREFOX=~/.zen/hbvavekk.School/sessionstore-backups/recovery.jsonlz4
-    CACHE_DIR=$HOME/.cache/lyrics
-    LOCK_DIR=$HOME/.cache/lyrics/locks
-    mkdir -p "$CACHE_DIR"
-    mkdir -p "$LOCK_DIR"
+      lyrics-script = pkgs.writeShellApplication {
+        name = "lyrics-line";
+        runtimeInputs = with pkgs; [
+          dejsonlz4
+          jq
+          playerctl
+          curl
+          perl
+          coreutils
+          (python3.withPackages (ps: [ps.youtube-transcript-api]))
+        ];
+        text = ''
+              PLAYER="''${1:-spotify}"
+              FIREFOX=~/.zen/hbvavekk.School/sessionstore-backups/recovery.jsonlz4
+              CACHE_DIR=$HOME/.cache/lyrics
+              LOCK_DIR=$HOME/.cache/lyrics/locks
+              mkdir -p "$CACHE_DIR"
+              mkdir -p "$LOCK_DIR"
 
-    get_id() {
-      url=$(dejsonlz4 "$FIREFOX" | jq -r ".windows[0].tabs | sort_by(.lastAccessed)[-1] | .entries[.index-1] | .url")
+              get_id() {
+                url=$(dejsonlz4 "$FIREFOX" | jq -r ".windows[0].tabs | sort_by(.lastAccessed)[-1] | .entries[.index-1] | .url")
 
-      if [[ "$url" =~ ^https://www\.youtube\.com/watch\?v= ]]; then
-        echo "$url" | perl -pe 's|https:\/\/www\.youtube\.com\/watch\?v=||'
-      else
-        echo "Error: The URL is not from YouTube." >&2
-        return 1
-      fi
-    }
+                if [[ "$url" =~ ^https://www\.youtube\.com/watch\?v= ]]; then
+                  echo "$url" | perl -pe 's|https:\/\/www\.youtube\.com\/watch\?v=||'
+                else
+                  echo "Error: The URL is not from YouTube." >&2
+                  return 1
+                fi
+              }
 
-    trim() {
-      local var="$*"
-      var="''${var#"''${var%%[![:space:]]*}"}"
-      var="''${var%"''${var##*[![:space:]]}"}"
-      printf '%s' "$var"
-    }
+              trim() {
+                local var="$*"
+                var="''${var#"''${var%%[![:space:]]*}"}"
+                var="''${var%"''${var##*[![:space:]]}"}"
+                printf '%s' "$var"
+              }
 
-    hash() {
-      echo -n "$1" | md5sum | awk '{print $1}'
-    }
+              hash() {
+                echo -n "$1" | md5sum | awk '{print $1}'
+              }
 
-    acquire_lock() {
-      local lock_name="$1"
-      local lock_file="$LOCK_DIR/$lock_name.lock"
-      local max_wait=30
-      local waited=0
+              acquire_lock() {
+                local lock_name="$1"
+                local lock_file="$LOCK_DIR/$lock_name.lock"
+                local max_wait=30
+                local waited=0
 
-      while ! mkdir "$lock_file" 2>/dev/null; do
-        if [ $waited -ge $max_wait ]; then
-          echo "Timeout waiting for lock: $lock_name" >&2
-          return 1
-        fi
+                while ! mkdir "$lock_file" 2>/dev/null; do
+                  if [ $waited -ge $max_wait ]; then
+                    echo "Timeout waiting for lock: $lock_name" >&2
+                    return 1
+                  fi
 
-        sleep 0.5
-        waited=$((waited + 1))
-      done
+                  sleep 0.5
+                  waited=$((waited + 1))
+                done
 
-      echo $$ >"$lock_file/pid"
-      # shellcheck disable=SC2064
-      trap "rm -rf '$lock_file' 2>/dev/null || true" EXIT
+                echo $$ >"$lock_file/pid"
+                # shellcheck disable=SC2064
+                trap "rm -rf '$lock_file' 2>/dev/null || true" EXIT
 
-      return 0
-    }
+                return 0
+              }
 
-    release_lock() {
-      local lock_name="$1"
-      local lock_file="$LOCK_DIR/$lock_name.lock"
+              release_lock() {
+                local lock_name="$1"
+                local lock_file="$LOCK_DIR/$lock_name.lock"
 
-      rm -rf "$lock_file" 2>/dev/null || true
-      trap - EXIT
-    }
+                rm -rf "$lock_file" 2>/dev/null || true
+                trap - EXIT
+              }
 
-    fetch_with_cache() {
-      uri="$1"
-      lock_name=$(hash "$uri")
-      file_path="$CACHE_DIR/$(hash "$uri")"
+              fetch_with_cache() {
+                uri="$1"
+                lock_name=$(hash "$uri")
+                file_path="$CACHE_DIR/$(hash "$uri")"
 
-      if [ -f "$file_path" ]; then
-        res=$(cat "$file_path")
-        echo "$res"
-      else
-        if ! acquire_lock "$lock_name"; then
-          if [ -f "$file_path" ]; then
-            res=$(cat "$file_path")
-            echo "$res"
-            return 0
-          fi
-          return 1
-        fi
+                if [ -f "$file_path" ]; then
+                  res=$(cat "$file_path")
+                  echo "$res"
+                else
+                  if ! acquire_lock "$lock_name"; then
+                    if [ -f "$file_path" ]; then
+                      res=$(cat "$file_path")
+                      echo "$res"
+                      return 0
+                    fi
+                    return 1
+                  fi
 
-        if [ -f "$file_path" ]; then
-          res=$(cat "$file_path")
-          echo "$res"
-          release_lock "$lock_name"
-          return 0
-        fi
+                  if [ -f "$file_path" ]; then
+                    res=$(cat "$file_path")
+                    echo "$res"
+                    release_lock "$lock_name"
+                    return 0
+                  fi
 
-        res=$(curl -s "$1")
+                  res=$(curl -s "$1")
 
-        if [[ -z "$res" ]]; then
-          release_lock "$lock_name"
-          return 1
-        fi
+                  if [[ -z "$res" ]]; then
+                    release_lock "$lock_name"
+                    return 1
+                  fi
 
-        echo "$res" >"$file_path"
-        echo "$res"
+                  echo "$res" >"$file_path"
+                  echo "$res"
 
-        release_lock "$lock_name"
-      fi
-    }
+                  release_lock "$lock_name"
+                fi
+              }
 
-    get_title_artists() {
-      playerctl -p "$PLAYER" metadata --format "{{title}} {{artist}}" | jq -sRr @uri
-    }
+              get_title_artists() {
+                playerctl -p "$PLAYER" metadata --format "{{title}} {{artist}}" | jq -sRr @uri
+              }
 
-    lrclib() {
-      url="https://lrclib.net/api/search?q=$(get_title_artists)"
-      fetch_with_cache "$url" | jq ".[0].syncedLyrics" -r
-    }
+              lrclib() {
+                url="https://lrclib.net/api/search?q=$(get_title_artists)"
+                fetch_with_cache "$url" | jq ".[0].syncedLyrics" -r
+              }
 
-    netease() {
-      song_id=$(fetch_with_cache "https://music.xianqiao.wang/neteaseapiv2/search?limit=10&type=1&keywords=$(get_title_artists)" | jq ".result.songs[0].id")
-      fetch_with_cache "https://music.xianqiao.wang/neteaseapiv2/lyric?id=$song_id" | jq ".lrc.lyric" -r
-    }
+              netease() {
+                song_id=$(fetch_with_cache "https://music.xianqiao.wang/neteaseapiv2/search?limit=10&type=1&keywords=$(get_title_artists)" | jq ".result.songs[0].id")
+                fetch_with_cache "https://music.xianqiao.wang/neteaseapiv2/lyric?id=$song_id" | jq ".lrc.lyric" -r
+              }
 
-    get_position() {
-      playerctl -p "$PLAYER" metadata --format "{{position}}"
-    }
+              get_position() {
+                playerctl -p "$PLAYER" metadata --format "{{position}}"
+              }
 
-    convert_to_microseconds() {
-      local timestamp=$1
-      timestamp=''${timestamp//[\[\]]/}
+              convert_to_microseconds() {
+                local timestamp=$1
+                timestamp=''${timestamp//[\[\]]/}
 
-      IFS=":." read -r minutes seconds milliseconds <<<"$timestamp"
+                IFS=":." read -r minutes seconds milliseconds <<<"$timestamp"
 
-      minutes=''${minutes#0}
-      seconds=''${seconds#0}
-      milliseconds=''${milliseconds#0}
+                minutes=''${minutes#0}
+                seconds=''${seconds#0}
+                milliseconds=''${milliseconds#0}
 
-      [ -z "$minutes" ] && minutes=0
-      [ -z "$seconds" ] && seconds=0
-      [ -z "$milliseconds" ] && milliseconds=0
+                [ -z "$minutes" ] && minutes=0
+                [ -z "$seconds" ] && seconds=0
+                [ -z "$milliseconds" ] && milliseconds=0
 
-      local total_microseconds=$(((\
-        minutes * 60 * 1000000) + (\
-        seconds * 1000000) + (\
-        milliseconds * 1000)))
+                local total_microseconds=$(((\
+                  minutes * 60 * 1000000) + (\
+                  seconds * 1000000) + (\
+                  milliseconds * 1000)))
 
-      echo "$total_microseconds"
-    }
+                echo "$total_microseconds"
+              }
 
-    current_line() {
-      prev=""
-      position=$1
-      while IFS= read -r line; do
-        [ -z "$line" ] && continue
+              current_line() {
+                prev=""
+                position=$1
+                while IFS= read -r line; do
+                  [ -z "$line" ] && continue
 
-        if [[ $line =~ ^\[[0-9:.]+\] ]]; then
-          timestamp=''${line%%\]*}"]"
-          content=''${line#*]}
+                  if [[ $line =~ ^\[[0-9:.]+\] ]]; then
+                    timestamp=''${line%%\]*}"]"
+                    content=''${line#*]}
 
-          microseconds=$(convert_to_microseconds "$timestamp")
+                    microseconds=$(convert_to_microseconds "$timestamp")
 
-          if ((position < microseconds)); then
-            trim "$prev"
-            return
-          fi
-          prev=$content
-        fi
-      done
-    }
+                    if ((position < microseconds)); then
+                      trim "$prev"
+                      return
+                    fi
+                    prev=$content
+                  fi
+                done
+              }
 
-    youtube() {
-      id=$1
-      lock_name="youtube_$id"
-      file_path="$CACHE_DIR/$id"
+              youtube() {
+                id=$1
+                lock_name="youtube_$id"
+                file_path="$CACHE_DIR/$id"
 
-      if [ -f "$file_path" ]; then
-        res=$(cat "$file_path")
-        echo "$res"
-      else
-        if ! acquire_lock "$lock_name"; then
-          if [ -f "$file_path" ]; then
-            res=$(cat "$file_path")
-            echo "$res"
-            return 0
-          fi
-          return 1
-        fi
+                if [ -f "$file_path" ]; then
+                  res=$(cat "$file_path")
+                  echo "$res"
+                else
+                  if ! acquire_lock "$lock_name"; then
+                    if [ -f "$file_path" ]; then
+                      res=$(cat "$file_path")
+                      echo "$res"
+                      return 0
+                    fi
+                    return 1
+                  fi
 
-        if [ -f "$file_path" ]; then
-          res=$(cat "$file_path")
-          echo "$res"
-          release_lock "$lock_name"
-          return 0
-        fi
+                  if [ -f "$file_path" ]; then
+                    res=$(cat "$file_path")
+                    echo "$res"
+                    release_lock "$lock_name"
+                    return 0
+                  fi
 
-        if res=$(python3 <<EOF
-from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api.formatters import TextFormatter
+                  if res=$(python3 <<EOF
+          from youtube_transcript_api import YouTubeTranscriptApi
+          from youtube_transcript_api.formatters import TextFormatter
 
-def convert_to_timestamp_format(seconds):
-  """Convert seconds to [MM:SS.MS] format"""
-  minutes = seconds // 60
-  seconds_remainder = seconds % 60
-  return f"[{minutes:02d}:{seconds_remainder:05.2f}]"
+          def convert_to_timestamp_format(seconds):
+            """Convert seconds to [MM:SS.MS] format"""
+            minutes = seconds // 60
+            seconds_remainder = seconds % 60
+            return f"[{minutes:02d}:{seconds_remainder:05.2f}]"
 
-def convert_json_to_timestamp_format(json_str):
-  formatted_lines = []
-  for entry in json_str:
-    timestamp = convert_to_timestamp_format(int(entry['start']))
-    formatted_lines.append(f"{timestamp} {entry['text']}")
-  return '\n'.join(formatted_lines)
+          def convert_json_to_timestamp_format(json_str):
+            formatted_lines = []
+            for entry in json_str:
+              timestamp = convert_to_timestamp_format(int(entry['start']))
+              formatted_lines.append(f"{timestamp} {entry['text']}")
+            return '\n'.join(formatted_lines)
 
-t = YouTubeTranscriptApi.get_transcript('$id')
+          t = YouTubeTranscriptApi.get_transcript('$id')
 
-print(convert_json_to_timestamp_format(t), end='\n')
-EOF
-        ); then
-          echo "$res" >"$file_path"
-        fi
+          print(convert_json_to_timestamp_format(t), end='\n')
+          EOF
+                  ); then
+                    echo "$res" >"$file_path"
+                  fi
 
-        release_lock "$lock_name"
-        echo "$res"
-      fi
-    }
+                  release_lock "$lock_name"
+                  echo "$res"
+                fi
+              }
 
-    handle_player() {
-      local player="$1"
-      local album
+              handle_player() {
+                local player="$1"
+                local album
 
-      if [ -z "''${PRINT_PLAYER:-}" ]; then
-        :
-      else
-        echo "$player"
-      fi
+                if [ -z "''${PRINT_PLAYER:-}" ]; then
+                  :
+                else
+                  echo "$player"
+                fi
 
-      case "$player" in
-        spotify | .spotify-wrappe)
-          PLAYER=spotify
-          if ! lrclib | current_line "$(get_position)"; then
-            playerctl metadata --format "{{title}} - {{artist}}"
-          fi
-          ;;
-        spotifyd | spotifyd*)
-          PLAYER=spotifyd
-          if ! lrclib | current_line "$(get_position)"; then
-            playerctl metadata --format "{{title}} - {{artist}}"
-          fi
-          ;;
-        spotify_player | spotify_player*)
-          PLAYER=spotify_player
-          if ! lrclib | current_line "$(get_position)"; then
-            playerctl metadata --format "{{title}} - {{artist}}"
-          fi
-          ;;
-        chromium)
-          PLAYER=chromium
-          album=$(playerctl -p $PLAYER metadata xesam:album | tr -d '\n')
-          if [ -z "$album" ]; then
-            playerctl -p $PLAYER metadata --format "{{title}} {{artist}}"
-          else
-            lrclib | current_line "$(get_position)"
-          fi
-          ;;
-        firefox)
-          PLAYER=firefox
-          album=$(playerctl -p $PLAYER metadata xesam:album | tr -d '\n')
-          if [ -z "$album" ]; then
-            if id=$(get_id); then
-              subs=$(youtube "$id")
-              echo "$subs" | current_line "$(get_position)"
-            fi
-          else
-            lrclib | current_line "$(get_position)"
-          fi
-          ;;
-      esac
-    }
+                case "$player" in
+                  spotify | .spotify-wrappe)
+                    PLAYER=spotify
+                    if ! lrclib | current_line "$(get_position)"; then
+                      playerctl metadata --format "{{title}} - {{artist}}"
+                    fi
+                    ;;
+                  spotifyd | spotifyd*)
+                    PLAYER=spotifyd
+                    if ! lrclib | current_line "$(get_position)"; then
+                      playerctl metadata --format "{{title}} - {{artist}}"
+                    fi
+                    ;;
+                  spotify_player | spotify_player*)
+                    PLAYER=spotify_player
+                    if ! lrclib | current_line "$(get_position)"; then
+                      playerctl metadata --format "{{title}} - {{artist}}"
+                    fi
+                    ;;
+                  chromium)
+                    PLAYER=chromium
+                    album=$(playerctl -p $PLAYER metadata xesam:album | tr -d '\n')
+                    if [ -z "$album" ]; then
+                      playerctl -p $PLAYER metadata --format "{{title}} {{artist}}"
+                    else
+                      lrclib | current_line "$(get_position)"
+                    fi
+                    ;;
+                  firefox)
+                    PLAYER=firefox
+                    album=$(playerctl -p $PLAYER metadata xesam:album | tr -d '\n')
+                    if [ -z "$album" ]; then
+                      if id=$(get_id); then
+                        subs=$(youtube "$id")
+                        echo "$subs" | current_line "$(get_position)"
+                      fi
+                    else
+                      lrclib | current_line "$(get_position)"
+                    fi
+                    ;;
+                esac
+              }
 
-    for player in $(playerctl -l 2>/dev/null); do
-      if [ "$(playerctl -p "$player" status 2>/dev/null)" = "Playing" ]; then
-        handle_player "$player"
-        exit 0
-      fi
-    done
+              for player in $(playerctl -l 2>/dev/null); do
+                if [ "$(playerctl -p "$player" status 2>/dev/null)" = "Playing" ]; then
+                  handle_player "$player"
+                  exit 0
+                fi
+              done
 
-    declare -A fallback=(
-      ["spotifyd"]="spotifyd"
-      ["spotify"]="spotify .spotify-wrapper"
-      ["spotify_player"]="spotify_player"
-      ["chromium"]="google-chrome-stable"
-      ["firefox"]="firefox .zen-wrapped .zen-twilight-w zen"
-    )
+              declare -A fallback=(
+                ["spotifyd"]="spotifyd"
+                ["spotify"]="spotify .spotify-wrapper"
+                ["spotify_player"]="spotify_player"
+                ["chromium"]="google-chrome-stable"
+                ["firefox"]="firefox .zen-wrapped .zen-twilight-w zen"
+              )
 
-    for player in "''${!fallback[@]}"; do
-      read -ra procs <<<"''${fallback[$player]}"
-      for proc in "''${procs[@]}"; do
-        if pgrep -fx "$proc" 2>/dev/null >/dev/null || pgrep -x "$proc" 2>/dev/null >/dev/null; then
-          handle_player "$player"
-          exit 0
-        fi
-      done
-    done
-  '';
-};
+              for player in "''${!fallback[@]}"; do
+                read -ra procs <<<"''${fallback[$player]}"
+                for proc in "''${procs[@]}"; do
+                  if pgrep -fx "$proc" 2>/dev/null >/dev/null || pgrep -x "$proc" 2>/dev/null >/dev/null; then
+                    handle_player "$player"
+                    exit 0
+                  fi
+                done
+              done
+        '';
+      };
 
       zfs-script = pkgs.writeShellApplication {
         name = "zfs-status";
-        runtimeInputs = with pkgs; [ zfs coreutils gnugrep gawk ];
+        runtimeInputs = with pkgs; [zfs coreutils gnugrep gawk];
         text = ''
           pool="rpool"
 
@@ -335,7 +335,7 @@ EOF
 
       whisper-status-script = pkgs.writeShellApplication {
         name = "whisper-status";
-        runtimeInputs = with pkgs; [ coreutils ];
+        runtimeInputs = with pkgs; [coreutils];
         text = ''
           DIR="/tmp/whisper-dictate"
           REC_PID="$DIR/recording.pid"
@@ -357,7 +357,7 @@ EOF
 
       recording-status-script = pkgs.writeShellApplication {
         name = "recording-status";
-        runtimeInputs = with pkgs; [ procps ];
+        runtimeInputs = with pkgs; [procps];
         text = ''
           if pgrep -x "wf-recorder" > /dev/null; then
             echo '{"text": "🔴 REC", "tooltip": "Recording active", "class": "recording-active"}'
@@ -369,7 +369,7 @@ EOF
 
       recorder-script = pkgs.writeShellApplication {
         name = "recorder";
-        runtimeInputs = with pkgs; [ wf-recorder rofi libnotify hyprland procps gawk coreutils ];
+        runtimeInputs = with pkgs; [wf-recorder rofi libnotify hyprland procps gawk coreutils];
         text = ''
           DIRECTORY="$HOME/screenrecord"
 
@@ -402,7 +402,7 @@ EOF
 
       camera-cover-script = pkgs.writeShellApplication {
         name = "camera-cover-status";
-        runtimeInputs = with pkgs; [ coreutils ];
+        runtimeInputs = with pkgs; [coreutils];
         text = ''
           ATTR_FILE="/sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value"
           CACHE_FILE="/tmp/.camera_cover_unavailable"

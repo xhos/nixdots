@@ -1,13 +1,14 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/vp/wallhaven-vpx8ep.jpg";
-    sha256 = "sha256-i+0TkkHygoQ6Ektv4c3ok0JDTQ6BEPf5a8I2AicxZOc=";
+    url = "https://pics.xhos.dev/u/brNTBV.png";
+    sha256 = "sha256-kdgVjPOlMKRx9Wd0NbDF2JLbJoQDLuCSElmyT8FE5bQ=";
   };
 
   services.kdeconnect.enable = true;
@@ -39,6 +40,7 @@
     # jetbrains.datagrip
     # oci-cli
     firefox
+    xorg.xrandr
     # termius
     lollypop
     inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
@@ -68,9 +70,9 @@
     ];
 
     monitor = [
-      "desc:Samsung Electric Company LS27AG30x H4PW500403,1920x1080@144.0,2560x0,0.75"
-      "desc:Samsung Electric Company LS27AG30x H4PW500403,transform,3"
       "desc:Microstep MAG 274UPF E2 0x00000001,3840x2160@160.0,0x605,1.5"
+      "desc:Samsung Electric Company LS27AG30x H4PW500403,1920x1080@144.0,2560x294,1.0"
+      "desc:Samsung Electric Company LS27AG30x H4PW500403,transform,3"
     ];
   };
 }
