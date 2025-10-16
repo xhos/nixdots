@@ -9,6 +9,7 @@
     ./home-assistant
     ./wakapi.nix
     ./caddy.nix
+    ./zipline.nix
   ];
 
   networking.hostName = "enrai";
