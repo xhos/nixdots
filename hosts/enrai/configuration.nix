@@ -10,6 +10,7 @@
     ./wakapi.nix
     ./caddy.nix
     ./zipline.nix
+    ./microsocks.nix
   ];
 
   networking.hostName = "enrai";
