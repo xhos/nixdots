@@ -11,6 +11,7 @@
     ./rules.nix
     ./hyprspace.nix
     ./pkgs.nix
+    ./monitors.nix
     # ./osk.nix
   ];
 
