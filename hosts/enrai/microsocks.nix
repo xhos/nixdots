@@ -12,8 +12,9 @@
   services.microsocks = {
     enable = true;
     ip = "192.168.15.1";
-    port = 8080;
+    port = 1080;
     authUsername = "admin";
     authPasswordFile = config.sops.secrets."passwords/microsocks".path;
+authOnce = true;
   };
 }

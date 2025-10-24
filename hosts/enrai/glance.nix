@@ -125,6 +125,11 @@
                           icon = "/assets/wakapi.png";
                         }
                         {
+                          title = "zipline";
+                          url = "https://pics.xhos.dev";
+                          icon = "/assets/wakapi.png";
+                        }
+                        {
                           title = "home assistant";
                           url = "http://${serverIP}:8123";
                           icon = "/assets/home-assistant.png";
@@ -252,6 +257,10 @@
                     {
                       title = "wakapi";
                       url = "https://wakapi.xhos.dev";
+                    }
+                    {
+                      title = "zipline";
+                      url = "https://pics.xhos.dev";
                     }
                   ];
                 }
