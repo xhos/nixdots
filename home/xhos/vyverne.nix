@@ -7,8 +7,8 @@
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://pics.xhos.dev/u/brNTBV.png";
-    sha256 = "sha256-kdgVjPOlMKRx9Wd0NbDF2JLbJoQDLuCSElmyT8FE5bQ=";
+    url = "https://pics.xhos.dev/u/S2DtJS.png";
+    sha256 = "sha256-0F8L5DMPLnc4sqwOZ8wqgUipM4rHVK2NxdXJzvVwloM=";
   };
 
   services.kdeconnect.enable = true;
@@ -69,10 +69,10 @@
       "workspace 10 silent, initialTitle: materialgram"
     ];
 
-    monitor = [
-      "desc:Microstep MAG 274UPF E2 0x00000001,3840x2160@160.0,0x605,1.5"
-      "desc:Samsung Electric Company LS27AG30x H4PW500403,1920x1080@144.0,2560x294,1.0"
-      "desc:Samsung Electric Company LS27AG30x H4PW500403,transform,3"
-    ];
+    # monitor = [
+    #   "desc:Microstep MAG 274UPF E2 0x00000001,3840x2160@160.0,0x605,1.5"
+    #   "desc:Samsung Electric Company LS27AG30x H4PW500403,1920x1080@144.0,2560x294,1.0"
+    #   "desc:Samsung Electric Company LS27AG30x H4PW500403,transform,3"
+    # ];
   };
 }

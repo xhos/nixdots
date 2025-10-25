@@ -32,7 +32,6 @@ in {
 
         # misc configs
         ".config/pulse"
-        # ".config/hypr"
         ".config/libreoffice"
         ".config/spotify"
         ".config/calibre"
@@ -90,11 +89,19 @@ in {
 
     (persistIf (moduleEnabled "discord") {
       directories = [
-        ".config/discord"
-        ".config/Vencord"
-        ".config/equibop"
+        # ".config/discord"
+        ".config/vesktop"
+        # ".config/Vencord"
+        # ".config/equibop"
       ];
     })
+
+    (lib.mkIf (config.de == "hyprland") {
+      files = [
+        ".config/hypr/monitors.conf"
+      ];
+    })
+
     (persistIf config.headless {
       directories = [
         ".cloudflared"
