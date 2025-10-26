@@ -18,14 +18,11 @@
       size = 24;
     };
 
-    iconTheme = {
+    icons = {
       enable = true;
-      package = pkgs.whitesur-icon-theme.override {
-        alternativeIcons = true;
-        boldPanelIcons = true;
-      };
-      dark = "WhiteSur-dark";
-      light = "WhiteSur-light";
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+      package = pkgs.papirus-icon-theme;
     };
 
     targets = {
@@ -163,8 +160,8 @@
 
     fonts = {
       monospace = {
-        package = pkgs.hack-font;
-        name = "Hack";
+        package = pkgs.nerd-fonts.hack;
+        name = "Hack Nerd Font Mono";
       };
 
       sansSerif = {

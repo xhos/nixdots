@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
-    settings.monitor = [ ",preferred,auto,auto" ];
+    settings.monitor = [",preferred,auto,auto"];
 
     extraConfig = ''
       # hyprlang noerror true
@@ -10,5 +10,5 @@
     '';
   };
 
-  home.packages = with pkgs; [ nwg-displays ];
+  home.packages = with pkgs; [nwg-displays];
 }

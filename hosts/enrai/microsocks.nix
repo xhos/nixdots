@@ -1,4 +1,4 @@
-{config,...}: {
+{config, ...}: {
   sops.secrets."passwords/microsocks" = {
     owner = config.services.microsocks.user;
     mode = "0400";
@@ -15,6 +15,6 @@
     port = 1080;
     authUsername = "admin";
     authPasswordFile = config.sops.secrets."passwords/microsocks".path;
-authOnce = true;
+    authOnce = true;
   };
 }

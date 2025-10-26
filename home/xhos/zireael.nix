@@ -2,14 +2,15 @@
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/je/wallhaven-je335m.png";
-    sha256 = "sha256-X4LnmsHMstA0sUwmWR2uxwULT1qBstwsXZ0P6ghxgxg=";
+    url = "https://pics.xhos.dev/u/Gyj0IG.jpeg";
+    sha256 = "sha256-sy/KkYuQKf1JoYKldYDHed2V14qOqMfE3guSRVgc27E=";
   };
 
   impermanence.enable = true;
 
   modules = {
     rofi.enable = true;
+    secrets.enable = true;
     firefox.enable = true;
     discord.enable = true;
     spicetify.enable = true;
@@ -46,10 +47,16 @@
       "echo 1 > /sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value"
     ];
 
-    monitor = [
-      "eDP-1,1920x1080@60.0,0x840,1.0"
-      "DP-2,1920x1080@144.0,1920x0,1.0"
-      "DP-2,transform,3"
-    ];
+    # monitor = [
+    #   "eDP-1,1920x1080@60.0,0x1080,1.0"
+    #   "DP-6,1920x1080@60.0,0x0,1.0"
+    #   "DP-7,2560x1440@59.95,1920x0,1.0"
+    # ];
+    #
+    # monitor = [
+    #   "eDP-1,1920x1080@60.0,0x840,1.0"
+    #   "DP-2,1920x1080@144.0,1920x0,1.0"
+    #   "DP-2,transform,3"
+    # ];
   };
 }

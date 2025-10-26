@@ -29,7 +29,7 @@
       @define-color inactive #${base03};
 
       * {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "Hack Nerd Font Mono";
         font-size: 13px;
         border: none;
         min-height: 0;

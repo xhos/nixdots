@@ -12,13 +12,13 @@
   #   User = "wakapi";
   #   Group = "wakapi";
   # };
- 
+
   security.acme.certs."xhos.dev".extraDomainNames = ["pics.xhos.dev"];
-  
+
   services.caddy.virtualHosts."pics.xhos.dev" = {
     useACMEHost = "xhos.dev";
     listenAddresses = ["10.100.0.2"];
-    extraConfig = "reverse_proxy 127.0.0.1:3334"; 
+    extraConfig = "reverse_proxy 127.0.0.1:3334";
   };
 
   services.zipline = {

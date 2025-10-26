@@ -23,8 +23,8 @@
       poppins
 
       roboto
-      hack-font
       nerd-fonts.fira-code
+      nerd-fonts.hack
       nerd-fonts.fantasque-sans-mono
       nerd-fonts.zed-mono
       nerd-fonts.iosevka

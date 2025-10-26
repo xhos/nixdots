@@ -91,7 +91,6 @@
     egl-wayland # needed for firefox wayland fix
     wayvnc
     wvkbd # on-screen keyboard
-    nwg-displays
     hyprshot
     wev # for keybindings
     scrcpy # android screen mirroring
