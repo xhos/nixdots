@@ -3,6 +3,7 @@
 
   inputs = {
     aard.url = "github:xhos/aard"; # aard, my own astal bar
+    nxv.url = "github:xhos/nxv"; # my nvim config
     disko.url = "github:nix-community/disko"; # declarative disk management
     impermanence.url = "github:nix-community/impermanence"; # ocd godsend
     logi-hypr.url = "github:xhos/logi-hypr"; # gestures for my mx master 3s

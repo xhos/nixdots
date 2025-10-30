@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   # CLI packages useful on both headless and desktop systems
@@ -42,21 +43,14 @@
     ripgrep # recursively searches directories for regex patterns
     wget
     unzip
-    neovim
+    inputs.nxv.packages.${pkgs.system}.default
   ];
 
   # GUI packages for desktop systems only
   guiPkgs = with pkgs; [
-    # GUI networking
-    networkmanagerapplet
-
-    # Audio GUI controls
-    pavucontrol # pulseaudio/pipewire controls
     easyeffects # pipewire audio effects
 
-    # Desktop utilities
     brightnessctl # screen brightness control
-    xterm # GUI terminal
     xdg-utils # desktop integration utilities
     gtk3 # GUI toolkit
   ];
