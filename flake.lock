@@ -1445,11 +1445,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1761783603,
-        "narHash": "sha256-pOUno0sQEFYGQoy1SJJ4XQ56Sa40byg6VgRxFfMxH0o=",
+        "lastModified": 1761836282,
+        "narHash": "sha256-xZEPsdynwisMoh+tDikCbleDsr6nVjqp5cWcsZUbufY=",
         "owner": "xhos",
         "repo": "nxv",
-        "rev": "8349e8075d11bd0a5d4d9a5bc38991bb8cc5fbb9",
+        "rev": "64aacadc7ff140beea227ba6b0514808b99e579b",
         "type": "github"
       },
       "original": {

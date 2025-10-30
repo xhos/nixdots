@@ -7,9 +7,7 @@
 
   headless = true;
 
-  modules = {
-    secrets.enable = false;
-  };
+  modules.secrets.enable = true;
 
   shell = "zsh";
   prompt = "starship";
