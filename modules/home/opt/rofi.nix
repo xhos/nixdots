@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: {
@@ -11,7 +10,7 @@
       mkl = mkLiteral;
     in {
       "*" = {
-        font = mkl "\"Montserrat 12\"";
+        font = mkl "\"Hack Nerd Font 12\"";
         bg0 = mkl "#${config.lib.stylix.colors.base00}55";
         bg1 = mkl "#${config.lib.stylix.colors.base01}55";
         bg2 = mkl "#${config.lib.stylix.colors.base0E}55";
@@ -33,7 +32,7 @@
       };
 
       "inputbar" = {
-        font = mkl "\"Hack 20\"";
+        font = mkl "\"Hack Nerd Font 20\"";
         padding = mkl "12px";
         spacing = mkl "12px";
         children = map mkl ["entry"];

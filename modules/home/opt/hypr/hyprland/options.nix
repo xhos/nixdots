@@ -155,6 +155,10 @@
         accel_profile = "flat";
         sensitivity = "-0.3";
       }
+      {
+        name = "dualsense-wireless-controller-touchpad";
+        enabled = false;
+      }
     ];
 
     # gestures = { #FIXME says it doesnt exist
