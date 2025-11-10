@@ -89,9 +89,9 @@ in {
           "/var/lib/hass"
           "/var/lib/wakapi"
           "/var/cache/jellyfin"
-          
+
           # proxmox
-          "/var/lib/pve-cluster" 
+          "/var/lib/pve-cluster"
           "/var/lib/vz"
           "/var/lib/rrdcached"
           "/var/lib/pve-manager"

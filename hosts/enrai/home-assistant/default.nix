@@ -3,6 +3,10 @@
   config,
   ...
 }: {
+  imports = [
+    ./wled-album-sync.nix
+  ];
+
   sops.secrets."ssh/vyverne" = {
     mode = "0600";
     owner = "hass";
@@ -39,6 +43,7 @@
 
       shell_command = {
         shutdown_vyverne = "${pkgs.openssh}/bin/ssh -i ${config.sops.secrets."ssh/vyverne".path} -o StrictHostKeyChecking=no -p 10022 xhos@10.0.0.11 sudo shutdown -h now";
+        toggle_wled_sync = "${pkgs.curl}/bin/curl -X POST http://localhost:9123/toggle";
       };
 
       switch = [
@@ -131,11 +136,38 @@
           mode = "single";
         }
         {
+          alias = "Yandex - Toggle WLED Sync";
+          trigger = [
+            {
+              platform = "event";
+              event_type = "yandex_speaker";
+              event_data = {
+                value = "ничего не делай!!!!";
+                entity_id = yandexStationId;
+              };
+            }
+          ];
+          action = [
+            {
+              service = "shell_command.toggle_wled_sync";
+            }
+            {
+              service = "media_player.play_media";
+              target.entity_id = yandexStationId;
+              data = {
+                media_content_type = "text";
+                media_content_id = "переключаю синхронизацию";
+              };
+            }
+          ];
+          mode = "single";
+        }
+        {
           alias = "Yandex - Auto Sync Shopping List";
           trigger = [
             {
               platform = "time";
-              at = ["09:00:00" "15:00:00" "21:00:00"]; # morning, afternoon, evening
+              at = ["03:00:00" "15:00:00"];
             }
           ];
           action = [
