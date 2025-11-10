@@ -25,6 +25,7 @@ in {
           "/var/lib/systemd/"
           "/etc/NetworkManager/system-connections"
           "/var/lib/fprint"
+          "/var/lib/fail2ban/"
         ];
         files = [
           "/etc/machine-id"
@@ -88,6 +89,12 @@ in {
           "/var/lib/hass"
           "/var/lib/wakapi"
           "/var/cache/jellyfin"
+          
+          # proxmox
+          "/var/lib/pve-cluster" 
+          "/var/lib/vz"
+          "/var/lib/rrdcached"
+          "/var/lib/pve-manager"
         ];
       })
     ];

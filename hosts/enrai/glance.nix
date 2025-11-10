@@ -112,27 +112,27 @@
                         {
                           title = "jellyfin";
                           url = "http://${serverIP}:8096";
-                          icon = "/assets/jellyfin.png";
+                          icon = "sh:jellyfin";
                         }
                         {
                           title = "sonarr";
                           url = "http://${serverIP}:8989";
-                          icon = "/assets/sonarr.png";
+                          icon = "sh:sonarr";
                         }
                         {
                           title = "wakapi";
                           url = "https://wakapi.xhos.dev";
-                          icon = "/assets/wakapi.png";
+                          icon = "sh:wakapi";
                         }
                         {
                           title = "zipline";
                           url = "https://pics.xhos.dev";
-                          icon = "/assets/wakapi.png";
+                          icon = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zipline.png";
                         }
                         {
                           title = "home assistant";
                           url = "http://${serverIP}:8123";
-                          icon = "/assets/home-assistant.png";
+                          icon = "sh:home-assistant";
                         }
                       ];
                     }
@@ -142,27 +142,32 @@
                         {
                           title = "qbittorrent";
                           url = "http://${serverIP}:8080";
-                          icon = "/assets/qbittorrent.png";
+                          icon = "sh:qbittorrent";
                         }
                         {
                           title = "prowlarr";
                           url = "http://${serverIP}:9696";
-                          icon = "/assets/prowlarr.png";
+                          icon = "sh:prowlarr";
                         }
                         {
                           title = "bazarr";
                           url = "http://${serverIP}:6767";
-                          icon = "/assets/bazarr.png";
+                          icon = "sh:bazarr";
                         }
                         {
                           title = "readarr";
                           url = "http://${serverIP}:6767";
-                          icon = "/assets/readarr.png";
+                          icon = "sh:readarr";
                         }
                         {
                           title = "Bazarr";
                           url = "http://${serverIP}:6767";
-                          icon = "/assets/bazarr.png";
+                          icon = "sh:bazarr";
+                        }
+                        {
+                          title = "Proxmox";
+                          url = "http://${serverIP}:8006";
+                          icon = "sh:proxmox";
                         }
                       ];
                     }
@@ -262,6 +267,10 @@
                       title = "zipline";
                       url = "https://pics.xhos.dev";
                     }
+                    {
+                      title = "proxmox";
+                      url = "https://${serverIP}:8006";
+                    }
                   ];
                 }
                 {
@@ -283,7 +292,6 @@
       server = {
         host = "0.0.0.0";
         port = 3000;
-        assets-path = "/home/xhos/Pictures/glance-assets";
       };
 
       branding = {

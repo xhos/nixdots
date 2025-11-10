@@ -11,6 +11,7 @@
     ./caddy.nix
     ./zipline.nix
     ./microsocks.nix
+    ./proxmox.nix
   ];
 
   networking.hostName = "enrai";

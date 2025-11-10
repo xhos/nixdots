@@ -14,6 +14,9 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake"; # cool browser
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    wled-album-sync.url = "github:xhos/wled-album-sync";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -162,6 +165,8 @@
           inputs.vpn-confinement.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.vscode-server.nixosModules.default
+          inputs.wled-album-sync.nixosModules.default
+          inputs.proxmox-nixos.nixosModules.proxmox-ve
         ];
       };
     };
