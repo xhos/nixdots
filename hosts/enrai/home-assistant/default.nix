@@ -34,8 +34,7 @@
       yandex_station = {
         devices = {
           "xk0000000000000286720000e2296918" = {
-            # device_id without the media_player. prefix
-            host = "10.0.0.20";
+            host = "10.0.0.30";
             name = "Yandex Station Max";
           };
         };
