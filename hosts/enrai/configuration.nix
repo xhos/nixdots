@@ -12,6 +12,7 @@
     ./zipline.nix
     ./microsocks.nix
     ./proxmox.nix
+    ./syncthing.nix
   ];
 
   networking.hostName = "enrai";

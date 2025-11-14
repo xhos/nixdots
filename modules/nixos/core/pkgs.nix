@@ -44,6 +44,8 @@
     wget
     unzip
     inputs.nxv.packages.${pkgs.system}.default
+
+    uv
   ];
 
   # GUI packages for desktop systems only

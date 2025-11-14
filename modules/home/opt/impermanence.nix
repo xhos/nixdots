@@ -56,6 +56,7 @@ in {
 
         ".config/rclone" # rclone configs
         ".local/share/nvim"
+        ".local/state/nvf/"
         ".zen"
         ".mozilla"
         ".vscode"

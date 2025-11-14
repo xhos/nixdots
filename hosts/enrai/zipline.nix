@@ -1,17 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."env/zipline" = {};
-
-  # unset dynamic user stuff which makes it difficult to persist
-  # systemd.services.wakapi.serviceConfig = {
-  #   StateDirectory = lib.mkForce null;
-  #   DynamicUser = lib.mkForce false;
-  #   User = "wakapi";
-  #   Group = "wakapi";
-  # };
 
   security.acme.certs."xhos.dev".extraDomainNames = ["pics.xhos.dev"];
 
