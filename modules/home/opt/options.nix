@@ -42,7 +42,6 @@
     bar = mkOption {
       type = types.enum [
         "waybar"
-        "dankshell"
         "none"
       ];
       default = "none";

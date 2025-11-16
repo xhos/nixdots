@@ -8,10 +8,10 @@
   config = lib.mkIf config.steam.enable {
     environment.systemPackages = with pkgs; [
       (callPackage npins.creamlinux {})
-      r2modman
+      # r2modman
       #   gamescope
       #   heroic
-      lutris
+      # lutris
       #   protontricks
       prismlauncher
       #   protonup-qt

@@ -5,7 +5,7 @@
   ...
 }: {
   nixpkgs.overlays = [
-    inputs.proxmox-nixos.overlays.${config.nixpkgs.hostPlatform.system}
+    inputs.proxmox-nixos.overlays.default
   ];
 
   networking = let 

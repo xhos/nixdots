@@ -32,11 +32,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -109,10 +104,7 @@
               inputs.stylix.nixosModules.stylix
               inputs.impermanence.nixosModules.impermanence
               {
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  system = "x86_64-linux";
-                };
+                home-manager.extraSpecialArgs = {inherit inputs;};
                 home-manager.backupFileExtension = ".b";
                 home-manager.users."${homeUser}" = ./home/${homeUser}/${hostname}.nix;
               }

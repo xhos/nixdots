@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }: {
   imports = [../../modules/home];
@@ -35,13 +34,8 @@
   terminal = "foot";
 
   home.packages = with pkgs; [
-    # davinci-resolve
-    # jetbrains.goland
-    # jetbrains.datagrip
-    # oci-cli
     firefox
     xorg.xrandr
-    # termius
     lollypop
     inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
     (vscode.override {
@@ -68,11 +62,5 @@
       "workspace 10 silent, initialClass: equibop"
       "workspace 10 silent, initialTitle: materialgram"
     ];
-
-    # monitor = [
-    #   "desc:Microstep MAG 274UPF E2 0x00000001,3840x2160@160.0,0x605,1.5"
-    #   "desc:Samsung Electric Company LS27AG30x H4PW500403,1920x1080@144.0,2560x294,1.0"
-    #   "desc:Samsung Electric Company LS27AG30x H4PW500403,transform,3"
-    # ];
   };
 }

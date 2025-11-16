@@ -24,6 +24,5 @@
     ./zed.nix
     ./fonts
     ./xdg.nix
-    ./dankshell.nix
   ];
 }

@@ -2,7 +2,6 @@
   inputs,
   pkgs,
   lib,
-  system,
   config,
   ...
 }: let
@@ -53,7 +52,6 @@
     gum # fancy scripts
     tlrc # better man
     dialog
-    freerdp3
     iproute2
     netcat-gnu
     jq
@@ -83,7 +81,7 @@
     })
     firefox
     chromium
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages."${pkgs.system}".default
 
     # Desktop utilities
     font-manager
@@ -107,8 +105,8 @@
     gnome-solanum
     mpv # video player
     ffmpeg-full
-    protonvpn-gui
-    proton-pass
+    # protonvpn-gui
+    # proton-pass
     kitty # fallback terminal
     nautilus
     qbittorrent
