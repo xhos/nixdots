@@ -10,5 +10,6 @@
     ./services.nix
     ./sops.nix
     ./user.nix
+    ./git.nix
   ];
 }

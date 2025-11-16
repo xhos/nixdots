@@ -5,7 +5,6 @@
     # ./discord.nix
     ./fastfetch.nix
     ./firefox
-    ./git.nix
     ./hypr
     ./impermanence.nix
     ./mako.nix
