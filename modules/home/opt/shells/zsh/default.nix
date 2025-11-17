@@ -24,7 +24,7 @@
           src = pkgs.zsh-syntax-highlighting.src;
         }
       ];
-
+      initContent = "disable r";
       envExtra = ''
         bindkey '^[[1;5D' backward-word
         bindkey '^[[1;5C' forward-word
