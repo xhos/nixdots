@@ -12,7 +12,7 @@
   in
     lib.mkIf config.modules.spicetify.enable {
       enable = true;
-      theme = spicePkgs.themes.lucid;
+      theme = spicePkgs.themes.text;
       enabledExtensions = with spicePkgs.extensions; [
         shuffle
         hidePodcasts

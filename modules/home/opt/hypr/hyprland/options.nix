@@ -156,6 +156,11 @@
         sensitivity = "-0.3";
       }
       {
+        name = "logitech-g305-1";
+        accel_profile = "flat";
+        sensitivity = "-0.7";
+      }
+      {
         name = "dualsense-wireless-controller-touchpad";
         enabled = false;
       }
