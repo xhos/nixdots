@@ -77,7 +77,6 @@ in {
           "/var/lib/wireguard" # wg proxy private key
           "/var/lib/docker"
           "/var/lib/jellyfin"
-          "/var/lib/readarr"
           "/var/lib/prowlarr"
           "/var/lib/acme"
           "/var/lib/caddy"

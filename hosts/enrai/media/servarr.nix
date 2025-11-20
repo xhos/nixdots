@@ -21,11 +21,6 @@
       openFirewall = true;
     };
 
-    readarr = {
-      enable = true;
-      openFirewall = true;
-    };
-
     flaresolverr = {
       enable = true;
       openFirewall = true;
@@ -33,7 +28,7 @@
   };
 
   users = let
-    mediaServices = ["sonarr" "bazarr" "prowlarr" "readarr"];
+    mediaServices = ["sonarr" "bazarr" "prowlarr"];
   in {
     users = lib.genAttrs mediaServices (name: {
       isSystemUser = true;

@@ -155,11 +155,6 @@
                           icon = "sh:bazarr";
                         }
                         {
-                          title = "readarr";
-                          url = "http://${serverIP}:6767";
-                          icon = "sh:readarr";
-                        }
-                        {
                           title = "Bazarr";
                           url = "http://${serverIP}:6767";
                           icon = "sh:bazarr";
