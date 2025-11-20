@@ -134,6 +134,11 @@
                           url = "http://${serverIP}:8123";
                           icon = "sh:home-assistant";
                         }
+                        {
+                          title = "syncthing";
+                          url = "http://${serverIP}:8384";
+                          icon = "sh:syncthing";
+                        }
                       ];
                     }
                     {
@@ -243,10 +248,6 @@
                       url = "http://${serverIP}:6767";
                     }
                     {
-                      title = "readarr";
-                      url = "http://${serverIP}:8787";
-                    }
-                    {
                       title = "flaresolverr";
                       url = "http://${serverIP}:8191";
                     }
@@ -265,6 +266,10 @@
                     {
                       title = "proxmox";
                       url = "https://${serverIP}:8006";
+                    }
+                    {
+                      title = "syncthing";
+                      url = "https://${serverIP}:8384";
                     }
                   ];
                 }

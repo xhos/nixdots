@@ -4,15 +4,15 @@
   ...
 }: {
   sops.secrets = {
-    "syncthing/cert" = {
+    "syncthing/enrai/cert" = {
       owner = config.services.syncthing.user;
       mode = "0400";
     };
-    "syncthing/key" = {
+    "syncthing/enrai/key" = {
       owner = config.services.syncthing.user;
       mode = "0400";
     };
-    "syncthing/guiPassword" = {
+    "syncthing/enrai/guiPassword" = {
       owner = config.services.syncthing.user;
       mode = "0400";
     };
@@ -22,11 +22,12 @@
     enable = true;
     user = "xhos";
     dataDir = "/home/xhos/syncthing";
-    key = config.sops.secrets."syncthing/key".path;
-    cert = config.sops.secrets."syncthing/cert".path;
+    key = config.sops.secrets."syncthing/enrai/key".path;
+    cert = config.sops.secrets."syncthing/enrai/cert".path;
+    guiAddress = "10.0.0.10:8384";
 
     # TODO: yet to be released
-    # guiPasswordFile = config.sops.secrets."syncthing/guiPassword".path;
+    # guiPasswordFile = config.sops.secrets."syncthing/enrai/guiPassword".path;
 
     settings = {
       options.urAccepted = -1;
@@ -35,13 +36,15 @@
         password = "$2b$12$mXEJ2ZnOFfk9VvANdQKjdOvRHqeBFxT6h0BF1EavsThTGQADZAiHK";
       };
 
-      # device id can be found in client's ui
+      # device id can be found in client's ui or
+      # nix-shell -p syncthing --run "syncthing generate --home /tmp/st"
       devices."pixel".id = "JYTSP44-WEDIVSO-O7P3QAI-VARARVP-KT6GK2A-JV2XADQ-GJDTF6Q-Z4Q6YAN";
+      devices."vyverne".id = "DUCJCWV-UADBN4W-EYHLKVD-SS6A55K-26ZQNAE-TE7JPVY-243G7TY-54XHHQ5";
 
       folders = {
         "notes" = {
           path = "/home/xhos/Documents/notes";
-          devices = ["pixel"];
+          devices = ["pixel" "vyverne"];
         };
       };
     };
@@ -49,7 +52,7 @@
 
   systemd.services.notes-git-sync = {
     description = "sync notes with git";
-    path = [ pkgs.git pkgs.openssh ];
+    path = [pkgs.git pkgs.openssh];
     serviceConfig = {
       Type = "oneshot";
       User = "xhos";
