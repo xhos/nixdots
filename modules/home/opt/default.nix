@@ -19,7 +19,7 @@
     ./telegram.nix
     ./terminals
     ./waybar
-    ./web-apps
+    ./web-apps.nix
     ./whisper.nix
     ./zed.nix
     ./fonts
