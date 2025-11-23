@@ -5,43 +5,39 @@
   ...
 }: {
   config = lib.mkIf (config.greeter == "regreet") {
-    programs.regreet = let
-      background =
-        pkgs.fetchurl
-        {
-          url = "https://w.wallhaven.cc/full/yx/wallhaven-yxpv7x.png";
-          sha256 = "sha256-xRDTzoxCJC8yLKLKHQ8bZeojXP9ElQfXeviMQstMZl4=";
-        };
-    in {
+    # Completely override the default command with portal blocking
+    # services.greetd.settings.default_session.command = lib.mkForce (
+    #   let
+    #     greeterCmd = pkgs.writeShellScript "regreet-wrapper" ''
+    #       export GTK_USE_PORTAL=0
+    #       export GDK_DEBUG=no-portals
+    #       exec ${pkgs.greetd.regreet}/bin/regreet
+    #     '';
+    #   in "${pkgs.dbus}/bin/dbus-run-session ${pkgs.cage}/bin/cage -s -- ${greeterCmd}"
+    # );
+
+    # # Disable xdg-portal for greeter user
+    # systemd.user.services.xdg-desktop-portal.enable = lib.mkForce false;
+    programs.regreet = {
       enable = true;
       cageArgs = ["-s" "-m" "last"];
-      settings = {
-        background = {
-          path = background;
-          fit = "Cover";
-        };
-        GTK = {
-          application_prefer_dark_theme = true;
-        };
-      };
-      theme = {
-        package = pkgs.tokyonight-gtk-theme;
-        name = "Tokyonight-Storm-BL-LB";
-      };
       iconTheme = {
         name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme.override {color = "nordic";};
+        package = pkgs.papirus-icon-theme;
       };
-      cursorTheme = {
-        package = pkgs.phinger-cursors;
-        name = "phinger-cursors-dark";
+      theme = {
+        name = "Materia-dark";
+        package = pkgs.materia-theme;
       };
       font = {
-        package = pkgs.hack-font;
-        name = "Hack";
+        name = "Fira Sans";
+        package = pkgs.fira;
+        size = 12;
+      };
+      cursorTheme = {
+        package = pkgs.apple-cursor;
+        name = "macOS";
       };
     };
-
-    services.greetd.enable = true;
   };
 }

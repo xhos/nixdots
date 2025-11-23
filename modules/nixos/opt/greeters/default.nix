@@ -5,5 +5,6 @@
     ./sddm.nix
     ./tuigreet.nix
     ./autologin.nix
+    ./yawn.nix
   ];
 }

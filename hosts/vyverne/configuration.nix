@@ -18,7 +18,7 @@
   ai.enable = false;
   boot.enable = true;
 
-  greeter = "autologin";
+  greeter = "yawn";
 
   users.users.xhos.openssh.authorizedKeys.keyFiles = [./vyverne.pub];
 

@@ -71,6 +71,12 @@ in {
         ];
       })
 
+      (persistIf (config.greeter == "regreet") {
+        directories = [
+          "/var/lib/regreet"
+        ];
+      })
+
       (persistIf config.headless {
         directories = [
           "/var/lib/postgresql"
