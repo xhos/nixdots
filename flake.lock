@@ -2026,11 +2026,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1763918784,
-        "narHash": "sha256-WZckWLI2qNGd1I39tVu/fOSnwBTGQ/AXMgMUkaeKBfo=",
+        "lastModified": 1763959595,
+        "narHash": "sha256-Da3ISi4/4ERlNn2/HuwK1aTZZNlGLJkPOTIXxOJZ2gQ=",
         "owner": "xhos",
         "repo": "yawn",
-        "rev": "91513a78b9ef5e94ca0fe6cc0d6c198652f2d708",
+        "rev": "20512a879d2b3d7fdaf7f86b66dfbaf0d98994c6",
         "type": "github"
       },
       "original": {
