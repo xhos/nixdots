@@ -11,5 +11,6 @@
     ./sops.nix
     ./user.nix
     ./git.nix
+    ./direnv.nix
   ];
 }

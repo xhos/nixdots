@@ -3,7 +3,7 @@
     ./home.nix
     ./nixpkgs.nix
     ./options.nix
-    ./programs.nix
+    ./direnv.nix
     ./ssh.nix
     ./zellij.nix
     ./env.nix
