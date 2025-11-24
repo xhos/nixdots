@@ -18,11 +18,11 @@
   audio       .enable = true;
   boot        .enable = true;
 
-  greeter = "sddm";
+  greeter = "yawn";
   systemd.tmpfiles.rules = [
     "z /sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value 0660 xhos users -"
   ];
   hardware.sensor.iio.enable = true; # screen rotation sensor
-  boot.kernelPackages = pkgs.linuxPackages_6_16;
+  # boot.kernelPackages = pkgs.linuxPackages_;
   services.fprintd.enable = true;
 }
