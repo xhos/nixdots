@@ -38,6 +38,7 @@ in {
         ".config/Code"
         ".config/obsidian"
         ".config/chromium"
+        ".config/github-copilot" # zed stores its copilot auth here
         ".config/sops"
         # ".config/waybar"
         ".config/nvim"

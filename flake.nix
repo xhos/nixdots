@@ -16,7 +16,7 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     wled-album-sync.url = "github:xhos/wled-album-sync";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
-    yawn.url = "github:xhos/yawn"; 
+    yawn.url = "github:xhos/yawn";
 
     home-manager = {
       url = "github:nix-community/home-manager";

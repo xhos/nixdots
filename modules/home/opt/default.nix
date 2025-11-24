@@ -24,5 +24,6 @@
     ./zed.nix
     ./fonts
     ./xdg.nix
+    ./syncthing.nix
   ];
 }

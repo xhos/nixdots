@@ -1,6 +1,8 @@
 {
   inputs,
   pkgs,
+  config,
+  lib,
   ...
 }: {
   imports = [../../modules/home];
@@ -24,6 +26,7 @@
     obs.enable = true;
     whisper.enable = true;
     fonts.enable = true;
+    syncthing.enable = true;
   };
 
   de = "hyprland";
@@ -46,8 +49,6 @@
     })
   ];
 
-  # hyprland.hyprspace.enable = true; # FIXME currently broken https://github.com/nixos/nixpkgs/issues/443989
-
   mainMonitor = "Microstep MAG 274UPF E2 0x00000001";
 
   wayland.windowManager.hyprland.settings = {
@@ -62,5 +63,23 @@
       "workspace 10 silent, initialClass: equibop"
       "workspace 10 silent, initialTitle: materialgram"
     ];
+  };
+
+  config = lib.mkIf config.modules.syncthing.enable {
+    sops.secrets = {
+      "syncthing/vyverne/cert" = {
+        mode = "0400";
+      };
+      "syncthing/vyverne/key" = {
+        mode = "0400";
+      };
+    };
+
+    services.syncthing = {
+      settings = {
+        key = config.sops.secrets."syncthing/vyverne/key".path;
+        cert = config.sops.secrets."syncthing/vyverne/cert".path;
+      };
+    };
   };
 }

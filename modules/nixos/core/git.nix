@@ -11,10 +11,10 @@
       commit.gpgsign = true;
       url = {
         "https://github.com/" = {
-          insteadOf = [ "gh:" ];
+          insteadOf = ["gh:"];
         };
         "git@github.com:xhos/" = {
-          insteadOf = [ "x:" ];
+          insteadOf = ["x:"];
         };
       };
       status = {
