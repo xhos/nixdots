@@ -43,7 +43,7 @@
     ripgrep # recursively searches directories for regex patterns
     wget
     unzip
-    inputs.nxv.packages.${pkgs.system}.default
+    inputs.nxv.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     uv
   ];

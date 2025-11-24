@@ -18,11 +18,11 @@
   config = lib.mkIf (config.de == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      plugins = with pkgs.hyprlandPlugins; [
-        inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
-        inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
-        inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      plugins = [
+        inputs.hyprgrass.packages.${pkgs.stdenv.hostPlatform.system}.hyprgrass
+        inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+        inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
       ];
 
       xwayland.enable = true;

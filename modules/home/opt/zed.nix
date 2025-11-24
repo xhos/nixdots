@@ -11,7 +11,7 @@
       "nix"
       "wakatime"
     ];
-    extraPackages = [inputs.tsutsumi.packages.${pkgs.system}.wakatime-ls];
+    extraPackages = [inputs.tsutsumi.packages.${pkgs.stdenv.hostPlatform.system}.wakatime-ls];
     # // Zed settings
     # //
     # // For information on how to configure Zed, see the Zed

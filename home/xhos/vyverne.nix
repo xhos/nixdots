@@ -40,7 +40,7 @@
     firefox
     xorg.xrandr
     lollypop
-    inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
+    inputs.claude-desktop.packages.${stdenv.hostPlatform.system}.claude-desktop-with-fhs
     (vscode.override {
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
@@ -65,21 +65,13 @@
     ];
   };
 
-  config = lib.mkIf config.modules.syncthing.enable {
-    sops.secrets = {
-      "syncthing/vyverne/cert" = {
-        mode = "0400";
-      };
-      "syncthing/vyverne/key" = {
-        mode = "0400";
-      };
-    };
+  sops.secrets = lib.mkIf config.modules.syncthing.enable {
+    "syncthing/vyverne/cert".mode = "0400";
+    "syncthing/vyverne/key".mode = "0400";
+  };
 
-    services.syncthing = {
-      settings = {
-        key = config.sops.secrets."syncthing/vyverne/key".path;
-        cert = config.sops.secrets."syncthing/vyverne/cert".path;
-      };
-    };
+  services.syncthing.settings = lib.mkIf config.modules.syncthing.enable {
+    key = config.sops.secrets."syncthing/vyverne/key".path;
+    cert = config.sops.secrets."syncthing/vyverne/cert".path;
   };
 }
