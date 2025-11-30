@@ -1,7 +1,7 @@
 {
   imports = [
     ./clipse.nix
-    # ./discord.nix
+    ./discord.nix
     ./fastfetch.nix
     ./firefox
     ./hypr

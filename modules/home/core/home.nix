@@ -69,16 +69,6 @@
 
   # GUI packages for desktop systems
   guiPkgs = with pkgs; [
-    # Browsers and web
-    (pkgs.symlinkJoin {
-      name = "vesktop";
-      paths = [pkgs.vesktop];
-      buildInputs = [pkgs.makeWrapper];
-      postBuild = ''
-        wrapProgram $out/bin/vesktop \
-          --set ELECTRON_OZONE_PLATFORM_HINT x11
-      '';
-    })
     firefox
     chromium
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
