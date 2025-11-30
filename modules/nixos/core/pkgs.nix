@@ -19,7 +19,6 @@
     fan2go
 
     # Nix ecosystem tools
-    npins
     nh # nix helper
     home-manager
     nix-prefetch-git

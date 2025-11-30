@@ -39,7 +39,7 @@ all wallpapers can can be found [here](https://pics.xhos.dev/folder/cmgs64vh4000
 ## 📦 repo structure
 
 - **[derivs](../derivs):** nixpkgs overlays/derivations
-- **[home](../home):** home-manager configurations
+- **[home](../home):** per host home-manager entrypoints
 - **[hosts](../hosts):** host-specific configurations
 - **[modules](../modules):**
   - **[home](../modules/home):** home-manager related modules
@@ -54,6 +54,7 @@ all wallpapers can can be found [here](https://pics.xhos.dev/folder/cmgs64vh4000
 | component          | details                                                 |
 | ------------------ | ------------------------------------------------------- |
 | de/wm              | [hyprland](https://hypr.land/)                          |
+| greeter            | [yawn](https://github.com/xhos/yawn) (i made this!)     |
 | terminal           | [foot](https://codeberg.org/dnkl/foot)                  |
 | shell              | [zsh](https://www.zsh.org/)                             |
 | bar                | [waybar](https://github.com/Alexays/Waybar)             |
@@ -90,11 +91,6 @@ fonts used are:
 - obsidian: [anuppuccin](https://github.com/AnubisNekhet/AnuPpuccin)
 - spotify:  [text](https://github.com/spicetify/spicetify-themes/tree/master/text)
 - and more that i'm forgetting...
-
-## 📜 derivations
-
-- [sddm astronaut theme](../derivs/sddm-astronaut-theme.nix) - collection of themes for sddm
-- [yorha grub theme](../derivs/yorha-grub-theme.nix) - nier-themed grub screen
 
 ## 💡 acknowledgments
 

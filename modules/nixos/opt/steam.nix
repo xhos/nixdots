@@ -2,12 +2,10 @@
   pkgs,
   config,
   lib,
-  npins,
   ...
 }: {
   config = lib.mkIf config.steam.enable {
     environment.systemPackages = with pkgs; [
-      (callPackage npins.creamlinux {})
       # r2modman
       #   gamescope
       #   heroic
