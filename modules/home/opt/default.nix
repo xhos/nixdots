@@ -1,6 +1,5 @@
 {
   imports = [
-    ./aard.nix
     ./clipse.nix
     # ./discord.nix
     ./fastfetch.nix

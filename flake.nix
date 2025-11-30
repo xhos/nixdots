@@ -2,7 +2,6 @@
   description = "overcomplicated mess of a system flake that works for some reason";
 
   inputs = {
-    aard.url = "github:xhos/aard"; # aard, my own astal bar
     nxv.url = "github:xhos/nxv"; # my nvim config
     disko.url = "github:nix-community/disko"; # declarative disk management
     impermanence.url = "github:nix-community/impermanence"; # ocd godsend

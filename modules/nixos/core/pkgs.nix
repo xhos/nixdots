@@ -45,6 +45,7 @@
     unzip
     inputs.nxv.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+    tree
     uv
   ];
 

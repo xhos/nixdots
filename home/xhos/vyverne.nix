@@ -8,9 +8,11 @@
   imports = [../../modules/home];
 
   stylix.image = pkgs.fetchurl {
-    url = "https://pics.xhos.dev/u/S2DtJS.png";
-    sha256 = "sha256-0F8L5DMPLnc4sqwOZ8wqgUipM4rHVK2NxdXJzvVwloM=";
+    url = "https://w.wallhaven.cc/full/rd/wallhaven-rdwjj7.jpg";
+    sha256 = "sha256-Gv/2Ap8YS6F1S1RXlwQr71MMi+iRi9fgvZVVyZeCKvk=";
   };
+
+  stylix.base16Scheme = ./min-dark.yaml;
 
   services.kdeconnect.enable = true;
 
