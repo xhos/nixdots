@@ -1946,11 +1946,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1763959595,
-        "narHash": "sha256-Da3ISi4/4ERlNn2/HuwK1aTZZNlGLJkPOTIXxOJZ2gQ=",
+        "lastModified": 1764513527,
+        "narHash": "sha256-nD2czdZcDYO1k53r/gqOdalYXrh5pzvKAFuE1OYJdhU=",
         "owner": "xhos",
         "repo": "yawn",
-        "rev": "20512a879d2b3d7fdaf7f86b66dfbaf0d98994c6",
+        "rev": "689c6503e0ae4b52b1ebed96f92cc2e19717b236",
         "type": "github"
       },
       "original": {

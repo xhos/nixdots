@@ -87,9 +87,11 @@
       extraSpecialArgs ? {},
     }:
       nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        } // extraSpecialArgs;
+        specialArgs =
+          {
+            inherit inputs;
+          }
+          // extraSpecialArgs;
         modules =
           [
             ./hosts/${hostname}/configuration.nix

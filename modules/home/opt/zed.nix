@@ -7,193 +7,203 @@
 }: {
   programs.zed-editor = lib.mkIf (config.headless != true) {
     enable = true;
+
     extensions = [
+      "catppuccin-blur"
+      "docker-compose"
+      "dockerfile"
+      "git-firefly"
+      "html"
+      "log"
+      "material-icon-theme"
+      "min-theme"
       "nix"
+      "ruff"
+      "sql"
+      "tokyo-night"
+      "toml"
       "wakatime"
     ];
-    extraPackages = [inputs.tsutsumi.packages.${pkgs.stdenv.hostPlatform.system}.wakatime-ls];
-    # // Zed settings
-    # //
-    # // For information on how to configure Zed, see the Zed
-    # // documentation: https://zed.dev/docs/configuring-zed
-    # //
-    # // To see all of Zed's default settings without changing your
-    # // custom settings, run the `zed: Open Default Settings` command
-    # // from the command palette
 
-    # userSettings = {
-    #   "icon_theme": "Material Icon Theme",
-    #   "project_panel": {
-    #     "dock": "left",
-    #     "indent_size": 12,
-    #     "entry_spacing": "standard",
-    #     "indent_guides": {
-    #       "show": "never"
-    #     },
-    #     "scrollbar": {
-    #       "show": "never"
-    #     }
-    #   },
-    #   "base_keymap": "VSCode",
-    #   "vim_mode": false,
-    #   "assistant": {
-    #     "version": "2",
-    #     "default_model": {
-    #       "provider": "ollama",
-    #       "model": "llama3.1:latest"
-    #     }
-    #   },
-    #   # "ui_font_size": 16,
-    #   # "buffer_font_size": 16,
-    #   # "tab_size": 2,
-    # #   "theme": {
-    # #     "mode": "system",
-    # #     "light": "Tokyo Night",
-    # #     "dark": "Tokyo Night Storm"
-    # #   },
-    # #   "experimental.theme_overrides": {
-    # #     "renamed.background": "#d",
-    # #     "search.match_background": "#FFFFFF20",
-    # #     "ghost_element.background": "#00000010",
-    # #     "ghost_element.hover": "#00000099",
-    # #     "background.appearance": "blurred",
-    # #     "background": "#00000066",
-    # #     "editor.background": "#00000010",
-    # #     "editor.gutter.background": "#00000010",
-    # #     "title_bar.background": "#000000DF",
-    # #     "toolbar.background": "#00000010",
-    # #     "terminal.background": "#00000000",
-    # #     "status_bar.background": "#000000DF",
-    # #     "tab.active_background": "#000000",
-    # #     "tab.inactive_background": "#00000000",
-    # #     "tab_bar.background": "#00000010",
-    # #     "panel.background": "#00000010",
-    # #     "border": "#00000000",
-    # #     "border.variant": "#00000000",
-    # #     "scrollbar.track.border": "#00000000",
-    # #     "scrollbar.track.background": "#00000000",
-    # #     "scrollbar.thumb.background": "#00000000",
-    # #     "scrollbar.thumb.hover.background": "#00000000",
-    # #     "scrollbar.thumb.active.background": "#00000000",
-    # #     "scrollbar.thumb.border": "#FFFFFF90",
-    # #     "editor.line_highlight": "#00000000",
-    # #     "editor.active_line.background": "#00000000",
-    # #     "editor.selection.background": "#00000000",
-    # #     "editor.selection.foreground": "#00000000",
-    # #     "editor.selection.border": "#00000000",
-    # #     "editor.selection.inactive.foreground": "#00000000",
-    # #     "editor.selection.inactive.border": "#00000000",
-    # #     "editor.selection.active.background": "#00000000",
-    # #     "editor.selection.active.foreground": "#00000000",
-    # #     "editor.selection.active.border": "#00000000",
-    # #     "editor.selection.inactive.background": "#00000000"
-    # #   }
-    # # }
+    extraPackages = [
+      inputs.tsutsumi.packages.${pkgs.stdenv.hostPlatform.system}.wakatime-ls
+      pkgs.alejandra
+    ];
 
-    # #   # everything inside of these brackets are Zed options.
-    # #   # userSettings = {
-    # #   #   assistant = {
-    # #   #     enabled = true;
-    # #   #     version = "2";
-    # #   #     default_open_ai_model = null;
-    # #   #     # PROVIDER OPTIONS
-    # #   #     # zed.dev models { claude-3-5-sonnet-latest } requires github connected
-    # #     # anthropic models { claude-3-5-sonnet-latest claude-3-haiku-latest claude-3-opus-latest  } requires API_KEY
-    # #     # copilot_chat models { gpt-4o gpt-4 gpt-3.5-turbo o1-preview } requires github connected
-    # #     default_model = {
-    # #       provider = "zed.dev";
-    # #       model = "claude-3-5-sonnet-latest";
-    # #     };
+    userSettings = {
+      base_keymap = "VSCode";
+      vim_mode = false;
+      theme = "Min Dark (Blurred)";
+      icon_theme = "Material Icon Theme";
 
-    # #     # inline_alternatives = [
-    # #     #     {
-    # #     #         provider = "copilot_chat";
-    # #     #         model = "gpt-3.5-turbo";
-    # #     #     }
-    # #     # ];
-    # #   };
+      ui_font_size = 18.0;
+      buffer_font_family = "FiraCode Nerd Font Mono";
+      buffer_font_size = 14.0;
+      buffer_font_weight = 400.0;
+      tab_size = 2;
 
-    # #   hour_format = "hour24";
-    # #   auto_update = false;
-    # #   terminal = {
-    # #     alternate_scroll = "off";
-    # #     blinking = "off";
-    # #     copy_on_select = false;
-    # #     dock = "bottom";
+      auto_update = false;
+      autosave = "on_focus_change";
+      format_on_save = "on";
+      formatter = "language_server";
+      relative_line_numbers = false;
+      show_wrap_guides = true;
 
-    # #     detect_venv = {
-    # #       on = {
-    # #         directories = [".env" "env" ".venv" "venv"];
-    # #         activate_script = "default";
-    # #       };
-    # #     };
+      telemetry = {
+        diagnostics = false;
+        metrics = false;
+      };
 
-    # #     font_family = "Hack";
-    # #     font_features = null;
-    # #     font_size = null;
-    # #     line_height = "comfortable";
-    # #     option_as_meta = false;
-    # #     button = false;
-    # #     shell = "system";
-    # #     #{
-    # #     #                    program = "zsh";
-    # #     #};
-    # #     toolbar = {
-    # #       title = true;
-    # #     };
-    # #     working_directory = "current_project_directory";
-    # #   };
+      collaboration_panel.button = false;
+      bottom_dock_layout = "contained";
 
-    # #   lsp = {
-    # #     nix = {
-    # #       binary = {
-    # #         path_lookup = true;
-    # #       };
-    # #     };
-    # #   };
+      git = {
+        inline_blame.enabled = false;
+      };
 
-    # #   # tell zed to use direnv and direnv can use a flake.nix enviroment.
-    # #   load_direnv = "shell_hook";
-    # #   base_keymap = "VSCode";
+      git_panel = {
+        sort_by_path = false;
+        collapse_untracked_diff = false;
+        status_style = "label_color";
+      };
 
-    # #   theme = {
-    # #     mode = "system";
-    # #     light = "Tokyo Night";
-    # #     dark = "Tokyo Night";
-    # #   };
+      outline_panel = {
+        dock = "right";
+        button = true;
+      };
 
-    # #   show_whitespaces = "all";
-    # #   ui_font_size = 16;
-    # #   buffer_font_size = 16;
-    # #   ui_font_family = "Hack";
+      project_panel = {
+        hide_hidden = false;
+        hide_root = true;
+        hide_gitignore = false;
+        auto_fold_dirs = true;
+        auto_reveal_entries = true;
+        folder_icons = true;
+        sticky_scroll = false;
+        button = true;
+        dock = "left";
+        indent_size = 12;
+        entry_spacing = "standard";
+        indent_guides.show = "never";
+        scrollbar.show = "never";
+      };
 
-    # #   # "experimental.theme_overrides" = {
-    # #   #   "background.appearance" = "blurred";
-    # #   #   "background" = "#16161e80";
-    # #   #   "panel.background" = "#00000000";
-    # #   #   "editor.background" = "#00000000";
-    # #   #   "tab_bar.background" = "#00000000";
-    # #   #   "terminal.background" = "#00000000";
-    # #   #   "toolbar.background" = "#00000000";
-    # #   #   "tab.inactive_background" = "#00000000";
-    # #   #   "tab.active_background" = "#3f3f4650";
-    # #   #   "border" = "#00000000";
-    # #   #   "status_bar.background" = "#16161e80";
-    #   #   "title_bar.background" = "#16161e80";
-    #   #   "border.variant" = "#00000000";
-    #   #   "scrollbar.track.background" = "#00000000";
-    #   #   "scrollbar.track.border" = "#00000000";
-    #   #   "scrollbar.thumb.background" = "#00000000";
-    #   #   "scrollbar.thumb.border" = "#00000000";
-    #   #   "elevated_surface.background" = "#00000090";
-    #   #   "surface.background" = "#00000090";
-    #   #   "editor.active_line_number" = "#ffffffcc";
-    #   #   "editor.gutter.background" = "#00000000";
-    #   #   "editor.indent_guide" = "#ffffff30";
-    #   #   "editor.indent_guide_active" = "#ffffff80";
-    #   #   "editor.line_number" = "#ffffff80";
-    #   #   "editor.active_line.background" = "#3f3f4640";
-    #   # };
-    # };
+      tab_bar = {
+        show_nav_history_buttons = false;
+        show = true;
+      };
+
+      tabs = {
+        show_close_button = "hidden";
+        show_diagnostics = "all";
+        file_icons = false;
+        git_status = false;
+      };
+
+      title_bar = {
+        show_project_items = true;
+        show_menus = false;
+        show_user_picture = false;
+        show_sign_in = false;
+        show_branch_icon = true;
+      };
+
+      terminal = {
+        font_family = "Hack Nerd Font Mono";
+        font_size = 14.0;
+        font_weight = 400.0;
+        toolbar.breadcrumbs = false;
+        button = false;
+      };
+
+      toolbar = {
+        code_actions = true;
+        quick_actions = true;
+        breadcrumbs = true;
+      };
+
+      status_bar = {
+        cursor_position_button = true;
+        active_language_button = false;
+      };
+
+      gutter = {
+        min_line_number_digits = 3;
+        breakpoints = false;
+        folds = false;
+      };
+
+      scrollbar.show = "never";
+
+      minimap = {
+        show = "always";
+        display_in = "active_editor";
+        thumb = "hover";
+        thumb_border = "left_open";
+        current_line_highlight = "all";
+        max_width_columns = 60;
+      };
+
+      indent_guides = {
+        enabled = true;
+        coloring = "fixed";
+        background_coloring = "disabled";
+      };
+
+      inlay_hints = {
+        enabled = false;
+        show_background = true;
+      };
+
+      preview_tabs.enable_preview_from_file_finder = false;
+      search.button = false;
+      debugger.button = true;
+      diagnostics.button = true;
+      file_finder.file_icons = true;
+
+      features.edit_prediction_provider = "copilot";
+
+      agent = {
+        default_profile = "ask";
+        default_model = {
+          provider = "copilot_chat";
+          model = "gemini-2.5-pro";
+        };
+        play_sound_when_agent_done = true;
+      };
+
+      agent_ui_font_size = 14.0;
+
+      ssh_connections = [
+        {
+          host = "enrai";
+          projects = [
+            {paths = ["/etc/nixos"];}
+            {paths = ["/home/xhos"];}
+            {paths = ["/home/xhos/Projects/arian/./"];}
+            {paths = ["/home/xhos/Projects/orbs/./"];}
+            {paths = ["/var/lib/hass"];}
+          ];
+        }
+      ];
+
+      file_scan_exclusions = [
+        ".pre-commit-config.yaml"
+        ".direnv"
+        ".git"
+        ".envrc"
+        ".claude"
+        "CLAUDE.md"
+      ];
+
+      languages.Nix = {
+        formatter = {
+          external = {
+            command = "alejandra";
+            arguments = [];
+          };
+        };
+      };
+    };
   };
 }

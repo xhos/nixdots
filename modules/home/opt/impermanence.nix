@@ -14,10 +14,6 @@ in {
       directories = [
         ".config/claude"
         ".local/state/wireplumber"
-        # zed
-        ".local/share/zed"
-        ".config/zed"
-        ".zed_server"
 
         # jetbrains
         ".local/share/JetBrains"
@@ -40,7 +36,6 @@ in {
         ".config/chromium"
         ".config/github-copilot" # zed stores its copilot auth here
         ".config/sops"
-        # ".config/waybar"
         ".config/nvim"
         ".config/obs-studio"
 
@@ -91,10 +86,7 @@ in {
 
     (persistIf (moduleEnabled "discord") {
       directories = [
-        # ".config/discord"
-        ".config/vesktop"
-        # ".config/Vencord"
-        # ".config/equibop"
+        ".config/discord"
       ];
     })
 
@@ -108,6 +100,7 @@ in {
       directories = [
         ".cloudflared"
         ".vscode-server"
+        ".zed_server"
       ];
     })
   ]);
