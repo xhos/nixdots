@@ -3,7 +3,7 @@
     shells = [pkgs.zsh];
     variables.NH_FLAKE = "/etc/nixos";
     variables.EDITOR = "nvim";
-    variables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    variables.NIXOS_OZONE_WL = "1";
     variables.WAKATIME_HOME = "/home/xhos/.config/wakatime";
     variables.CLAUDE_CONFIG_DIR = "/home/xhos/.config/claude";
   };

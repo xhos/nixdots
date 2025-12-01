@@ -33,10 +33,9 @@ in {
     bind =
       [
         # Compositor commands
-        "CTRLSHIFT, Q, exit"
         "SUPER, C, killactive"
         "SUPER, S, togglesplit"
-        "SUPER, E, exec, nautilus"
+        "SUPER, E, exec, uwsm-app -- nautilus"
         "SUPER, F, fullscreen"
         "SUPER, P, pseudo"
         "SUPERSHIFT, P, pin"
@@ -90,30 +89,29 @@ in {
         "SUPERSHIFT, R, split:grabroguewindows"
 
         # utilities
-        "SUPER, Q, exec, ${terminal}" # open terminal
-        "SUPER, R, exec, whspr" # toggle dictation
-        "SUPER, B, exec, ${config.browser}" # open browser
-        "SUPERSHIFTALT, L, exec, hyprlock" # lock screen
-        # "SUPERSHIFT, T, exec, wl-ocr" # capture text TODO: find a better way to do this
-        "SUPERSHIFT, S ,exec, hyprshot -z -m region --clipboard-only" # screenshot
-        "SUPER, V, exec, ${terminal} -a clipse clipse" # clipboard manager
-        "SUPERSHIFT, B, exec, ${terminal} -a bluetui bluetui" # bluetooth manager
-        "SUPERSHIFT, N, exec, ${terminal} -a impala impala" # network manager
-        "SUPERSHIFT, A, exec, ${terminal} -a wiremix wiremix" # audio manager
-        "SUPERSHIFT, e, exec, bemoji" # emoji picker
-        ",insert, exec, volume-script --toggle-mic" # toggle mic mute
-        "ALT, code:65, exec, rofi -show drun" # rofi drun
+        "SUPER, Q, exec, uwsm-app -- ${terminal}"
+        "SUPER, R, exec, uwsm-app -- whspr"
+        "SUPER, B, exec, uwsm-app -- ${config.browser}"
+        "SUPERSHIFTALT, L, exec, uwsm-app -- hyprlock"
+        "SUPERSHIFT, S, exec, uwsm-app -- hyprshot -z -m region --clipboard-only"
+        "SUPER, V, exec, uwsm-app -- ${terminal} -a clipse clipse"
+        "SUPERSHIFT, B, exec, uwsm-app -- ${terminal} -a bluetui bluetui"
+        "SUPERSHIFT, N, exec, uwsm-app -- ${terminal} -a impala impala"
+        "SUPERSHIFT, A, exec, uwsm-app -- ${terminal} -a wiremix wiremix"
+        "SUPERSHIFT, e, exec, uwsm-app -- bemoji"
+        ",insert, exec, uwsm-app -- volume-script --toggle-mic"
+        "ALT, code:65, exec, uwsm-app -- rofi -show drun -run-command 'uwsm-app -- {cmd}'"
       ]
       ++ workspaces;
 
     # will repeat while held
     binde = [
-      ",XF86AudioRaiseVolume, exec, volume-script --inc"
-      ",XF86AudioLowerVolume, exec, volume-script --dec"
-      ",XF86AudioMute, exec, volume-script --toggle"
+      ",XF86AudioRaiseVolume, exec, uwsm-app -- volume-script --inc"
+      ",XF86AudioLowerVolume, exec, uwsm-app -- volume-script --dec"
+      ",XF86AudioMute, exec, uwsm-app -- volume-script --toggle"
 
-      ",XF86MonBrightnessUp, exec, brightness-script --inc"
-      ",XF86MonBrightnessDown, exec, brightness-script --dec"
+      ",XF86MonBrightnessUp, exec, uwsm-app -- brightness-script --inc"
+      ",XF86MonBrightnessDown, exec, uwsm-app -- brightness-script --dec"
     ];
 
     # mouse bindings
