@@ -7,7 +7,7 @@
     ./nvidia.nix
     ./options.nix
     ./rclone.nix
-    ./steam.nix
+    ./games.nix
     ./virtualisation.nix
     ./greeters
   ];

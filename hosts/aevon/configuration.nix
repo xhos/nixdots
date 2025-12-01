@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [../../modules/nixos];
 
   vm.enable = true;

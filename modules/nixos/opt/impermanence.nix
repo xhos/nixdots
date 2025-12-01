@@ -51,7 +51,7 @@ in {
         ];
       })
 
-      (persistIf config.steam.enable {
+      (persistIf config.games.enable {
         directories = [
           (userDir ".steam")
           (userDir ".local/share/Steam")

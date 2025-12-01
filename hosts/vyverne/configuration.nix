@@ -11,7 +11,7 @@
   impermanence.enable = true;
   audio.enable = true;
   bluetooth.enable = true;
-  steam.enable = true;
+  games.enable = true;
   greetd.enable = true;
   nvidia.enable = true;
   vm.enable = true;

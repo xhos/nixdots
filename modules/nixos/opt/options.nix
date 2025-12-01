@@ -5,7 +5,7 @@
     rclone   .enable = mkEnableOption "Enable rclone";
     audio    .enable = mkEnableOption "Enable audio";
     sops     .enable = mkEnableOption "Enable sops";
-    steam    .enable = mkEnableOption "Enable steam";
+    games    .enable = mkEnableOption "Enable gaming related stuff";
     greetd   .enable = mkEnableOption "Enable greetd";
     nvidia   .enable = mkEnableOption "Enable nvidia support";
     vm       .enable = mkEnableOption "Enable vm support";
@@ -18,7 +18,7 @@
     };
 
     greeter = mkOption {
-      type = types.enum ["regreet" "autologin" "tuigreet" "ly" "sddm" "yawn" "none"];
+      type = types.enum ["autologin" "sddm" "yawn" "none"];
       default = "none";
     };
   };
