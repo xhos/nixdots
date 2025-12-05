@@ -49,7 +49,7 @@
       };
       "proxy-2" = {
         host = "proxy-2";
-        hostname = "141.147.56.47";
+        hostname = "89.168.83.242";
         user = "root";
         identitiesOnly = true;
         identityFile = "~/.ssh/proxy.key";
