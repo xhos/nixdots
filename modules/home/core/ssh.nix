@@ -1,4 +1,31 @@
 {
+  config,
+  lib,
+  ...
+}: {
+  sops.secrets = lib.mkIf config.modules.secrets.enable {
+    "ssh/proxy" = {
+      path = "${config.home.homeDirectory}/.ssh/proxy.key";
+      mode = "0600";
+    };
+    "ssh/arm" = {
+      path = "${config.home.homeDirectory}/.ssh/arm.key";
+      mode = "0600";
+    };
+    "ssh/enrai" = {
+      path = "${config.home.homeDirectory}/.ssh/enrai.key";
+      mode = "0600";
+    };
+    "ssh/vyverne" = {
+      path = "${config.home.homeDirectory}/.ssh/vyverne.key";
+      mode = "0600";
+    };
+    "ssh/zireael" = {
+      path = "${config.home.homeDirectory}/.ssh/zireael.key";
+      mode = "0600";
+    };
+  };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -13,9 +40,16 @@
         identityFile = "~/.ssh/azure";
         identitiesOnly = true;
       };
-      "proxy" = {
-        host = "proxy";
-        hostname = "192.18.152.177";
+      "proxy-1" = {
+        host = "proxy-1";
+        hostname = "40.233.88.40";
+        user = "root";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/proxy.key";
+      };
+      "proxy-2" = {
+        host = "proxy-2";
+        hostname = "141.147.56.47";
         user = "root";
         identitiesOnly = true;
         identityFile = "~/.ssh/proxy.key";

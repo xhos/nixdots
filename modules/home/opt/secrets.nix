@@ -21,26 +21,6 @@ in {
           path = "${homeDirectory}/.config/wakatime/.wakatime.cfg";
           mode = "0444";
         };
-        "ssh/proxy" = {
-          path = "${homeDirectory}/.ssh/proxy.key";
-          mode = "0600";
-        };
-        "ssh/arm" = {
-          path = "${homeDirectory}/.ssh/arm.key";
-          mode = "0600";
-        };
-        "ssh/enrai" = {
-          path = "${homeDirectory}/.ssh/enrai.key";
-          mode = "0600";
-        };
-        "ssh/vyverne" = {
-          path = "${homeDirectory}/.ssh/vyverne.key";
-          mode = "0600";
-        };
-        "ssh/zireael" = {
-          path = "${homeDirectory}/.ssh/zireael.key";
-          mode = "0600";
-        };
       };
     };
   };

@@ -8,6 +8,7 @@
       "uwsm-app -- clipse -listen"
       "uwsm-app -- wl-paste --type text --watch cliphist store"
       "uwsm-app -- wl-paste --type image --watch cliphist store"
+      "uwsm-app -- gnome-keyring-daemon --start --daemonize"
     ];
 
     general = {
