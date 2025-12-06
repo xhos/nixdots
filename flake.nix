@@ -16,6 +16,7 @@
     wled-album-sync.url = "github:xhos/wled-album-sync";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     yawn.url = "github:xhos/yawn";
+    import-tree.url = "github:vic/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager";

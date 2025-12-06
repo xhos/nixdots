@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./mpd
-    ./spicetify.nix
-  ];
-}

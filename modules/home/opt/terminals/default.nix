@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./wezterm
-    ./foot
-    ./ghostty
-  ];
-}

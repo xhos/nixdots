@@ -1,6 +1,1 @@
-{
-  imports = [
-    ./core
-    ./opt
-  ];
-}
+{inputs, ...}: inputs.import-tree [./core ./opt]
