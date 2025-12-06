@@ -87,6 +87,8 @@ in {
           "/var/lib/acme"
           "/var/lib/caddy"
           "/var/lib/bazarr"
+          "/var/lib/radarr"
+          "/var/lib/zipline"
           "/var/lib/sonarr"
           "/var/lib/glance"
           "/var/lib/qBittorrent"

@@ -1,16 +1,36 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   sops.secrets."env/zipline" = {};
 
   security.acme.certs."xhos.dev".extraDomainNames = ["pics.xhos.dev"];
 
   services.caddy.virtualHosts."pics.xhos.dev" = {
     useACMEHost = "xhos.dev";
-    listenAddresses = ["10.100.0.2"];
+    listenAddresses = ["10.100.0.10"];
     extraConfig = "reverse_proxy 127.0.0.1:3334";
   };
 
+  # # unset dynamic user stuff which makes it difficult to persist
+  # systemd.services.zipline.serviceConfig = {
+  #   StateDirectory = lib.mkForce null;
+  #   DynamicUser = lib.mkForce false;
+  #   User = "zipline";
+  #   Group = "zipline";
+  # };
+
+  # users.users.zipline = {
+  #   isSystemUser = true;
+  #   group = "zipline";
+  #   home = "/var/lib/zipline";
+  #   createHome = true;
+  # };
+  # users.groups.zipline = {};
+
   services.zipline = {
-    enable = true;
+    enable = false;
     environmentFiles = [config.sops.secrets."env/zipline".path];
 
     settings = {

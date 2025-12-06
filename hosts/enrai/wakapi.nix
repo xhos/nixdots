@@ -5,6 +5,8 @@
 }: {
   sops.secrets."passwords/wakapi" = {};
 
+  security.acme.certs."xhos.dev".extraDomainNames = ["wakapi.xhos.dev"];
+
   # unset dynamic user stuff which makes it difficult to persist
   systemd.services.wakapi.serviceConfig = {
     StateDirectory = lib.mkForce null;
@@ -15,7 +17,7 @@
 
   services.caddy.virtualHosts."wakapi.xhos.dev" = {
     useACMEHost = "xhos.dev";
-    listenAddresses = ["10.100.0.2"];
+    listenAddresses = ["10.100.0.10"];
     extraConfig = ''
       reverse_proxy 127.0.0.1:3333
     '';

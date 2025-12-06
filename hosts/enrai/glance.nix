@@ -120,6 +120,11 @@
                           icon = "sh:sonarr";
                         }
                         {
+                          title = "radarr";
+                          url = "http://${serverIP}:7878";
+                          icon = "sh:radarr";
+                        }
+                        {
                           title = "wakapi";
                           url = "https://wakapi.xhos.dev";
                           icon = "sh:wakapi";
@@ -238,6 +243,10 @@
                     {
                       title = "sonarr";
                       url = "http://${serverIP}:8989";
+                    }
+                    {
+                      title = "radarr";
+                      url = "http://${serverIP}:7878";
                     }
                     {
                       title = "prowlarr";

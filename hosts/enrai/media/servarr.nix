@@ -16,6 +16,11 @@
       openFirewall = true;
     };
 
+    radarr = {
+      enable = true;
+      openFirewall = true;
+    };
+
     bazarr = {
       enable = true;
       openFirewall = true;
@@ -28,7 +33,7 @@
   };
 
   users = let
-    mediaServices = ["sonarr" "bazarr" "prowlarr"];
+    mediaServices = ["sonarr" "radarr" "bazarr" "prowlarr"];
   in {
     users = lib.genAttrs mediaServices (name: {
       isSystemUser = true;
@@ -44,6 +49,12 @@
     User = "prowlarr";
     Group = "prowlarr";
   };
+
+  # systemd.services.radarr.serviceConfig = {
+  #   DynamicUser = lib.mkForce false;
+  #   User = "radarr";
+  #   Group = "radarr";
+  # };
 
   systemd.tmpfiles.rules = [
     "d /storage/media 0775 root media -"

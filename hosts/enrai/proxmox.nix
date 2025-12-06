@@ -1,11 +1,6 @@
-{
-  config,
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   nixpkgs.overlays = [
-    inputs.proxmox-nixos.overlays.default
+    inputs.proxmox-nixos.overlays."x86_64-linux"
   ];
 
   networking = let

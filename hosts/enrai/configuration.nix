@@ -5,7 +5,7 @@
     ./media
     ./glance.nix
     ./proxy.nix
-    ./virtualisation.nix
+    ./docker.nix
     ./home-assistant
     ./wakapi.nix
     ./caddy.nix
@@ -13,6 +13,7 @@
     ./microsocks.nix
     ./proxmox.nix
     ./syncthing.nix
+    ./dns.nix
   ];
 
   networking.hostName = "enrai";
