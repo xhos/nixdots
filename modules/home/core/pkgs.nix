@@ -69,8 +69,11 @@
 
   # GUI packages for desktop systems
   guiPkgs = with pkgs; [
+    lollypop
+    vscode
     firefox
     chromium
+    inputs.claude-desktop.packages.${stdenv.hostPlatform.system}.claude-desktop-with-fhs
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
     # Desktop utilities
@@ -104,6 +107,13 @@
     (obsidian.override {commandLineArgs = ["--no-sandbox"];})
   ];
 in {
+  nixpkgs.config = {
+    permittedInsecurePackages = ["electron-25.9.0"];
+    allowUnfree = true;
+    allowBroken = true;
+    allowUnfreePredicate = _: true;
+  };
+
   home = {
     username = "xhos";
     homeDirectory = "/home/xhos";

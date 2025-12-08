@@ -1,8 +1,9 @@
-{
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos
     ./disko.nix
+    inputs.disko.nixosModules.disko
+    inputs.sops-nix.nixosModules.sops
   ];
 
   networking.hostName = "vyverne";

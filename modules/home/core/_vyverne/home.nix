@@ -1,20 +1,15 @@
 {
-  inputs,
   pkgs,
   config,
   lib,
   ...
 }: {
-  imports = [../modules/home];
-
   stylix.image = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/rd/wallhaven-rdwjj7.jpg";
     sha256 = "sha256-Gv/2Ap8YS6F1S1RXlwQr71MMi+iRi9fgvZVVyZeCKvk=";
   };
 
   stylix.base16Scheme = ./min-dark.yaml;
-
-  services.kdeconnect.enable = true;
 
   impermanence.enable = true;
 
@@ -38,19 +33,6 @@
   browser = "zen";
   terminal = "foot";
 
-  home.packages = with pkgs; [
-    firefox
-    xorg.xrandr
-    lollypop
-    inputs.claude-desktop.packages.${stdenv.hostPlatform.system}.claude-desktop-with-fhs
-    (vscode.override {
-      commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--ozone-platform=wayland"
-      ];
-    })
-  ];
-
   mainMonitor = "Microstep MAG 274UPF E2 0x00000001";
 
   wayland.windowManager.hyprland.settings = {
@@ -66,6 +48,8 @@
       "workspace 10 silent, initialTitle: materialgram"
     ];
   };
+
+  services.kdeconnect.enable = true;
 
   sops.secrets = lib.mkIf config.modules.syncthing.enable {
     "syncthing/vyverne/cert".mode = "0400";

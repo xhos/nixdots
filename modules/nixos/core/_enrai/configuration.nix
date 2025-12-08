@@ -1,19 +1,10 @@
-{
+{inputs, ...}: {
   imports = [
-    ../../modules/nixos
-    ./disko.nix
-    ./media
-    ./glance.nix
-    ./proxy.nix
-    ./docker.nix
-    ./home-assistant
-    ./wakapi.nix
-    ./caddy.nix
-    ./zipline.nix
-    ./microsocks.nix
-    ./proxmox.nix
-    ./syncthing.nix
-    ./dns.nix
+    inputs.disko.nixosModules.disko
+    inputs.proxmox-nixos.nixosModules.proxmox-ve
+    inputs.vpn-confinement.nixosModules.default
+    inputs.vscode-server.nixosModules.default
+    inputs.wled-album-sync.nixosModules.default
   ];
 
   networking.hostName = "enrai";

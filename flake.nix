@@ -2,77 +2,78 @@
   description = "overcomplicated mess of a system flake that works for some reason";
 
   inputs = {
-    nxv.url = "github:xhos/nxv"; # my nvim config
-    disko.url = "github:nix-community/disko"; # declarative disk management
-    impermanence.url = "github:nix-community/impermanence"; # ocd godsend
-    logi-hypr.url = "github:xhos/logi-hypr"; # gestures for my mx master 3s
-    nixcord.url = "github:kaylorben/nixcord"; # manage vencord plugins nix way
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main"; # use nix powers on windows
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11"; # nixpkgs stable
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # nixpkgs unstable
-    zen-browser.url = "github:0xc000022070/zen-browser-flake"; # cool browser
-    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
-    wled-album-sync.url = "github:xhos/wled-album-sync";
-    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
-    yawn.url = "github:xhos/yawn";
-    import-tree.url = "github:vic/import-tree";
-
+    # core
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tsutsumi = {
-      url = "github:Fuwn/tsutsumi";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    claude-desktop = {
-      url = "github:k3d3/claude-desktop-linux-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # system
+    disko.url = "github:nix-community/disko";
+    impermanence.url = "github:nix-community/impermanence";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # private secrets repository
     nix-secrets = {
       url = "git+ssh://git@github.com/xhos/nix-secrets?ref=main&allRefs=1";
       flake = false;
     };
 
+    # hyprland
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprgrass = {
-      url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     hypr-dynamic-cursors = {
       url = "github:VirtCode/hypr-dynamic-cursors";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
+    logi-hypr.url = "github:xhos/logi-hypr";
+
+    # customization
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tsutsumi = {
+      url = "github:Fuwn/tsutsumi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    yawn.url = "github:xhos/yawn";
+
+    # applications
+    claude-desktop = {
+      url = "github:k3d3/claude-desktop-linux-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixcord.url = "github:kaylorben/nixcord";
+    nxv.url = "github:xhos/nxv";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # services
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    wled-album-sync.url = "github:xhos/wled-album-sync";
+
+    # utilities
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs = {
@@ -81,94 +82,46 @@
     home-manager,
     ...
   } @ inputs: let
-    mkNixosSystem = {
-      hostname,
-      modules ? [],
-      homeUser ? "xhos",
-      extraSpecialArgs ? {},
-    }:
-      nixpkgs.lib.nixosSystem {
-        specialArgs =
-          {
-            inherit inputs;
-          }
-          // extraSpecialArgs;
-        modules =
-          [
-            ./hosts/${hostname}/configuration.nix
-          ]
-          ++ (
-            if homeUser != null
-            then [
-              home-manager.nixosModules.home-manager
-              inputs.stylix.nixosModules.stylix
-              inputs.impermanence.nixosModules.impermanence
-              {
-                home-manager.extraSpecialArgs = {inherit inputs;};
-                home-manager.backupFileExtension = ".b";
-                home-manager.users."${homeUser}" = ./home/${hostname}.nix;
-              }
-            ]
-            else [
-              inputs.stylix.nixosModules.stylix
-            ]
-          )
-          ++ modules;
-      };
-    systems = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
+    lib = nixpkgs.lib;
+
+    # custom functions
+    import-tree = import ./lib/import-tree.nix {inherit inputs lib;};
+
+    # shared modules across all hosts with home-manager
+    sharedNixosModules = [
+      home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix
+      inputs.impermanence.nixosModules.impermanence
     ];
+
+    mkNixosSystem = import ./lib/mk-nixos-system.nix {
+      inherit
+        lib
+        inputs
+        import-tree
+        sharedNixosModules
+        ;
+    };
+
+    systems = ["x86_64-linux" "aarch64-linux"];
     forEachSystem = nixpkgs.lib.genAttrs systems;
   in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations = {
-      zireael = mkNixosSystem {
-        hostname = "zireael";
-        modules = [
-          inputs.disko.nixosModules.disko
-          inputs.sops-nix.nixosModules.sops
-        ];
-      };
-
-      vyverne = mkNixosSystem {
-        hostname = "vyverne";
-        modules = [
-          inputs.disko.nixosModules.disko
-          inputs.sops-nix.nixosModules.sops
-        ];
-      };
-
-      aevon = mkNixosSystem {
-        hostname = "aevon";
-        modules = [inputs.nixos-wsl.nixosModules.default];
-      };
-
+      aevon = mkNixosSystem {hostname = "aevon";};
+      enrai = mkNixosSystem {hostname = "enrai";};
       nyx = mkNixosSystem {
         hostname = "nyx";
         homeUser = null;
       };
-
-      enrai = mkNixosSystem {
-        hostname = "enrai";
-        modules = [
-          inputs.vpn-confinement.nixosModules.default
-          inputs.disko.nixosModules.disko
-          inputs.vscode-server.nixosModules.default
-          inputs.wled-album-sync.nixosModules.default
-          inputs.proxmox-nixos.nixosModules.proxmox-ve
-        ];
-      };
+      vyverne = mkNixosSystem {hostname = "vyverne";};
+      zireael = mkNixosSystem {hostname = "zireael";};
     };
 
     packages = forEachSystem (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-        installer = import ./scripts/installer.nix {inherit pkgs;};
-      in {
-        installer = installer;
+      system: {
+        installer = import ./scripts/installer.nix {
+          pkgs = nixpkgs.legacyPackages.${system};
+        };
       }
     );
   };

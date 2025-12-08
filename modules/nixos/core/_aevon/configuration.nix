@@ -1,9 +1,11 @@
-{
-  imports = [../../modules/nixos];
-
-  vm.enable = true;
+{inputs, ...}: {
+  imports = [
+    inputs.nixos-wsl.nixosModules.default
+  ];
 
   headless = true;
+
+  vm.enable = true;
 
   wsl.enable = true;
   wsl.defaultUser = "xhos";

@@ -29,7 +29,7 @@
 
       u = "uwsm-app --";
     };
-    initExtra = ''
+    initContent = ''
       try() {
         nix run nixpkgs#$1 -- "''${@:2}"
       }
