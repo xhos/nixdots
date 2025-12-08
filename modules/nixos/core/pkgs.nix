@@ -17,6 +17,7 @@
     # Hardware monitoring
     lm_sensors
     fan2go
+    dysk
 
     # Nix ecosystem tools
     nh # nix helper
