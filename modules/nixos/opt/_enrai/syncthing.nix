@@ -39,7 +39,7 @@
       # device id can be found in client's ui or
       # nix-shell -p syncthing --run "syncthing generate --home /tmp/st"
       devices."pixel".id = "JYTSP44-WEDIVSO-O7P3QAI-VARARVP-KT6GK2A-JV2XADQ-GJDTF6Q-Z4Q6YAN";
-      devices."vyverne".id = "DUCJCWV-UADBN4W-EYHLKVD-SS6A55K-26ZQNAE-TE7JPVY-243G7TY-54XHHQ5";
+      devices."vyverne".id = "ZKQ5CJE-DITDIVT-26MO4CP-V2QSMQS-JWBGY2T-7DOOHAD-5LVZ2ZF-SGLOPAG";
 
       folders = {
         "notes" = {
