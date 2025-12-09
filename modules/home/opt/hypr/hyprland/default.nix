@@ -33,8 +33,8 @@
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
+      config.common.default = "*";
       configPackages = with pkgs; [
-        # xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
       ];
     };

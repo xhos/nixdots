@@ -2,9 +2,9 @@
   config,
   lib,
   ...
-}:
-lib.mkIf (config.terminal == "foot") {
-  home.sessionVariables.TERMINAL = "foot";
+}: {
+  # foot is always enabled for binds like clipse to work fast
+  home.sessionVariables.TERMINAL = lib.mkIf (config.terminal == "foot") "foot";
 
   # https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
   programs.foot = {
@@ -24,20 +24,9 @@ lib.mkIf (config.terminal == "foot") {
         pad = "10x10";
       };
 
-      bell = {
-        urgent = "yes";
-        notify = "yes";
-        command = "notify-send bell";
-        command-focused = "no";
-      };
-
       cursor = {
         style = "beam";
         beam-thickness = 2;
-      };
-
-      desktop-notifications = {
-        command = "notify-send -DDa \${app-id} -i \${app-id} \${title} \${body}";
       };
 
       scrollback = {

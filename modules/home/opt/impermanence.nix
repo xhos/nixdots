@@ -12,6 +12,7 @@ in {
   home.persistence."/persist/home/xhos" = lib.mkIf config.impermanence.enable (lib.mkMerge [
     {
       directories = [
+        ".local/share/zed"
         ".local/share/nautilus" # nautilus bookmarks
 
         ".config/claude"

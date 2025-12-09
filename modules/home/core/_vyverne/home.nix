@@ -31,7 +31,7 @@
   shell = "zsh";
   prompt = "starship";
   browser = "zen";
-  terminal = "foot";
+  terminal = "ghostty";
 
   mainMonitor = "Microstep MAG 274UPF E2 0x00000001";
 
@@ -39,13 +39,13 @@
     exec-once = [
       "[workspace special silent] spotify"
       "[workspace 10 silent] materialgram"
-      "[workspace 10 silent] equibop"
+      "[workspace 10 silent] discord"
     ];
 
     windowrulev2 = [
       "workspace special silent, initialClass: spotify"
-      "workspace 10 silent, initialClass: equibop"
       "workspace 10 silent, initialTitle: materialgram"
+      "workspace 10 silent, initialClass: discord"
     ];
   };
 
@@ -56,7 +56,7 @@
     "syncthing/vyverne/key".mode = "0400";
   };
 
-  services.syncthing.settings = lib.mkIf config.modules.syncthing.enable {
+  services.syncthing = lib.mkIf config.modules.syncthing.enable {
     key = config.sops.secrets."syncthing/vyverne/key".path;
     cert = config.sops.secrets."syncthing/vyverne/cert".path;
   };

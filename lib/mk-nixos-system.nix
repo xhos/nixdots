@@ -30,5 +30,8 @@ lib.nixosSystem {
         }
       ]
     )
-    ++ lib.optionals (homeUser == null) [inputs.stylix.nixosModules.stylix];
+    ++ lib.optionals (homeUser == null) [
+      inputs.stylix.nixosModules.stylix
+      inputs.impermanence.nixosModules.impermanence
+    ];
 }

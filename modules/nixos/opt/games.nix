@@ -11,8 +11,13 @@
 
     programs.steam.enable = true;
 
-    # GTNH was opens *way too many* files
+    # GTNH opens *way too many* files
+    # and theese are 3 ways to increase the limit
+    # and i have no idea which one actually works :D
     boot.kernel.sysctl."fs.file-max" = 524288;
+    systemd.user.extraConfig = ''
+      DefaultLimitNOFILE=524288
+    '';
     security.pam.loginLimits = [
       {
         domain = "*";
