@@ -188,7 +188,7 @@ in {
 
       wvkbd
 
-      # TODO: this.
+      # Wayland utilities
       autotiling-rs
       brightnessctl
       cliphist
