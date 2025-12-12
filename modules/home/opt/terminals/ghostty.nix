@@ -14,7 +14,6 @@ lib.mkIf (config.terminal == "ghostty") {
       quit-after-last-window-closed = true;
       quit-after-last-window-closed-delay = "5m";
       linux-cgroup = "never";
-      async-backend = "epoll"; # TODO: remove once on 1.16+ kernel
 
       # unbloat
       confirm-close-surface = false;
