@@ -25,10 +25,10 @@
     )
     10
   );
-
-  terminal = config.home.sessionVariables.TERMINAL;
 in {
-  wayland.windowManager.hyprland.settings = lib.mkIf (config.de == "hyprland") {
+  wayland.windowManager.hyprland.settings = lib.mkIf (config.de == "hyprland") (let
+    terminal = config.home.sessionVariables.TERMINAL;
+  in {
     # https://wiki.hyprland.org/Configuring/Binds/#bind-flags
     bind =
       [
@@ -119,5 +119,5 @@ in {
       "SUPER, mouse:272, movewindow"
       "SUPER, mouse:273, resizewindow"
     ];
-  };
+  });
 }
