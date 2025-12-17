@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   stylix.image = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/rd/wallhaven-rdwjj7.jpg";
     sha256 = "sha256-Gv/2Ap8YS6F1S1RXlwQr71MMi+iRi9fgvZVVyZeCKvk=";
@@ -50,14 +45,4 @@
   };
 
   services.kdeconnect.enable = true;
-
-  sops.secrets = lib.mkIf config.modules.syncthing.enable {
-    "syncthing/vyverne/cert".mode = "0400";
-    "syncthing/vyverne/key".mode = "0400";
-  };
-
-  services.syncthing = lib.mkIf config.modules.syncthing.enable {
-    key = config.sops.secrets."syncthing/vyverne/key".path;
-    cert = config.sops.secrets."syncthing/vyverne/cert".path;
-  };
 }

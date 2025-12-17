@@ -40,11 +40,12 @@
       # nix-shell -p syncthing --run "syncthing generate --home /tmp/st"
       devices."pixel".id = "JYTSP44-WEDIVSO-O7P3QAI-VARARVP-KT6GK2A-JV2XADQ-GJDTF6Q-Z4Q6YAN";
       devices."vyverne".id = "ZKQ5CJE-DITDIVT-26MO4CP-V2QSMQS-JWBGY2T-7DOOHAD-5LVZ2ZF-SGLOPAG";
+      devices."zireael".id = "ED6PFOE-52HGHJV-7WM2GQX-676UIGS-7X23A36-WTALXEO-2W76URW-OFTKBQM";
 
       folders = {
         "notes" = {
           path = "/home/xhos/Documents/notes";
-          devices = ["pixel" "vyverne"];
+          devices = ["pixel" "vyverne" "zireael"];
         };
       };
     };
