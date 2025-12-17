@@ -14,7 +14,6 @@
       whisper.enable = mkEnableOption "enable whisper";
       obs.enable = mkEnableOption "enable obs";
       fonts.enable = mkEnableOption "enable fonts";
-      syncthing.enable = mkEnableOption "enable syncthing";
     };
 
     headless = lib.mkOption {

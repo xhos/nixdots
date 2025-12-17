@@ -95,7 +95,7 @@ in {
           "/var/lib/incus"
           "/var/lib/hass"
           "/var/lib/wakapi"
-          "/home/xhos/syncthing"
+          "/home/xhos/.local/share/syncthing"
           "/var/cache/jellyfin"
 
           # proxmox

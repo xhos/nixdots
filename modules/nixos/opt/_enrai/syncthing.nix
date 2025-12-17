@@ -21,7 +21,7 @@
   services.syncthing = {
     enable = true;
     user = "xhos";
-    dataDir = "/home/xhos/syncthing";
+    dataDir = "/home/xhos/.local/share/syncthing";
     key = config.sops.secrets."syncthing/enrai/key".path;
     cert = config.sops.secrets."syncthing/enrai/cert".path;
     guiAddress = "10.0.0.10:8384";

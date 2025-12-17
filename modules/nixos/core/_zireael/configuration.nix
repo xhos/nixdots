@@ -18,6 +18,7 @@
   greetd      .enable = true;
   audio       .enable = true;
   boot        .enable = true;
+  syncthing   .enable = true;
 
   greeter = "yawn";
   systemd.tmpfiles.rules = [

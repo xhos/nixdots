@@ -18,7 +18,6 @@
     obs.enable = true;
     whisper.enable = true;
     fonts.enable = true;
-    syncthing.enable = true;
   };
 
   de = "hyprland";

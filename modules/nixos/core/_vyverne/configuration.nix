@@ -18,6 +18,7 @@
   vm.enable = true;
   ai.enable = false;
   boot.enable = true;
+  syncthing.enable = true;
 
   greeter = "yawn";
 

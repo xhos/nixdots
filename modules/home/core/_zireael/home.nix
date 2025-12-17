@@ -14,7 +14,6 @@
     spicetify.enable = true;
     telegram.enable = true;
     fonts.enable = true;
-    syncthing.enable = true;
   };
 
   de = "hyprland";
