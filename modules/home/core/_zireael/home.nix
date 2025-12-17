@@ -14,6 +14,7 @@
     spicetify.enable = true;
     telegram.enable = true;
     fonts.enable = true;
+    syncthing.enable = true;
   };
 
   de = "hyprland";
@@ -21,7 +22,7 @@
   shell = "zsh";
   prompt = "starship";
   browser = "zen";
-  terminal = "foot";
+  terminal = "ghostty";
 
   home.packages = with pkgs; [
     iio-hyprland
