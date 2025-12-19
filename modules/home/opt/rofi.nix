@@ -3,7 +3,10 @@
   lib,
   ...
 }: {
-  programs.rofi = lib.mkIf config.modules.rofi.enable {
+  options.modules.rofi.enable = lib.mkEnableOption "rofi application launcher";
+
+  config = lib.mkIf config.modules.rofi.enable {
+    programs.rofi = {
     enable = true;
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
@@ -92,6 +95,7 @@
       "element-text" = {
         text-color = mkl "inherit";
       };
+    };
     };
   };
 }

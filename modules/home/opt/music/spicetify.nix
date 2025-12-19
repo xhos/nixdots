@@ -7,10 +7,12 @@
 }: {
   imports = [inputs.spicetify-nix.homeManagerModules.default];
 
-  programs.spicetify = let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in
-    lib.mkIf config.modules.spicetify.enable {
+  options.modules.spicetify.enable = lib.mkEnableOption "Spicetify for Spotify theming";
+
+  config = lib.mkIf config.modules.spicetify.enable {
+    programs.spicetify = let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+    in {
       enable = true;
       theme = spicePkgs.themes.text;
       enabledExtensions = with spicePkgs.extensions; [
@@ -19,4 +21,5 @@
         allOfArtist
       ];
     };
+  };
 }

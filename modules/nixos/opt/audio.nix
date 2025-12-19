@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  options.audio.enable = lib.mkEnableOption "PipeWire audio system";
+
   config = lib.mkIf config.audio.enable {
     security.rtkit.enable = true;
     services.pipewire = {

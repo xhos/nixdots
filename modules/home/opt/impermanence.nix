@@ -9,7 +9,10 @@
 in {
   imports = [inputs.impermanence.homeManagerModules.impermanence];
 
-  home.persistence."/persist/home/xhos" = lib.mkIf config.impermanence.enable (lib.mkMerge [
+  options.impermanence.enable = lib.mkEnableOption "wipe home folder on reboot, persist selected directories";
+
+  config = {
+    home.persistence."/persist/home/xhos" = lib.mkIf config.impermanence.enable (lib.mkMerge [
     {
       directories = [
         ".local/share/zed"
@@ -107,4 +110,5 @@ in {
       ];
     })
   ]);
+  };
 }

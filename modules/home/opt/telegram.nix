@@ -5,7 +5,10 @@
   lib,
   ...
 }: {
-  home = lib.mkIf config.modules.telegram.enable {
+  options.modules.telegram.enable = lib.mkEnableOption "Telegram (Materialgram) with stylix theming";
+
+  config = lib.mkIf config.modules.telegram.enable {
+    home = {
     packages = [
       (pkgs.symlinkJoin {
         name = "materialgram";
@@ -749,6 +752,7 @@
       tg-theme = lib.hm.dag.entryAfter [""] ''
         run ${lib.getExe walogram}
       '';
+    };
     };
   };
 }

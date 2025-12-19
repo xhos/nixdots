@@ -12,6 +12,8 @@
     mode = "0755";
   };
 in {
+  options.impermanence.enable = lib.mkEnableOption "wipe root filesystem on reboot, persist selected directories";
+
   config = lib.mkIf config.impermanence.enable {
     programs.fuse.userAllowOther = true;
 

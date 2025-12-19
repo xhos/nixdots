@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  options.modules.obs.enable = lib.mkEnableOption "OBS Studio for screen recording";
+
   config = lib.mkIf config.modules.obs.enable {
     # home.packages = [pkgs.droidcam];
 

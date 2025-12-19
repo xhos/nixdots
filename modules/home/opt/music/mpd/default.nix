@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  options.modules.mpd.enable = lib.mkEnableOption "MPD music player daemon";
+
   config = lib.mkIf config.modules.mpd.enable {
     services.mpd = {
       enable = true;

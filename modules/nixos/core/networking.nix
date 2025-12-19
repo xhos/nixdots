@@ -40,6 +40,4 @@ in {
       allowedTCPPorts = [sshPort];
     };
   };
-
-  hardware.bluetooth.enable = lib.mkIf config.bluetooth.enable true;
 }

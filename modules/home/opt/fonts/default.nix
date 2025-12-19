@@ -4,6 +4,8 @@
   config,
   ...
 }: {
+  options.modules.fonts.enable = lib.mkEnableOption "custom font collection";
+
   config = lib.mkIf config.modules.fonts.enable {
     fonts.fontconfig.enable = true;
     home.file.".local/share/fonts".source = ./font-files;

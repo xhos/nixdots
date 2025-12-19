@@ -4,6 +4,8 @@
   config,
   ...
 }: {
+  options.vm.enable = lib.mkEnableOption "virtualization support (libvirt, virt-manager, Docker)";
+
   config = lib.mkIf config.vm.enable {
     programs.dconf.enable = true;
     users.users.xhos.extraGroups = ["libvirtd"];

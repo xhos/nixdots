@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  options.nvidia.enable = lib.mkEnableOption "NVIDIA GPU support with CUDA";
+
   config = lib.mkIf config.nvidia.enable {
     hardware.nvidia = {
       modesetting.enable = true;

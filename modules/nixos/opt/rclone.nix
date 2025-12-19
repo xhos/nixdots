@@ -14,6 +14,8 @@ let
   # the user that will run the service
   username = "xhos";
 in {
+  options.rclone.enable = lib.mkEnableOption "rclone cloud storage mounts (OneDrive, ProtonDrive)";
+
   config = lib.mkIf config.rclone.enable {
     environment.systemPackages = with pkgs; [rclone];
 

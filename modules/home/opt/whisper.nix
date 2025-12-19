@@ -4,7 +4,10 @@
   config,
   ...
 }: {
-  nixpkgs.overlays = [
+  options.modules.whisper.enable = lib.mkEnableOption "Whisper speech-to-text with CUDA acceleration";
+
+  config = lib.mkIf config.modules.whisper.enable {
+    nixpkgs.overlays = [
     (final: prev: {
       ctranslate2 = prev.ctranslate2.override {
         withCUDA = true;
@@ -13,7 +16,7 @@
     })
   ];
 
-  home.packages = lib.mkIf config.modules.whisper.enable [
+    home.packages = [
     (pkgs.writeShellApplication {
       name = "whspr";
       runtimeInputs = with pkgs; [
@@ -64,4 +67,5 @@
       '';
     })
   ];
+  };
 }

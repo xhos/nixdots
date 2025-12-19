@@ -1,20 +1,9 @@
 {lib, ...}: {
   options = with lib; {
-    impermanence.enable = mkEnableOption "nuke da home folder";
+    # All module enable options have been moved to their respective module files
+    # This file now only contains global/non-module options
 
-    modules = {
-      firefox.enable = mkEnableOption "enable firefox";
-      mpd.enable = mkEnableOption "enable mpd";
-      rofi.enable = mkEnableOption "enable rofi";
-      spicetify.enable = mkEnableOption "enable spicetify";
-      discord.enable = mkEnableOption "enable discord";
-      nvidia.enable = mkEnableOption "enable nvidia specific patches";
-      secrets.enable = mkEnableOption "enable secrets management";
-      telegram.enable = mkEnableOption "enable telegram";
-      whisper.enable = mkEnableOption "enable whisper";
-      obs.enable = mkEnableOption "enable obs";
-      fonts.enable = mkEnableOption "enable fonts";
-    };
+    modules = {};
 
     headless = lib.mkOption {
       type = lib.types.bool;

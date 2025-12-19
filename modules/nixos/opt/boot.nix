@@ -4,6 +4,8 @@
   config,
   ...
 }: {
+  options.boot.enable = lib.mkEnableOption "GRUB bootloader with Plymouth";
+
   config = lib.mkIf config.boot.enable {
     boot = {
       plymouth.enable = true;

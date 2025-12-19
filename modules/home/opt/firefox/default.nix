@@ -1,4 +1,12 @@
 {
+  lib,
+  config,
+  ...
+}: {
+  options.modules.firefox.enable = lib.mkEnableOption "Firefox web browser";
+
+  # Firefox configuration is currently disabled
+  config = lib.mkIf config.modules.firefox.enable {};
 }
 # {
 #   inputs,
