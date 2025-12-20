@@ -41,7 +41,9 @@
       };
 
       shell_command = {
-        shutdown_vyverne = "${pkgs.openssh}/bin/ssh -i ${config.sops.secrets."ssh/vyverne".path} -o StrictHostKeyChecking=no -p 10022 xhos@10.0.0.11 sudo shutdown -h now";
+        shutdown_vyverne = "${pkgs.openssh}/bin/ssh -i ${
+          config.sops.secrets."ssh/vyverne".path
+        } -o StrictHostKeyChecking=no -p 10022 xhos@10.0.0.11 sudo shutdown -h now";
         toggle_wled_sync = "${pkgs.curl}/bin/curl -X POST http://localhost:9123/toggle";
       };
 
@@ -161,57 +163,57 @@
           ];
           mode = "single";
         }
-        {
-          alias = "Yandex - Auto Sync Shopping List";
-          trigger = [
-            {
-              platform = "time";
-              at = ["15:00:00"];
-            }
-          ];
-          action = [
-            {
-              variables = {
-                volume = "{{ state_attr('${yandexStationId}', 'volume_level') }}";
-              };
-            }
-            {
-              service = "media_player.volume_set";
-              target.entity_id = yandexStationId;
-              data = {
-                volume_level = 0;
-              };
-            }
-            {
-              service = "media_player.play_media";
-              target.entity_id = yandexStationId;
-              data = {
-                media_content_id = "update";
-                media_content_type = "shopping_list";
-              };
-            }
-            {
-              wait_for_trigger = [
-                {
-                  platform = "state";
-                  entity_id = yandexStationId;
-                  attribute = "alice_state";
-                  to = "IDLE";
-                }
-              ];
-              timeout = "00:01:00";
-              continue_on_timeout = true;
-            }
-            {
-              service = "media_player.volume_set";
-              target.entity_id = yandexStationId;
-              data = {
-                volume_level = "{{ volume }}";
-              };
-            }
-          ];
-          mode = "single";
-        }
+        # {
+        #   alias = "Yandex - Auto Sync Shopping List";
+        #   trigger = [
+        #     {
+        #       platform = "time";
+        #       at = ["15:00:00"];
+        #     }
+        #   ];
+        #   action = [
+        #     {
+        #       variables = {
+        #         volume = "{{ state_attr('${yandexStationId}', 'volume_level') }}";
+        #       };
+        #     }
+        #     {
+        #       service = "media_player.volume_set";
+        #       target.entity_id = yandexStationId;
+        #       data = {
+        #         volume_level = 0;
+        #       };
+        #     }
+        #     {
+        #       service = "media_player.play_media";
+        #       target.entity_id = yandexStationId;
+        #       data = {
+        #         media_content_id = "update";
+        #         media_content_type = "shopping_list";
+        #       };
+        #     }
+        #     {
+        #       wait_for_trigger = [
+        #         {
+        #           platform = "state";
+        #           entity_id = yandexStationId;
+        #           attribute = "alice_state";
+        #           to = "IDLE";
+        #         }
+        #       ];
+        #       timeout = "00:01:00";
+        #       continue_on_timeout = true;
+        #     }
+        #     {
+        #       service = "media_player.volume_set";
+        #       target.entity_id = yandexStationId;
+        #       data = {
+        #         volume_level = "{{ volume }}";
+        #       };
+        #     }
+        #   ];
+        #   mode = "single";
+        # }
         {
           alias = "Yandex - Manual Sync Shopping List";
           trigger = [

@@ -74,15 +74,6 @@ in {
         filtering_enabled = true;
         rewrites = mkRewrites;
       };
-
-      filters = [
-        {
-          enabled = true;
-          url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
-          name = "AdGuard DNS filter";
-          id = 1;
-        }
-      ];
     };
   };
 
