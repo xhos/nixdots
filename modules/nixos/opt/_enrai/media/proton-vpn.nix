@@ -15,11 +15,6 @@
         from = 8080;
         to = 8080;
       }
-      {
-        # microsocks SOCKS5 proxy
-        from = 1080;
-        to = 1080;
-      }
     ];
 
     openVPNPorts = [
