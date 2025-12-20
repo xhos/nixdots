@@ -12,17 +12,15 @@
     ./hyprspace.nix
     ./pkgs.nix
     ./monitors.nix
-    # ./osk.nix
   ];
 
   config = lib.mkIf (config.de == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      plugins = [
-        inputs.hyprgrass.packages.${pkgs.stdenv.hostPlatform.system}.hyprgrass
-        inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
-        inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
+      package = pkgs.hyprland;
+      plugins = with pkgs.hyprlandPlugins; [
+        hypr-dynamic-cursors
+        hyprsplit
       ];
 
       xwayland.enable = true;
