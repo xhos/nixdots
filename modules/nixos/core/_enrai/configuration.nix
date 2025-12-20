@@ -5,6 +5,8 @@
     inputs.vpn-confinement.nixosModules.default
     inputs.vscode-server.nixosModules.default
     inputs.wled-album-sync.nixosModules.default
+    ./hardware-configuration.nix
+    ./disko.nix
   ];
 
   networking.hostName = "enrai";
