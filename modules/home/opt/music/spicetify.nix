@@ -14,11 +14,18 @@
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
     in {
       enable = true;
-      theme = spicePkgs.themes.text;
       enabledExtensions = with spicePkgs.extensions; [
         shuffle
         hidePodcasts
         allOfArtist
+        catJamSynced
+        coverAmbience
+      ];
+      enabledSnippets = with spicePkgs.snippets; [
+        hideSidebarScrollbar
+        smallVideoButton
+        removeTopSpacing
+        smoothProgressBar
       ];
     };
   };

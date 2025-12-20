@@ -8,10 +8,6 @@
       path = "${config.home.homeDirectory}/.ssh/proxy.key";
       mode = "0600";
     };
-    "ssh/arm" = {
-      path = "${config.home.homeDirectory}/.ssh/arm.key";
-      mode = "0600";
-    };
     "ssh/enrai" = {
       path = "${config.home.homeDirectory}/.ssh/enrai.key";
       mode = "0600";
@@ -22,6 +18,14 @@
     };
     "ssh/zireael" = {
       path = "${config.home.homeDirectory}/.ssh/zireael.key";
+      mode = "0600";
+    };
+    "ssh/vault" = {
+      path = "${config.home.homeDirectory}/.ssh/vault.key";
+      mode = "0600";
+    };
+    "ssh/mc" = {
+      path = "${config.home.homeDirectory}/.ssh/mc.key";
       mode = "0600";
     };
   };
@@ -54,12 +58,20 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/proxy.key";
       };
-      "arm" = {
-        host = "arm";
-        hostname = "140.238.145.169";
+      "vault" = {
+        host = "vault";
+        hostname = "40.233.74.249";
         user = "ubuntu";
         identitiesOnly = true;
-        identityFile = "~/.ssh/arm.key";
+        identityFile = "~/.ssh/vault.key";
+      };
+      "mc" = {
+        host = "mc";
+        hostname = "xhos.dev";
+        port = 2222;
+        user = "mc";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/mc.key";
       };
       "enrai" = {
         host = "enrai";

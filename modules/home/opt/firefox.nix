@@ -1,30 +1,11 @@
-{
-  lib,
-  config,
-  ...
-}: {
-  options.modules.firefox.enable = lib.mkEnableOption "Firefox web browser";
-
-  # Firefox configuration is currently disabled
-  config = lib.mkIf config.modules.firefox.enable {};
-}
 # {
 #   inputs,
-#   config,
-#   lib,
 #   pkgs,
 #   ...
-# }: let
-#   scifox = pkgs.fetchFromGitHub {
-#     owner = "scientiac";
-#     repo = "scifox";
-#     rev = "618b97dc318e0cd0d2822d7e7302fdd098f9c544";
-#     hash = "sha256-F+h33dRs0Q2+9p66uI7QH+yifADkh9Hl48rbVtOzkvk=";
-#   };
-# in {
-#   programs.firefox = lib.mkIf config.modules.firefox.enable {
+# }: {
+#   programs.firefox = {
 #     enable = true;
-#     package = pkgs.wrapFirefox pkgs.firefox-beta-unwrapped {
+#     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
 #       extraPolicies = {
 #         CaptivePortal = false;
 #         DisableFirefoxStudies = true;
@@ -49,12 +30,19 @@
 #       };
 #     };
 #     profiles = {
-#       default = {
+#       default = let
+#         scifox = pkgs.fetchFromGitHub {
+#           owner = "scientiac";
+#           repo = "scifox";
+#           rev = "618b97dc318e0cd0d2822d7e7302fdd098f9c544";
+#           hash = "sha256-F+h33dRs0Q2+9p66uI7QH+yifADkh9Hl48rbVtOzkvk=";
+#         };
+#       in {
 #         id = 0;
 #         isDefault = true;
 #         # https://github.com/scientiac/scifox/blob/main/sidebery.json
-#         userChrome = builtins.readFile "${scifox}/chrome/userChrome.css";
-#         userContent = builtins.readFile "${scifox}/chrome/userContent.css";
+#         # userChrome = builtins.readFile "${scifox}/chrome/userChrome.css";
+#         # userContent = builtins.readFile "${scifox}/chrome/userContent.css";
 #         # http://kb.mozillazine.org/Category:Preferences
 #         settings = {
 #           "browser.search.defaultenginename" = "google";
@@ -98,7 +86,6 @@
 #         };
 #         extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
 #           vimium
-#           sidebery
 #           adaptive-tab-bar-colour
 #           don-t-fuck-with-paste
 #           ublock-origin
@@ -107,6 +94,7 @@
 #           decentraleyes
 #           privacy-badger
 #           proton-pass
+#           proton-vpn
 #           darkreader
 #           search-by-image
 #           steam-database
@@ -233,4 +221,4 @@
 #     };
 #   };
 # }
-
+{}

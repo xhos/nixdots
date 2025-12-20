@@ -28,7 +28,7 @@
     targets = {
       zed.enable = false;
       firefox.enable = false;
-      spicetify.enable = false;
+      spicetify.enable = true;
       hyprland.enable = false;
       hyprland.hyprpaper.enable = true;
       hyprlock.enable = false;
