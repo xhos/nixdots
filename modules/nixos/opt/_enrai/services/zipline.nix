@@ -1,17 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."env/zipline" = {};
-
-  security.acme.certs."xhos.dev".extraDomainNames = ["pics.xhos.dev"];
-
-  services.caddy.virtualHosts."pics.xhos.dev" = {
-    useACMEHost = "xhos.dev";
-    listenAddresses = ["10.100.0.10"];
-    extraConfig = "reverse_proxy 127.0.0.1:3334";
-  };
 
   # # unset dynamic user stuff which makes it difficult to persist
   # systemd.services.zipline.serviceConfig = {

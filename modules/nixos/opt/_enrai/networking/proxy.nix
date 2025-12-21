@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   proxy-1-ip = "40.233.88.40";
@@ -12,7 +13,7 @@ in {
 
   networking.wireguard.interfaces.wg0 = {
     mtu = 1408;
-    ips = ["10.100.0.10/24"];
+    ips = ["${config._enrai.config.tunnelIP}/24"];
     privateKeyFile = "/var/lib/wireguard/private.key";
     generatePrivateKeyFile = true;
     peers = [
@@ -42,7 +43,7 @@ in {
   systemd.services."vps-failover" = {
     serviceConfig = let
       cfg = {
-        domain = "xhos.dev";
+        domain = config._enrai.config.publicDomain;
         primary = {
           ip = proxy-1-ip;
           wg = "10.100.0.1";

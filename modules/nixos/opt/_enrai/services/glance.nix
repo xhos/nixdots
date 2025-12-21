@@ -1,4 +1,10 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
+  _enrai.exposedServices.glance.port = config.services.glance.settings.server.port;
+
   # unset dynamic user stuff which makes it difficult to persist
   systemd.services.glance.serviceConfig = {
     StateDirectory = lib.mkForce null;
@@ -13,12 +19,14 @@
   };
   users.groups.glance = {};
 
+  # TODO: generete bookmarks from _enrai config
   services.glance = {
     enable = true;
     openFirewall = true;
 
     settings = let
-      serverIP = "10.0.0.10";
+      serverIP = config._enrai.config.enraiLocalIP;
+      localDomain = config._enrai.config.localDomain;
     in {
       pages = [
         {
@@ -111,7 +119,7 @@
                       links = [
                         {
                           title = "jellyfin";
-                          url = "http://${serverIP}:8096";
+                          url = "https://jellyfin.${localDomain}";
                           icon = "sh:jellyfin";
                         }
                         {

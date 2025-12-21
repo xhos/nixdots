@@ -18,13 +18,15 @@
     };
   };
 
+  _enrai.exposedServices.syncthing.port = 8384;
+
   services.syncthing = {
     enable = true;
     user = "xhos";
     dataDir = "/home/xhos/.local/share/syncthing";
     key = config.sops.secrets."syncthing/enrai/key".path;
     cert = config.sops.secrets."syncthing/enrai/cert".path;
-    guiAddress = "10.0.0.10:8384";
+    guiAddress = "${config._enrai.config.enraiLocalIP}:8384";
 
     # TODO: yet to be released
     # guiPasswordFile = config.sops.secrets."syncthing/enrai/guiPassword".path;

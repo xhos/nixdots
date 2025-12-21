@@ -1,0 +1,109 @@
+{
+  config,
+  lib,
+  ...
+}: let
+  enraiIP = config._enrai.config.enraiLocalIP;
+  localDomain = config._enrai.config.localDomain;
+  publicDomain = config._enrai.config.publicDomain;
+
+  # Collect all registered services and apply defaults
+  exposedServices = lib.mapAttrs (name: svc:
+    svc
+    // {
+      name =
+        if svc.name != ""
+        then svc.name
+        else name;
+      subdomain =
+        if svc.subdomain != ""
+        then svc.subdomain
+        else name;
+    })
+  config._enrai.exposedServices;
+
+  # Split services into local-only and public
+  localServices = lib.filterAttrs (name: svc: !svc.exposed) exposedServices;
+  publicServices = lib.filterAttrs (name: svc: svc.exposed) exposedServices;
+
+  # Generate local vhosts (*.lab.xhos.dev)
+  mkLocalVhosts =
+    lib.mapAttrs' (
+      name: svc:
+        lib.nameValuePair "${svc.subdomain}.${localDomain}" {
+          useACMEHost = localDomain;
+          extraConfig = ''
+            bind ${enraiIP}
+            reverse_proxy ${enraiIP}:${toString svc.port}
+
+            @blocked not remote_ip 10.0.0.0/24
+            respond @blocked 403
+          '';
+        }
+    )
+    localServices;
+
+  # Generate public vhosts (*.xhos.dev via WireGuard)
+  mkPublicVhosts =
+    lib.mapAttrs' (
+      name: svc:
+        lib.nameValuePair "${svc.subdomain}.${publicDomain}" {
+          useACMEHost = publicDomain;
+          listenAddresses = [config._enrai.config.tunnelIP];
+          extraConfig = ''
+            reverse_proxy 127.0.0.1:${toString svc.port}
+          '';
+        }
+    )
+    publicServices;
+
+  allVhosts = mkLocalVhosts // mkPublicVhosts;
+
+  localSubdomains = lib.mapAttrsToList (name: svc: "${svc.subdomain}.${localDomain}") localServices;
+  publicSubdomains = lib.mapAttrsToList (name: svc: "${svc.subdomain}.${publicDomain}") publicServices;
+in {
+  sops.secrets."api/cloudflare" = {};
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "lets-encrypt@xhos.dev";
+
+    certs.${localDomain} = {
+      group = config.services.caddy.group;
+      dnsProvider = "cloudflare";
+      dnsResolver = "1.1.1.1:53";
+      dnsPropagationCheck = true;
+      extraDomainNames = localSubdomains;
+      environmentFile = config.sops.secrets."api/cloudflare".path;
+    };
+
+    certs.${publicDomain} = {
+      group = config.services.caddy.group;
+      dnsProvider = "cloudflare";
+      dnsResolver = "1.1.1.1:53";
+      dnsPropagationCheck = true;
+      extraDomainNames = publicSubdomains;
+      environmentFile = config.sops.secrets."api/cloudflare".path;
+    };
+  };
+
+  services.caddy = {
+    enable = true;
+    email = "lets-encrypt@xhos.dev";
+
+    globalConfig = ''
+      admin off
+      servers ${config._enrai.config.tunnelIP}:443 {
+        listener_wrappers {
+          proxy_protocol {
+            timeout 5s
+            allow 10.100.0.0/24
+          }
+          tls
+        }
+      }
+    '';
+
+    virtualHosts = allVhosts;
+  };
+}

@@ -3,33 +3,33 @@
   config,
   ...
 }: {
-  imports = [
-    ./wled-album-sync.nix
-  ];
-
   sops.secrets."ssh/vyverne" = {
     mode = "0600";
     owner = "hass";
   };
 
+  _enrai.exposedServices.home-assistant.port = 8123;
+
   services.home-assistant = {
     enable = true;
-    openFirewall = true;
     extraComponents = [
       "wled"
       "upnp"
       "met"
       "google_translate"
     ];
-    customComponents = with pkgs.home-assistant-custom-components; [
-      yandex-station
-    ];
+    customComponents = with pkgs.home-assistant-custom-components; [yandex-station];
     config = let
       yandexStationId = "media_player.yandex_station_xk0000000000000286720000e2296918";
     in {
       default_config = {};
       wake_on_lan = {};
       shopping_list = {};
+
+      http = {
+        use_x_forwarded_for = true;
+        trusted_proxies = ["10.0.0.10" "127.0.0.1"];
+      };
 
       yandex_station = {
         devices = {
