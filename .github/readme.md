@@ -1,4 +1,4 @@
-# ❄️ nixdots
+# ❄️ nix
 
 <details>
 <summary>old screenshots</summary>
@@ -70,8 +70,8 @@ all wallpapers can can be found [here](https://pics.xhos.dev/folder/cmgs64vh4000
 
 | name | preview | sources |
 | :--- | :--- | :--- |
-| **Main (Animated)** | <img src="./hyprlock.gif" alt="main Hyprlock Style" width="400" /> | [config](https://github.com/xhos/nixdots/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/hyprlock.conf) <br> [assets](https://github.com/xhos/nixdots/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/assets/) <br> [scripts](https://github.com/xhos/nixdots/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/scripts/) <br> [fonts](../modules/home/core/fonts/font-files/) |
-| **Alternative (Static)** | <img src="./hyprlock-alt.png" alt="alternative Hyprlock Style" width="400" /> | [config](https://github.com/xhos/nixdots/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/hyprlock-alt.conf) <br> [assets](https://github.com/xhos/nixdots/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/assets/) <br> [scripts](https://github.com/xhos/nixdots/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/scripts/) <br> [fonts](../modules/home/core/fonts/font-files/) |
+| **Main (Animated)** | <img src="./hyprlock.gif" alt="main Hyprlock Style" width="400" /> | [config](https://github.com/xhos/nix/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/hyprlock.conf) <br> [assets](https://github.com/xhos/nix/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/assets/) <br> [scripts](https://github.com/xhos/nix/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/scripts/) <br> [fonts](../modules/home/core/fonts/font-files/) |
+| **Alternative (Static)** | <img src="./hyprlock-alt.png" alt="alternative Hyprlock Style" width="400" /> | [config](https://github.com/xhos/nix/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/hyprlock-alt.conf) <br> [assets](https://github.com/xhos/nix/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/assets/) <br> [scripts](https://github.com/xhos/nix/tree/9692b91df9fa7896a59af807010780d1c9bffad7/modules/home/opt/hypr/hyprlock/scripts/) <br> [fonts](../modules/home/core/fonts/font-files/) |
 
 fonts used are:
 

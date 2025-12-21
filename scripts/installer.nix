@@ -17,8 +17,8 @@ pkgs.writeShellApplication {
     log() { printf "\033[1;34m[INFO]\033[0m %s\n" "$*"; }
     fail() { echo "$*" >&2; exit 1; }
 
-    WORKDIR=/tmp/nixdots
-    REPO_URL="https://github.com/xhos/nixdots.git"
+    WORKDIR=/tmp/nix
+    REPO_URL="https://github.com/xhos/nix.git"
 
     # clone or update repository
     if [ -d "$WORKDIR/.git" ]; then

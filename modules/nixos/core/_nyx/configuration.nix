@@ -38,13 +38,13 @@
     (writeShellApplication {
       name = "i";
       text = ''
-        exec nix run github:xhos/nixdots#installer
+        exec nix run github:xhos/nix#installer
       '';
     })
     (writeShellApplication {
       name = "e";
       text = ''
-        exec nix run github:xhos/nixdots#enter-helper
+        exec nix run github:xhos/nix#enter-helper
       '';
     })
   ];

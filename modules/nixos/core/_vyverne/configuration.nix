@@ -33,6 +33,9 @@
 
   networking.interfaces.enp4s0.wakeOnLan.enable = true;
 
+  networking.networkmanager.dns = "systemd-resolved";
+  networking.nameservers = ["10.0.0.10" "1.1.1.1"];
+
   boot.kernelParams = ["hid_apple.fnmode=2"];
   boot.supportedFilesystems = ["zfs"];
   services.gvfs.enable = true;
