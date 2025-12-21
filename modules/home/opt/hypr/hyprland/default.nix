@@ -2,18 +2,8 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: {
-  imports = [
-    ./binds.nix
-    ./options.nix
-    ./rules.nix
-    ./hyprspace.nix
-    ./pkgs.nix
-    ./monitors.nix
-  ];
-
   config = lib.mkIf (config.de == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;

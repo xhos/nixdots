@@ -1,11 +1,16 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.modules.mpd.enable = lib.mkEnableOption "MPD music player daemon";
 
   config = lib.mkIf config.modules.mpd.enable {
+    home.packages = [pkgs.playerctl];
+    services.mpdris2.enable = true;
+    services.playerctld.enable = true;
+
     services.mpd = {
       enable = true;
       musicDirectory = "${config.home.homeDirectory}/Music";
@@ -38,5 +43,4 @@
       network.startWhenNeeded = true;
     };
   };
-  imports = [./misc.nix];
 }

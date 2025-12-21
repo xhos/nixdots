@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./aliases.nix
-  ];
-
   config = lib.mkIf (config.shell == "zsh") {
     programs.zoxide.enable = true;
     programs.zoxide.enableZshIntegration = true;

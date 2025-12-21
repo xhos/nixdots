@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [inputs.stylix.homeModules.stylix];
+
   stylix = lib.mkIf (config.headless != true) {
     enable = true;
 
