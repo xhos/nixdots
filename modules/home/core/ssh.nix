@@ -8,16 +8,8 @@
       path = "${config.home.homeDirectory}/.ssh/proxy.key";
       mode = "0600";
     };
-    "ssh/enrai" = {
-      path = "${config.home.homeDirectory}/.ssh/enrai.key";
-      mode = "0600";
-    };
-    "ssh/vyverne" = {
-      path = "${config.home.homeDirectory}/.ssh/vyverne.key";
-      mode = "0600";
-    };
-    "ssh/zireael" = {
-      path = "${config.home.homeDirectory}/.ssh/zireael.key";
+    "ssh/monitor" = {
+      path = "${config.home.homeDirectory}/.ssh/monitor.key";
       mode = "0600";
     };
     "ssh/vault" = {
@@ -28,12 +20,21 @@
       path = "${config.home.homeDirectory}/.ssh/mc.key";
       mode = "0600";
     };
+    "ssh/vyverne" = {
+      path = "${config.home.homeDirectory}/.ssh/vyverne.key";
+      mode = "0600";
+    };
+    "ssh/enrai" = {
+      path = "${config.home.homeDirectory}/.ssh/enrai.key";
+      mode = "0600";
+    };
   };
 
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
+      # git
       "github" = {
         host = "github.com";
         identitiesOnly = true;
@@ -44,6 +45,7 @@
         identityFile = "~/.ssh/azure";
         identitiesOnly = true;
       };
+      # VPS
       "proxy-1" = {
         host = "proxy-1";
         hostname = "40.233.88.40";
@@ -58,6 +60,13 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/proxy.key";
       };
+      "monitor" = {
+        host = "monitor";
+        hostname = "40.233.127.68";
+        user = "root";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/monitor.key";
+      };
       "vault" = {
         host = "vault";
         hostname = "40.233.74.249";
@@ -65,6 +74,7 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/vault.key";
       };
+      # VM
       "mc" = {
         host = "mc";
         hostname = "xhos.dev";
@@ -73,14 +83,7 @@
         identitiesOnly = true;
         identityFile = "~/.ssh/mc.key";
       };
-      "enrai" = {
-        host = "enrai";
-        hostname = "10.0.0.10";
-        user = "xhos";
-        port = 10022;
-        identitiesOnly = true;
-        identityFile = "~/.ssh/enrai.key";
-      };
+      # bare metal
       "vyverne" = {
         host = "vyverne";
         hostname = "10.0.0.11";
@@ -88,6 +91,14 @@
         port = 10022;
         identitiesOnly = true;
         identityFile = "~/.ssh/vyverne.key";
+      };
+      "enrai" = {
+        host = "enrai";
+        hostname = "10.0.0.10";
+        user = "xhos";
+        port = 10022;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/enrai.key";
       };
       "enrai-t" = {
         host = "enrai-t";
