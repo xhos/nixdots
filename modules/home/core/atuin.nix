@@ -11,6 +11,8 @@
       update_check = false;
       filter_mode_shell_up_key_binding = "session";
       inline_height = 10;
+      invert = true;
+      show_help = false;
     };
     flags = [ "--disable-up-arrow" ];
   };
