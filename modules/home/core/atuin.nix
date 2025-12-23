@@ -5,6 +5,15 @@
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
-    settings.sync_address = "https://atuin.xhos.dev";
+    settings = {
+      sync_address = "https://atuin.xhos.dev";
+      enter_accept = true;
+      update_check = false;
+      filter_mode_shell_up_key_binding = "session";
+      inline_height = 10;
+    };
+    flags = [ "--disable-up-arrow" ];
   };
+
+  programs.zsh.initContent = ''bindkey "$key[Down]"  atuin-up-search'';
 }
