@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: let
   proxy-1-ip = "40.233.88.40";
@@ -56,7 +55,12 @@ in {
 
       failoverScript = pkgs.writeShellApplication {
         name = "vps-failover";
-        runtimeInputs = with pkgs; [curl dig iputils jq];
+        runtimeInputs = with pkgs; [
+          curl
+          dig
+          iputils
+          jq
+        ];
 
         text = ''
           # shellcheck disable=SC1091
