@@ -14,7 +14,7 @@
       invert = true;
       show_help = false;
     };
-    flags = [ "--disable-up-arrow" ];
+    flags = ["--disable-up-arrow"];
   };
 
   programs.zsh.initContent = ''bindkey "$key[Down]"  atuin-up-search'';

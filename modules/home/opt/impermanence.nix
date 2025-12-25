@@ -64,7 +64,6 @@ in {
           ".zen"
           ".mozilla"
           ".vscode"
-          ".ssh"
           "work"
           "Projects"
           "Music"
@@ -80,6 +79,13 @@ in {
           ".config/zsh"
           ".local/share/zsh"
           ".config/OpenRGB"
+
+          # misc state
+          ".local/state/lazygit"
+        ];
+
+        files = [
+          ".ssh/known_hosts"
         ];
 
         allowOther = true;

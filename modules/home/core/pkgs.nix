@@ -14,7 +14,6 @@
     delve
     fd
     gdb
-    lazygit
     cling
     rustup
     python3

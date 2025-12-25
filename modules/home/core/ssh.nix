@@ -1,49 +1,28 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  sops.secrets = lib.mkIf config.modules.secrets.enable {
-    "ssh/proxy" = {
-      path = "${config.home.homeDirectory}/.ssh/proxy.key";
-      mode = "0600";
-    };
-    "ssh/monitor" = {
-      path = "${config.home.homeDirectory}/.ssh/monitor.key";
-      mode = "0600";
-    };
-    "ssh/vault" = {
-      path = "${config.home.homeDirectory}/.ssh/vault.key";
-      mode = "0600";
-    };
-    "ssh/mc" = {
-      path = "${config.home.homeDirectory}/.ssh/mc.key";
-      mode = "0600";
-    };
-    "ssh/vyverne" = {
-      path = "${config.home.homeDirectory}/.ssh/vyverne.key";
-      mode = "0600";
-    };
-    "ssh/enrai" = {
-      path = "${config.home.homeDirectory}/.ssh/enrai.key";
-      mode = "0600";
-    };
+{config, ...}: {
+  sops.secrets = {
+    "ssh/proxy".mode = "0600";
+    "ssh/monitor".mode = "0600";
+    "ssh/vault".mode = "0600";
+    "ssh/mc".mode = "0600";
+    "ssh/vyverne".mode = "0600";
+    "ssh/enrai".mode = "0600";
+    "ssh/github".mode = "0600"; # this is a bit of a chicken and egg problem, but i'll come up with a solution next time i re-install
+    "ssh/azure".mode = "0600";
   };
 
   programs.ssh = {
     enable = true;
-    enableDefaultConfig = false;
     matchBlocks = {
       # git
       "github" = {
         host = "github.com";
         identitiesOnly = true;
-        identityFile = "~/.ssh/github-auth-key";
+        identityFile = config.sops.secrets."ssh/github".path;
       };
       "azure" = {
         host = "ssh.dev.azure.com";
-        identityFile = "~/.ssh/azure";
         identitiesOnly = true;
+        identityFile = config.sops.secrets."ssh/azure".path;
       };
       # VPS
       "proxy-1" = {
@@ -51,28 +30,28 @@
         hostname = "40.233.88.40";
         user = "root";
         identitiesOnly = true;
-        identityFile = "~/.ssh/proxy.key";
+        identityFile = config.sops.secrets."ssh/proxy".path;
       };
       "proxy-2" = {
         host = "proxy-2";
         hostname = "89.168.83.242";
         user = "root";
         identitiesOnly = true;
-        identityFile = "~/.ssh/proxy.key";
+        identityFile = config.sops.secrets."ssh/proxy".path;
       };
       "monitor" = {
         host = "monitor";
         hostname = "40.233.127.68";
         user = "root";
         identitiesOnly = true;
-        identityFile = "~/.ssh/monitor.key";
+        identityFile = config.sops.secrets."ssh/monitor".path;
       };
       "vault" = {
         host = "vault";
         hostname = "40.233.74.249";
         user = "ubuntu";
         identitiesOnly = true;
-        identityFile = "~/.ssh/vault.key";
+        identityFile = config.sops.secrets."ssh/vault".path;
       };
       # VM
       "mc" = {
@@ -81,7 +60,7 @@
         port = 2222;
         user = "mc";
         identitiesOnly = true;
-        identityFile = "~/.ssh/mc.key";
+        identityFile = config.sops.secrets."ssh/mc".path;
       };
       # bare metal
       "vyverne" = {
@@ -90,7 +69,7 @@
         user = "xhos";
         port = 10022;
         identitiesOnly = true;
-        identityFile = "~/.ssh/vyverne.key";
+        identityFile = config.sops.secrets."ssh/vyverne".path;
       };
       "enrai" = {
         host = "enrai";
@@ -98,7 +77,7 @@
         user = "xhos";
         port = 10022;
         identitiesOnly = true;
-        identityFile = "~/.ssh/enrai.key";
+        identityFile = config.sops.secrets."ssh/enrai".path;
       };
       "enrai-t" = {
         host = "enrai-t";
@@ -106,7 +85,7 @@
         user = "xhos";
         port = 10022;
         identitiesOnly = true;
-        identityFile = "~/.ssh/enrai.key";
+        identityFile = config.sops.secrets."ssh/enrai".path;
         proxyCommand = "cloudflared access ssh --hostname %h";
       };
     };
