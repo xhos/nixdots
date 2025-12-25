@@ -1018,11 +1018,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1766643567,
-        "narHash": "sha256-z/a4EvhbqInfG3c5mepZwkWb24ABp03LX/Sj+HQ+OeI=",
+        "lastModified": 1766645165,
+        "narHash": "sha256-oXwXnYoLMAuTMNFm9jzmxpuT/FkPpFFk3XlmNggVp9c=",
         "owner": "xhos",
         "repo": "nxv",
-        "rev": "8401a2a6a49b7bed014328fca26a730dfc0a5e93",
+        "rev": "a637147cac5e49039851a70c8c4e1e7d0227a898",
         "type": "github"
       },
       "original": {
