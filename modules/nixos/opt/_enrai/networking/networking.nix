@@ -46,6 +46,11 @@ in {
           type = lib.types.port;
           description = "Port the service listens on";
         };
+        upstream = lib.mkOption {
+          type = lib.types.str;
+          default = "127.0.0.1";
+          description = "Address the service listens on";
+        };
         exposed = lib.mkOption {
           type = lib.types.bool;
           default = false;

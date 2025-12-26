@@ -1,7 +1,8 @@
 {pkgs, ...}: {
+  _enrai.exposedServices.jellyfin.port = 8096;
+
   services.jellyfin = {
     enable = true;
-    openFirewall = true;
     cacheDir = "/storage/media/cache/jellyfin";
   };
 

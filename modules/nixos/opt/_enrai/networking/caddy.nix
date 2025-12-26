@@ -34,7 +34,7 @@
           useACMEHost = localDomain;
           extraConfig = ''
             bind ${enraiIP}
-            reverse_proxy 127.0.0.1:${toString svc.port}
+            reverse_proxy ${svc.upstream}:${toString svc.port}
 
             @blocked not remote_ip 10.0.0.0/24
             respond @blocked 403
