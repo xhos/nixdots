@@ -62,6 +62,7 @@ in {
           ".local/share/nvim"
           ".local/state/nvf/"
           ".zen"
+          ".ssh"
           ".mozilla"
           ".vscode"
           "work"
@@ -82,10 +83,6 @@ in {
 
           # misc state
           ".local/state/lazygit"
-        ];
-
-        files = [
-          ".ssh/known_hosts"
         ];
 
         allowOther = true;
